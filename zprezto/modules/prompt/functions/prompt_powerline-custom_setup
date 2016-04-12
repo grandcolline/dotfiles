@@ -19,15 +19,14 @@ ZSH_THEME_REP_TIME_SINCE_COMMIT_NEUTRAL="%{$fg[cyan]%}"
 ##      pwdを省略して返す     ##
 ################################
 function prompt_pwd() {
-  local pwd="${PWD/#$HOME/~}"
-  if [[ "$pwd" == (#m)[/~] ]]; then
-    echo "$MATCH"
-    unset MATCH
-  else
-    echo "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
-  fi
+    local pwd="${PWD/#$HOME/~}"
+    if [[ "$pwd" == (#m)[/~] ]]; then
+        echo "$MATCH"
+        unset MATCH
+    else
+        echo "${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+    fi
 }
-
 
 
 #####################################
@@ -94,55 +93,34 @@ function prompt_pwd() {
 #}
 
 
-
-
-function prompt_powerline_precmd {
-  # Check for untracked files or updated submodules since vcs_info doesn't.
-  if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    fmt_branch="%b%u%c${__PROMPT_SKWP_COLORS[4]}●%f"
-  else
-    fmt_branch="%b%u%c"
-  fi
-  zstyle ':vcs_info:*:prompt:*' formats "${fmt_branch}"
-
-  vcs_info 'prompt'
-  # RVM_PRECMD_INFO=$(rvm_info_for_prompt)
+#####################################
+##   リモートブランチとの差分確認  ##
+#####################################
+function check_remote_head {
+    if [[ ! -z $(git status -sb 2> /dev/null) ]]; then
+        local check="$(git status -sb | awk 'NR==1' | awk '{for(i=3;i<=NF;i++){printf("%s%s",$i,OFS="")}}')"
+        # check="$(print ${check} | sed -e 's/ahead/↑ /g' |  sed -e 's/behind/↓ /g' | sed -e 's/,//g' | sed -e 's/\[//g' | sed -e 's/\]//g')"
+        check="$(print ${check} | sed -e 's/ahead/↑ /g' |  sed -e 's/behind/↓ /g' | sed -e 's/,//g')"
+        echo " ${check}"
+    fi
 }
 
-#####################################
-##         push, pullの確認        ##
-#####################################
-#git_is_track_branch(){
-#  if [ "$(git remote 2>/dev/null)" != "" ]; then
-#    local target_tracking_branch="origin/$(git rev-parse --abbrev-ref HEAD)"
-#    for tracking_branch in $(git branch -ar) ; do
-#      if [ "$target_tracking_branch" = "$tracking_branch" ]; then
-#        echo "true"
-#      fi
-#    done
-#  fi
-#}
 
-#git_info_pull(){
-#  if [ -n "$(git_is_track_branch)" ]; then
-#    local current_branch="$(git rev-parse --abbrev-ref HEAD)"
-#    local head_rev="$(git rev-parse HEAD)"
-#    local origin_rev="$(git rev-parse origin/$current_branch)"
-#    if [ "$head_rev" != "$origin_rev" ] && [ "$(git_info_push)" = "" ]; then
-#      echo "↓ "
-#    fi
-#  fi
-#}
+#####################################
+##   git管理されていないファイル   ##
+#####################################
+function prompt_powerline_precmd {
+    # Check for untracked files or updated submodules since vcs_info doesn't.
+    if [[ ! -z $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+        fmt_branch="%b%u%c%F{yellow}●%f"
+    else
+        fmt_branch="%b%u%c"
+    fi
+    zstyle ':vcs_info:*:prompt:*' formats "${fmt_branch}"
 
-#git_info_push(){
-#  if [ -n "$(git_is_track_branch)" ]; then
-#    local current_branch="$(git rev-parse --abbrev-ref HEAD)"
-#    local push_count=$(git rev-list origin/"$current_branch".."$current_branch" 2>/dev/null | wc -l)
-#    if [ "$push_count" -gt 0 ]; then
-#      echo "↑ [$push_count]"
-#    fi
-#fi
-#}
+    vcs_info 'prompt'
+    # RVM_PRECMD_INFO=$(rvm_info_for_prompt)
+}
 
 
 #####################################
@@ -158,27 +136,10 @@ function prompt_powerline_setup {
 
   add-zsh-hook precmd prompt_powerline_precmd
 
-  # Use extended color pallete if available.
-  if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
-    __PROMPT_SKWP_COLORS=(
-      "%F{81}"  # turquoise
-      "%F{166}" # orange
-      "%F{135}" # purple
-      "%F{161}" # hotpink
-      "%F{118}" # limegreen
-    )
-  else
-    __PROMPT_SKWP_COLORS=(
-      "%F{cyan}"
-      "%F{yellow}"
-      "%F{magenta}"
-      "%F{red}"
-      "%F{green}"
-    )
-  fi
-
   # Enable VCS systems you use.
   zstyle ':vcs_info:*' enable bzr git hg svn
+  # 使えるメッセージの数
+  # zstyle ':vcs_info:*' max-exports 2
 
   # check-for-changes can be really slow.
   # You should disable it if you work with large repositories.
@@ -194,52 +155,31 @@ function prompt_powerline_setup {
   # %n - user
   # %m - machine hostname
 
-  # local fmt_branch="(${__PROMPT_SKWP_COLORS[1]}%b%f%u%c)"
-  local fmt_branch="${__PROMPT_SKWP_COLORS[2]}%b%f%u%c"
-  local fmt_action="${__PROMPT_SKWP_COLORS[5]}%a%f"
-  local fmt_unstaged="${__PROMPT_SKWP_COLORS[2]}●%f"
-  local fmt_staged="${__PROMPT_SKWP_COLORS[5]}●%f"
+  local fmt_branch="%F{red}%b%f%u%c"
+  local fmt_action="%F{red}%a%f"
+  local fmt_unstaged="%F{red}●%f"
+  local fmt_staged="%F{green}●%f"
 
   zstyle ':vcs_info:*:prompt:*' unstagedstr   "${fmt_unstaged}"
   zstyle ':vcs_info:*:prompt:*' stagedstr     "${fmt_staged}"
-  zstyle ':vcs_info:*:prompt:*' actionformats "${fmt_branch}${fmt_action}"
-  zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}"
+  zstyle ':vcs_info:*:prompt:*' actionformats "${fmt_branch} ${fmt_action}"
+  # zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}" #←この行なくても良くない？(よくわからん)
   zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
-  # SPLIT RVM PROMPT INFO
-  # TODO: should assign this to local variable? somehow doesn't work correctly.
-  # rvm_split=("${(s/@/)$(rvm_info_for_prompt)}")
-
-  # if [ "$POWERLINE_RIGHT_B" = "" ]; then
-    # POWERLINE_RIGHT_B=%D{%H:%M:%S}
-    # local powerline_right_b=$rvm_split[1]
-  # fi
-
-  # if [ "$POWERLINE_RIGHT_A" = "" ]; then
-  #  local powerline_right_a=$rvm_split[2]
-  # fi
-
-  # Setup powerline style colouring
-  # POWERLINE_COLOR_BG_GRAY=%K{240}
-  # POWERLINE_COLOR_BG_LIGHT_GRAY=%K{240}
-  # POWERLINE_COLOR_BG_WHITE=%K{255}
-
-  # POWERLINE_COLOR_FG_GRAY=%F{240}
-  # POWERLINE_COLOR_FG_LIGHT_GRAY=%F{240}
-  # POWERLINE_COLOR_FG_WHITE=%F{255}
 
   POWERLINE_SEPARATOR=$'\u2b80'
   POWERLINE_R_SEPARATOR=$'\u2b82'
 
 
   POWERLINE_LEFT_A="%K{green}%F{white} "'$(prompt_pwd)'" %k%f%F{green}%K{blue}"$POWERLINE_SEPARATOR
-  # POWERLINE_LEFT_B="%k%f%F{white}%K{blue} "'${vcs_info_msg_0_}'" %k%f%F{blue}%K{black}"$POWERLINE_SEPARATOR
-  # POWERLINE_LEFT_C=" %k%f%F{white}%K{black}"'$(git_time_details)'" %k%f%F{black}"$POWERLINE_SEPARATOR"%f "
-  POWERLINE_LEFT_B="%k%f%F{white}%K{blue} "'${vcs_info_msg_0_}'" %k%f%F{blue}"$POWERLINE_SEPARATOR"%f "
-
+  # POWERLINE_LEFT_B="%k%f%F{white}%K{blue} "'${vcs_info_msg_0_}'" %k%f%F{blue}%K{magenta}"$POWERLINE_SEPARATOR
+  # POWERLINE_LEFT_C=" %k%f%F{white}%K{magenta}"'$(check_remote_head)'" %k%f%F{magenta}"$POWERLINE_SEPARATOR"%f "
+  POWERLINE_LEFT_B="%k%f%F{white}%K{blue} "'${vcs_info_msg_0_}$(check_remote_head)'" %k%f%F{blue}"$POWERLINE_SEPARATOR"%f "
+  
   # 左プロンプト
-  # PROMPT=$POWERLINE_LEFT_A$POWERLINE_LEFT_B$POWERLINE_LEFT_C
-  PROMPT=$POWERLINE_LEFT_A$POWERLINE_LEFT_B
+  PROMPT=$POWERLINE_LEFT_A$POWERLINE_LEFT_B$POWERLINE_LEFT_C
+  # PROMPT=$POWERLINE_LEFT_A$POWERLINE_LEFT_B
+
   # 右プロンプト
   RPROMPT=""
   # RPROMPT=$POWERLINE_COLOR_FG_WHITE$POWERLINE_R_SEPARATOR"%f$POWERLINE_COLOR_BG_WHITE $POWERLINE_COLOR_FG_GRAY$powerline_right_b "$POWERLINE_R_SEPARATOR"%f%k$POWERLINE_COLOR_BG_GRAY$POWERLINE_COLOR_FG_WHITE $powerline_right_a %f%k"
