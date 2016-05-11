@@ -20,6 +20,8 @@ mkdir $HOME/.dotfiles/.cache
 touch $HOME/.dotfiles/.cache/chpwd-recent-dirs
 touch $HOME/.dotfiles/.cache/peco-cd-file
 touch $HOME/.dotfiles/.cache/zhistory
+touch $HOME/.dotfiles/.cache/zcompdump
+touch $HOME/.dotfiles/.cache/zcompdump.zwc
 
 # 必要なものをbrew install
 brew update
