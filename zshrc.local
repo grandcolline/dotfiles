@@ -1,0 +1,14 @@
+###############################
+##       ローカル用設定      ##
+###############################
+
+# preztoの設定と被らないように
+
+# よくあるAliaseは, ./zprezto/modules/utility/init.zsh にあります.
+
+# git関連のaliaseは
+# ./zprezto/modules/git-simple/alias.zshに書きました.
+
+
+
+

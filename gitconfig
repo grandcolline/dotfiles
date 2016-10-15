@@ -1,0 +1,26 @@
+[core]
+	excludesfile = ~/.dotfiles/gitignore
+	safecrlf = true
+	autocrlf = input
+	precomposeunicode = true
+	quotepath = false
+	editor = vim
+
+[user]
+	name = grandcolline
+	email = grandcolline@gmail.com
+
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	grep = auto
+	interactive = auto
+  
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+

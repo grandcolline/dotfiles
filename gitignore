@@ -1,0 +1,10 @@
+.DS_Store
+
+# For vim
+*.swp
+
+# For eclipse
+*.project
+*.classpath
+*.settings
+
