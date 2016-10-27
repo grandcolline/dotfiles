@@ -24,14 +24,6 @@ $ git clone --recursive git@github.com:grandcolline/dotfiles.git "~/.dotfile"
 $ ~/.dotfiles/setup.sh
 ```
 
-### その他
-```
-$ brew install tree
-$ brew install tig
-$ brew install peco
-$ brew install hub
-```
-
 ## zsh関連
 preztoを利用しています。
 https://github.com/sorin-ionescu/prezto
@@ -40,3 +32,4 @@ https://github.com/sorin-ionescu/prezto
 
 ## vim関連
 TODO
+
