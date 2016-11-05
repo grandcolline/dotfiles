@@ -30,38 +30,52 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 
 # barnach
 alias gb='git branch -a'
+alias gbv='git branch -av'
 alias gbd='git branch -d'
 alias gbD='git branch -D'
+alias gbm='git branch -m'
+alias gbM='git branch -M'
+alias gsb='git show-branch'
+alias gsba='git show-branch -a'
 
 # pull,fetch,merge
 alias gp='git pull --rebase --prune --tags'
 alias gf='git fetch --prune --tags'
 alias gr='git rebase'
 
+# push
+alias gpo="git push origin"
+
 # checkout
 alias gco='git checkout'
 alias gcob='git checkout -b'
+
+# cherry-pick
+alias gcp="git cherry-pick -ff"
+
+# revert
+alias grv='git revert'
 
 # add
 alias gad='git add'
 
 # commit
-alias gcm='git commit -m'
-alias gcsv='git commit -sv'
+alias gcm='git commit -sv'
+alias gcmm='git commit -m'
 
 # status
 alias gs='git status -sb'
 
 # diff
 alias gd='git diff'
-alias gdw='git diff --color-word' #単語ごと
+alias gdw='git diff --color-words' #単語ごと
 
 # log
 alias glg='git log --graph --format="%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %an%C(reset) %C(black bold)[%ad]%C(reset)%n %w(80)%s%n"'
 alias glga='git log --graph --all --format="%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %an%C(reset) %C(black bold)[%ad]%C(reset)%n %w(80)%s%n"'
 alias glgb='git log --graph --all --format="%C(white)%d%C(reset) %C(black bold)[%ad]%C(reset)"'
 alias gl='git log --stat --decorate'
-alias glp='git log -p -1 --stat --decorate' #コミットの変更を確認i
+alias glp='git log -p -1 --stat --decorate' #コミットの変更を確認
 
 # skip worktree
 alias gsw='git update-index --skip-worktre'
