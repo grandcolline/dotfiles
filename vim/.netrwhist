@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/hayashitaiki/.vim'
+let g:netrw_dirhist_2='/Users/hayashitaiki/.zprezto'
+let g:netrw_dirhist_3='/Users/hayashitaiki/Desktop/applications/web/deploy/infra/local/apache/conf.d'
+let g:netrw_dirhist_4='/Users/hayashitaiki/.eclipse'
+let g:netrw_dirhist_5='/Users/hayashitaiki/.atom'
+let g:netrw_dirhist_6='/Users/hayashitaiki/.zprezto/modules/environment'

@@ -13,6 +13,8 @@ do
 	ln -s -f $HOME/.dotfiles/zprezto/runcoms/$zfile $HOME/.$zfile
 done
 
+ln -s -f $HOME/.dotfiles/vim $HOME/.vim
+
 # PCごとに管理するファイルの作成
 cp $HOME/.dotfiles/zshrc.local.defalt $HOME/.dotfiles/zshrc.local
 cp $HOME/.dotfiles/gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
