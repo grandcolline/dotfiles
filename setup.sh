@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+# $HOMEからリンクを貼る
 DOT_FILES=(gitconfig vimrc)
 for file in ${DOT_FILES[@]}
 do
@@ -12,6 +13,11 @@ do
 	ln -s -f $HOME/.dotfiles/zprezto/runcoms/$zfile $HOME/.$zfile
 done
 
+# PCごとに管理するファイルの作成
+cp $HOME/.dotfiles/zshrc.local.defalt $HOME/.dotfiles/zshrc.local
+cp $HOME/.dotfiles/gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
+
+# 必要なものをbrew install
 brew update
 brew install peco
 brew install tree
