@@ -6,9 +6,8 @@
 	quotepath = false
 	editor = vim
 
-[user]
-	name = grandcolline
-	email = grandcolline@gmail.com
+[include]
+	path = ~/.dotfiles/gitconfig.local
 
 [color]
 	ui = auto
@@ -17,7 +16,7 @@
 	branch = auto
 	grep = auto
 	interactive = auto
-  
+
 [pull]
 	rebase = true
 

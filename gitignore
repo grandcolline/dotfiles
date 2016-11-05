@@ -1,9 +1,10 @@
+# For Mac:
 .DS_Store
 
-# For vim
+# For vim:
 *.swp
 
-# For eclipse
+# For eclipse:
 *.project
 *.classpath
 *.settings
