@@ -51,7 +51,7 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 
 # cherry-pick
-alias gcp="git cherry-pick -ff"
+alias gcp="git cherry-pick --ff"
 
 # revert
 alias grv='git revert'
