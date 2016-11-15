@@ -28,56 +28,83 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 
 ##  たくさんあっても使いこなせないので、自分のよく使うもののみに...
 
-# barnach
+# barnach (b,sb)
 alias gb='git branch -a'
 alias gbv='git branch -a -vv'
-alias gbd='git branch -d'
-alias gbD='git branch -D'
-alias gbm='git branch -m'
-alias gbM='git branch -M'
+alias gbd='git branch -D'
+alias gbm='git branch -M'
 alias gsb='git show-branch'
 alias gsba='git show-branch -a'
 
-# pull,fetch,merge
+# pull,fetch (p,f)
 alias gp='git pull --rebase --prune --tags'
 alias gf='git fetch --prune --tags'
-alias gr='git rebase'
 
-# push
+# rebase (rb)
+alias grb='git rebase'
+alias grbi='git rebase -i'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbs='git rebase --skip'
+
+# push (po)
 alias gpo="git push -u origin"
 
-# checkout
+# checkout (co)
 alias gco='git checkout'
 alias gcob='git checkout -b'
+alias gcop='git checkout -p' #hunkごと
 
-# cherry-pick
-alias gcp="git cherry-pick --ff"
-
-# revert
+# cherry-pick,revert (cp,rv)
+alias gcp='git cherry-pick --ff'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+alias gcps='git cherry-pick --skip'
 alias grv='git revert'
+alias grva='git revert --abort'
+alias grvc='git revert --continue'
 
-# add
+# add,commit (ad,cm)
 alias gad='git add'
-
-# commit
+alias gadp='git add -p' #hunkごと
 alias gcm='git commit -sv'
 alias gcmm='git commit -m'
 
-# status
-alias gs='git status -sb'
+# reset (rs)
+alias grs='git reset'
+alias grs='git reset -p'
+alias grsh='git reset --hard'
+alias grss='git reset --soft'
 
-# diff
+# status (s)
+alias gs='git status -sb'
+alias gsp='git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F"[]~^[]" "{print $2}"'
+
+# diff (d)
 alias gd='git diff'
 alias gdw='git diff --color-words' #単語ごと
+alias gdn='git diff --name-status'
+alias gds='git diff --staged'
+alias gd2='git diff HEAD~'
+alias gd3='git diff HEAD~~'
+alias gd4='git diff HEAD~~~'
+alias gd5='git diff HEAD~~~~'
 
-# log
+# log (l)
+alias gl='git log --stat --decorate'
+alias glp='git log -p -1 --stat --decorate' #コミットの変更を確認
 alias glg='git log --graph --format="%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %an%C(reset) %C(black bold)[%ad]%C(reset)%n %w(80)%s%n"'
 alias glga='git log --graph --all --format="%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %an%C(reset) %C(black bold)[%ad]%C(reset)%n %w(80)%s%n"'
 alias glgb='git log --graph --all --format="%C(white)%d%C(reset) %C(black bold)[%ad]%C(reset)"'
-alias gl='git log --stat --decorate'
-alias glp='git log -p -1 --stat --decorate' #コミットの変更を確認
 
-# skip worktree
+# stash (st)
+alias gst='git stash'
+alias gstl='git stash list'
+alias gsta='git stash apply --index'
+alias gstd='git stash drop'
+alias gtsp='git stash pop --index'
+
+# skipworktree (sw)
 alias gsw='git update-index --skip-worktre'
 alias gnsw='git update-index --no-skip-worktre'
 alias gswl='git ls-files -v | grep "S "'
