@@ -102,7 +102,7 @@ alias gst='git stash'
 alias gstl='git stash list'
 alias gsta='git stash apply --index'
 alias gstd='git stash drop'
-alias gtsp='git stash pop --index'
+alias gstp='git stash pop --index'
 
 # skipworktree (sw)
 alias gsw='git update-index --skip-worktre'
