@@ -72,7 +72,7 @@ alias gcmm='git commit -m'
 
 # reset (rs)
 alias grs='git reset'
-alias grs='git reset -p'
+alias grsp='git reset -p' #hunkごと
 alias grsh='git reset --hard'
 alias grss='git reset --soft'
 
