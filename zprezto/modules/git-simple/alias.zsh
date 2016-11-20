@@ -26,7 +26,7 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 # Aliases
 #
 
-##  たくさんあっても使いこなせないので、自分のよく使うもののみに...
+##  たくさんあっても使いこなせないので、自分の使うもののみに...
 
 # barnach (b,sb)
 alias gb='git branch -a'
@@ -67,7 +67,7 @@ alias grvc='git revert --continue'
 # add,commit (ad,cm)
 alias gad='git add'
 alias gadp='git add -p' #hunkごと
-alias gcm='git commit -sv'
+alias gcm='git commit -v'
 alias gcmm='git commit -m'
 
 # reset (rs)
@@ -78,7 +78,7 @@ alias grss='git reset --soft'
 
 # status (s)
 alias gs='git status -sb'
-alias gsp='git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F"[]~^[]" "{print $2}"'
+alias gsp='git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F"[]~^[]" "{print $2}"' # 親のブランチを表示
 
 # diff (d)
 alias gd='git diff'
