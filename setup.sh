@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # $HOMEからリンクを貼る
-DOT_FILES=(gitconfig vimrc)
+DOT_FILES=(gitconfig vimrc vim)
 for file in ${DOT_FILES[@]}
 do
 	ln -s -f $HOME/.dotfiles/$file $HOME/.$file
@@ -12,8 +12,6 @@ for zfile in ${z_DOT_FILES[@]}
 do
 	ln -s -f $HOME/.dotfiles/zprezto/runcoms/$zfile $HOME/.$zfile
 done
-
-ln -s -f $HOME/.dotfiles/vim $HOME/.vim
 
 # PCごとに管理するファイルの作成
 cp $HOME/.dotfiles/zshrc.local.defalt $HOME/.dotfiles/zshrc.local
