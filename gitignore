@@ -5,7 +5,7 @@
 *.swp
 
 # For eclipse:
-*.project
-*.classpath
-*.settings
+.project
+.classpath
+.settings
 
