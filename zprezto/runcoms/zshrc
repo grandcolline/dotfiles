@@ -87,8 +87,7 @@ bindkey '^B' peco-branch
 
 # コミット検索(git)
 function peco-commit () {
-# local commit=$(git log --oneline --decorate=full | peco | awk '{print $1}')
-local commit=$(git log --all --pretty=format:'%d %an: %s %ar %h' | peco | awk -F ' ' '{ print $NF }')
+	local commit=$(git log --no-merges --pretty=format:'%d %an: %s %ar %h' | peco | awk -F ' ' '{ print $NF }')
 	if [ -n "$commit" ]; then
 		if [ -n "$LBUFFER" ]; then
 			local new_left="${LBUFFER%\ } $commit"
@@ -102,11 +101,24 @@ local commit=$(git log --all --pretty=format:'%d %an: %s %ar %h' | peco | awk -F
 zle -N peco-commit
 bindkey '^V' peco-commit
 
+function peco-commit-all () {
+	local commit=$(git log --all --no-merges --pretty=format:'%d %an: %s %ar %h' | peco | awk -F ' ' '{ print $NF }')
+	if [ -n "$commit" ]; then
+		if [ -n "$LBUFFER" ]; then
+			local new_left="${LBUFFER%\ } $commit"
+		else
+			local new_left="$commit"
+		fi
+		BUFFER=${new_left}${RBUFFER}
+		CURSOR=${#new_left}
+	fi
+}
+zle -N peco-commit-all
+bindkey '^V^V' peco-commit-all
+
 
 # SSH
 function _get_hosts() {
-	# historyを番号なし、逆順、ssh*にマッチするものを1番目から表示
-	# 最後の項をhost名と仮定してhost部分を取り出す
 	local hosts
 	ssh_hist="$(history -nrm 'ssh*' 1 | \grep 'ssh ')"
 	hosts="$(echo $ssh_hist | perl -pe 's/ssh(\s+-([1246AaCfGgKkMNnqsTtVvXxYy]|[^1246AaCfGgKkMNnqsTtVvXxYy]\s+\S+))*\s+(\S+@)?//' | cut -d' ' -f1)"
@@ -154,7 +166,7 @@ function peco-get-destination-from-cdr() {
 	cdr -l | \
 	sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
 	awk '{c=gsub("/","/"); print c,length($0),$0}' | \
-	sort -n | \
+#sort -n | \
 	cut -d' ' -f1- | \
 	awk '{ print $3 }' | \
 	peco --query "$LBUFFER"
