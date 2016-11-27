@@ -16,11 +16,13 @@ done
 # PCごとに管理するファイルの作成
 cp $HOME/.dotfiles/zshrc.local.defalt $HOME/.dotfiles/zshrc.local
 cp $HOME/.dotfiles/gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
+mkdir $HOME/.dotfiles/.cache
+touch $HOME/.dotfiles/.cache/chpwd-recent-dirs
 
 # 必要なものをbrew install
 brew update
 brew install peco
 brew install tree
-brew install tig
+# brew install tig
 
 

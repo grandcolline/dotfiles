@@ -34,8 +34,10 @@ zstyle ':prezto:load' pmodule \
   'git-simple' \
   'prompt'
 
-# デフォルトから抜いたモジュール
+# デフォルトから抜いたモジュール by grandcolline
+# 'git' \
 # 'terminal' \
+
 
 #
 # Autosuggestions

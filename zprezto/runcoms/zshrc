@@ -1,6 +1,21 @@
 
 ###############################
-##          Prezto           ##
+##        cdrコマンド        ##
+###############################
+# cdr, add-zsh-hook を有効にする
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+# cdr の設定
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file "$HOME/.dotfiles/.cache/chpwd-recent-dirs"
+zstyle ':chpwd:*' recent-dirs-pushd true
+
+
+###############################
+##          prezto           ##
 ###############################
 # Executes commands at the start of an interactive session.
 #
@@ -8,13 +23,15 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.dotfiles/zprezto/init.zsh" ]]; then
-	 source "${ZDOTDIR:-$HOME}/.dotfiles/zprezto/init.zsh"
+if [[ -s "$HOME/.dotfiles/zprezto/init.zsh" ]]; then
+	source "$HOME/.dotfiles/zprezto/init.zsh"
 fi
+
 
 ###############################
 ##           peco            ##
 ###############################
+# コマンド履歴検索
 function peco-history-selection() {
 	BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
 	CURSOR=$#BUFFER
@@ -22,6 +39,115 @@ function peco-history-selection() {
 }
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+
+# ps aux選択->選んでkill
+function peco-pkill() {
+	for pid in `ps aux | peco | awk '{ print $2 }'`
+	do
+		kill $pid
+		echo "Killed ${pid}"
+	done
+}
+alias pk="peco-pkill"
+
+
+# 変更ファイル検索(git)
+function peco_select_from_git_status(){
+	git status --porcelain | \
+	peco | \
+	awk -F ' ' '{print $NF}' | \
+	tr '\n' ' '
+}
+function peco_insert_selected_git_files(){
+	LBUFFER+=$(peco_select_from_git_status)
+	CURSOR=$#LBUFFER
+	zle reset-prompt
+}
+zle -N peco_insert_selected_git_files
+bindkey "^S" peco_insert_selected_git_files
+
+
+# ブランチ検索(git)
+function peco-branch () {
+	local branch=$(git branch -a | peco | tr -d ' ' | tr -d '*')
+	if [ -n "$branch" ]; then
+		if [ -n "$LBUFFER" ]; then
+			local new_left="${LBUFFER%\ } $branch"
+		else
+			local new_left="$branch"
+		fi
+		BUFFER=${new_left}${RBUFFER}
+		CURSOR=${#new_left}
+	fi
+}
+zle -N peco-branch
+bindkey '^B' peco-branch
+
+
+# コミット検索(git)
+function peco-commit () {
+# local commit=$(git log --oneline --decorate=full | peco | awk '{print $1}')
+local commit=$(git log --all --pretty=format:'%d %an: %s %ar %h' | peco | awk -F ' ' '{ print $NF }')
+	if [ -n "$commit" ]; then
+		if [ -n "$LBUFFER" ]; then
+			local new_left="${LBUFFER%\ } $commit"
+		else
+			local new_left="$commit"
+		fi
+		BUFFER=${new_left}${RBUFFER}
+		CURSOR=${#new_left}
+	fi
+}
+zle -N peco-commit
+bindkey '^V' peco-commit
+
+
+# SSH
+function _get_hosts() {
+	# historyを番号なし、逆順、ssh*にマッチするものを1番目から表示
+	# 最後の項をhost名と仮定してhost部分を取り出す
+	local hosts
+	ssh_hist="$(history -nrm 'ssh*' 1 | \grep 'ssh ')"
+	hosts="$(echo $ssh_hist | perl -pe 's/ssh(\s+-([1246AaCfGgKkMNnqsTtVvXxYy]|[^1246AaCfGgKkMNnqsTtVvXxYy]\s+\S+))*\s+(\S+@)?//' | cut -d' ' -f1)"
+	hosts="$hosts\n$(cut -d' ' -f1  ~/.ssh/known_hosts | tr -d '[]' | tr ',' '\n' | cut -d: -f1)"
+	hosts=$(echo $hosts | awk '!a[$0]++')
+	echo $hosts
+}
+function peco-ssh() {
+	hosts=`_get_hosts`
+	local selected_host=$(echo $hosts | peco --prompt="ssh >" --query "$LBUFFER")
+	if [ -n "$selected_host" ]; then
+		BUFFER="ssh ${selected_host}"
+		zle accept-line
+	fi
+}
+zle -N peco-ssh
+alias pss='peco-ssh'
+bindkey '^S^S' peco-ssh
+
+
+# cdr検索
+function peco-get-destination-from-cdr() {
+	cdr -l | \
+	sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+	awk '{c=gsub("/","/"); print c,length($0),$0}' | \
+	sort -n | \
+	cut -d' ' -f1- | \
+	awk '{ print $3 }' | \
+	peco --query "$LBUFFER"
+}
+function peco-cdr() {
+	local destination="$(peco-get-destination-from-cdr)"
+	if [ -n "$destination" ]; then
+		BUFFER="cd $destination"
+		zle accept-line
+	else
+		zle reset-prompt
+	fi
+}
+zle -N peco-cdr
+bindkey '^X' peco-cdr
 
 
 
