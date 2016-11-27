@@ -123,7 +123,6 @@ function peco-ssh() {
 	fi
 }
 zle -N peco-ssh
-alias pss='peco-ssh'
 bindkey '^S^S' peco-ssh
 
 
