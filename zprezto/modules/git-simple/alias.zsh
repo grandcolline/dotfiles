@@ -28,13 +28,11 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 
 ##  たくさんあっても使いこなせないので、自分の使うもののみに...
 
-# barnach (b,sb)
+# barnach (b)
 alias gb='git branch -a'
 alias gbv='git branch -a -vv'
 alias gbd='git branch -D'
 alias gbm='git branch -M'
-alias gsb='git show-branch'
-alias gsba='git show-branch -a'
 
 # pull,fetch (p,f)
 alias gp='git pull --rebase --prune --tags'
@@ -78,17 +76,11 @@ alias grss='git reset --soft'
 
 # status (s)
 alias gs='git status -sb'
-alias gsp='git show-branch | grep "*" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F"[]~^[]" "{print $2}"' # 親のブランチを表示
 
 # diff (d)
 alias gd='git diff'
-alias gdw='git diff --color-words' #単語ごと
 alias gdn='git diff --name-status'
 alias gds='git diff --staged'
-alias gd2='git diff HEAD~'
-alias gd3='git diff HEAD~~'
-alias gd4='git diff HEAD~~~'
-alias gd5='git diff HEAD~~~~'
 
 # log (l)
 alias gl='git log --stat --decorate'
@@ -108,7 +100,4 @@ alias gstp='git stash pop --index'
 alias gsw='git update-index --skip-worktre'
 alias gnsw='git update-index --no-skip-worktre'
 alias gswl='git ls-files -v | grep "S "'
-
-# tig
-alias tigs='tig status'
 
