@@ -18,6 +18,7 @@ cp $HOME/.dotfiles/zshrc.local.defalt $HOME/.dotfiles/zshrc.local
 cp $HOME/.dotfiles/gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
 mkdir $HOME/.dotfiles/.cache
 touch $HOME/.dotfiles/.cache/chpwd-recent-dirs
+touch $HOME/.dotfiles/.cache/peco-cd-file
 
 # 必要なものをbrew install
 brew update

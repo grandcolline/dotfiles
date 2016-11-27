@@ -126,6 +126,29 @@ zle -N peco-ssh
 bindkey '^S^S' peco-ssh
 
 
+# ディレクトリブックマーク
+function peco-cd(){
+	local PCD_FILE=$HOME/.dotfiles/.cache/peco-cd-file
+	PCD_RETURN=$(tail -r $PCD_FILE | peco)
+	if [ "$PCD_RETURN" = "add current directory" ]; then
+		ADD_DIR="newBookmark $(pwd)"
+		BUFFER="echo $ADD_DIR >> $PCD_FILE"
+		zle accept-line
+	elif [ "$PCD_RETURN" = "edit" ]; then
+		BUFFER="vim $PCD_FILE"
+		zle accept-line
+	elif [ $PCD_RETURN ]; then
+		PCD=$(echo "$PCD_RETURN" |  awk '{print $2}')
+		BUFFER="cd $PCD"
+		zle accept-line
+	else
+		zle reset-prompt
+	fi
+}
+zle -N peco-cd
+bindkey '^X' peco-cd
+
+
 # cdr検索
 function peco-get-destination-from-cdr() {
 	cdr -l | \
@@ -146,7 +169,7 @@ function peco-cdr() {
 	fi
 }
 zle -N peco-cdr
-bindkey '^X' peco-cdr
+bindkey '^X^X' peco-cdr
 
 
 
