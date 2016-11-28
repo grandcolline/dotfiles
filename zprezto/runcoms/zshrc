@@ -70,7 +70,7 @@ bindkey "^S" peco_insert_selected_git_files
 
 # ブランチ検索(git)
 function peco-branch () {
-	local branch=$(git branch -a | peco | tr -d ' ' | tr -d '*')
+	local branch=$(git branch -a | sed -e "s;remotes/;;g" | peco | tr -d ' ' | tr -d '*'| sed -e "s;origin/HEAD->;;g")
 	if [ -n "$branch" ]; then
 		if [ -n "$LBUFFER" ]; then
 			local new_left="${LBUFFER%\ } $branch"
