@@ -31,6 +31,7 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 # barnach (b)
 alias gb='git branch -a'
 alias gbv='git branch -a -vv'
+alias gbu='git branch -u'
 alias gbd='git branch -D'
 alias gbm='git branch -M'
 
@@ -39,7 +40,7 @@ alias gp='git pull --rebase --prune --tags'
 alias gf='git fetch --prune --tags'
 
 # rebase (rb)
-alias grb='git rebase'
+alias grb='git fetch && git rebase'
 alias grbi='git rebase -i'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
