@@ -25,19 +25,13 @@ zstyle ':prezto:*:*' color 'yes'
 # The order matters.
 zstyle ':prezto:load' pmodule \
   'environment' \
+  'editor' \
   'directory' \
   'history-custom' \
   'utility' \
   'git-custom' \
   'completion' \
   'prompt'
-
-# memo
-# 'editor' \
-# 'spectrum' \ 色についての設定のモジュール必要かどうか不明
-# 'history' \ historyコマンドに対するいろいろな設定
-# completion
-
 
 # デフォルト時の設定
 # zstyle ':prezto:load' pmodule \
