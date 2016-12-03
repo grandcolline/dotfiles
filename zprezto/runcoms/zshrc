@@ -2,16 +2,16 @@
 ###############################
 ##        cdrコマンド        ##
 ###############################
-# cdr, add-zsh-hook を有効にする
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
+## cdr, add-zsh-hook を有効にする
+#autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+#add-zsh-hook chpwd chpwd_recent_dirs
 
-# cdr の設定
-zstyle ':completion:*' recent-dirs-insert both
-zstyle ':chpwd:*' recent-dirs-max 500
-zstyle ':chpwd:*' recent-dirs-default true
-zstyle ':chpwd:*' recent-dirs-file "$HOME/.dotfiles/.cache/chpwd-recent-dirs"
-zstyle ':chpwd:*' recent-dirs-pushd true
+## cdr の設定
+#zstyle ':completion:*' recent-dirs-insert both
+#zstyle ':chpwd:*' recent-dirs-max 500
+#zstyle ':chpwd:*' recent-dirs-default true
+#zstyle ':chpwd:*' recent-dirs-file "$HOME/.dotfiles/.cache/chpwd-recent-dirs"
+#zstyle ':chpwd:*' recent-dirs-pushd true
 
 
 ###############################
@@ -161,27 +161,27 @@ zle -N peco-cd
 bindkey '^X' peco-cd
 
 
-# cdr検索
-function peco-get-destination-from-cdr() {
-	cdr -l | \
-	sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
-	awk '{c=gsub("/","/"); print c,length($0),$0}' | \
-#sort -n | \
-	cut -d' ' -f1- | \
-	awk '{ print $3 }' | \
-	peco --query "$LBUFFER"
-}
-function peco-cdr() {
-	local destination="$(peco-get-destination-from-cdr)"
-	if [ -n "$destination" ]; then
-		BUFFER="cd $destination"
-		zle accept-line
-	else
-		zle reset-prompt
-	fi
-}
-zle -N peco-cdr
-bindkey '^X^X' peco-cdr
+## cdr検索
+#function peco-get-destination-from-cdr() {
+#	cdr -l | \
+#	sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+#	awk '{c=gsub("/","/"); print c,length($0),$0}' | \
+##sort -n | \
+#	cut -d' ' -f1- | \
+#	awk '{ print $3 }' | \
+#	peco --query "$LBUFFER"
+#}
+#function peco-cdr() {
+#	local destination="$(peco-get-destination-from-cdr)"
+#	if [ -n "$destination" ]; then
+#		BUFFER="cd $destination"
+#		zle accept-line
+#	else
+#		zle reset-prompt
+#	fi
+#}
+#zle -N peco-cdr
+#bindkey '^X^X' peco-cdr
 
 
 
