@@ -47,7 +47,8 @@ alias grbc='git rebase --continue'
 alias grbs='git rebase --skip'
 
 # push (po)
-alias gpo="git push -u origin"
+alias gpo='git push -u origin'
+alias gpfo='git push -f -u origin'
 
 # checkout (co)
 alias gco='git checkout'
