@@ -31,7 +31,7 @@ zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_subm
 # barnach (b)
 alias gb='git branch -a'
 alias gbv='git branch -a -vv'
-alias gbu='git branch -u'
+alias gbu='git branch -u' # 追跡ブランチ追加
 alias gbd='git branch -D'
 alias gbm='git branch -M'
 
@@ -68,6 +68,7 @@ alias gad='git add'
 alias gadp='git add -p' #hunkごと
 alias gcm='git commit -v'
 alias gcmm='git commit -m'
+alias gcma='git commit --amend'
 
 # reset (rs)
 alias grs='git reset'
@@ -80,8 +81,8 @@ alias gs='git status -sb'
 
 # diff (d)
 alias gd='git diff'
-alias gdn='git diff --name-status'
-alias gds='git diff --staged'
+alias gds='git diff --stat'
+alias gdc='git diff --cached'
 
 # log (l)
 alias gl='git log --stat --decorate'
