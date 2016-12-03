@@ -54,7 +54,8 @@ alias pk="peco-pkill"
 
 # 変更ファイル検索(git)
 function peco_select_from_git_status(){
-	git status --porcelain | \
+# git status --porcelain | \
+	git status -s | \
 	peco | \
 	awk -F ' ' '{print $NF}' | \
 	tr '\n' ' '
@@ -87,7 +88,7 @@ bindkey '^B' peco-branch
 
 # コミット検索(git)
 function peco-commit () {
-	local commit=$(git log --no-merges --pretty=format:'%d %an: %s %ar %h' | peco | awk -F ' ' '{ print $NF }')
+	local commit=$(git log --no-merges --pretty=format:'%d %an: %s %h' | peco | awk -F ' ' '{ print $NF }')
 	if [ -n "$commit" ]; then
 		if [ -n "$LBUFFER" ]; then
 			local new_left="${LBUFFER%\ } $commit"
@@ -102,7 +103,7 @@ zle -N peco-commit
 bindkey '^V' peco-commit
 
 function peco-commit-all () {
-	local commit=$(git log --all --no-merges --pretty=format:'%d %an: %s %ar %h' | peco | awk -F ' ' '{ print $NF }')
+	local commit=$(git log --all --no-merges --pretty=format:'%d %an: %s %h' | peco | awk -F ' ' '{ print $NF }')
 	if [ -n "$commit" ]; then
 		if [ -n "$LBUFFER" ]; then
 			local new_left="${LBUFFER%\ } $commit"
