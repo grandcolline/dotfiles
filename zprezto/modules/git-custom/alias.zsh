@@ -68,7 +68,7 @@ alias gad='git add'
 alias gadp='git add -p' #hunkごと
 alias gcm='git commit -v'
 alias gcmm='git commit -m'
-alias gcma='git commit --amend'
+alias gcma='git commit -a'
 
 # reset (rs)
 alias grs='git reset'
