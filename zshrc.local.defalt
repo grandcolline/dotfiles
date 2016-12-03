@@ -6,7 +6,7 @@
 
 # Aliaseは 
 #  ./zprezto/modules/utility/init.zsh (通常)
-#  ./zprezto/modules/git-simple/alias.zsh (git関連)
+#  ./zprezto/modules/git-custom/alias.zsh (git関連)
 # などに書かれています。
 
 

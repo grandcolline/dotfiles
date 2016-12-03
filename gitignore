@@ -7,5 +7,5 @@
 # For eclipse:
 .project
 .classpath
-.settings
+.settings/
 
