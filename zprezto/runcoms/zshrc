@@ -186,4 +186,19 @@ bindkey '^X' peco-cd
 
 
 
+###############################
+##       SSH接続色付け       ##
+###############################
+function set_term_bgcolor() {
+  /usr/bin/osascript <<EOF
+  tell application "iTerm2"
+    tell current session of current window
+      set background color to {$((${1}*65535/255)), $((${2}*65535/255)), $((${3}*65535/255)), 0}
+    end tell
+  end tell
+EOF
+}
+# alias ssh=~/.dotfiles/ssh-host-color
+
+
 source $HOME/.dotfiles/zshrc.local
