@@ -99,9 +99,12 @@ function prompt_pwd() {
 function check_remote_head {
     if [[ ! -z $(git status -sb 2> /dev/null) ]]; then
         local check="$(git status -sb | awk 'NR==1' | awk '{for(i=3;i<=NF;i++){printf("%s%s",$i,OFS="")}}')"
-        # check="$(print ${check} | sed -e 's/ahead/↑ /g' |  sed -e 's/behind/↓ /g' | sed -e 's/,//g' | sed -e 's/\[//g' | sed -e 's/\]//g')"
-        check="$(print ${check} | sed -e 's/ahead/↑ /g' |  sed -e 's/behind/↓ /g' | sed -e 's/,//g')"
-        echo " ${check}"
+        if [[ "$check" == "commitonmaster" ]] ; then 
+            echo " [Initial]"
+        else
+            check="$(print ${check} | sed -e 's/ahead/↑ /g' |  sed -e 's/behind/↓ /g' | sed -e 's/,//g')"
+            echo " ${check}"
+        fi
     fi
 }
 
