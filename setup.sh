@@ -7,10 +7,10 @@ do
 	ln -s -f $HOME/.dotfiles/$file $HOME/.$file
 done
 
-z_DOT_FILES=(zlogin zlogout zpreztorc zshenv zshrc zprofile)
+z_DOT_FILES=(zlogin zlogout preztorc zshenv zshrc zprofile)
 for zfile in ${z_DOT_FILES[@]}
 do
-	ln -s -f $HOME/.dotfiles/zprezto/runcoms/$zfile $HOME/.$zfile
+	ln -s -f $HOME/.dotfiles/prezto/runcoms/$zfile $HOME/.$zfile
 done
 
 # PCごとに管理するファイルの作成
