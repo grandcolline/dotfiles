@@ -20,7 +20,8 @@ $ chsh -s /bin/zsh
 
 ### クローン
 ```
-$ git clone --recursive git@github.com:grandcolline/dotfiles.git "~/.dotfile"
+$ cd ~
+$ git clone --recursive git@github.com:grandcolline/dotfiles.git ".dotfiles"
 $ ~/.dotfiles/setup.sh
 ```
 
