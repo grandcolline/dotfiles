@@ -25,5 +25,6 @@ touch $HOME/.dotfiles/.cache/zhistory
 brew update
 brew install peco
 brew install tree
+brew install fasd
 # brew install tig
 
