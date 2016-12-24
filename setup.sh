@@ -7,7 +7,7 @@ do
 	ln -s -f $HOME/.dotfiles/$file $HOME/.$file
 done
 
-z_DOT_FILES=(zlogin zlogout preztorc zshenv zshrc zprofile)
+z_DOT_FILES=(zlogin preztorc zshenv zshrc zprofile)
 for zfile in ${z_DOT_FILES[@]}
 do
 	ln -s -f $HOME/.dotfiles/prezto/runcoms/$zfile $HOME/.$zfile
