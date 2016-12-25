@@ -1,0 +1,37 @@
+####################################
+## 起動時に適用するプラグイン
+###################################
+
+# dein自身
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# カラースキーマ
+[[plugins]]
+repo = 'chriskempson/vim-tomorrow-theme'
+
+
+# 表示が綺麗になるやつ
+#[[plugins]]
+#repo = 'vim-airline/vim-airline'
+#[[plugins]]
+#repo = 'vim-airline/vim-airline-themes'
+
+# ステータスライン
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# 多機能セレクタ
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+# ファイルツリー
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+
+

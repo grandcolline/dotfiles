@@ -2,4 +2,4 @@ gitconfig.local
 zshrc.local
 .netrwhist
 .cache
-
+nvim/dein/
