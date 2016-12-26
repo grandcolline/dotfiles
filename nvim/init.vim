@@ -63,46 +63,44 @@ endif
 "========================================
 " 文字コード
 set fenc=utf-8
-set fileencoding=utf-8                        " 保存時の文字コード
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先
-set fileformats=unix,dos,mac                  " 改行コードの自動判別. 左側が優先
-set ambiwidth=double                          " □や○文字が崩れる問題を解決
+set fileencoding=utf-8                          " 保存時の文字コード
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932   " 読み込み時の文字コードの自動判別. 左側が優先
+set fileformats=unix,dos,mac                    " 改行コードの自動判別. 左側が優先
+set ambiwidth=double                            " □や○文字が崩れる問題を解決
 
 
 " ファイルの保存場所など
-set noswapfile                                " swapファイルを作成しない
-set autoread                                  " 編集中ファイルが書き換えられたら、自動リロード
-set undodir=$HOME/.dotfiles/.cache/vim-undo   " undo(test.txt.un~)
+set noswapfile                                  " swapファイルを作成しない
+set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
+set undodir=$HOME/.dotfiles/.cache/vim-undo     " undo(test.txt.un~)
 set backupdir=$HOME/.dotfiles/.cache/vim-backup " bachup(test.txt~)
-set viminfo+=n$HOME/.dotfiles/.cache/nviminfo " viminfo
+set viminfo+=n$HOME/.dotfiles/.cache/nviminfo   " viminfo
 
-" クリップボードとyunk,putを共有
-set clipboard=unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
 
-set wildmenu wildmode=list:longest,full       " コマンドラインモードのファイル名タブ補完
-set history=5000                              " 保存するコマンド履歴の数
+set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
+set history=5000                                " 保存するコマンド履歴の数
 
 
 
 "========================================
 " カラースキーマ
 "========================================
-"autocmd ColorScheme * highlight LineNr ctermfg=239
-autocmd ColorScheme * highlight LineNr ctermfg=241
-
 syntax enable
-colorscheme Tomorrow-Night-Eighties
+
+autocmd ColorScheme * highlight LineNr ctermfg=245
+colorscheme Tomorrow-Night
 
 
 "========================================
 " 検索関連
 "========================================
-set hlsearch   " 検索文字列をハイライトする
-set incsearch  " インクリメンタルサーチを行う
-set ignorecase " 大文字と小文字を区別しない
-set smartcase  " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
-set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault   " 置換の時 g オプションをデフォルトで有効にする
+set hlsearch      " 検索文字列をハイライトする
+set incsearch     " インクリメンタルサーチを行う
+set ignorecase    " 大文字と小文字を区別しない
+set smartcase     " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan      " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault      " 置換の時 g オプションをデフォルトで有効にする
 
 
 
@@ -117,6 +115,12 @@ set showmatch          " 対応括弧のハイライト
 set list               " 不可視文字表示
 set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
 set display=uhex       " 印字不可能文字を16進数で表示
+
+set tabstop=4          " タブを表示するときの幅
+set shiftwidth=4       " タブを挿入するときの幅
+set noexpandtab        " タブをタブとして扱う(スペースに展開しない)
+set softtabstop=0
+
 
 set foldmethod=marker  " folding
 set lazyredraw         " コマンド実行中は再描写しない

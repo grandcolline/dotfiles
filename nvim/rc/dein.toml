@@ -9,7 +9,8 @@ repo = 'Shougo/dein.vim'
 # カラースキーマ
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'
-
+#[[plugins]]
+#repo = 'jonathanfilip/vim-lucius'
 
 # 表示が綺麗になるやつ
 #[[plugins]]
