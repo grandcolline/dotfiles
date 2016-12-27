@@ -32,5 +32,6 @@ https://github.com/sorin-ionescu/prezto
 **`$HOME`と`${ZDOTDIR}`が一致している前提で書かれています！**
 
 ## vim関連
+**neoVimを利用しています！**
 TODO
 
