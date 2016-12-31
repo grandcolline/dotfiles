@@ -38,6 +38,8 @@ touch $HOME/.dotfiles/.cache/viminfo
 mkdir -p $HOME/.dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 git clone https://github.com/Shougo/dein.vim.git $HOME/.dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 
+# nvim
+# TODO
 
 ###############################
 ##       インストール        ##
@@ -47,6 +49,7 @@ brew update
 brew install peco
 brew install tree
 brew install fasd
+brew install rmtrash
 # brew install tig
 
 
