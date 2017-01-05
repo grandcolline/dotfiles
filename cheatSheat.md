@@ -57,6 +57,8 @@
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
 |`gpo`|`git push -u origin`|プッシュ。追跡ブランチの更新も|`gpo [コレを]:[ココに]`<br>`gpo teature/test:master`|
+|`gpfo`|`git push --force-with-lease -u origin`|半強制プッシュ。追跡ブランチの更新も||
+|`gpffo`|`git push -f -u origin`|強制プッシュ。追跡ブランチの更新も||
 
 ### checkout (co)
 |alias|command|内容|memo|
