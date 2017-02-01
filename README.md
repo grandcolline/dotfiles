@@ -26,13 +26,13 @@ $ ~/.dotfiles/setup.sh
 ```
 
 ## zsh関連
-preztoを利用しています。
+prezto。
 https://github.com/sorin-ionescu/prezto
 
-**`$HOME`と`${ZDOTDIR}`が一致している前提で書かれています！**
+`$HOME`と`${ZDOTDIR}`が一致している前提！
 
 ## vim関連
-**neoVimを利用しています！**
+neoVim
 
 TODO
 

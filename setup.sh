@@ -38,8 +38,6 @@ touch $HOME/.dotfiles/.cache/viminfo
 mkdir -p $HOME/.dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 git clone https://github.com/Shougo/dein.vim.git $HOME/.dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 
-# nvim
-# TODO
 
 ###############################
 ##       インストール        ##
@@ -52,4 +50,11 @@ brew install fasd
 brew install rmtrash
 # brew install tig
 
+
+###############################
+##          neoVim           ##
+###############################
+# brew install
+brew install neovim/neovim/neovim
+ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 
