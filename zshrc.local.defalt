@@ -14,15 +14,17 @@
 ##       SSH色付け設定       ##
 ###############################
 #function myssh() {
-#  if [[ "$@" =~ stg ]]; then
-#    set_term_bgcolor 10 75 60 #green
-#  elif [[ "$@" =~ product ]]; then
-#    set_term_bgcolor 90 10 10 #red
-#  else
-#    set_term_bgcolor 20 20 20 #black
-#  fi
-#  \ssh $@
-#  set_term_bgcolor 20 20 20 #black
+#	if [[ "$@" =~ dev ]]; then
+#		set_term_bgcolor 37 37 60 #blue
+#	elif [[ "$@" =~ stg ]]; then
+#		set_term_bgcolor 37 60 37 #green
+#	elif [[ "$@" =~ product ]]; then
+#		set_term_bgcolor 60 37 37 #red
+#	else
+#		set_term_bgcolor 37 37 37 #black
+#	fi
+#	\ssh $@
+#	set_term_bgcolor 37 37 37 #black
 #}
 #alias ssh='myssh'
 
