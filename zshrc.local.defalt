@@ -28,3 +28,27 @@
 #}
 #alias ssh='myssh'
 
+
+###############################
+##           JAVA            ##
+###############################
+export JAVA_HOME=`/usr/libexec/java_home`
+
+
+###############################
+##            Node           ##
+###############################
+# バージョン管理にnodebrew使ってる
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+# npmのバージョン管理にはnpmbrewを使ってる
+export PATH=$HOME/.npmbrew/current/bin:$PATH
+
+
+###############################
+##           Ruby            ##
+###############################
+# バージョン管理にrbenvを使ってる
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+
