@@ -52,3 +52,12 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 
+###############################
+##            GO             ##
+###############################
+# バージョン管理にgvmを使ってる
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/.go
+export PATH="$PATH:$GOPATH/bin"
+
