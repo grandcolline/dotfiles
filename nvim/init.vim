@@ -87,9 +87,13 @@ set history=5000                                " 保存するコマンド履歴
 " カラースキーマ
 "========================================
 syntax enable
+"set background=dark
 
 autocmd ColorScheme * highlight LineNr ctermfg=245
 colorscheme Tomorrow-Night
+"colorscheme nefertiti
+"colorscheme amcolors
+"colorscheme lucius
 
 
 "========================================
@@ -148,7 +152,7 @@ let g:lightline = {
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'separator': { 'left': '⮀', 'right': '' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 

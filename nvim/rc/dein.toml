@@ -1,6 +1,6 @@
-####################################
-## 起動時に適用するプラグイン
-###################################
+# -----------------------------------------
+# 起動時に適用するプラグイン
+# -----------------------------------------
 
 # dein自身
 [[plugins]]
@@ -9,13 +9,13 @@ repo = 'Shougo/dein.vim'
 # カラースキーマ
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'
-#[[plugins]]
+#repo = 'jeetsukumaran/vim-nefertiti'
+#repo = 'muellan/am-colors'
 #repo = 'jonathanfilip/vim-lucius'
 
 # 表示が綺麗になるやつ
 #[[plugins]]
 #repo = 'vim-airline/vim-airline'
-#[[plugins]]
 #repo = 'vim-airline/vim-airline-themes'
 
 # ステータスライン
