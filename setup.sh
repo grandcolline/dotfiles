@@ -58,3 +58,4 @@ brew install rmtrash
 brew install neovim/neovim/neovim
 ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 
+
