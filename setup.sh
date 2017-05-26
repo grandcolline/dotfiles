@@ -48,6 +48,7 @@ brew install peco
 brew install tree
 brew install fasd
 brew install rmtrash
+brew install jq
 # brew install tig
 
 
