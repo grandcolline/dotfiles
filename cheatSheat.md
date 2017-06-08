@@ -14,8 +14,9 @@
 |`pdc`|`pbcopy`|||
 |`pdp`|`pbpaste`|||
 |`j`||よく行くディレクトリにjump||
-|`mt`||ゴミ箱に移動||
+|`mt`||ゴミ箱に入れる||
 |`tree -L 3`||ツリー||
+|`rmds`||配下のDS_Store全削除||
 
 ## peco
 |alias|command|内容|memo|
