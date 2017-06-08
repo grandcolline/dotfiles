@@ -21,8 +21,8 @@ done
 ##       ファイル作成        ##
 ###############################
 # PCごとに管理するファイルのコピー
-cp $HOME/.dotfiles/zshrc.local.defalt $HOME/.dotfiles/zshrc.local
-cp $HOME/.dotfiles/gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
+cp $HOME/.dotfiles/.zshrc.local.defalt $HOME/.dotfiles/zshrc.local
+cp $HOME/.dotfiles/.gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
 
 # PCごとに管理するファイルの作成
 mkdir $HOME/.dotfiles/.cache
