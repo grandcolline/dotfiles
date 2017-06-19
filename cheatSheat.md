@@ -88,7 +88,7 @@
 |`gadp`|`git add -p`|hunkごとにadd||
 |`gcm`|`git commit -v`|変更表示してコミット(view)||
 |`gcmm`|`git commit -m`|コミットメッセージも一緒に|`gcmm 'コミットメッセージ'`|
-|`gcma`|`git commit -v`<br>`--amend --date="`date`"'`|前のコミットに今のステージを<br>更新日付は現在時刻に||
+|`gcma`|`git commit -v`<br>`--amend --date="`date`"'`|前のコミットに今のステージを<br>更新日付は現在時刻に|dateが英語でないとバグる？|
 
 
 ###  reset (rs)
