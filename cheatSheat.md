@@ -45,9 +45,11 @@
 |`gp`|`git pull --rebase`<br>`--prune --tags`|フェッチとリベース<br>タグ追加と追跡ブランチの削除も|`gp [コレをrebaseする]`|
 |`gf`|`git fetch --prune --tags`|タグ追加と追跡ブランチの削除も||
 
-### rebase (rb)
+### merge, rebase (m, rb)
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
+|`gm`|`git merge -v`|マージ||
+|`gma`|`git merge --avort`|mergeの取り消し(コンフリクト時)||
 |`grb`|`git rebase`|リベース||
 |`grbi`|`git rebase -i`||`grbi [コミットハッシュ]`|
 |`grba`|`git rebase --abort`|rebaseの取り消し(コンフリクト時)||
@@ -84,9 +86,9 @@
 ### add, commit (ad, cm)
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
-|`gad`|`git add`|add||
+|`gad`|`git add -v`|add内容を表示してadd||
 |`gadp`|`git add -p`|hunkごとにadd||
-|`gcm`|`git commit -v`|変更表示してコミット(view)||
+|`gcm`|`git commit -v`|変更表示してコミット||
 |`gcmm`|`git commit -m`|コミットメッセージも一緒に|`gcmm 'コミットメッセージ'`|
 |`gcma`|`git commit -v`<br>`--amend --date="`date`"'`|前のコミットに今のステージを<br>更新日付は現在時刻に|dateが英語でないとバグる？|
 
