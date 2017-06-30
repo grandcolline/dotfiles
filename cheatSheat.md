@@ -49,7 +49,7 @@
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
 |`gm`|`git merge -v`|マージ||
-|`gma`|`git merge --avort`|mergeの取り消し(コンフリクト時)||
+|`gma`|`git merge --abort`|mergeの取り消し(コンフリクト時)||
 |`grb`|`git rebase`|リベース||
 |`grbi`|`git rebase -i`||`grbi [コミットハッシュ]`|
 |`grba`|`git rebase --abort`|rebaseの取り消し(コンフリクト時)||
