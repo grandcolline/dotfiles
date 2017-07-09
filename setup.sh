@@ -3,7 +3,7 @@
 ##        リンク貼る         ##
 ###############################
 # Vim関連
-DOT_FILES=(gitconfig vimrc vim gvimrc)
+DOT_FILES=(gitconfig)
 for file in ${DOT_FILES[@]}
 do
 	ln -s -f $HOME/.dotfiles/$file $HOME/.$file
