@@ -10,7 +10,7 @@ do
 done
 
 # zsh, prezto関連
-z_DOT_FILES=(zlogin preztorc zshenv zshrc zprofile)
+z_DOT_FILES=(zlogin zpreztorc zshenv zshrc zprofile)
 for zfile in ${z_DOT_FILES[@]}
 do
 	ln -s -f $HOME/.dotfiles/prezto/runcoms/$zfile $HOME/.$zfile
