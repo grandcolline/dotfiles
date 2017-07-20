@@ -77,6 +77,7 @@ set backupdir=$HOME/.dotfiles/.cache/vim-backup " bachup(test.txt~)
 set viminfo+=n$HOME/.dotfiles/.cache/nviminfo   " viminfo
 
 set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
+"set clipboard+=unnamedplus
 
 set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
 set history=5000                                " 保存するコマンド履歴の数
@@ -165,14 +166,5 @@ let g:lightline = {
 let g:ctrlp_match_window = 'order:ttb,min:10,max:10,results:100'
 let g:ctrlp_show_hidden = 1    " ドットファイルも検索対象に
 
-
-"========================================
-" NeoVim-dot-app
-"========================================
-if exists("neovim_dot_app")
-  colorscheme Tomorrow
-"  set guifont=Ricty\ Regular:h14
-
-endif
 
 
