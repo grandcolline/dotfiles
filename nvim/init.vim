@@ -82,6 +82,8 @@ set clipboard=unnamed,unnamedplus               " クリップボードとyunk,p
 set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
 set history=5000                                " 保存するコマンド履歴の数
 
+set ttimeout                                    " neoVim文字化け問題
+set ttimeoutlen=50
 
 
 "========================================
