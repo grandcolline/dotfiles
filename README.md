@@ -29,10 +29,10 @@ $ ~/.dotfiles/setup.sh
 prezto。
 https://github.com/sorin-ionescu/prezto
 
-`$HOME`と`${ZDOTDIR}`が一致している前提！
+`${ZDOTDIR}`が`$HOME`である前提で書かれてます。違うとエラー出るかも...
 
 ## vim関連
+
 neoVim
 
-TODO
-
+プラグインはdeinで。
