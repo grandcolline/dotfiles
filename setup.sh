@@ -2,7 +2,7 @@
 ###############################
 ##        リンク貼る         ##
 ###############################
-# Vim関連
+# git関連
 DOT_FILES=(gitconfig)
 for file in ${DOT_FILES[@]}
 do
@@ -57,6 +57,11 @@ brew install jq
 ###############################
 # brew install
 brew install neovim/neovim/neovim
+
+# リンク書き換え
+if [ ! -d "$HOME/.config" ]; then
+	mkdir $HOME/.config
+fi
 ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 
 
