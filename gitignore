@@ -1,12 +1,15 @@
 # For Mac:
-.DS_Store
+*.DS_Store
+.AppleDouble
+.LSOverride
 
 # For vim:
 *.swp
 .*.un~
+Session.vim
 
 # For eclipse:
-.project
-.classpath
+.metadata
 .settings/
+bin/
 
