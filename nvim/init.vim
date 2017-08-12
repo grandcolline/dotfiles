@@ -68,7 +68,6 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932   " 読み込み時の文字コー
 set fileformats=unix,dos,mac                    " 改行コードの自動判別. 左側が優先
 set ambiwidth=double                            " □や○文字が崩れる問題を解決
 
-
 " ファイルの保存場所など
 set noswapfile                                  " swapファイルを作成しない
 set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
@@ -78,6 +77,10 @@ set viminfo+=n$HOME/.dotfiles/.cache/nviminfo   " viminfo
 
 set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
 "set clipboard+=unnamedplus
+" 削除キーではyunkしない
+nnoremap x "_x
+nnoremap D "_D
+nnoremap d "_d
 
 set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
 set history=5000                                " 保存するコマンド履歴の数
@@ -110,7 +113,6 @@ set wrapscan      " 最後尾まで検索を終えたら次の検索で先頭に
 set gdefault      " 置換の時 g オプションをデフォルトで有効にする
 
 
-
 "========================================
 " VIEW
 "========================================
@@ -128,7 +130,6 @@ set shiftwidth=4       " タブを挿入するときの幅
 set noexpandtab        " タブをタブとして扱う(スペースに展開しない)
 set softtabstop=0
 
-
 set foldmethod=marker  " folding
 set lazyredraw         " コマンド実行中は再描写しない
 set ttyfast            " 高速ターミナル接続
@@ -137,6 +138,7 @@ set laststatus=2       " ステータスラインの表示
 set cmdheight=1        " メッセージ表示欄の行数
 "set showtabline=2     " タブラインの表示
 set ruler              " カーソルが何行目の何列目に置かれているかを表示する
+
 
 " プロンプトの設定
 let g:lightline = {
