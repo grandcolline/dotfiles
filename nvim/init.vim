@@ -81,6 +81,8 @@ set clipboard=unnamed,unnamedplus               " クリップボードとyunk,p
 nnoremap x "_x
 nnoremap D "_D
 nnoremap d "_d
+nnoremap C "_C
+nnoremap c "_c
 
 set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
 set history=5000                                " 保存するコマンド履歴の数
