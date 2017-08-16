@@ -21,4 +21,5 @@
 	rebase = true
 
 [push]
-	default = simple
+#	default = simple
+	default = upstream
