@@ -54,7 +54,6 @@
 |`grbi`|`git rebase -i`||`grbi [コミットハッシュ]`|
 |`grba`|`git rebase --abort`|rebaseの取り消し(コンフリクト時)||
 |`grbc`|`git rebase --continue`|rebaseの続行(コンフリクト時)||
-|`grbs`|`git rebase --skip`|？|||
 
 ### push (po)
 |alias|command|内容|memo|
@@ -78,7 +77,6 @@
 |`gcp`|`git cherry-pick --ff`|fastfowardでチェリーピック||
 |`gcpa`|`git cherry-pick --abort`|チェリーピックの取り消し(コンフリクト時)||
 |`gcpc`|`git cherry-pick --continue`|チェリーピックの続行(コンフリクト時)||
-|`gcps`|`git cherry-pick --skip`|？||
 |`grv`|`git revert`|リバーと||
 |`grva`|`git revert --abort`|リバートの取り消し(コンフリクト時)||
 |`grvc`|`git revert --continue`|リバートの続行(コンフリクト時)||
@@ -89,8 +87,8 @@
 |`gad`|`git add -v`|add内容を表示してadd||
 |`gadp`|`git add -p`|hunkごとにadd||
 |`gcm`|`git commit -v`|変更表示してコミット||
-|`gcmm`|`git commit -m`|コミットメッセージも一緒に|`gcmm 'コミットメッセージ'`|
 |`gcma`|`git commit -v`<br>`--amend --date="`date`"'`|前のコミットに今のステージを<br>更新日付は現在時刻に|dateが英語でないとバグる？|
+|`gn`|`git commit -am "[from now] `date`"|自家製git-now||
 
 
 ###  reset (rs)
@@ -98,8 +96,6 @@
 |:-:|:-:|:-:|:-:|
 |`grs`|`git reset`|リセット||
 |`grs`|`git reset -p`|hunkごとリセット||
-|`grsh`|`git reset --hard`|？||
-|`grss`|`git reset --soft`|？||
 
 
 ### status (s)
@@ -119,11 +115,13 @@
 ### log (l)
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
-|`gl`|`git log --stat --decorate`|ログ一覧表示||
+|`gl`|`git log --pretty=fuller --stat --decorate`|ログ一覧表示||
 |`glp`|`git log -p -1 --stat --decorate`|`git show`+ stat|`glp [コミットハッシュ]`|
-|`glg`|`git log --graph`<br>`--format="%C(yellow)%h%C(reset)`<br>`%C(auto)%d%C(reset)%an%C(reset)`<br>` %C(black bold)[%ad]%C(reset)%n %w(80)%s%n"`|グラフ表示||
-|`glga`|`git log --graph --all`<br>`--format="%C(yellow)%h%C(reset)`<br>`%C(auto)%d%C(reset) %an%C(reset)`<br>` %C(black bold)[%ad]%C(reset)%n %w(80)%s%n"`|追跡ブランチも||
-|`glgb`|`git log --graph --all`<br>`--format="%C(white)%d%C(reset)`<br>`%C(black bold)[%ad]%C(reset)"`|ブランチ名のみ||
+|`gll`|`git log --no-merges --date=short`<br>`--pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"`|1行表示||
+|`glla`|`git log --all --date=short`<br>`--pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"`|1行表示||
+|`glg`|`git log --graph --date=short`<br>`--format="%C(yellow)%h %C(reset)%ad `<br>`%C(blue)%an %C(auto)%d%n%C(reset) %w(80)%s%n"`|グラフ表示||
+|`glga`|`git log --graph --all --date=short`<br>`--format="%C(yellow)%h %C(reset)%ad `<br>`%C(blue)%an %C(auto)%d%n%C(reset) %w(80)%s%n"`|追跡ブランチも||
+|`glgb`|`git log --graph --all --date=short`<br>`--format="%C(white)%d%C(reset) %C(black)%ad%C(reset)"`|ブランチ名のみ||
 
 
 ### stash (st)
