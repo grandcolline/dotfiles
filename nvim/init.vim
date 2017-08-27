@@ -79,8 +79,6 @@ set clipboard=unnamed,unnamedplus               " クリップボードとyunk,p
 "set clipboard+=unnamedplus
 " 削除キーではyunkしない
 nnoremap x "_x
-nnoremap D "_D
-nnoremap d "_d
 nnoremap C "_C
 nnoremap c "_c
 
