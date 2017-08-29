@@ -2,9 +2,10 @@
 
 登録されているaliasなど
 
-## zsh
+## 全般
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
+|`vi`|`nvim`|||
 |`ll`|`ls -lh`|||
 |`la`|`ls -al`|||
 |`o`|`open`|||
