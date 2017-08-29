@@ -1,0 +1,20 @@
+tap "caskroom/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "neovim/neovim"
+brew "fasd"
+brew "jq"
+brew "mas"
+brew "neovim"
+brew "peco"
+brew "rmtrash"
+brew "tree"
+cask "alfred"
+cask "bettertouchtool"
+cask "docker"
+cask "flux"
+cask "iterm2"
+cask "vivaldi"
+mas "Bear", id: 1091189122
+mas "CotEditor", id: 1024640650
+mas "Slack", id: 803453959

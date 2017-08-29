@@ -1,18 +1,5 @@
-###############################
-##       ローカル用設定      ##
-###############################
 
-# preztoの設定と被らないように
-
-# Aliaseは 
-#  ./zprezto/modules/utility/init.zsh (通常)
-#  ./zprezto/modules/git-custom/alias.zsh (git関連)
-# などに書かれています。
-
-
-###############################
-##       SSH色付け設定       ##
-###############################
+# ssh
 #function myssh() {
 #	if [[ "$@" =~ dev ]]; then
 #		set_term_bgcolor 37 37 60 #blue
@@ -28,40 +15,24 @@
 #}
 #alias ssh='myssh'
 
-###############################
-##     XDG Base Directory    ##
-###############################
+
+# XDG Base Directory
 export XDG_CONFIG_HOME=$HOME/.config
 
-###############################
-##           JAVA            ##
-###############################
-export JAVA_HOME=`/usr/libexec/java_home`
+# JAVA
+#export JAVA_HOME=`/usr/libexec/java_home`
 
+# Node
+#export PATH=$HOME/.nodebrew/current/bin:$PATH
+#export PATH=$HOME/.npmbrew/current/bin:$PATH
 
-###############################
-##            Node           ##
-###############################
-# バージョン管理にnodebrew使ってる
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-# npmのバージョン管理にはnpmbrewを使ってる
-export PATH=$HOME/.npmbrew/current/bin:$PATH
+# Ruby
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-
-###############################
-##           Ruby            ##
-###############################
-# バージョン管理にrbenvを使ってる
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-
-###############################
-##            GO             ##
-###############################
-# バージョン管理にgvmを使ってる
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/.go
-export PATH="$PATH:$GOPATH/bin"
+# GO
+#[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+#export GOROOT=/usr/local/opt/go/libexec
+#export GOPATH=$HOME/.go
+#export PATH="$PATH:$GOPATH/bin"
 
