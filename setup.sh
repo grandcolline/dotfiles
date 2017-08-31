@@ -34,6 +34,7 @@ ln -s -f $HOME/.dotfiles/prezto/runcoms/zshenv $HOME/.zshenv
 ln -s -f $HOME/.dotfiles/prezto/runcoms/zshrc $HOME/.zshrc
 ln -s -f $HOME/.dotfiles/prezto/runcoms/zprofile $HOME/.zprofile
 ln -s -f $HOME/.dotfiles/nvim $HOME/.config/nvim
+ln -s -f $HOME/.dotfiles/peco $HOME/.config/peco
 
 
 brew update
