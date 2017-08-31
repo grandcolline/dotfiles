@@ -27,14 +27,14 @@ if [ ! -d "$HOME/.dotfiles/nvim/dein" ];then
 fi
 
 
-ln -s -f $HOME/.dotfiles/gitconfig $HOME/.gitconfig
-ln -s -f $HOME/.dotfiles/prezto/runcoms/zlogin $HOME/.zlogin
-ln -s -f $HOME/.dotfiles/prezto/runcoms/zpreztorc $HOME/.zpreztorc
-ln -s -f $HOME/.dotfiles/prezto/runcoms/zshenv $HOME/.zshenv
-ln -s -f $HOME/.dotfiles/prezto/runcoms/zshrc $HOME/.zshrc
-ln -s -f $HOME/.dotfiles/prezto/runcoms/zprofile $HOME/.zprofile
-ln -s -f $HOME/.dotfiles/nvim $HOME/.config/nvim
-ln -s -f $HOME/.dotfiles/peco $HOME/.config/peco
+ln -vsf $HOME/.dotfiles/gitconfig $HOME/.gitconfig
+ln -vsf $HOME/.dotfiles/prezto/runcoms/zlogin $HOME/.zlogin
+ln -vsf $HOME/.dotfiles/prezto/runcoms/zpreztorc $HOME/.zpreztorc
+ln -vsf $HOME/.dotfiles/prezto/runcoms/zshenv $HOME/.zshenv
+ln -vsf $HOME/.dotfiles/prezto/runcoms/zshrc $HOME/.zshrc
+ln -vsf $HOME/.dotfiles/prezto/runcoms/zprofile $HOME/.zprofile
+ln -vsfn $HOME/.dotfiles/nvim $HOME/.config/nvim
+ln -vsfn $HOME/.dotfiles/peco $HOME/.config/peco
 
 
 brew update
