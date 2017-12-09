@@ -35,6 +35,7 @@ ln -vsf $HOME/.dotfiles/prezto/runcoms/zshrc $HOME/.zshrc
 ln -vsf $HOME/.dotfiles/prezto/runcoms/zprofile $HOME/.zprofile
 ln -vsfn $HOME/.dotfiles/nvim $HOME/.config/nvim
 ln -vsfn $HOME/.dotfiles/peco $HOME/.config/peco
+ln -vsfn $HOME/.dotfiles/ctags $HOME/.ctags
 
 
 brew update
