@@ -23,9 +23,5 @@ function gvm
 end
 
 
-# ----------------
 #  alias設定
-# ----------------
-alias vi='nvim'
-alias mt='rmtrash'
-
+. $HOME/.dotfiles/fish/alias.fish

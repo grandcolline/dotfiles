@@ -1,6 +1,10 @@
 # fish
 
-fishの初期設定.
+## fishのオレオレ設定.
+
+### プラグイン
+
+## 初期設定
 
 ### fishとfishermanのインストール
 
@@ -38,8 +42,9 @@ $ chsh -s /usr/local/bin/fish
 ### プラグイン追加
 
 ```
-$ fisher metro
-$ fisher edc/bass
+$ fisher metro             // powerlineプロンプト 
+$ fisher edc/bass　　　　　// bashコマンドを使えるように
+$ fisher fishgretel/fasd   // fasdプラグイン
 ```
 ### configの設定
 
