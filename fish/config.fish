@@ -4,6 +4,9 @@
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
 
+# 
+set -x DOTFILE_PATH /develop/src/github.com/grandcolline/dotfiles
+
 # Java
 set -x JAVA_HOME (/usr/libexec/java_home)
 
@@ -23,5 +26,17 @@ function gvm
 end
 
 
+# ----------------
 #  alias設定
-. $HOME/.dotfiles/fish/alias.fish
+# ----------------
+# neoVim
+alias vi 'nvim'
+
+# move trash
+alias mt 'rmtrash'
+
+# open Finder
+alias o 'open'
+
+# git
+. $DOTFILE_PATH/fish/git_aliases.fish
