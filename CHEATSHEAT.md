@@ -6,17 +6,11 @@
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
 |`vi`|`nvim`|||
-|`ll`|`ls -lh`|||
-|`la`|`ls -al`|||
 |`o`|`open`|||
-|`b`||ブラウザで開く||
-|`d`|`dirs -v`|移動履歴を見る||
-|`数字`||上記の場所に飛ぶ||
 |`pdc`|`pbcopy`|||
 |`pdp`|`pbpaste`|||
 |`j`||よく行くディレクトリにjump||
 |`mt`||ゴミ箱に入れる||
-|`tree -L 3`||ツリー||
 |`rmds`||配下のDS_Store全削除||
 
 ## peco
@@ -70,8 +64,6 @@
 |`gcob`|`checkout -b`|ブランチ作成とチェックアウト||
 |`gcop`|`checkout -p`|hunkごとにチェックアウト||
 
-`checkout` = `reset HEAD` ← この認識であってます？
-
 ### cherry-pick, revert (cp, rv)
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
@@ -89,7 +81,6 @@
 |`gadp`|`git add -p`|hunkごとにadd||
 |`gcm`|`git commit -v`|変更表示してコミット||
 |`gcma`|`git commit -v`<br>`--amend --date="`date`"'`|前のコミットに今のステージを<br>更新日付は現在時刻に|dateが英語でないとバグる？|
-|`gn`|`git commit -am "[from now] `date`"|自家製git-now||
 
 
 ###  reset (rs)
@@ -145,7 +136,7 @@
 ### skip worktree (sw)
 |alias|command|内容|memo|
 |:-:|:-:|:-:|:-:|
-|`gsw`|`git update-index --skip-worktre`|無視||
-|`gnsw`|`git update-index --no-skip-worktre`|無視解除||
+|`gsw`|`git update-index --skip-worktree`|無視||
+|`gnsw`|`git update-index --no-skip-worktree`|無視解除||
 |`gswl`|`git ls-files -v｜grep "S "`|無視ファイル一覧||
 

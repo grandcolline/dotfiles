@@ -40,3 +40,4 @@ alias o 'open'
 
 # git
 . $DOTFILE_PATH/fish/git_aliases.fish
+

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 if [ ! -f "$HOME/.dotfiles/zshrc.local" ]; then
 	cp $HOME/.dotfiles/.zshrc.local.defalt $HOME/.dotfiles/zshrc.local

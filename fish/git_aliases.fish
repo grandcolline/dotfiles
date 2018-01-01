@@ -48,8 +48,7 @@ alias gadp 'git add -p'
 # commit (cm)
 alias gcm 'git commit -v'
 alias gcmm 'git commit -m'
-alias gcma='git commit -v --amend --date="`date`"'
-alias gn='git commit -am "[from now] `date`"' #git-now
+alias gcma 'git commit -v --amend --date=(date)'
 
 # reset (rs)
 alias grs 'git reset'
@@ -87,3 +86,4 @@ alias gsbu 'git submodule update --init --recursive'
 alias gsw='git update-index --skip-worktree'
 alias gnsw='git update-index --no-skip-worktree'
 alias gswl='git ls-files -v | grep --color=never "S "'
+
