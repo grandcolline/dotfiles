@@ -5,8 +5,6 @@ dir_path=`pwd`
 
 # git
 echo "===== Git setting ====="
-ln -vsf $dir_path/gitconfig $HOME/.gitconfig
-ln -vsfn $dir_path/gitconfigs $HOME/.gitconfigs
 ln -vsfn $dir_path/config/git $XDG_CONFIG_HOME/git
 echo ""
 
