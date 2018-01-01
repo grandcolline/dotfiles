@@ -1,8 +1,6 @@
 # dotfiles
 
-Git, Fish, Vim...
-
-## Installed Things
+## Things
 
 * Git
 * [Fish Shell](https://github.com/fish-shell/fish-shell)
