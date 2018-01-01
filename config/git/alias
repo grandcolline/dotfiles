@@ -24,8 +24,8 @@
 
 	# push (po)
 	po = push -u origin
-	pfo = git push --force-with-lease -u origin
-	pffo = git push -f -u origin
+	pfo = push --force-with-lease -u origin
+	pffo = push -f -u origin
 
 	# checkout (co)
 	co = checkout
@@ -38,7 +38,7 @@
 	cpc = cherry-pick --continue
 
 	# revert (rv)
-	rv = git revert
+	rv = revert
 	rva = revert --abort
 	rvc = revert --continue
 
@@ -49,11 +49,12 @@
 	# commit (cm)
 	cm = commit -v
 	cmm = commit -m
-	cma = commit -v --amend --date=(date)
+	#cma = commit -v --amend --date=`date`
+	cma = commit -v --amend
 
 	# reset (rs)
 	rs = reset
-	rsp = git reset -p
+	rsp = reset -p
 
 	# status (s)
 	s = status -sb
