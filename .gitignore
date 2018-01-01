@@ -1,5 +1,3 @@
-gitconfig.local
-zshrc.local
+config/git/local
+config/nvim/dein/
 .netrwhist
-.cache
-nvim/dein/

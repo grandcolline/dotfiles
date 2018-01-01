@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.dotfiles/gitignore
+	# excludesfile = ./ignore
 	safecrlf = true
 	autocrlf = input
 	precomposeunicode = true
@@ -7,7 +7,8 @@
 	editor = nvim
 
 [include]
-	path = ~/.dotfiles/gitconfig.local
+	path = ./local
+	path = ./alias
 
 [color]
 	ui = auto
@@ -21,5 +22,6 @@
 	rebase = true
 
 [push]
-#	default = simple
+	# default = simple
 	default = upstream
+

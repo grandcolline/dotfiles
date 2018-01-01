@@ -1,43 +1,28 @@
 #!/bin/sh
 
-if [ ! -f "$HOME/.dotfiles/zshrc.local" ]; then
-	cp $HOME/.dotfiles/.zshrc.local.defalt $HOME/.dotfiles/zshrc.local
-fi
+# set
+dir_path=`pwd`
 
-if [ ! -f "$HOME/.dotfiles/gitconfig.local" ]; then
-	cp $HOME/.dotfiles/.gitconfig.local.defalt $HOME/.dotfiles/gitconfig.local
-fi
+# git
+echo "===== Git setting ====="
+ln -vsf $dir_path/gitconfig $HOME/.gitconfig
+ln -vsfn $dir_path/gitconfigs $HOME/.gitconfigs
+ln -vsfn $dir_path/config/git $XDG_CONFIG_HOME/git
+echo ""
 
-if [ ! -d "$HOME/.config" ]; then
-	mkdir $HOME/.config
-fi
-
-if [ ! -d "$HOME/.dotfiles/.cache" ]; then
-	mkdir $HOME/.dotfiles/.cache
-	mkdir $HOME/.dotfiles/.cache/vim-undo
-	mkdir $HOME/.dotfiles/.cache/vim-backup
-	mkdir $HOME/.dotfiles/.cache/dein
-	touch $HOME/.dotfiles/.cache/zhistory
-	touch $HOME/.dotfiles/.cache/viminfo
-fi
-
-if [ ! -d "$HOME/.dotfiles/nvim/dein" ];then
-	mkdir -p $HOME/.dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
-	git clone https://github.com/Shougo/dein.vim.git $HOME/.dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
-fi
+# fish
+echo "===== FishShell setting ====="
+ln -vsf $dir_path/config/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
+echo ""
 
 
-ln -vsf $HOME/.dotfiles/gitconfig $HOME/.gitconfig
-ln -vsf $HOME/.dotfiles/prezto/runcoms/zlogin $HOME/.zlogin
-ln -vsf $HOME/.dotfiles/prezto/runcoms/zpreztorc $HOME/.zpreztorc
-ln -vsf $HOME/.dotfiles/prezto/runcoms/zshenv $HOME/.zshenv
-ln -vsf $HOME/.dotfiles/prezto/runcoms/zshrc $HOME/.zshrc
-ln -vsf $HOME/.dotfiles/prezto/runcoms/zprofile $HOME/.zprofile
-ln -vsfn $HOME/.dotfiles/nvim $HOME/.config/nvim
-ln -vsfn $HOME/.dotfiles/peco $HOME/.config/peco
-ln -vsfn $HOME/.dotfiles/ctags $HOME/.ctags
+# ctag
+echo "===== Ctag setting ====="
+ln -vsf $dir_path/ctags $HOME/.ctags
+echo ""
 
+# nvim
+echo "===== NeoVim setting ====="
+ln -vsfn $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
+echo ""
 
-brew update
-brew tap Homebrew/bundle
-brew bundle

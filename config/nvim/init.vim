@@ -20,7 +20,7 @@ au BufWrite /private/etc/pw.* set nowritebackup nobackup
 " プラグイン(dein)
 "========================================
 " プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('$HOME/.dotfiles/nvim/dein')
+let s:dein_dir = expand('$XDG_CONFIG_HOME/nvim/dein')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -37,7 +37,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   " プラグインリストを収めた TOML ファイル
-  let g:rc_dir    = expand('$HOME/.dotfiles/nvim/rc')
+  let g:rc_dir    = expand('$XDG_CONFIG_HOME/nvim/rc')
   let s:toml      = g:rc_dir . '/dein.toml'
   let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
@@ -71,9 +71,9 @@ set ambiwidth=double                            " □や○文字が崩れる問
 " ファイルの保存場所など
 set noswapfile                                  " swapファイルを作成しない
 set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
-set undodir=$HOME/.dotfiles/.cache/vim-undo     " undo(test.txt.un~)
-set backupdir=$HOME/.dotfiles/.cache/vim-backup " bachup(test.txt~)
-set viminfo+=n$HOME/.dotfiles/.cache/nviminfo   " viminfo
+set undodir=$HOME/.cache/vim-undo     " undo(test.txt.un~)
+set backupdir=$HOME/.cache/vim-backup " bachup(test.txt~)
+set viminfo+=n$HOME/.cache/nviminfo   " viminfo
 
 set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
 "set clipboard+=unnamedplus
