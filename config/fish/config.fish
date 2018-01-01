@@ -30,3 +30,4 @@ alias o 'open'
 
 # move trash
 alias mt 'rmtrash'
+

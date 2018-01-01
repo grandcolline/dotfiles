@@ -10,7 +10,7 @@ echo ""
 
 # fish
 echo "===== FishShell setting ====="
-ln -vsf $dir_path/config/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
+ln -vsfn $dir_path/config/fish $XDG_CONFIG_HOME/fish
 echo ""
 
 # tmux
