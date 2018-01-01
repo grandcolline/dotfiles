@@ -1,12 +1,16 @@
 # dotfiles
 
-```
-$ brew update
-$ brew install fish peco fasd neovim
+Git, Fish, Vim...
 
-$ git clone git@github.com:grandcolline/dotfiles.git
-$ cd dotfiles
+## Installed Things
+
+* Git
+* [Fish Shell](https://github.com/fish-shell/fish-shell)
+  * [Fisherman](https://github.com/fisherman/fisherman)
+* [NeoVim](https://github.com/neovim/neovim)
+
+## Setup
+
+```
 $ ./setup.sh
 ```
-
-
