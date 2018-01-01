@@ -59,18 +59,18 @@
 	s = status -sb
 
 	# diff (d)
-	d = diff'
-	ds = diff --stat'
+	d = diff
+	ds = diff --stat
 	dc = diff --cached
 
 	# log (l)
 	l = log --pretty=fuller --stat --decorate
 	lp = log -p -1 --stat --decorate
-	ll = log --no-merges --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"
-	lla = log --all --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"
-	lg = log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"
-	lga = log --graph --all --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"
-	lgb = log --graph --all --date=short --format="%C(white)%d%C(reset) %C(black)%ad%C(reset)"
+	ll = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'
+	lla = log --all --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'
+	lg = log --graph --date=short --format='%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n'
+	lga = log --graph --all --date=short --format='%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n'
+	lgb = log --graph --all --date=short --format='%C(white)%d%C(reset) %C(black)%ad%C(reset)'
 
 	# stash (st)
 	st = stash
@@ -86,5 +86,5 @@
 	# skipworktree (sw)
 	sw = update-index --skip-worktree
 	nsw = update-index --no-skip-worktree
-	swl = ls-files -v | grep --color=never "S "
+	# swl = ls-files -v | grep --color=never "S "
 
