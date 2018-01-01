@@ -13,6 +13,10 @@ echo "===== FishShell setting ====="
 ln -vsf $dir_path/config/fish/config.fish $XDG_CONFIG_HOME/fish/config.fish
 echo ""
 
+# tmux
+echo "===== tmux setting ====="
+ln -vsf $dir_path/tmux.conf $HOME/.tmux.conf
+echo ""
 
 # ctag
 echo "===== Ctag setting ====="

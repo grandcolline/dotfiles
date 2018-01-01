@@ -22,6 +22,14 @@ end
 
 
 # ---------------
+# tmux
+# ---------------
+if begin; test (which tmux); and test -z $TMUX; end
+  tmux -2 attach; or tmux -2 new-session; exit
+end
+
+
+# ---------------
 #  alias
 # ---------------
 alias vi 'nvim'
