@@ -27,6 +27,7 @@ end
 alias vi 'nvim'
 alias gi 'git'
 alias o 'open'
+alias t 'tmux'
 
 # move trash
 alias mt 'rmtrash'
