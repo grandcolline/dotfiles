@@ -25,10 +25,13 @@ end
 #  alias
 # ---------------
 alias vi 'nvim'
-alias gi 'git'
+alias g 'git'
 alias o 'open'
 alias t 'tmux'
 
 # move trash
 alias mt 'rmtrash'
+
+# remove .DS_Store
+alias rmds 'find . -name ".DS_Store" -type f -ls -delete'
 
