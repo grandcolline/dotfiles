@@ -129,6 +129,9 @@ set showmatch          " 対応括弧のハイライト
 
 set list               " 不可視文字表示
 " set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
+highlight JpSpace cterm=underline ctermfg=7 guifg=7 " 全角スペースの可視化
+au BufRead,BufNew * match JpSpace /　/
+
 set display=uhex       " 印字不可能文字を16進数で表示
 
 set tabstop=4          " タブを表示するときの幅
