@@ -10,6 +10,7 @@ fish, tmux, neovim...
 * [tmux](https://github.com/tmux/tmux)
 * [fasd](https://github.com/clvv/fasd)
 * [fzf](https://github.com/junegunn/fzf)
+* [ghq](https://github.com/motemen/ghq)
 * [ctags](https://github.com/universal-ctags/ctags)
 
 ## Setup
