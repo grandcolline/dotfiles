@@ -1,0 +1,40 @@
+function __fzf_directory
+
+	argparse -n __fzf_directory 'f/fasd' 'p/preview' -- $argv
+	or return 1
+
+	set -l ref ""
+	set -l fzf_cmd "fzf --reverse --exit-0 --tiebreak=index"
+
+	if set -lq _flag_preview
+		set fzf_cmd "$fzf_cmd --preview 'tree -L 3 {}'"
+	else
+		set fzf_cmd "$fzf_cmd --height 40%"
+	end
+
+	if set -lq _flag_fasd
+		set fzf_cmd "$fzf_cmd --tac --prompt='Fasd Dir > '"
+		set ref ( \
+			fasd -d \
+			| awk '{print $2}' \
+			| eval $fzf_cmd
+		)
+	else
+		set fzf_cmd "$fzf_cmd --prompt='Dir > '"
+		set ref ( \
+			find . -type d \
+			| grep -v "\/\." \
+			| sed -e "s-\./--g" \
+			| eval $fzf_cmd
+		)
+	end
+
+	if [ "$ref" = "" ]
+		echo "oh... Dir Select MISS!"
+		commandline -f repaint
+	else
+		commandline -i $ref
+
+	end
+end
+
