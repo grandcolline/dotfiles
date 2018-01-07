@@ -5,7 +5,7 @@ fish, tmux, neovim...
 ## Used Things
 
 * Git
-* [Fish Shell](https://github.com/fish-shell/fish-shell)
+* [FishShell](https://github.com/fish-shell/fish-shell)
 * [NeoVim](https://github.com/neovim/neovim)
 * [tmux](https://github.com/tmux/tmux)
 * [fasd](https://github.com/clvv/fasd)
