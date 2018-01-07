@@ -34,6 +34,10 @@ alias gj 'fzf_ghq_cd'
 # remove .DS_Store
 alias rmds 'find . -name ".DS_Store" -type f -delete'
 
+
+# ---------------
+#  key bind
+# ---------------
 function fish_user_key_bindings
   bind \cr '__fzf_history'
   bind \cb '__fzf_git_branch'
