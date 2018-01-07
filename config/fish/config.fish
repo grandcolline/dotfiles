@@ -16,9 +16,9 @@ rbenv init - | source
 
 # GO
 set -x GOPATH /develop
-function gvm
-  bass source ~/.gvm/scripts/gvm ';' gvm $argv
-end
+#function gvm
+#  bass source ~/.gvm/scripts/gvm ';' gvm $argv
+#end
 
 
 # ---------------
@@ -28,10 +28,15 @@ alias vi 'nvim'
 alias g 'git'
 alias o 'open'
 alias t 'tmux'
-
-# move trash
-alias mt 'rmtrash'
+alias j 'fzf_fasd_cd'
+alias gj 'fzf_ghq_cd'
 
 # remove .DS_Store
 alias rmds 'find . -name ".DS_Store" -type f -ls -delete'
 
+function fish_user_key_bindings
+  bind \cr '__fzf_history'
+  bind \cb '__fzf_branch'
+  bind \cv '__fzf_commit'
+  bind \cx '__fzf_git_status'
+end

@@ -6,12 +6,11 @@ fish, tmux, neovim...
 
 * Git
 * [Fish Shell](https://github.com/fish-shell/fish-shell)
-* [Fisherman](https://github.com/fisherman/fisherman)
 * [NeoVim](https://github.com/neovim/neovim)
 * [tmux](https://github.com/tmux/tmux)
 * [fasd](https://github.com/clvv/fasd)
+* [fzf](https://github.com/junegunn/fzf)
 * [ctags](https://github.com/universal-ctags/ctags)
-* rmtrash
 
 ## Setup
 
