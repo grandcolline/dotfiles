@@ -22,31 +22,30 @@ set -x GOPATH /develop
 
 
 # ---------------
-#  alias
+#  aliases
 # ---------------
 alias vi 'nvim'
 alias g 'git'
 alias o 'open'
 alias t 'tmux'
-alias j 'fzf_fasd_cd'
-alias gj 'fzf_ghq_cd'
+alias c 'clear'
+alias j 'fzf_ghq_cd'
 
 # remove .DS_Store
 alias rmds 'find . -name ".DS_Store" -type f -delete'
 
 
 # ---------------
-#  key bind
+#  key binds
 # ---------------
 function fish_user_key_bindings
-  bind \cr '__fzf_history'
-  bind \cb '__fzf_git_branch'
-  bind \cb\cb '__fzf_git_branch -a'
-  bind \cv '__fzf_git_commit'
-  bind \cv\cv '__fzf_git_commit -a'
-  bind \cx '__fzf_git_status'
-  bind \cd '__fzf_directory -f'
-  bind \cd\cd '__fzf_directory'
-  bind \cf '__fzf_file'
-  bind \cf\cf '__fzf_file -g'
+	bind \cr '__fzf_history'
+	bind \cb '__fzf_git_branch -a'
+	bind \cl '__fzf_git_log'
+	bind \cl\cl '__fzf_git_log -a'
+	bind \cs '__fzf_git_status'
+	bind \cd '__fzf_directory -f'
+	bind \cd\cd '__fzf_directory'
+	bind \cf '__fzf_file'
+	bind \cf\cf '__fzf_file -g'
 end
