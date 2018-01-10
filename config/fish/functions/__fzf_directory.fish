@@ -4,7 +4,7 @@ function __fzf_directory
 	or return 1
 
 	set -l ref ""
-	set -l fzf_cmd "fzf --reverse --exit-0 --tiebreak=index"
+	set -l fzf_cmd "fzf --reverse --exit-0 --tiebreak=index --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
 	if set -lq _flag_preview
 		set fzf_cmd "$fzf_cmd --preview 'tree -L 3 {}'"
@@ -15,8 +15,7 @@ function __fzf_directory
 	if set -lq _flag_fasd
 		set fzf_cmd "$fzf_cmd --tac --prompt='Fasd Dir > '"
 		set ref ( \
-			fasd -d \
-			| awk '{print $2}' \
+			fasd -d -l\
 			| eval $fzf_cmd
 		)
 	else
@@ -30,7 +29,6 @@ function __fzf_directory
 	end
 
 	if [ "$ref" = "" ]
-		echo "oh... Dir Select MISS!"
 		commandline -f repaint
 	else
 		commandline -i $ref

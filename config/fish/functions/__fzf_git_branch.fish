@@ -5,8 +5,7 @@ function __fzf_git_branch
 		or return 1
 
 		set -l git_cmd "git branch"
-		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index"
-
+		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 		if set -lq _flag_all
 			set git_cmd "$git_cmd --all"
 			set fzf_cmd "$fzf_cmd --prompt='All Branch > '"
@@ -23,7 +22,6 @@ function __fzf_git_branch
 			| tr -d '*' \
 		)
 		if [ "$ref" = "" ]
-			echo "oh... branch select MISS!"
 			commandline -f repaint
 		else
 			commandline -i $ref
