@@ -5,7 +5,7 @@ function __fzf_git_log
 		or return 1
 
 		set -l git_cmd "git log --no-merges --date=short --pretty=format:'%h %ad %an: %d %s'"
-		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
+		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index --bind 'ctrl-y:execute-silent(echo {} | awk \'{ print $1 }\' | pbcopy)+abort'"
 
 		if set -lq _flag_all
 			set git_cmd "$git_cmd --all"
