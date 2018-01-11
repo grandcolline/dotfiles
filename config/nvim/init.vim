@@ -75,9 +75,13 @@ set undodir=$HOME/.cache/vim-undo     " undo(test.txt.un~)
 set backupdir=$HOME/.cache/vim-backup " bachup(test.txt~)
 set viminfo+=n$HOME/.cache/nviminfo   " viminfo
 
-set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
+" クリップボードとyunk,putを共有
+set clipboard=unnamed,unnamedplus
 "set clipboard+=unnamedplus
+
 " 削除キーではyunkしない
+"nnoremap D "_D
+"nnoremap d "_d
 nnoremap x "_x
 nnoremap C "_C
 nnoremap c "_c
@@ -114,9 +118,12 @@ set gdefault      " 置換の時 g オプションをデフォルトで有効に
 
 
 "========================================
-" ctags
+" Key Binds
 "========================================
+" マッチウインドウ
 nnoremap <C-]> g<C-]>
+" NERDTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 
 "========================================
