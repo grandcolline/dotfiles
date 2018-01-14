@@ -4,7 +4,7 @@ function fzf_ghq_cd -d "select git directory and cd"
 		| fzf --height 40% --reverse --exit-0 --tiebreak=index --prompt="GhqJump > " --query "$argv"
 	)
 	if [ "$ref" = "" ]
-		echo "oh... GhqJump MISS!"
+		return
 	else
 		cd (ghq root)/$ref
 	end
