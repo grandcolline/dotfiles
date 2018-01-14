@@ -5,7 +5,9 @@ function __fzf_git_branch
 		or return 1
 
 		set -l git_cmd "git branch"
-		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index --bind 'ctrl-y:execute-silent(echo {} | tr -d \' \' | tr -d \'*\' | pbcopy)+abort'"
+		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index \
+			--bind 'ctrl-y:execute-silent(echo {} | tr -d \' \' | tr -d \'*\' | pbcopy)+abort'"
+
 		if set -lq _flag_all
 			set git_cmd "$git_cmd --all"
 			set fzf_cmd "$fzf_cmd --prompt='All Branch > '"
