@@ -49,3 +49,10 @@ function fish_user_key_bindings
 	bind \cf '__fzf_file'
 	bind \cf\cf '__fzf_file -g'
 end
+
+# ---------------
+#  Include
+# ---------------
+if test -e $XDG_CONFIG_HOME/fish/config.local.fish
+	source $XDG_CONFIG_HOME/fish/config.local.fish
+end
