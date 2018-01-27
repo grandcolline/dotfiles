@@ -25,11 +25,10 @@ set -x GOPATH /develop
 #  aliases
 # ---------------
 alias vi 'nvim'
-alias g 'git'
+alias gi 'git'
 alias o 'open'
 alias t 'tmux'
 alias c 'clear'
-alias j 'fzf_ghq_cd'
 
 # remove .DS_Store
 alias rmds 'find . -name ".DS_Store" -type f -delete'
