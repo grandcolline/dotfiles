@@ -49,6 +49,10 @@ function fish_user_key_bindings
 	bind \cf\cf '__fzf_file -g'
 end
 
+function my_pwd_changed --on-variable PWD
+	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
+end
+
 # ---------------
 #  Include
 # ---------------
