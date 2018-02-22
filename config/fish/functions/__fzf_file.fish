@@ -5,7 +5,7 @@ function __fzf_file
 
 	set -l ref ""
 	set -l fzf_cmd "fzf --reverse --exit-0 --tiebreak=index \
-		--bind 'ctrl-t:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
+		--bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
 	if set -lq _flag_preview
 		set fzf_cmd "$fzf_cmd --preview 'head -100 {}'"

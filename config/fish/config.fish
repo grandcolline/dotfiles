@@ -30,9 +30,6 @@ alias o 'open'
 alias t 'tmux'
 alias c 'clear'
 
-# remove .DS_Store
-alias rmds 'find . -name ".DS_Store" -type f -delete'
-
 
 # ---------------
 #  key binds
@@ -44,9 +41,8 @@ function fish_user_key_bindings
 	bind \cl\cl '__fzf_git_log -a'
 	bind \cs '__fzf_git_status'
 	bind \cd '__fzf_directory -f'
-	bind \cd\cd '__fzf_directory'
-	bind \cf '__fzf_file'
-	bind \cf\cf '__fzf_file -g'
+	bind \cd\cd '__fzf_docker_container -a'
+	bind \cf '__fzf_file -g'
 end
 
 function my_pwd_changed --on-variable PWD
