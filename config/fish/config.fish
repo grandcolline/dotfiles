@@ -25,10 +25,10 @@ set -x GOPATH /develop
 #  aliases
 # ---------------
 alias vi 'nvim'
-alias gi 'git'
+alias g 'git'
 alias o 'open'
-alias t 'tmux'
 alias c 'clear'
+alias n 'cd $HOME/Documents/note/ ;and nvim (date +%Y%m%d) ;and cd -'
 
 
 # ---------------
