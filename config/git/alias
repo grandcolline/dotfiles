@@ -45,7 +45,7 @@
 
 	# commit (cm)
 	cm = commit -v
-	cma = ! git commit -v --amend --date=(date)
+	#cma = ! git commit -v --amend --date=(date)
 
 	# reset (rs)
 	rs = reset

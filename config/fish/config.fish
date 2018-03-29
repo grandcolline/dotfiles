@@ -30,6 +30,9 @@ alias o 'open'
 alias c 'clear'
 alias n 'cd $HOME/Documents/note/ ;and nvim (date +%Y%m%d) ;and cd -'
 
+# gitのaliasだとdateがとれないのでここで
+alias gcma 'git commit -v --amend --date=(date)'
+
 
 # ---------------
 #  key binds
