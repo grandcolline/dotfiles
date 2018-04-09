@@ -16,6 +16,7 @@ rbenv init - | source
 
 # GO
 set -x GOPATH /develop
+set -x PATH /develop/bin $PATH
 #function gvm
 #  bass source ~/.gvm/scripts/gvm ';' gvm $argv
 #end
