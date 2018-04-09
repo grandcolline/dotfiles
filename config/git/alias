@@ -3,6 +3,7 @@
 	b = branch -a
 	bv = branch -a -vv
 	bd = branch -D
+	bm = branch -M
 
 	# pull (p)
 	p = pull --rebase --prune --tags
