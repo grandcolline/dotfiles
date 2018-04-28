@@ -1,4 +1,4 @@
-function git_open_page -d "open github page"
+function gh -d "open github page"
 
 	argparse -n __git_open_page 'p/pr' 'i/issue' -- $argv
 	or return 1
