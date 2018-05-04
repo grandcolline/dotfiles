@@ -42,6 +42,7 @@
 
 	# add (ad)
 	ad = add -v
+	ada = add -v -A
 	adp = add -p
 
 	# commit (cm)
