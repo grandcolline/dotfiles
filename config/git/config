@@ -1,10 +1,3 @@
-[user]
-	name = hayashi taiki
-	email = grandcolline@gmail.com
-
-[ghq]
-	root = /develop/src
-
 [core]
 	# excludesfile = ./ignore
 	safecrlf = true
