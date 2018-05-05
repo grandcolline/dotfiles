@@ -3,7 +3,7 @@
 # Fish
 
 * https://devhints.io/fish-shell
-* [自分用 alias/keymap/functions](./fish-shell)
+* [自分独自のもの](./fish-shell)
 
 
 # Vim
