@@ -46,7 +46,7 @@ push (po)
 |alias|command|
 |:-:|:-:|
 |po|push -u origin|
-|pfopush --force-with-lease -u origin|
+|pfo|push --force-with-lease -u origin|
 
 * [git push -f をやめて --force-with-lease を使おう - Qiita](https://qiita.com/wMETAw/items/5f47dcc7cf57af8e449f)
 
