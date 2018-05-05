@@ -5,6 +5,7 @@
 [alias file](https://github.com/grandcolline/dotfiles/blob/master/config/git/alias)
 
 branch (b)
+
 |alias|command|
 |:-:|:=:|
 |b|branch -a|
