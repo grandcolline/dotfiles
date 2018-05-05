@@ -2,7 +2,7 @@
 
 # Fish
 
-* https://devhints.io/fish-shell
+* [https://devhints.io/fish-shell](https://devhints.io/fish-shell)
 * [自分独自のもの](./fish-shell)
 
 
