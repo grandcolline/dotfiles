@@ -7,7 +7,7 @@
 branch (b)
 
 |alias|command|
-|:-:|:=:|
+|:-:|:-:|
 |b|branch -a|
 |bv|branch -a -vv|
 |bd|branch -D|
