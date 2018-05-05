@@ -2,9 +2,11 @@
 
 ## alias
 
-[alias](https://github.com/grandcolline/dotfiles/blob/master/config/git/alias)
+[alias file](https://github.com/grandcolline/dotfiles/blob/master/config/git/alias)
 
 branch (b)
+|alias|command|
+|:-:|:=:|
 |b|branch -a|
 |bv|branch -a -vv|
 |bd|branch -D|
