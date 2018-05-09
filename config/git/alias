@@ -2,6 +2,7 @@
 	# branch (b)
 	b = branch -a
 	bv = branch -a -vv
+	bu = branch -u
 	bd = branch -D
 	bm = branch -M
 
