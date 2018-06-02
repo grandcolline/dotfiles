@@ -57,7 +57,6 @@ endif
 
 
 
-
 "========================================
 " 基本設定
 "========================================
@@ -79,7 +78,7 @@ set viminfo+=n$HOME/.cache/nviminfo   " viminfo
 set clipboard=unnamed,unnamedplus
 "set clipboard+=unnamedplus
 
-" 削除キーではyunkしない
+" yunkしないkey設定
 "nnoremap D "_D
 "nnoremap d "_d
 nnoremap x "_x
@@ -93,6 +92,7 @@ set ttimeout                                    " neoVim文字化け問題
 set ttimeoutlen=50
 
 
+
 "========================================
 " カラースキーマ
 "========================================
@@ -104,6 +104,7 @@ colorscheme Tomorrow-Night
 "colorscheme nefertiti
 "colorscheme amcolors
 "colorscheme lucius
+
 
 
 "========================================

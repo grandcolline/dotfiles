@@ -9,14 +9,6 @@ repo = 'Shougo/dein.vim'
 # カラースキーマ
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'
-#repo = 'jeetsukumaran/vim-nefertiti'
-#repo = 'muellan/am-colors'
-#repo = 'jonathanfilip/vim-lucius'
-
-# 表示が綺麗になるやつ
-#[[plugins]]
-#repo = 'vim-airline/vim-airline'
-#repo = 'vim-airline/vim-airline-themes'
 
 # ステータスライン
 [[plugins]]
