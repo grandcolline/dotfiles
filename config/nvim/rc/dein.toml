@@ -12,15 +12,15 @@ repo = 'chriskempson/vim-tomorrow-theme'
 
 # ステータスライン
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
-# 多機能セレクタ
+# Gitコマンド
 [[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
+repo = 'tpope/vim-fugitive'
+
+# git差分を左側に追加
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 # ファイルツリー
 [[plugins]]
