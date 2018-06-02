@@ -2,11 +2,14 @@
 
 # Fish
 
-* [独自のもの・よく使うもの](./fish-shell)
+* [独自・よく使うコマンド](./fish-shell)
 * [https://devhints.io/fish-shell](https://devhints.io/fish-shell)
 
 
-# Vim
+# NeoVim
+
+* [独自・よく使うコマンド](./nvim)
+* plugin一覧（[dein.toml](https://github.com/grandcolline/dotfiles/blob/master/config/nvim/rc/dein.toml) / [dein_lazy.toml](https://github.com/grandcolline/dotfiles/blob/master/config/nvim/rc/dein_lazy.toml)）
 
 # Git
 
@@ -14,6 +17,6 @@
 
 # Tmux
 
-* [独自のもの・よく使うもの](./tmux)
+* [独自・よく使うコマンド](./tmux)
 * [tmuxショートカットメモ - Qiita](https://qiita.com/wakaba260/items/4f43e6aa3bfb8a0992ca)
 
