@@ -26,5 +26,14 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 
+# ファジー検索
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
 
 

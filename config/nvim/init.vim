@@ -100,8 +100,6 @@ set gdefault      " 置換の時 g オプションをデフォルトで有効に
 "========================================
 " マッチウインドウ
 nnoremap <C-]> g<C-]>
-" NERDTree
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 
 
@@ -183,5 +181,18 @@ let g:lightline = {
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 
+
+"========================================
+" ファイルツリー (NERDTree)
+"========================================
+" key bind
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+
+"========================================
+" ファジー検索 (fzf)
+"========================================
+" 逆向きに表示
+" let g:fzf_layout = { 'up': '~40%' }
 
 
