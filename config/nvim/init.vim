@@ -195,4 +195,10 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " 逆向きに表示
 " let g:fzf_layout = { 'up': '~40%' }
 
+" key bind
+nnoremap <silent><C-f> :GFiles<CR>
+nnoremap <silent><C-s> :GFiles?<CR>
+nnoremap <silent><C-b> :Buffers<CR>
+nnoremap <silent><C-p> :Ag<CR>
+
 
