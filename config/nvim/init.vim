@@ -29,9 +29,9 @@ set ambiwidth=double                            " □や○文字が崩れる問
 " ファイルの保存場所など
 set noswapfile                                  " swapファイルを作成しない
 set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
-set undodir=$HOME/.cache/vim-undo     " undo(test.txt.un~)
-set backupdir=$HOME/.cache/vim-backup " bachup(test.txt~)
-set viminfo+=n$HOME/.cache/nviminfo   " viminfo
+set undodir=$XDG_CONFIG_HOME/nvim/cache/vim-undo     " undo(test.txt.un~)
+set backupdir=$XDG_CONFIG_HOME/nvim/cache/vim-backup " bachup(test.txt~)
+set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo   " viminfo
 
 " クリップボードとyunk,putを共有
 set clipboard=unnamed,unnamedplus
