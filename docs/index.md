@@ -9,7 +9,7 @@
 # NeoVim
 
 * [独自・よく使うコマンド](./nvim)
-* plugin一覧（[dein.toml](https://github.com/grandcolline/dotfiles/blob/master/config/nvim/rc/dein.toml) / [dein_lazy.toml](https://github.com/grandcolline/dotfiles/blob/master/config/nvim/rc/dein_lazy.toml)）
+* プラグイン一覧（[dein.toml](https://github.com/grandcolline/dotfiles/blob/master/config/nvim/rc/dein.toml) / [dein_lazy.toml](https://github.com/grandcolline/dotfiles/blob/master/config/nvim/rc/dein_lazy.toml)）
 
 # Git
 
