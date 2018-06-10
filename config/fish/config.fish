@@ -7,7 +7,7 @@ set -x XDG_CONFIG_HOME $HOME/.config
 # ---------------
 #  aliases
 # ---------------
-alias vi 'vim'
+alias vi 'nvim'
 alias g 'git'
 alias o 'open -R'
 alias b 'open -a Vivaldi'

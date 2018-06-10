@@ -62,9 +62,9 @@ repo = 'junegunn/vim-easy-align'
 #[[plugins]]
 #repo = 'deris/vim-gothrough-jk'
 
-# # インデント可視化
-# [[plugins]]
-# repo = 'Yggdroot/indentLine'
+# インデント可視化
+[[plugins]]
+repo = 'Yggdroot/indentLine'
 
 # Minimap
 [[plugins]]
