@@ -1,7 +1,9 @@
 config/git/local
 config/nvim/dein/
-config/nvim/cache/*
-!config/nvim/cache/.gitkeep
+config/nvim/cache/vim-backup/*
+config/nvim/cache/vim-undo/*
+config/nvim/cache/nviminfo
 config/fish/fishd.*
 config/fish/config.local.fish
 .netrwhist
+!.gitkeep
