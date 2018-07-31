@@ -22,10 +22,6 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
-# ファイルツリー
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-
 # ファジー検索
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -36,4 +32,11 @@ merged = '0'
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 
+# ""や()の補完
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+# 検索数の表示
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
 

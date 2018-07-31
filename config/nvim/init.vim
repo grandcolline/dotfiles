@@ -201,4 +201,19 @@ nnoremap <silent><C-s> :GFiles?<CR>
 nnoremap <silent><C-b> :Buffers<CR>
 nnoremap <silent><C-p> :Ag<CR>
 
+"========================================
+" 補完機能 (deoplete)
+"========================================
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+
+"========================================
+" 検索数の表示 (anzu)
+"========================================
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+
 
