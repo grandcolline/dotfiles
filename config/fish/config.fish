@@ -1,25 +1,20 @@
 # --------------
-#  path
+#  env
 # --------------
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
-
 # Java
 set -x JAVA_HOME (/usr/libexec/java_home)
-
 # Node
 set -x PATH $HOME/.nodebrew/current/bin $PATH
 set -x PATH $HOME/.npmbrew/current/bin $PATH
-
 # Ruby
 rbenv init - | source
-
 # GO
 set -x GOPATH /develop
 set -x PATH /develop/bin $PATH
-#function gvm
-#  bass source ~/.gvm/scripts/gvm ';' gvm $argv
-#end
+# For Docker BuildKit
+set -x DOCKER_BUILDKIT 1
 
 
 # ---------------
@@ -27,9 +22,8 @@ set -x PATH /develop/bin $PATH
 # ---------------
 alias vi 'nvim'
 alias g 'git'
-alias o 'open'
+alias o 'open -R'
 alias c 'clear'
-alias n 'cd $HOME/Documents/note/ ;and nvim (date +%Y%m%d) ;and cd -'
 
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(date)'
