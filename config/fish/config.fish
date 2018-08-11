@@ -24,6 +24,7 @@ alias vi 'nvim'
 alias g 'git'
 alias o 'open -R'
 alias c 'clear'
+alias t 'tmux'
 
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(date)'
