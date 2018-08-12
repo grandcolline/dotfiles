@@ -2,12 +2,12 @@
 " 初期設定
 "========================================
 " Configuration file for vim
-set modelines=0		" CVE-2007-2438
+" set modelines=0		" CVE-2007-2438
 
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=2		" more powerful backspacing
+" set nocompatible	" Use Vim defaults instead of 100% vi compatibility
+" set backspace=2		" more powerful backspacing
 
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
@@ -35,7 +35,6 @@ set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo   " viminfo
 
 " クリップボードとyunk,putを共有
 set clipboard=unnamed,unnamedplus
-"set clipboard+=unnamedplus
 
 " yunkしないkey設定
 "nnoremap D "_D
@@ -50,6 +49,8 @@ set history=5000                                " 保存するコマンド履歴
 set ttimeout                                    " neoVim文字化け問題
 set ttimeoutlen=50
 
+set mouse=a                                     " マウス操作をonにする
+
 
 
 "========================================
@@ -59,13 +60,14 @@ set number             " 行番号表示
 set cursorline         " 行のハイライト
 "hi clear CursorLine
 set showmatch          " 対応括弧のハイライト
+set matchtime=3        " 対応括弧のハイライトを3秒に
 
 set list               " 不可視文字表示
 " set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
 " highlight JpSpace cterm=underline ctermfg=7 guifg=7 " 全角スペースの可視化
 " au BufRead,BufNew * match JpSpace /　/
 
-set display=uhex       " 印字不可能文字を16進数で表示
+" set display=uhex       " 印字不可能文字を16進数で表示
 
 set tabstop=4          " タブを表示するときの幅
 set shiftwidth=4       " タブを挿入するときの幅
@@ -153,9 +155,6 @@ syntax enable
 
 autocmd ColorScheme * highlight LineNr ctermfg=245
 colorscheme Tomorrow-Night
-"colorscheme nefertiti
-"colorscheme amcolors
-"colorscheme lucius
 
 
 "========================================
