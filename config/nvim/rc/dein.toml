@@ -40,3 +40,8 @@ repo = 'Townk/vim-autoclose'
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
 
+# fで移動
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+
