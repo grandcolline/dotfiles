@@ -41,7 +41,7 @@ function fish_user_key_bindings
 	bind \cs '__fzf_git_status'
 	bind \cd '__fzf_directory -f'
 	bind \cd\cd '__fzf_docker_container -a'
-	bind \ci\ci '__fzf_docker_images'
+	bind \cm '__fzf_docker_images'
 	bind \cf '__fzf_file -g'
 end
 
