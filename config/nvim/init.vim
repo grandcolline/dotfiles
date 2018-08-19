@@ -215,4 +215,13 @@ nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 
+"========================================
+" ヌルヌルページ送り (comfortable-motion)
+"========================================
+"デフォルトをoff
+let g:comfortable_motion_no_default_key_mappings = 1
+
+" UとDのみ設定
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
 
