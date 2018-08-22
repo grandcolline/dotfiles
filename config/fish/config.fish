@@ -23,8 +23,10 @@ set -x DOCKER_BUILDKIT 1
 alias vi 'nvim'
 alias g 'git'
 alias o 'open -R'
+alias b 'open -a Vivaldi'
 alias c 'clear'
-alias t 'tmux'
+alias d 'docker'
+alias dc 'docker-compose'
 
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(date)'
