@@ -44,3 +44,6 @@ repo = 'osyo-manga/vim-anzu'
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
 
+# ヌルヌルページ送り
+[[plugins]]
+repo = 'yuttie/comfortable-motion.vim'
