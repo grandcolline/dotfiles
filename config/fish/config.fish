@@ -20,7 +20,7 @@ set -x DOCKER_BUILDKIT 1
 # ---------------
 #  aliases
 # ---------------
-alias vi 'nvim'
+alias vi 'vim'
 alias g 'git'
 alias o 'open -R'
 alias b 'open -a Vivaldi'

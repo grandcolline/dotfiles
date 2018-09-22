@@ -1,0 +1,46 @@
+# -----------------------------------------
+# 起動時に適用するプラグイン
+# -----------------------------------------
+
+# dein自身
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# カラースキーマ
+[[plugins]]
+repo = 'chriskempson/vim-tomorrow-theme'
+
+# ステータスライン
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# Gitコマンド
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# git差分を左側に追加
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# ファジー検索
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+
+# ""や()の補完
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+# 検索数の表示
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+
+# fで移動
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
