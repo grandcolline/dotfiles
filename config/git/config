@@ -4,7 +4,7 @@
 	autocrlf = input
 	precomposeunicode = true
 	quotepath = false
-	editor = nvim
+	editor = vim
 
 [include]
 	path = ./local
