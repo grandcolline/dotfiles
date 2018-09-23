@@ -63,8 +63,8 @@ hi clear CursorLine
 " highlight JpSpace cterm=underline ctermfg=7 guifg=7
 " au BufRead,BufNew * match JpSpace /　/
 
-set tabstop=4                    " タブを表示するときの幅
-set shiftwidth=4                 " タブを挿入するときの幅
+set tabstop=2                    " タブを表示するときの幅
+set shiftwidth=2                 " タブを挿入するときの幅
 set noexpandtab                  " タブをタブとして扱う(スペースに展開しない)
 set softtabstop=0
 
@@ -147,7 +147,7 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" もし、未イã³ストールものものがあったらインストール
+" もし、未インストールものものがあったらインストール
 if dein#check_install()
   call dein#install()
 endif
@@ -193,6 +193,13 @@ let g:lightline = {
 " key bind
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
+
+"========================================
+" git変更表示 (dein)
+"========================================
+set updatetime=250                   " 反映されるまでの時間を変更
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 "========================================
 " ファジー検索 (fzf)
