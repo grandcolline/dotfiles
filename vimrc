@@ -42,8 +42,8 @@ set ttyfast                                     " 高速ターミナル接続
 " View
 "========================================
 set number                                      " 行番号表示
-set cursorline                                  " 行のハイライト
-set cursorcolumn                                " 列のハイライト
+"set cursorline                                 " 行のハイライト
+"set cursorcolumn                               " 列のハイライト
 set showmatch                                   " 対応括弧のハイライト
 set matchtime=3                                 " 対応括弧のハイライトを3秒に
 
@@ -144,7 +144,7 @@ let g:lightline = {
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -158,9 +158,10 @@ let g:lightline = {
 "=== NERDTree ===========================
 " key bind
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+let NERDTreeWinSize=50               " 横幅の大きさ
 
 "=== fugitive ===========================
-set updatetime=250                   " 反映されるまでの時間を変更
+set updatetime=200                   " 反映されるまでの時間を変更
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
@@ -188,8 +189,17 @@ nmap # <Plug>(anzu-sharp)
 
 "=== comfortable_motion =================
 "デフォルトをoff
-let g:comfortable_motion_no_default_key_mappings = 1
+"let g:comfortable_motion_no_default_key_mappings = 1
 " UとDのみ設定
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-150)<CR>
-nnoremap <silent> <C-d> :call comfortable_motion#flick(150)<CR>
+"nnoremap <silent> <C-u> :call comfortable_motion#flick(-150)<CR>
+"nnoremap <silent> <C-d> :call comfortable_motion#flick(150)<CR>
+
+"=== nanomap ============================
+let g:nanomap_auto_open_close = 1
+
+"=== ALE ================================
+let g:ale_sign_column_always = 1    " 常に左側にスペースを確保
+let g:ale_set_highlights = 0        " ハイライトしない
+let g:ale_sign_error = '⨉'
+let g:ale_sign_warning = '⚠'
 

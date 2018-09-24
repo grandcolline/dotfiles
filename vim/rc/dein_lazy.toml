@@ -11,4 +11,3 @@ repo = 'scrooloose/nerdtree'
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 
-
