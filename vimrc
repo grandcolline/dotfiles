@@ -1,107 +1,82 @@
-"========================================
-" 初期設定
-"========================================
-" Configuration file for vim
-set modelines=0		" CVE-2007-2438
-
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=2		" more powerful backspacing
-
-" Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
-" Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup nobackup
-
+"            _
+"     __   _(_)_ __ ___  _ __ ___
+"     \ \ / / | '_ ` _ \| '__/ __|
+"      \ V /| | | | | | | | | (__
+"     (_)_/ |_|_| |_| |_|_|  \___|
+"
 
 "========================================
-" 基本設定
+" General
 "========================================
-" 文字コード
-set fenc=utf-8
-set fileencoding=utf-8                               " 保存時の文字コード
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932        " 読み込み時の文字コードの自動判別. 左側が優先
-set fileformats=unix,dos,mac                         " 改行コードの自動判別. 左側が優先
-set ambiwidth=double                                 " □や○文字が崩れる問題を解決
+set fenc=utf-8                                  " 文字コード
+set fileencoding=utf-8                          " 保存時の文字コード
+set fileencodings=utf-8,ucs-boms,euc-jp,cp932   " 読み込み時の文字コードの自動判別. 左側が優先
+set fileformats=unix,dos,mac                    " 改行コードの自動判別. 左側が優先
+set ambiwidth=double                            " □や○が崩れる問題を解決
 
-" ファイルの保存場所など
-set noswapfile                                       " swapファイルを作成しない
-set autoread                                         " 編集中ファイルが書き換えられたら、自動リロード
-let g:netrw_dirhistmax=0                             " netrwを履歴しない
+set nocompatible                                " Use Vim defaults instead of 100% vi compatibility
+set backspace=2                                 " more powerful backspacing
+
+set noswapfile                                  " swapファイルを作成しない
+set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
+let g:netrw_dirhistmax=0                        " netrwを履歴しない
 
 " TODO: ファイルの保存場所設定を追記？
 
-" クリップボードとyunk,putを共有
-set clipboard=unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有h
 nnoremap x "_x
 nnoremap c "_c
 nnoremap C "_C
 
-" コマンドラインモード
-set wildmenu wildmode=list:longest,full              " コマンドラインモードのファイル名タブ補完
-set history=5000                                     " 保存するコマンド履歴の数
+set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
+set history=5000                                " 保存するコマンド履歴の数
 
-" マウス操作オン
-set mouse=a
+set mouse=a                                     " マウス操作をオンにする
 
+set foldmethod=marker                           " folding
+set lazyredraw                                  " コマンド実行中は再描写しない
+set ttyfast                                     " 高速ターミナル接続
 
 
 "========================================
-" VIEW
+" View
 "========================================
-set number                       " 行番号表示
-set cursorline                   " 行のハイライト
-set showmatch                    " 対応括弧のハイライト
-set matchtime=3                  " 対応括弧のハイライトを3秒に
+set number                                      " 行番号表示
+set cursorline                                  " 行のハイライト
+set cursorcolumn                                " 列のハイライト
+set showmatch                                   " 対応括弧のハイライト
+set matchtime=3                                 " 対応括弧のハイライトを3秒に
 
-hi clear CursorLine
-
-" 不可視文字の表示設定
-" set list
-" set listchars=tab:>.,trail:_,extends:>,precedes:<
-" highlight JpSpace cterm=underline ctermfg=7 guifg=7
+set list                                        " 不可視文字の表示設定
+set list listchars=tab:»_,trail:-
 " au BufRead,BufNew * match JpSpace /　/
 
-set tabstop=2                    " タブを表示するときの幅
-set shiftwidth=2                 " タブを挿入するときの幅
-set noexpandtab                  " タブをタブとして扱う(スペースに展開しない)
+set tabstop=4                                   " タブを表示するときの幅
+set shiftwidth=4                                " タブを挿入するときの幅
+set noexpandtab                                 " タブをタブとして扱う(スペースに展開しない)
 set softtabstop=0
 
-set foldmethod=marker            " folding
-set lazyredraw                   " コマンド実行中は再描写しない
-set ttyfast                      " 高速ターミナル接続
+set laststatus=2                                " ステータスラインの表示
+set cmdheight=1                                 " メッセージ表示欄の行数
+"set showtabline=2                              " タブラインの表示
+set ruler                                       " カーソルが何行目の何列目に置かれているかを表示する
 
-set laststatus=2                 " ステータスラインの表示
-set cmdheight=1                  " メッセージ表示欄の行数
-"set showtabline=2               " タブラインの表示
-set ruler                        " カーソルが何行目の何列目に置かれているかを表示する
-
-
-
-"========================================
-" カーソル変更
-"========================================
 if has('vim_starting')
-  " 挿入モード時に非点滅の縦棒タイプのカーソル
-  let &t_SI .= "\e[6 q"
-  " ノーマルモード時に非点滅のブロックタイプのカーソル
-  let &t_EI .= "\e[2 q"
-  " 置換モード時に非点滅の下線タイプのカーソル
-  let &t_SR .= "\e[4 q"
+  let &t_SI .= "\e[6 q"                         " 挿入モード時に非点滅の縦棒タイプのカーソル
+  let &t_EI .= "\e[2 q"                         " ノーマルモード時に非点滅のブロックタイプのカーソル
+  let &t_SR .= "\e[4 q"                         " 置換モード時に非点滅の下線タイプのカーソル
 endif
 
 
 "========================================
-" 検索関連
+" Search
 "========================================
-set hlsearch      " 検索文字列をハイライトする
-set incsearch     " インクリメンタルサーチを行う
-set ignorecase    " 大文字と小文字を区別しない
-set smartcase     " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
-set wrapscan      " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault      " 置換の時 g オプションをデフォルトで有効にする
-
+set hlsearch                                    " 検索文字列をハイライトする
+set incsearch                                   " インクリメンタルサーチを行う
+set ignorecase                                  " 大文字と小文字を区別しない
+set smartcase                                   " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan                                    " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault                                    " 置換の時 g オプションをデフォルトで有効にする
 
 
 "========================================
@@ -111,11 +86,10 @@ set gdefault      " 置換の時 g オプションをデフォルトで有効に
 nnoremap <C-]> g<C-]>
 
 
-" =============== 以下、プラグインの設定 ================
-
 "========================================
-" dein自身 (dein)
+" Plugins
 "========================================
+"=== Dein ===============================
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('$HOME/.vim/dein')
 " dein.vim 本体
@@ -152,10 +126,7 @@ if dein#check_install()
   call dein#install()
 endif
 
-
-"========================================
-" カラースキーマ (vim-tomorrow-theme)
-"========================================
+"=== ColorScheme ========================
 syntax on
 set background=dark
 set t_Co=256
@@ -163,9 +134,7 @@ set t_Co=256
 autocmd ColorScheme * highlight LineNr ctermfg=245
 colorscheme Tomorrow-Night
 
-"========================================
-" ステータスライン (lightline)
-"========================================
+"=== lightline ==========================
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
@@ -186,54 +155,41 @@ let g:lightline = {
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 
-
-"========================================
-" ファイルツリー (NERDTree)
-"========================================
+"=== NERDTree ===========================
 " key bind
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
-
-"========================================
-" git変更表示 (dein)
-"========================================
+"=== fugitive ===========================
 set updatetime=250                   " 反映されるまでの時間を変更
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
-"========================================
-" ファジー検索 (fzf)
-"========================================
-" 逆向きに表示
-" let g:fzf_layout = { 'up': '~40%' }
-
-" key bind
+"=== fzf ================================
 nnoremap <silent><C-f> :GFiles<CR>
 nnoremap <silent><C-s> :GFiles?<CR>
 nnoremap <silent><C-b> :Buffers<CR>
 nnoremap <silent><C-p> :Ag<CR>
 
-"========================================
-" 補完機能 (deoplete)
-"========================================
+"=== deoplete ===========================
+call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 
-"========================================
-" 検索数の表示 (anzu)
-"========================================
+"=== anzu ===============================
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 
-"========================================
-" ヌルヌルページ送り (comfortable-motion)
-"========================================
+"=== comfortable_motion =================
 "デフォルトをoff
 let g:comfortable_motion_no_default_key_mappings = 1
-
 " UとDのみ設定
 nnoremap <silent> <C-u> :call comfortable_motion#flick(-150)<CR>
 nnoremap <silent> <C-d> :call comfortable_motion#flick(150)<CR>
+

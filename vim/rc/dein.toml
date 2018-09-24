@@ -47,3 +47,10 @@ repo = 'rhysd/clever-f.vim'
 # ヌルヌルページ送り
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
+
+# 補完
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
