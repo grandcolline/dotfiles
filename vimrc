@@ -23,7 +23,7 @@ let g:netrw_dirhistmax=0                        " netrwを履歴しない
 
 " TODO: ファイルの保存場所設定を追記？
 
-set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有h
+set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
 nnoremap x "_x
 nnoremap c "_c
 nnoremap C "_C
