@@ -8,75 +8,75 @@
 "========================================
 " General
 "========================================
-set fenc=utf-8                                  " 文字コード
-set fileencoding=utf-8                          " 保存時の文字コード
-set fileencodings=utf-8,ucs-boms,euc-jp,cp932   " 読み込み時の文字コードの自動判別. 左側が優先
-set fileformats=unix,dos,mac                    " 改行コードの自動判別. 左側が優先
-set ambiwidth=double                            " □や○が崩れる問題を解決
+set fenc=utf-8                                " 文字コード
+set fileencoding=utf-8                        " 保存時の文字コード
+set fileencodings=utf-8,ucs-boms,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先
+set fileformats=unix,dos,mac                  " 改行コードの自動判別. 左側が優先
+set ambiwidth=double                          " □や○が崩れる問題を解決
 
-set nocompatible                                " Use Vim defaults instead of 100% vi compatibility
-set backspace=2                                 " more powerful backspacing
+set nocompatible                              " Use Vim defaults instead of 100% vi compatibility
+set backspace=2                               " more powerful backspacing
 
-set noswapfile                                  " swapファイルを作成しない
-set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
-let g:netrw_dirhistmax=0                        " netrwを履歴しない
+set noswapfile                                " swapファイルを作成しない
+set autoread                                  " 編集中ファイルが書き換えられたら、自動リロード
+let g:netrw_dirhistmax=0                      " netrwを履歴しない
 
-set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
+set clipboard=unnamed,unnamedplus             " クリップボードとyunk,putを共有
 nnoremap x "_x
 nnoremap c "_c
 nnoremap C "_C
 
-set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
-set history=5000                                " 保存するコマンド履歴の数
+set wildmenu wildmode=list:longest,full       " コマンドラインモードのファイル名タブ補完
+set history=5000                              " 保存するコマンド履歴の数
 
-set mouse=a                                     " マウス操作をオンにする
+set mouse=a                                   " マウス操作をオンにする
 
-set foldmethod=marker                           " folding
-set lazyredraw                                  " コマンド実行中は再描写しない
-set ttyfast                                     " 高速ターミナル接続
+set foldmethod=marker                         " folding
+set lazyredraw                                " コマンド実行中は再描写しない
+set ttyfast                                   " 高速ターミナル接続
 
-command! Q q                                    " Q => q
-command! W w                                    " W => w
+command! Q q                                  " Q => q
+command! W w                                  " W => w
 
 "========================================
 " View
 "========================================
-set number                                      " 行番号表示
-"set cursorline                                 " 行のハイライト
-"set cursorcolumn                               " 列のハイライト
-set showmatch                                   " 対応括弧のハイライト
-set matchtime=3                                 " 対応括弧のハイライトを3秒に
+set number                                    " 行番号表示
+"set cursorline                               " 行のハイライト
+"set cursorcolumn                             " 列のハイライト
+set showmatch                                 " 対応括弧のハイライト
+set matchtime=3                               " 対応括弧のハイライトを3秒に
 
-set list                                        " 不可視文字の表示設定
+set list                                      " 不可視文字の表示設定
 set list listchars=tab:»_,trail:-
 " au BufRead,BufNew * match JpSpace /　/
 
-set tabstop=4                                   " タブを表示するときの幅
-set shiftwidth=4                                " タブを挿入するときの幅
-set noexpandtab                                 " タブをタブとして扱う(スペースに展開しない)
+set tabstop=4                                 " タブを表示するときの幅
+set shiftwidth=4                              " タブを挿入するときの幅
+set noexpandtab                               " タブをタブとして扱う(スペースに展開しない)
 set softtabstop=0
 
-set laststatus=2                                " ステータスラインの表示
-set cmdheight=1                                 " メッセージ表示欄の行数
-"set showtabline=2                              " タブラインの表示
-set ruler                                       " カーソルが何行目の何列目に置かれているかを表示する
+set laststatus=2                              " ステータスラインの表示
+set cmdheight=1                               " メッセージ表示欄の行数
+"set showtabline=2                            " タブラインの表示
+set ruler                                     " カーソルが何行目の何列目に置かれているかを表示する
 
 if has('vim_starting')
-  let &t_SI .= "\e[6 q"                         " 挿入モード時に非点滅の縦棒タイプのカーソル
-  let &t_EI .= "\e[2 q"                         " ノーマルモード時に非点滅のブロックタイプのカーソル
-  let &t_SR .= "\e[4 q"                         " 置換モード時に非点滅の下線タイプのカーソル
+  let &t_SI .= "\e[6 q"                       " 挿入モード時に非点滅の縦棒タイプのカーソル
+  let &t_EI .= "\e[2 q"                       " ノーマルモード時に非点滅のブロックタイプのカーソル
+  let &t_SR .= "\e[4 q"                       " 置換モード時に非点滅の下線タイプのカーソル
 endif
 
 
 "========================================
 " Search
 "========================================
-set hlsearch                                    " 検索文字列をハイライトする
-set incsearch                                   " インクリメンタルサーチを行う
-set ignorecase                                  " 大文字と小文字を区別しない
-set smartcase                                   " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
-set wrapscan                                    " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault                                    " 置換の時 g オプションをデフォルトで有効にする
+set hlsearch                                  " 検索文字列をハイライトする
+set incsearch                                 " インクリメンタルサーチを行う
+set ignorecase                                " 大文字と小文字を区別しない
+set smartcase                                 " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan                                  " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault                                  " 置換の時 g オプションをデフォルトで有効にする
 
 
 "========================================
@@ -197,8 +197,19 @@ nmap # <Plug>(anzu-sharp)
 let g:nanomap_auto_open_close = 1
 
 "=== ALE ================================
-let g:ale_sign_column_always = 1    " 常に左側にスペースを確保
-let g:ale_set_highlights = 0        " ハイライトしない
+let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
+let g:ale_set_highlights = 0     " ハイライトしない
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '⚠'
 
+"=== easy-align =========================
+vmap <Enter> <Plug>(EasyAlign)
+
+"=== gothrough-jk =======================
+" jkでなく↑↓に割り当てる
+nmap ,j  <Plug>(gothrough-jk-j)
+nmap ,k  <Plug>(gothrough-jk-k)
+nmap ,gj <Plug>(gothrough-jk-gj)
+nmap ,gk <Plug>(gothrough-jk-gk)
+nmap <Up> <Plug>(gothrough-jk-k)
+nmap <Down> <Plug>(gothrough-jk-j)

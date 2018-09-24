@@ -27,7 +27,6 @@ repo = 'airblade/vim-gitgutter'
 repo = 'junegunn/fzf'
 build = './install --bin'
 merged = '0'
-
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
@@ -48,15 +47,17 @@ repo = 'rhysd/clever-f.vim'
 #[[plugins]]
 #repo = 'yuttie/comfortable-motion.vim'
 
-# 補完
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-
 # nano map
 [[plugins]]
 repo = 'hisaknown/nanomap.vim'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+# 整形ツール
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+# 高速移動
+[[plugins]]
+repo = 'deris/vim-gothrough-jk'
