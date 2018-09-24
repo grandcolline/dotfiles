@@ -21,8 +21,6 @@ set noswapfile                                  " swapファイルを作成し�
 set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
 let g:netrw_dirhistmax=0                        " netrwを履歴しない
 
-" TODO: ファイルの保存場所設定を追記？
-
 set clipboard=unnamed,unnamedplus               " クリップボードとyunk,putを共有
 nnoremap x "_x
 nnoremap c "_c
@@ -37,6 +35,8 @@ set foldmethod=marker                           " folding
 set lazyredraw                                  " コマンド実行中は再描写しない
 set ttyfast                                     " 高速ターミナル接続
 
+command! Q q                                    " Q => q
+command! W w                                    " W => w
 
 "========================================
 " View
@@ -156,9 +156,8 @@ let g:lightline = {
       \ }
 
 "=== NERDTree ===========================
-" key bind
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-let NERDTreeWinSize=50               " 横幅の大きさ
+let g:NERDTreeWinSize=40               " 横幅の大きさ
 
 "=== fugitive ===========================
 set updatetime=200                   " 反映されるまでの時間を変更
