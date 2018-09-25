@@ -42,7 +42,7 @@ command! W w                                  " W => w
 " View
 "========================================
 set number                                    " 行番号表示
-set relativenumber                            " 相対行の表示
+"set relativenumber                           " 相対行の表示
 "set cursorline                               " 行のハイライト
 "set cursorcolumn                             " 列のハイライト
 set showmatch                                 " 対応括弧のハイライト
