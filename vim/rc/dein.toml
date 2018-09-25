@@ -61,3 +61,8 @@ repo = 'junegunn/vim-easy-align'
 # 高速移動
 [[plugins]]
 repo = 'deris/vim-gothrough-jk'
+
+# インデント可視化
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
