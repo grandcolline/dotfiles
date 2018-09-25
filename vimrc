@@ -37,13 +37,15 @@ set ttyfast                                   " 高速ターミナル接続
 
 command! Q q                                  " Q => q
 command! W w                                  " W => w
+command! WQ wq                                " WQ => wq
+command! Wq wq                                " Wq => wq
 
 "========================================
 " View
 "========================================
 set number                                    " 行番号表示
-"set relativenumber                           " 相対行の表示
-"set cursorline                               " 行のハイライト
+set relativenumber                            " 相対行の表示
+set cursorline                                " 行のハイライト
 "set cursorcolumn                             " 列のハイライト
 set showmatch                                 " 対応括弧のハイライト
 set matchtime=3                               " 対応括弧のハイライトを3秒に
@@ -56,6 +58,7 @@ set tabstop=4                                 " タブを表示するときの�
 set shiftwidth=4                              " タブを挿入するときの幅
 set noexpandtab                               " タブをタブとして扱う(スペースに展開しない)
 set softtabstop=0
+set autoindent
 
 set laststatus=2                              " ステータスラインの表示
 set cmdheight=1                               " メッセージ表示欄の行数
@@ -83,8 +86,8 @@ set gdefault                                  " 置換の時 g オプション�
 "========================================
 " Key Binds
 "========================================
-" マッチウインドウ
-nnoremap <C-]> g<C-]>
+let mapleader = "\<Space>"                   " LeaderをSpaceキーにする
+nnoremap <C-]> g<C-]>                        " For ctags
 
 
 "========================================
@@ -157,19 +160,23 @@ let g:lightline = {
       \ }
 
 "=== NERDTree ===========================
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=40               " 横幅の大きさ
 
 "=== fugitive ===========================
 set updatetime=200                   " 反映されるまでの時間を変更
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap <silent><C-h> <Plug>GitGutterNextHunk
+"nmap <leader>hn <Plug>GitGutterNextHunk
+"nmap <leader>hN <Plug>GitGutterPrevHunk
 
 "=== fzf ================================
-nnoremap <silent><C-f> :GFiles<CR>
-nnoremap <silent><C-s> :GFiles?<CR>
-nnoremap <silent><C-b> :Buffers<CR>
-nnoremap <silent><C-p> :Ag<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>gf :GFiles<CR>
+nnoremap <leader>gs :GFiles?<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>w :Windows<CR>
+nnoremap <leader>tg :BTags<CR>
+nnoremap <leader>ag :Ag<CR>
 
 "=== deoplete ===========================
 call dein#add('Shougo/deoplete.nvim')
@@ -195,7 +202,7 @@ nmap # <Plug>(anzu-sharp)
 "nnoremap <silent> <C-d> :call comfortable_motion#flick(150)<CR>
 
 "=== nanomap ============================
-let g:nanomap_auto_open_close = 1
+"let g:nanomap_auto_open_close = 1
 
 "=== ALE ================================
 let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
@@ -214,3 +221,7 @@ nmap ,gj <Plug>(gothrough-jk-gj)
 nmap ,gk <Plug>(gothrough-jk-gk)
 nmap <Up> <Plug>(gothrough-jk-k)
 nmap <Down> <Plug>(gothrough-jk-j)
+
+"=== tag-bar ============================
+nmap <leader>tb :TagbarToggle<CR>
+

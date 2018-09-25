@@ -48,8 +48,8 @@ repo = 'rhysd/clever-f.vim'
 #repo = 'yuttie/comfortable-motion.vim'
 
 # nano map
-[[plugins]]
-repo = 'hisaknown/nanomap.vim'
+#[[plugins]]
+#repo = 'hisaknown/nanomap.vim'
 
 [[plugins]]
 repo = 'w0rp/ale'
@@ -66,3 +66,14 @@ repo = 'deris/vim-gothrough-jk'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 
+# Minimap
+[[plugins]]
+repo = 'severin-lemaignan/vim-minimap'
+
+# 不要な空白をハイライト
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# タグバー
+[[plugins]]
+repo = 'majutsushi/tagbar'
