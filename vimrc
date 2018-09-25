@@ -44,8 +44,8 @@ command! Wq wq                                " Wq => wq
 " View
 "========================================
 set number                                    " 行番号表示
-set relativenumber                            " 相対行の表示
-set cursorline                                " 行のハイライト
+"set relativenumber                            " 相対行の表示
+"set cursorline                                " 行のハイライト
 "set cursorcolumn                             " 列のハイライト
 set showmatch                                 " 対応括弧のハイライト
 set matchtime=3                               " 対応括弧のハイライトを3秒に
@@ -87,7 +87,9 @@ set gdefault                                  " 置換の時 g オプション�
 " Key Binds
 "========================================
 let mapleader = "\<Space>"                   " LeaderをSpaceキーにする
-nnoremap <C-]> g<C-]>                        " For ctags
+nnoremap <C-]> g<C-]>
+nnoremap <leader>j 9j
+nnoremap <leader>k 9k
 
 
 "========================================
