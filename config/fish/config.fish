@@ -25,6 +25,7 @@ alias g 'git'
 alias o 'open -R'
 alias b 'open -a Vivaldi'
 alias c 'clear'
+alias x 'exit'
 alias d 'docker'
 alias dc 'docker-compose'
 

@@ -86,10 +86,12 @@ set gdefault                                  " 置換の時 g オプション�
 "========================================
 " Key Binds
 "========================================
-let mapleader = "\<Space>"                   " LeaderをSpaceキーにする
 nnoremap <C-]> g<C-]>
-nnoremap <leader>j 9j
-nnoremap <leader>k 9k
+" Leaderを使うショートカット
+let mapleader = "\<Space>"
+noremap <leader>j 10j
+noremap <leader>k 10k
+"noremap <leader><Space>
 
 
 "========================================
@@ -199,9 +201,9 @@ nmap # <Plug>(anzu-sharp)
 "=== comfortable_motion =================
 "デフォルトをoff
 "let g:comfortable_motion_no_default_key_mappings = 1
-" UとDのみ設定
-"nnoremap <silent> <C-u> :call comfortable_motion#flick(-150)<CR>
-"nnoremap <silent> <C-d> :call comfortable_motion#flick(150)<CR>
+"" UとDのみ設定
+"nnoremap <silent> <C-u> :Minimap<CR>:call comfortable_motion#flick(-150)<CR>
+"nnoremap <silent> <C-d> :Minimap<CR>:call comfortable_motion#flick(150)<CR>
 
 "=== nanomap ============================
 "let g:nanomap_auto_open_close = 1
@@ -211,6 +213,8 @@ let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
 let g:ale_set_highlights = 0     " ハイライトしない
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '⚠'
+"highlight link ALEWarningSign String
+"highlight link ALEErrorSign Title
 
 "=== easy-align =========================
 vmap <Enter> <Plug>(EasyAlign)
@@ -221,8 +225,8 @@ nmap ,j  <Plug>(gothrough-jk-j)
 nmap ,k  <Plug>(gothrough-jk-k)
 nmap ,gj <Plug>(gothrough-jk-gj)
 nmap ,gk <Plug>(gothrough-jk-gk)
-nmap <Up> <Plug>(gothrough-jk-k)
-nmap <Down> <Plug>(gothrough-jk-j)
+"nmap <Up> <Plug>(gothrough-jk-k)
+"nmap <Down> <Plug>(gothrough-jk-j)
 
 "=== tag-bar ============================
 nmap <leader>tb :TagbarToggle<CR>
