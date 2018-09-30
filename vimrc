@@ -193,8 +193,10 @@ let g:NERDTreeWinSize=40               " 横幅の大きさ
 "=== fugitive ===========================
 set updatetime=200                   " 反映されるまでの時間を変更
 nmap <silent><C-h> <Plug>GitGutterNextHunk
-"nmap <leader>hn <Plug>GitGutterNextHunk
-"nmap <leader>hN <Plug>GitGutterPrevHunk
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
 "=== fzf ================================
 nnoremap <leader>f :Files<CR>
