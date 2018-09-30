@@ -91,6 +91,8 @@ nnoremap <C-]> g<C-]>
 let mapleader = "\<Space>"
 noremap <leader>j 10j
 noremap <leader>k 10k
+nnoremap <leader>o mzo<ESC>
+nnoremap <leader>O mzO<ESC>
 "noremap <leader><Space>
 
 
@@ -171,7 +173,7 @@ if dein#tap('ale')
     let l:count = ale#statusline#Count(bufnr(''))
     let l:errors = l:count.error + l:count.style_error
     let l:warnings = l:count.warning + l:count.style_warning
-    return l:count.total == 0 ? 'OK' : '⨉ :' . l:errors . ' ⚠ :' . l:warnings
+    return l:count.total == 0 ? '' : '⨉ :' . l:errors . ' ⚠ :' . l:warnings
   endfunction
 else
   function! LLAle()
