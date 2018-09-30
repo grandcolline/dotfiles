@@ -59,8 +59,8 @@ repo = 'w0rp/ale'
 repo = 'junegunn/vim-easy-align'
 
 # 高速移動
-[[plugins]]
-repo = 'deris/vim-gothrough-jk'
+#[[plugins]]
+#repo = 'deris/vim-gothrough-jk'
 
 # インデント可視化
 [[plugins]]
@@ -75,5 +75,5 @@ repo = 'severin-lemaignan/vim-minimap'
 repo = 'bronson/vim-trailing-whitespace'
 
 # タグバー
-[[plugins]]
-repo = 'majutsushi/tagbar'
+#[[plugins]]
+#repo = 'majutsushi/tagbar'

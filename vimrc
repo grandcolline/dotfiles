@@ -87,13 +87,18 @@ set gdefault                                  " 置換の時 g オプション�
 " Key Binds
 "========================================
 nnoremap <C-]> g<C-]>
-" Leaderを使うショートカット
+" 検索時に真ん中になるようにする
+nnoremap n nzz
+nnoremap N Nzz
+" Leaderをスペースに変更
 let mapleader = "\<Space>"
+"noremap <leader><Space>
+" 大きく移動
 noremap <leader>j 10j
 noremap <leader>k 10k
+" ノーマルモードで行追加
 nnoremap <leader>o mzo<ESC>
 nnoremap <leader>O mzO<ESC>
-"noremap <leader><Space>
 
 
 "========================================
@@ -197,7 +202,8 @@ nnoremap <leader>gf :GFiles<CR>
 nnoremap <leader>gs :GFiles?<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>w :Windows<CR>
-nnoremap <leader>tg :BTags<CR>
+nnoremap <leader>t :BTags<CR>
+nnoremap <leader>l :Lines<CR>
 nnoremap <leader>ag :Ag<CR>
 
 "=== deoplete ===========================
@@ -206,7 +212,7 @@ if !has('nvim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
 endif
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 
@@ -222,6 +228,13 @@ nmap # <Plug>(anzu-sharp)
 "" UとDのみ設定
 "nnoremap <silent> <C-u> :Minimap<CR>:call comfortable_motion#flick(-150)<CR>
 "nnoremap <silent> <C-d> :Minimap<CR>:call comfortable_motion#flick(150)<CR>
+
+"=== Minimap ===========================
+let g:minimap_toggle='<leader>m'
+" 適当な値を一旦入れておく(TODO: 解除する方法を調べる)
+let g:minimap_show='<leader>am'
+let g:minimap_update='<leader>am'
+let g:minimap_close='<leader>am'
 
 "=== nanomap ============================
 "let g:nanomap_auto_open_close = 1
@@ -247,5 +260,5 @@ nmap ,gk <Plug>(gothrough-jk-gk)
 "nmap <Down> <Plug>(gothrough-jk-j)
 
 "=== tag-bar ============================
-nmap <leader>tb :TagbarToggle<CR>
+"nmap <leader>tb :TagbarToggle<CR>
 
