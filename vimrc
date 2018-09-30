@@ -147,12 +147,15 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'filename', 'readonly', 'ale', 'modified' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \ },
+      \ 'component_function': {
+      \   'ale': 'LLAle',
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -162,6 +165,19 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+
+if dein#tap('ale')
+  function! LLAle()
+    let l:count = ale#statusline#Count(bufnr(''))
+    let l:errors = l:count.error + l:count.style_error
+    let l:warnings = l:count.warning + l:count.style_warning
+    return l:count.total == 0 ? 'OK' : '⨉ :' . l:errors . ' ⚠ :' . l:warnings
+  endfunction
+else
+  function! LLAle()
+    return ''
+  endfunction
+endif
 
 "=== NERDTree ===========================
 nnoremap <leader>n :NERDTreeToggle<CR>
