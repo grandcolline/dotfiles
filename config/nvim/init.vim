@@ -25,7 +25,6 @@ set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo   " viminfo
 
 set clipboard=unnamed,unnamedplus                    " クリップボードとyunk,putを共有
 nnoremap x "_x
-
 nnoremap c "_c
 nnoremap C "_C
 

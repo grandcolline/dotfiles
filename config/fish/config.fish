@@ -4,6 +4,7 @@
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
 
+
 # ---------------
 #  aliases
 # ---------------
@@ -22,6 +23,7 @@ alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %
 # Cheatsheet
 alias vcheat 'b $XDG_CONFIG_HOME/cheatsheets/vim.md'
 alias fcheat 'b $XDG_CONFIG_HOME/cheatsheets/fish.md'
+
 
 # ---------------
 #  key binds
@@ -42,9 +44,11 @@ function my_pwd_changed --on-variable PWD
 	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
 end
 
+
 # ---------------
 #  Include
 # ---------------
 if test -e $XDG_CONFIG_HOME/fish/config.local.fish
 	source $XDG_CONFIG_HOME/fish/config.local.fish
 end
+
