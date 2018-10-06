@@ -50,14 +50,14 @@ set ttimeoutlen=50
 " View
 "========================================
 set number                                           " 行番号表示
-"set relativenumber                                   " 相対行の表示
+"set relativenumber                                  " 相対行の表示
 set cursorline                                       " 行のハイライト
 "set cursorcolumn                                    " 列のハイライト
 set showmatch                                        " 対応括弧のハイライト
 set matchtime=3                                      " 対応括弧のハイライトを3秒に
 
 set list                                             " 不可視文字の表示設定
-set list listchars=tab:»_,trail:-
+" set list listchars=tab:»_,trail:-
 " au BufRead,BufNew * match JpSpace /　/
 
 set tabstop=4                                        " タブを表示するときの幅
@@ -87,18 +87,12 @@ set gdefault                                         " 置換の時 g オプシ�
 " Key Binds
 "========================================
 nnoremap <C-]> g<C-]>
-" 検索時に真ん中になるようにする
-nnoremap n nzz
-nnoremap N Nzz
-" Leaderをスペースに変更
-let mapleader = "\<Space>"
-"noremap <leader><Space>
-" 大きく移動
-noremap <leader>j 10j
+let mapleader = "\<Space>"                           " Leaderをスペースに変更
+noremap <leader>j 10j                                " 大きく移動
 noremap <leader>k 10k
-" ノーマルモードで行追加
-nnoremap <leader>o mzo<ESC>
+nnoremap <leader>o mzo<ESC>                          " ノーマルモードで行追加
 nnoremap <leader>O mzO<ESC>
+nmap <Leader><Tab> <C-w>w                            " Tabでウィンドウ移動
 
 
 "========================================
@@ -151,27 +145,27 @@ colorscheme Tomorrow-Night
 
 "=== lightline ==========================
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename', 'readonly', 'ale', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-      \ },
-      \ 'component_function': {
-      \   'ale': 'LLAle',
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': '⮀', 'right': '' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
+  \ 'colorscheme': 'jellybeans',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'fugitive', 'filename', 'readonly', 'ale', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+  \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+  \ },
+  \ 'component_function': {
+  \   'ale': 'LLAle',
+  \ },
+  \ 'component_visible_condition': {
+  \   'readonly': '(&filetype!="help"&& &readonly)',
+  \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+  \ },
+  \ 'separator': { 'left': '⮀', 'right': '' },
+  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+  \ }
 
 if dein#tap('ale')
   function! LLAle()
@@ -188,7 +182,8 @@ endif
 
 "=== NERDTree ===========================
 nnoremap <leader>n :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=40               " 横幅の大きさ
+let g:NERDTreeWinSize = 40                 " 横幅の大きさ
+let g:NEADTreeShowHidden = 1               " 不可視ファイルを表示する
 
 "=== fugitive ===========================
 set updatetime=200                   " 反映されるまでの時間を変更
@@ -219,22 +214,12 @@ nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 
-"=== comfortable_motion =================
-"デフォルトをoff
-"let g:comfortable_motion_no_default_key_mappings = 1
-"" UとDのみ設定
-"nnoremap <silent> <C-u> :Minimap<CR>:call comfortable_motion#flick(-150)<CR>
-"nnoremap <silent> <C-d> :Minimap<CR>:call comfortable_motion#flick(150)<CR>
-
 "=== Minimap ===========================
 let g:minimap_toggle='<leader>m'
 " 適当な値を一旦入れておく(TODO: 解除する方法を調べる)
 let g:minimap_show='<leader>am'
 let g:minimap_update='<leader>am'
 let g:minimap_close='<leader>am'
-
-"=== nanomap ============================
-"let g:nanomap_auto_open_close = 1
 
 "=== ALE ================================
 let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
@@ -246,16 +231,4 @@ let g:ale_sign_warning = '⚠'
 
 "=== easy-align =========================
 vmap <Enter> <Plug>(EasyAlign)
-
-"=== gothrough-jk =======================
-" jkでなく↑↓に割り当てる
-nmap ,j  <Plug>(gothrough-jk-j)
-nmap ,k  <Plug>(gothrough-jk-k)
-nmap ,gj <Plug>(gothrough-jk-gj)
-nmap ,gk <Plug>(gothrough-jk-gk)
-"nmap <Up> <Plug>(gothrough-jk-k)
-"nmap <Down> <Plug>(gothrough-jk-j)
-
-"=== tag-bar ============================
-"nmap <leader>tb :TagbarToggle<CR>
 

@@ -47,20 +47,13 @@ repo = 'rhysd/clever-f.vim'
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
 
-# nano map
-#[[plugins]]
-#repo = 'hisaknown/nanomap.vim'
-
+# シンタックスチェック
 [[plugins]]
 repo = 'w0rp/ale'
 
 # 整形ツール
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
-
-# 高速移動
-#[[plugins]]
-#repo = 'deris/vim-gothrough-jk'
 
 # インデント可視化
 [[plugins]]
@@ -74,6 +67,3 @@ repo = 'severin-lemaignan/vim-minimap'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
-# タグバー
-#[[plugins]]
-#repo = 'majutsushi/tagbar'
