@@ -21,7 +21,3 @@ $ set -x XDG_CONFIG_HOME $HOME/.config
 $ ./setup.sh
 ```
 
-## Note
-
-https://grandcolline.github.io/dotfiles/
-
