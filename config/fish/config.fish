@@ -3,19 +3,6 @@
 # --------------
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
-# Java
-set -x JAVA_HOME (/usr/libexec/java_home)
-# Node
-set -x PATH $HOME/.nodebrew/current/bin $PATH
-set -x PATH $HOME/.npmbrew/current/bin $PATH
-# Ruby
-rbenv init - | source
-# GO
-set -x GOPATH /develop
-set -x PATH /develop/bin $PATH
-# For Docker BuildKit
-set -x DOCKER_BUILDKIT 1
-
 
 # ---------------
 #  aliases
@@ -32,6 +19,9 @@ alias dc 'docker-compose'
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(date)'
 
+# Cheatsheet
+alias vcheat 'b $XDG_CONFIG_HOME/cheatsheets/vim.md'
+alias fcheat 'b $XDG_CONFIG_HOME/cheatsheets/fish.md'
 
 # ---------------
 #  key binds

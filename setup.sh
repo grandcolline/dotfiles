@@ -34,4 +34,8 @@ ln -vsfn $dir_path/vimrc $HOME/.vimrc
 ln -vsfn $dir_path/vim $HOME/.vim
 echo ""
 
+# cheat sheets
+echo "===== CheatSheet setting ====="
+ln -vsfn $dir_path/config/cheatsheets $XDG_CONFIG_HOME/cheatsheets
+echo ""
 
