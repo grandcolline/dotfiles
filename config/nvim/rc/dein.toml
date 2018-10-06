@@ -27,7 +27,6 @@ repo = 'airblade/vim-gitgutter'
 repo = 'junegunn/fzf'
 build = './install --bin'
 merged = '0'
-
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
@@ -47,3 +46,34 @@ repo = 'rhysd/clever-f.vim'
 # ヌルヌルページ送り
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
+
+# nano map
+#[[plugins]]
+#repo = 'hisaknown/nanomap.vim'
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+# 整形ツール
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+# 高速移動
+#[[plugins]]
+#repo = 'deris/vim-gothrough-jk'
+
+# # インデント可視化
+# [[plugins]]
+# repo = 'Yggdroot/indentLine'
+
+# Minimap
+[[plugins]]
+repo = 'severin-lemaignan/vim-minimap'
+
+# 不要な空白をハイライト
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+# タグバー
+#[[plugins]]
+#repo = 'majutsushi/tagbar'

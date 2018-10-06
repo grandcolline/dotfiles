@@ -1,116 +1,107 @@
-"========================================
-" 初期設定
-"========================================
-" Configuration file for vim
-" set modelines=0		" CVE-2007-2438
-
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-" set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-" set backspace=2		" more powerful backspacing
-
-" Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
-" Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup nobackup
-
-
+"            _
+"     __   _(_)_ __ ___  _ __ ___
+"     \ \ / / | '_ ` _ \| '__/ __|
+"      \ V /| | | | | | | | | (__
+"     (_)_/ |_|_| |_| |_|_|  \___|
+"
 
 "========================================
-" 基本設定
+" General
 "========================================
-" 文字コード
-set fenc=utf-8
-set fileencoding=utf-8                          " 保存時の文字コード
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932   " 読み込み時の文字コードの自動判別. 左側が優先
-set fileformats=unix,dos,mac                    " 改行コードの自動判別. 左側が優先
-" set ambiwidth=double                            " □や○文字が崩れる問題を解決
+set fenc=utf-8                                " 文字コード
+set fileencoding=utf-8                        " 保存時の文字コード
+set fileencodings=utf-8,ucs-boms,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先
+set fileformats=unix,dos,mac                  " 改行コードの自動判別. 左側が優先
+set ambiwidth=double                          " □や○が崩れる問題を解決
 
+set nocompatible                              " Use Vim defaults instead of 100% vi compatibility
+set backspace=2                               " more powerful backspacing
 
-" ファイルの保存場所など
-set noswapfile                                  " swapファイルを作成しない
-set autoread                                    " 編集中ファイルが書き換えられたら、自動リロード
+set noswapfile                                " swapファイルを作成しない
+set autoread                                  " 編集中ファイルが書き換えられたら、自動リロード
 set undodir=$XDG_CONFIG_HOME/nvim/cache/vim-undo     " undo(test.txt.un~)
 set backupdir=$XDG_CONFIG_HOME/nvim/cache/vim-backup " bachup(test.txt~)
 set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo   " viminfo
 
-" クリップボードとyunk,putを共有
-set clipboard=unnamed,unnamedplus
-
-" yunkしないkey設定
-"nnoremap D "_D
-"nnoremap d "_d
+set clipboard=unnamed,unnamedplus             " クリップボードとyunk,putを共有
 nnoremap x "_x
-nnoremap C "_C
 nnoremap c "_c
+nnoremap C "_C
 
-set wildmenu wildmode=list:longest,full         " コマンドラインモードのファイル名タブ補完
-set history=5000                                " 保存するコマンド履歴の数
+set wildmenu wildmode=list:longest,full       " コマンドラインモードのファイル名タブ補完
+set history=5000                              " 保存するコマンド履歴の数
 
-"set ttimeout                                    " neoVim文字化け問題
-"set ttimeoutlen=50
+set mouse=a                                   " マウス操作をオンにする
 
-set mouse=a                                     " マウス操作をonにする
+set foldmethod=marker                         " folding
+set lazyredraw                                " コマンド実行中は再描写しない
+set ttyfast                                   " 高速ターミナル接続
 
+command! Q q                                  " Q => q
+command! W w                                  " W => w
+command! WQ wq                                " WQ => wq
+command! Wq wq                                " Wq => wq
 
 
 "========================================
-" VIEW
+" View
 "========================================
-set number             " 行番号表示
-set cursorline         " 行のハイライト
-"hi clear CursorLine
-set showmatch          " 対応括弧のハイライト
-set matchtime=3        " 対応括弧のハイライトを3秒に
+set number                                    " 行番号表示
+"set relativenumber                            " 相対行の表示
+set cursorline                                " 行のハイライト
+"set cursorcolumn                             " 列のハイライト
+set showmatch                                 " 対応括弧のハイライト
+set matchtime=3                               " 対応括弧のハイライトを3秒に
 
-set list               " 不可視文字表示
-" set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
-" highlight JpSpace cterm=underline ctermfg=7 guifg=7 " 全角スペースの可視化
+set list                                      " 不可視文字の表示設定
+set list listchars=tab:»_,trail:-
 " au BufRead,BufNew * match JpSpace /　/
 
-" set display=uhex       " 印字不可能文字を16進数で表示
-
-set tabstop=4          " タブを表示するときの幅
-set shiftwidth=4       " タブを挿入するときの幅
-set noexpandtab        " タブをタブとして扱う(スペースに展開しない)
+set tabstop=4                                 " タブを表示するときの幅
+set shiftwidth=4                              " タブを挿入するときの幅
+set noexpandtab                               " タブをタブとして扱う(スペースに展開しない)
 set softtabstop=0
+set autoindent
 
-set foldmethod=marker  " folding
-set lazyredraw         " コマンド実行中は再描写しない
-set ttyfast            " 高速ターミナル接続
-
-set laststatus=2       " ステータスラインの表示
-set cmdheight=1        " メッセージ表示欄の行数
-"set showtabline=2     " タブラインの表示
-set ruler              " カーソルが何行目の何列目に置かれているかを表示する
-
+set laststatus=2                              " ステータスラインの表示
+set cmdheight=1                               " メッセージ表示欄の行数
+"set showtabline=2                            " タブラインの表示
+set ruler                                     " カーソルが何行目の何列目に置かれているかを表示する
 
 
 "========================================
-" 検索関連
+" Search
 "========================================
-set hlsearch      " 検索文字列をハイライトする
-set incsearch     " インクリメンタルサーチを行う
-set ignorecase    " 大文字と小文字を区別しない
-set smartcase     " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
-set wrapscan      " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault      " 置換の時 g オプションをデフォルトで有効にする
-
+set hlsearch                                  " 検索文字列をハイライトする
+set incsearch                                 " インクリメンタルサーチを行う
+set ignorecase                                " 大文字と小文字を区別しない
+set smartcase                                 " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan                                  " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault                                  " 置換の時 g オプションをデフォルトで有効にする
 
 
 "========================================
 " Key Binds
 "========================================
-" マッチウインドウ
 nnoremap <C-]> g<C-]>
+" 検索時に真ん中になるようにする
+nnoremap n nzz
+nnoremap N Nzz
+" Leaderをスペースに変更
+let mapleader = "\<Space>"
+"noremap <leader><Space>
+" 大きく移動
+noremap <leader>j 10j
+noremap <leader>k 10k
+" ノーマルモードで行追加
+nnoremap <leader>o mzo<ESC>
+nnoremap <leader>O mzO<ESC>
 
-
-
-" =============== 以下、プラグインの設定 ================
 
 "========================================
-" dein自身 (dein)
+" Plugins
 "========================================
+"=== Dein ===============================
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('$XDG_CONFIG_HOME/nvim/dein')
 " dein.vim 本体
@@ -147,30 +138,28 @@ if dein#check_install()
   call dein#install()
 endif
 
-
-"========================================
-" カラースキーマ (vim-tomorrow-theme)
-"========================================
-syntax enable
-"set background=dark
+"=== ColorScheme ========================
+syntax on
+set background=dark
+set t_Co=256
 
 autocmd ColorScheme * highlight LineNr ctermfg=245
 colorscheme Tomorrow-Night
 
-
-"========================================
-" ステータスライン (lightline)
-"========================================
+"=== lightline ==========================
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'filename', 'readonly', 'ale', 'modified' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \ },
+      \ 'component_function': {
+      \   'ale': 'LLAle',
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -181,48 +170,89 @@ let g:lightline = {
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 
+if dein#tap('ale')
+  function! LLAle()
+    let l:count = ale#statusline#Count(bufnr(''))
+    let l:errors = l:count.error + l:count.style_error
+    let l:warnings = l:count.warning + l:count.style_warning
+    return l:count.total == 0 ? '' : '⨉ :' . l:errors . ' ⚠ :' . l:warnings
+  endfunction
+else
+  function! LLAle()
+    return ''
+  endfunction
+endif
 
-"========================================
-" ファイルツリー (NERDTree)
-"========================================
-" key bind
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+"=== NERDTree ===========================
+nnoremap <leader>n :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=40               " 横幅の大きさ
 
+"=== fugitive ===========================
+set updatetime=200                   " 反映されるまでの時間を変更
+nmap <silent><C-h> <Plug>GitGutterNextHunk
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
-"========================================
-" ファジー検索 (fzf)
-"========================================
-" 逆向きに表示
-" let g:fzf_layout = { 'up': '~40%' }
+"=== fzf ================================
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>gf :GFiles<CR>
+nnoremap <leader>gs :GFiles?<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>w :Windows<CR>
+nnoremap <leader>t :BTags<CR>
+nnoremap <leader>l :Lines<CR>
+nnoremap <leader>ag :Ag<CR>
 
-" key bind
-nnoremap <silent><C-f> :GFiles<CR>
-nnoremap <silent><C-s> :GFiles?<CR>
-nnoremap <silent><C-b> :Buffers<CR>
-nnoremap <silent><C-p> :Ag<CR>
-
-"========================================
-" 補完機能 (deoplete)
-"========================================
+"=== deoplete ===========================
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 
-"========================================
-" 検索数の表示 (anzu)
-"========================================
+"=== anzu ===============================
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 
-"========================================
-" ヌルヌルページ送り (comfortable-motion)
-"========================================
+"=== comfortable_motion =================
 "デフォルトをoff
-let g:comfortable_motion_no_default_key_mappings = 1
+"let g:comfortable_motion_no_default_key_mappings = 1
+"" UとDのみ設定
+"nnoremap <silent> <C-u> :Minimap<CR>:call comfortable_motion#flick(-150)<CR>
+"nnoremap <silent> <C-d> :Minimap<CR>:call comfortable_motion#flick(150)<CR>
 
-" UとDのみ設定
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-150)<CR>
-nnoremap <silent> <C-d> :call comfortable_motion#flick(150)<CR>
+"=== Minimap ===========================
+let g:minimap_toggle='<leader>m'
+" 適当な値を一旦入れておく(TODO: 解除する方法を調べる)
+let g:minimap_show='<leader>am'
+let g:minimap_update='<leader>am'
+let g:minimap_close='<leader>am'
+
+"=== nanomap ============================
+"let g:nanomap_auto_open_close = 1
+
+"=== ALE ================================
+let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
+let g:ale_set_highlights = 0     " ハイライトしない
+let g:ale_sign_error = '⨉'
+let g:ale_sign_warning = '⚠'
+"highlight link ALEWarningSign String
+"highlight link ALEErrorSign Title
+
+"=== easy-align =========================
+vmap <Enter> <Plug>(EasyAlign)
+
+"=== gothrough-jk =======================
+" jkでなく↑↓に割り当てる
+nmap ,j  <Plug>(gothrough-jk-j)
+nmap ,k  <Plug>(gothrough-jk-k)
+nmap ,gj <Plug>(gothrough-jk-gj)
+nmap ,gk <Plug>(gothrough-jk-gk)
+"nmap <Up> <Plug>(gothrough-jk-k)
+"nmap <Down> <Plug>(gothrough-jk-j)
+
+"=== tag-bar ============================
+"nmap <leader>tb :TagbarToggle<CR>
 
