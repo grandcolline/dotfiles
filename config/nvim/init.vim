@@ -87,12 +87,16 @@ set gdefault                                         " 置換の時 g オプシ�
 " Key Binds
 "========================================
 nnoremap <C-]> g<C-]>
-let mapleader = "\<Space>"                           " Leaderをスペースに変更
-noremap <leader>j 10j                                " 大きく移動
+" Leaderをスペースに変更
+let mapleader = "\<Space>"
+" 大きく移動
+noremap <leader>j 10j
 noremap <leader>k 10k
-nnoremap <leader>o mzo<ESC>                          " ノーマルモードで行追加
+" ノーマルモードで行追加
+nnoremap <leader>o mzo<ESC>
 nnoremap <leader>O mzO<ESC>
-nmap <Leader><Tab> <C-w>w                            " Tabでウィンドウ移動
+" Tabでウィンドウ移動
+nmap <Leader><Tab> <C-w>w
 
 
 "========================================
