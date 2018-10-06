@@ -14,6 +14,7 @@ alias o 'open -R'
 alias b 'open -a Vivaldi'
 alias c 'clear'
 alias x 'exit'
+alias t 'tmux'
 alias d 'docker'
 alias dc 'docker-compose'
 
