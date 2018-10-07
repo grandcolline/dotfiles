@@ -97,6 +97,8 @@ nnoremap <leader>o mzo<ESC>
 nnoremap <leader>O mzO<ESC>
 " Tabでウィンドウ移動
 nmap <Leader><Tab> <C-w>w
+" ESCでターミナルモードから抜ける
+tnoremap <silent> <ESC> <C-\><C-n>
 
 
 "========================================

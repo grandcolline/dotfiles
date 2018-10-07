@@ -22,7 +22,7 @@ alias dc 'docker-compose'
 alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %Y %T")'
 
 # Cheatsheet
-alias vcheat 'b $XDG_CONFIG_HOME/cheatsheets/vim.md'
+alias vcheat 'b $XDG_CONFIG_HOME/cheatsheets/neovim.md'
 alias fcheat 'b $XDG_CONFIG_HOME/cheatsheets/fish.md'
 
 
