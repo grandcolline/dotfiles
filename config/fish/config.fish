@@ -21,6 +21,9 @@ alias dc 'docker-compose'
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %Y %T")'
 
+# k8sを除いて表示するdockerコマンド
+alias dps 'docker ps -a | grep -v " k8s_"'
+
 # Cheatsheet
 alias vcheat 'b $XDG_CONFIG_HOME/cheatsheets/neovim.md'
 alias fcheat 'b $XDG_CONFIG_HOME/cheatsheets/fish.md'
@@ -36,8 +39,8 @@ function fish_user_key_bindings
 	bind \cl\cl '__fzf_git_log -a'
 	bind \cs '__fzf_git_status'
 	bind \cd '__fzf_directory -f'
-	bind \cd\cd '__fzf_docker_container -a'
-	bind \co '__fzf_docker_images'
+	bind \cd\cd '__fzf_docker_container -a -i'
+	bind \co '__fzf_docker_images -i'
 	bind \cf '__fzf_file -g'
 end
 
