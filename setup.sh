@@ -31,7 +31,6 @@ echo ""
 # vim
 echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
-ln -vsfn $dir_path/vim $HOME/.vim
 echo ""
 
 # cheat sheets
