@@ -3,6 +3,7 @@
 # --------------
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
+set -x GO111MODULE on
 
 
 # ---------------

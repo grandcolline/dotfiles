@@ -190,6 +190,7 @@ endif
 nnoremap <leader>n :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40                 " 横幅の大きさ
 let g:NEADTreeShowHidden = 1               " 不可視ファイルを表示する
+let g:NERDTreeDirArrows = 1
 
 "=== fugitive ===========================
 set updatetime=200                   " 反映されるまでの時間を変更
