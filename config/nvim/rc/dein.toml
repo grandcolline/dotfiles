@@ -60,8 +60,8 @@ repo = 'junegunn/vim-easy-align'
 repo = 'Yggdroot/indentLine'
 
 # Minimap
-[[plugins]]
-repo = 'severin-lemaignan/vim-minimap'
+# [[plugins]]
+# repo = 'severin-lemaignan/vim-minimap'
 
 # 不要な空白をハイライト
 [[plugins]]

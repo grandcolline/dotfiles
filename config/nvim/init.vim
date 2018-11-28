@@ -222,11 +222,11 @@ nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 
 "=== Minimap ===========================
-let g:minimap_toggle='<leader>m'
+"let g:minimap_toggle='<leader>m'
 " 適当な値を一旦入れておく(TODO: 解除する方法を調べる)
-let g:minimap_show='<leader>am'
-let g:minimap_update='<leader>am'
-let g:minimap_close='<leader>am'
+"let g:minimap_show='<leader>am'
+"let g:minimap_update='<leader>am'
+"let g:minimap_close='<leader>am'
 
 "=== ALE ================================
 let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
