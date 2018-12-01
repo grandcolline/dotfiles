@@ -52,12 +52,12 @@ repo = 'yuttie/comfortable-motion.vim'
 repo = 'w0rp/ale'
 
 # 整形ツール
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
+# [[plugins]]
+# repo = 'junegunn/vim-easy-align'
 
 # インデント可視化
-[[plugins]]
-repo = 'Yggdroot/indentLine'
+# [[plugins]]
+# repo = 'Yggdroot/indentLine'
 
 # Minimap
 # [[plugins]]
@@ -67,3 +67,6 @@ repo = 'Yggdroot/indentLine'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
+# アイコン表示
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'

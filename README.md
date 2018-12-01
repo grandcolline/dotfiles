@@ -20,3 +20,7 @@ $ set -x XDG_CONFIG_HOME $HOME/.config
 $ ./setup.sh
 ```
 
+## Font
+
+[Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample)
+

@@ -12,7 +12,7 @@ set fenc=utf-8                            " 文字コード
 set fileencoding=utf-8                    " 保存時の文字コード
 set fileencodings=utf-8                   " 読み込み時の文字コードの自動判別. 左側が優先
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
-set ambiwidth=double                      " □や○が崩れる問題を解決
+" set ambiwidth=double                      " □や○が崩れる問題を解決
 
 set nocompatible                          " Use Vim defaults instead of 100% vi compatibility
 set backspace=2                           " more powerful backspacing
@@ -168,14 +168,16 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'ale': 'LLAle',
+  \   'filetype': 'MyFiletype',
+  \   'fileformat': 'MyFileformat',
   \ },
   \ 'component_visible_condition': {
   \   'readonly': '(&filetype!="help"&& &readonly)',
   \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
   \ },
-  \ 'separator': { 'left': '⮀', 'right': '' },
-  \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+  \ 'separator': { 'left': '⮀ ', 'right': ' ' },
+  \ 'subseparator': { 'left': '⮁ ', 'right': ' ⮃' }
   \ }
 
 if dein#tap('ale')
@@ -190,6 +192,14 @@ else
     return ''
   endfunction
 endif
+
+" vim-deviconsの設定
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 "=== NERDTree ===========================
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -234,8 +244,9 @@ nmap # <Plug>(anzu-sharp)
 "let g:minimap_close='<leader>am'
 
 "=== ALE ================================
-let g:ale_sign_column_always = 1 " 常に左側にスペースを確保
-let g:ale_set_highlights = 0     " ハイライトしない
+let g:ale_sign_column_always = 1       " 常に左側にスペースを確保
+let g:ale_set_highlights = 0           " ハイライトしない
+let g:ale_lint_on_text_changed = 0     " 保存時のみ実行する
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '⚠'
 "highlight link ALEWarningSign String
