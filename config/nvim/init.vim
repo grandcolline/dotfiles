@@ -253,5 +253,5 @@ let g:ale_sign_warning = '⚠'
 "highlight link ALEErrorSign Title
 
 "=== easy-align =========================
-vmap <Enter> <Plug>(EasyAlign)
+"vmap <Enter> <Plug>(EasyAlign)
 
