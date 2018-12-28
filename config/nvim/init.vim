@@ -95,8 +95,8 @@ nnoremap <C-]> g<C-]>
 " Leaderをスペースに変更
 let mapleader = "\<Space>"
 " 大きく移動
-noremap <leader>j 10j
-noremap <leader>k 10k
+noremap <leader>j 15j
+noremap <leader>k 15k
 " ノーマルモードで行追加
 nnoremap <leader>o mzo<ESC>
 nnoremap <leader>O mzO<ESC>
