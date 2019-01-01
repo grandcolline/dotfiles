@@ -34,17 +34,15 @@ alias fcheat 'b $XDG_CONFIG_HOME/cheatsheets/fish.md'
 # ---------------
 #  key binds
 # ---------------
-function fish_user_key_bindings
-	bind \cr '__fzf_history'
-	bind \cb '__fzf_git_branch -a'
-	bind \cl '__fzf_git_log'
-	bind \cl\cl '__fzf_git_log -a'
-	bind \cs '__fzf_git_status'
-	bind \cd '__fzf_directory -f'
-	bind \cd\cd '__fzf_docker_container -a -i'
-	bind \co '__fzf_docker_images -i'
-	bind \cf '__fzf_file -g'
-end
+bind \cr '__fzf_history'
+bind \cb '__fzf_git_branch -a'
+bind \cl '__fzf_git_log'
+#bind \cl\cl '__fzf_git_log -a'
+bind \cs '__fzf_git_status'
+bind \cd '__fzf_directory -f'
+#bind \cd\cd '__fzf_docker_container -a -i'
+bind \co '__fzf_docker_images -i'
+bind \cf '__fzf_file -g'
 
 function my_pwd_changed --on-variable PWD
 	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
