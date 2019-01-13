@@ -1,8 +1,6 @@
 config/git/local
 config/nvim/dein/
-config/nvim/cache/vim-backup/*
-config/nvim/cache/vim-undo/*
-config/nvim/cache/nviminfo
+config/nvim/cache/*
 config/fish/fishd.*
 config/fish/config.local.fish
 vim/dein/

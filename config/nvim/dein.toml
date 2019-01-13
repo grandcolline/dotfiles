@@ -59,10 +59,6 @@ repo = 'w0rp/ale'
 # [[plugins]]
 # repo = 'Yggdroot/indentLine'
 
-# Minimap
-# [[plugins]]
-# repo = 'severin-lemaignan/vim-minimap'
-
 # 不要な空白をハイライト
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
