@@ -127,6 +127,14 @@ let g:gitgutter_sign_modified_removed = '∙'
 
 
 "========================================
+" EasyMotion
+"========================================
+" デフォルトはオフ
+let g:EasyMotion_do_mapping = 0
+" keymapはkeymap.vimに。
+
+
+"========================================
 " Deoplete
 "========================================
 let g:deoplete#enable_at_startup = 1

@@ -7,22 +7,30 @@ noremap <Right> <Nop>
 " ctags
 nnoremap <C-]> g<C-]>
 
+" ESCでターミナルモードから抜ける
+"tnoremap <silent> <ESC> <C-\><C-n>
+
+
+"========================================
+" Leaderの設定
+"========================================
 " Leaderをスペースに変更
 let mapleader = "\<Space>"
 
-" 大きく移動
-noremap <leader>j 15j
-noremap <leader>k 15k
-
-" ノーマルモードで行追加
-nnoremap <leader>o mzo<ESC>
-nnoremap <leader>O mzO<ESC>
+" easymotion
+map  <Leader><Space> <Plug>(easymotion-bd-w)
+nmap <Leader><Space> <Plug>(easymotion-overwin-w)
 
 " Tabでウィンドウ移動
 nmap <Leader><Tab> <C-w>w
 
-" ESCでターミナルモードから抜ける
-"tnoremap <silent> <ESC> <C-\><C-n>
+" 大きく移動
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" ノーマルモードで行追加
+noremap <leader>o mzo<ESC>
+noremap <leader>O mzO<ESC>
 
 " fzf
 nnoremap <leader>f :Files<CR>
