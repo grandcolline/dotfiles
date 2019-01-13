@@ -67,5 +67,6 @@ repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
+# Esay motion
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
