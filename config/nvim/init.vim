@@ -91,7 +91,7 @@ set inccommand=split                      " 置換のインクリメンタル表
 "========================================
 " Key Mapping
 "========================================
-source $XDG_CONFIG_HOME/nvim/keymap.vim
+source $XDG_CONFIG_HOME/nvim/mapping.vim
 
 "========================================
 " Plugins
