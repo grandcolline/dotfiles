@@ -21,17 +21,19 @@ map / <Plug>(easymotion-sn)
 let mapleader = "\<Space>"
 
 " easymotion
+"map  <Leader><Space> <Plug>(easymotion-bd-w)
+"nmap <Leader><Space> <Plug>(easymotion-overwin-w)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-map  <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
+"map  <Leader>l <Plug>(easymotion-bd-jk)
+"nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Tabでウィンドウ移動
 nmap <Leader><Tab> <C-w>w
 
 " 大きく移動
-map <Leader>j 10j
-map <Leader>k 10k
+map <Leader>j <Plug>(signjk-j)
+map <Leader>k <Plug>(signjk-k)
 
 " ノーマルモードで行追加
 noremap <leader>o mzo<ESC>
@@ -44,7 +46,7 @@ nnoremap <leader>gs :GFiles?<CR>
 nnoremap <leader>b :Buffers<CR>
 "nnoremap <leader>w :Windows<CR>
 nnoremap <leader>t :BTags<CR>
-nnoremap <leader>s :Lines<CR>
+nnoremap <leader>l :Lines<CR>
 nnoremap <leader>ag :Ag<CR>
 
 " NERDTree

@@ -130,9 +130,10 @@ let g:gitgutter_sign_modified_removed = '∙'
 " EasyMotion
 "========================================
 " keymapはkeymap.vimに。
-let g:EasyMotion_do_mapping = 0      " デフォルトのマッピングをオフ
-let g:EasyMotion_smartcase = 1       " 検索時大文字小文字を区別しない
-let g:EasyMotion_keys = 'wertasdfgyuiophjklzxcvbnm'
+let g:EasyMotion_do_mapping = 0       " デフォルトのマッピングをオフ
+let g:EasyMotion_smartcase = 1        " 検索時大文字小文字を区別しない
+let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
+"let g:EasyMotion_keys = 'wertasdfgyuiophjklzxcvbnm'
 
 
 "========================================

@@ -70,3 +70,6 @@ repo = 'ryanoasis/vim-devicons'
 # Esay motion
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
+
+[[plugins]]
+repo = 'haya14busa/vim-signjk-motion'
