@@ -105,7 +105,6 @@ endfunction
 let g:NERDTreeWinSize = 40                 " 横幅の大きさ
 let g:NEADTreeShowHidden = 1               " 不可視ファイルを表示する
 let g:NERDTreeDirArrows = 1
-
 " keymapはkeymap.vimに。
 
 
@@ -113,11 +112,18 @@ let g:NERDTreeDirArrows = 1
 " Fugitive
 "========================================
 set updatetime=200                   " 反映されるまでの時間を変更
-nmap <silent><C-h> <Plug>GitGutterNextHunk
-let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '∙'
-let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_modified_removed = '∙'
+
+
+"========================================
+" GitGutter
+"========================================
+" defaultのmappingはオフに
+" keymapはkeymap.vimに。
+let g:gitgutter_map_keys = 0
 
 
 "========================================

@@ -20,35 +20,23 @@ map / <Plug>(easymotion-sn)
 " Leaderをスペースに変更
 let mapleader = "\<Space>"
 
-" easymotion
-"map  <Leader><Space> <Plug>(easymotion-bd-w)
-"nmap <Leader><Space> <Plug>(easymotion-overwin-w)
+nmap <leader>a :Ag<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>f :Files<CR>
+nmap <Leader>h <Plug>GitGutterNextHunk
+nmap <Leader>H <Plug>GitGutterPrevHunk
+map  <Leader>j <Plug>(signjk-j)
+map  <Leader>k <Plug>(signjk-k)
+nmap <leader>l :Lines<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>o mzo<ESC>
+nmap <leader>O mzO<ESC>
+nmap <leader>s :GFiles?<CR>
+nmap <leader>t :BTags<CR>
+nmap <Leader>v <Plug>GitGutterPreviewHunk
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-"map  <Leader>l <Plug>(easymotion-bd-jk)
-"nmap <Leader>l <Plug>(easymotion-overwin-line)
 
-" Tabでウィンドウ移動
-nmap <Leader><Tab> <C-w>w
-
-" 大きく移動
-map <Leader>j <Plug>(signjk-j)
-map <Leader>k <Plug>(signjk-k)
-
-" ノーマルモードで行追加
-noremap <leader>o mzo<ESC>
-noremap <leader>O mzO<ESC>
-
-" fzf
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>gf :GFiles<CR>
-nnoremap <leader>gs :GFiles?<CR>
-nnoremap <leader>b :Buffers<CR>
-"nnoremap <leader>w :Windows<CR>
-nnoremap <leader>t :BTags<CR>
-nnoremap <leader>l :Lines<CR>
-nnoremap <leader>ag :Ag<CR>
-
-" NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nmap <Leader><Tab>    <C-w>w
+nmap <Leader><Space>  :noh<return>
 
