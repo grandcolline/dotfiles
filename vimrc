@@ -37,20 +37,3 @@ set smartcase                                        " 大文字と小文字が�
 set wrapscan                                         " 最後尾まで検索を終えたら次の検索で先頭に移る
 set gdefault                                         " 置換の時 g オプションをデフォルトで有効にする
 
-
-"========================================
-" Key Binds
-"========================================
-nnoremap <C-]> g<C-]>
-" Leaderをスペースに変更
-let mapleader = "\<Space>"
-" 大きく移動
-noremap <leader>j 10j
-noremap <leader>k 10k
-" ノーマルモードで行追加
-nnoremap <leader>o mzo<ESC>
-nnoremap <leader>O mzO<ESC>
-" Tabでウィンドウ移動
-nmap <Leader><Tab> <C-w>w
-
-
