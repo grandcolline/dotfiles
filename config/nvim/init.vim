@@ -15,7 +15,7 @@ set fileencodings=utf-8                   " 読み込み時の文字コードの
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
 " set ambiwidth=double                      " □や○が崩れる問題を解決
 
-set nocompatible                          " Use Vim defaults instead of 100% vi compatibility
+" set nocompatible                        " vimrcがある場合は自動で設定されるのでやる必要ない(?)
 set backspace=2                           " more powerful backspacing
 
 set noswapfile                            " swapファイルを作成しない

@@ -18,7 +18,7 @@ map / <Plug>(easymotion-sn)
 " Leaderの設定
 "========================================
 " Leaderをスペースに変更
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 nmap <leader>a :Ag<CR>
 nmap <leader>b :Buffers<CR>
