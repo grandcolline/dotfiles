@@ -9,6 +9,7 @@
 " General
 "========================================
 set fenc=utf-8                            " 文字コード
+scriptencoding utf-8                      " vimrcの文字コード
 set fileencoding=utf-8                    " 保存時の文字コード
 set fileencodings=utf-8                   " 読み込み時の文字コードの自動判別. 左側が優先
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
