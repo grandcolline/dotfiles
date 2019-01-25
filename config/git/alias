@@ -15,6 +15,7 @@
 	# merge (m)
 	m = merge -v
 	ma = merge --abort
+	mc = merge --continue
 
 	# rebase (rb)
 	rb = rebase
