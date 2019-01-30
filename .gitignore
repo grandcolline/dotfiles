@@ -2,7 +2,6 @@ config/git/local
 config/nvim/dein/
 config/nvim/cache/*
 config/fish/fishd.*
-config/fish/config.local.fish
 vim/dein/
 .netrwhist
 !.gitkeep

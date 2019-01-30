@@ -1,22 +1,35 @@
-# --------------
-#  env
-# --------------
+# ----------------------------
+#  Env
+# ----------------------------
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
+
+# GO
+set -x GOPATH /develop
+set -x PATH /develop/bin $PATH
 set -x GO111MODULE on
 
+# Java
+set -x JAVA_HOME (/usr/libexec/java_home)
 
-# ---------------
-#  aliases
-# ---------------
+# Node
+set -x PATH $HOME/.nodebrew/current/bin $PATH
+set -x PATH $HOME/.npmbrew/current/bin $PATH
+
+# Docker
+set -x DOCKER_BUILDKIT 1
+
+
+# ----------------------------
+#  Aliases
+# ----------------------------
 alias vi 'nvim'
 alias g 'git'
 alias o 'open -R'
 alias b 'open -a Vivaldi'
 alias c 'clear'
 alias x 'exit'
-alias t 'tmux'
-alias tt 'tmux attach; or tmux'
+alias t 'tmux attach; or tmux'
 alias d 'docker'
 alias dc 'docker-compose'
 
@@ -26,14 +39,10 @@ alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %
 # k8sを除いて表示するdockerコマンド
 alias dps 'docker ps -a | grep -v " k8s_"'
 
-# Cheatsheet
-alias vcheat 'b $XDG_CONFIG_HOME/cheatsheets/neovim.md'
-alias fcheat 'b $XDG_CONFIG_HOME/cheatsheets/fish.md'
 
-
-# ---------------
-#  key binds
-# ---------------
+# ----------------------------
+#  Key Binds
+# ----------------------------
 bind \cr '__fzf_history'
 bind \cb '__fzf_git_branch -a'
 bind \cl '__fzf_git_log -a'
@@ -48,9 +57,9 @@ function my_pwd_changed --on-variable PWD
 end
 
 
-# ---------------
+# ----------------------------
 #  Include
-# ---------------
+# ----------------------------
 if test -e $XDG_CONFIG_HOME/fish/config.local.fish
 	source $XDG_CONFIG_HOME/fish/config.local.fish
 end

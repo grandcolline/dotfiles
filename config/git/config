@@ -1,5 +1,4 @@
 [core]
-	# excludesfile = ./ignore
 	safecrlf = true
 	autocrlf = input
 	precomposeunicode = true
@@ -25,3 +24,5 @@
 	# default = simple
 	default = upstream
 
+[ghq]
+	root = /develop/src
