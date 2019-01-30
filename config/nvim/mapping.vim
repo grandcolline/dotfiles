@@ -25,8 +25,8 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>f :Files<CR>
 nmap <Leader>h <Plug>GitGutterNextHunk
 nmap <Leader>H <Plug>GitGutterPrevHunk
-map  <Leader>j <Plug>(signjk-j)
-map  <Leader>k <Plug>(signjk-k)
+map  <Leader>j 10j
+map  <Leader>k 10k
 nmap <leader>l :Lines<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>o mzo<ESC>
