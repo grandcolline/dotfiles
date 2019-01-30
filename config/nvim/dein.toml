@@ -55,10 +55,6 @@ repo = 'w0rp/ale'
 # [[plugins]]
 # repo = 'junegunn/vim-easy-align'
 
-# インデント可視化
-# [[plugins]]
-# repo = 'Yggdroot/indentLine'
-
 # 不要な空白をハイライト
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
