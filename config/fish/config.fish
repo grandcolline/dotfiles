@@ -36,9 +36,6 @@ alias dc 'docker-compose'
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %Y %T")'
 
-# k8sを除いて表示するdockerコマンド
-alias dps 'docker ps -a | grep -v " k8s_"'
-
 
 # ----------------------------
 #  Key Binds
