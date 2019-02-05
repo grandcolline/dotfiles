@@ -19,6 +19,12 @@ set -x PATH $HOME/.npmbrew/current/bin $PATH
 # Docker
 set -x DOCKER_BUILDKIT 1
 
+# k8s
+# 共通設定は、~/.kube/configで。
+# 各種クラスターなどの設定は、~/.kube/configs/*で
+set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
+set -x KUBECONFIG $KUBECONFIG:(ls -d $HOME/.kube/configs/* | tr '\n' ':')
+
 
 # ----------------------------
 #  Aliases
