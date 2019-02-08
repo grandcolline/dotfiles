@@ -2,10 +2,6 @@
 # 遅延読み込みするプラグイン
 # -----------------------------------------
 
-# ファイルツリー
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-
 # 補完
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'

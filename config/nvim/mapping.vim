@@ -28,7 +28,6 @@ nmap <Leader>H <Plug>GitGutterPrevHunk
 map  <Leader>j 10j
 map  <Leader>k 10k
 nmap <leader>l :Lines<CR>
-nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>o mzo<ESC>
 nmap <leader>O mzO<ESC>
 nmap <leader>s :GFiles?<CR>

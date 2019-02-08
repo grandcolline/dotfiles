@@ -91,22 +91,22 @@ else
 endif
 
 " vim-deviconsの設定
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
+"function! MyFiletype()
+"  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+"endfunction
+"function! MyFileformat()
+"  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+"endfunction
 
 
 "========================================
 " NERDTree
 "========================================
-let g:NERDTreeWinSize = 30                 " 横幅の大きさ
+" let g:NERDTreeWinSize = 40                 " 横幅の大きさ
 let g:NERDTreeShowHidden = 1               " 不可視ファイルを表示する
 let g:NERDTreeDirArrows = 1
 " 全て閉じた時にNerdTreeも閉じる
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " keymapはkeymap.vimに。
 
 
