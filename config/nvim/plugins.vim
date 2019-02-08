@@ -176,5 +176,5 @@ let g:ale_sign_warning = '⚠'
 "========================================
 " Easy Align
 "========================================
-"vmap <Enter> <Plug>(EasyAlign)
+vmap <Enter> <Plug>(EasyAlign)
 

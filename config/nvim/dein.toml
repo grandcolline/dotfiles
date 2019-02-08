@@ -52,8 +52,8 @@ repo = 'yuttie/comfortable-motion.vim'
 repo = 'w0rp/ale'
 
 # 整形ツール
-# [[plugins]]
-# repo = 'junegunn/vim-easy-align'
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
 
 # 不要な空白をハイライト
 [[plugins]]
