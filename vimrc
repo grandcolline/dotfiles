@@ -20,11 +20,6 @@ set backspace=2                                      " more powerful backspacing
 set noswapfile                                       " swapファイルを作成しない
 set autoread                                         " 編集中ファイルが書き換えられたら、自動リロード
 
-nnoremap x "_x
-nnoremap c "_c
-nnoremap C "_C
-
-
 "========================================
 " View
 "========================================
