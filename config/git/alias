@@ -1,79 +1,78 @@
 [alias]
 	# branch (b)
-	b = branch -a
-	bv = branch -a -vv
-	bu = branch -u
-	bd = branch -D
-	bm = branch -M
+	b   = branch -a
+	bv  = branch -a -vv
+	bu  = branch -u
+	bd  = branch -D
+	bm  = branch -M
 
 	# pull (p)
-	p = pull --rebase --prune --tags
+	p   = pull --rebase --prune --tags
 
 	# fetch (f)
-	f = fetch --prune --tags
+	f   = fetch --prune --tags
 
 	# merge (m)
-	m = merge -v
-	ma = merge --abort
-	mc = merge --continue
+	m   = merge -v
+	ma  = merge --abort
+	mc  = merge --continue
 
 	# rebase (rb)
-	rb = rebase
+	rb  = rebase
 	rbi = rebase -i
 	rba = rebase --abort
 	rbc = rebase --continue
 
 	# push (po)
-	po = push -u origin
+	po  = push -u origin
 	pfo = push --force-with-lease -u origin
 
 	# checkout (co)
-	co = checkout
+	co  = checkout
 	cob = checkout -b
 	cop = checkout -p
 
 	# cherry-pick (cp)
-	cp = cherry-pick --ff
+	cp  = cherry-pick --ff
 	cpa = cherry-pick --abort
 	cpc = cherry-pick --continue
 
 	# revert (rv)
-	rv = revert
+	rv  = revert
 	rva = revert --abort
 	rvc = revert --continue
 
 	# add (ad)
-	ad = add -v
+	ad  = add -v
 	ada = add -v -A
 	adp = add -p
 
 	# commit (cm)
-	cm = commit -v
-	#cma = ! git commit -v --amend --date=(date)
+	cm  = commit -v
 
 	# reset (rs)
-	rs = reset
+	rs  = reset
 	rsp = reset -p
 
 	# status (s)
-	s = status -sb
+	s   = status -sb
 
 	# diff (d)
-	d = diff
-	ds = diff --stat
-	dc = diff --cached
+	d   = diff
+	ds  = diff --stat
+	dc  = diff --cached
 
 	# log (l)
-	l = log --pretty=fuller --stat --decorate
-	lp = log -p -1 --stat --decorate
-	ll = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'
+	l   = log --pretty=fuller --stat --decorate
+	lp  = log -p -1 --stat --decorate
+	ll  = log --no-merges --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'
 	lla = log --all --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'
-	lg = log --graph --date=short --format='%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n'
+	lg  = log --graph --date=short --format='%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n'
 	lga = log --graph --all --date=short --format='%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n'
 	lgb = log --graph --all --date=short --format='%C(white)%d%C(reset) %C(black)%ad%C(reset)'
 
 	# stash (st)
-	st = stash
+	st  = stash
 	stl = stash list
 	sta = stash apply --index
 	std = stash drop
@@ -84,7 +83,7 @@
 	sbu = submodule update --init --recursive
 
 	# skipworktree (sw)
-	sw = update-index --skip-worktree
+	sw  = update-index --skip-worktree
 	nsw = update-index --no-skip-worktree
 	swl = ! git ls-files -v | grep --color=never 'S '
 
