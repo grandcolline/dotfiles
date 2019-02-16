@@ -15,7 +15,6 @@ set fileencodings=utf-8                   " 読み込み時の文字コードの
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
 " set ambiwidth=double                      " □や○が崩れる問題を解決
 
-" set nocompatible                        " vimrcがある場合は自動で設定されるのでやる必要ない(?)
 set backspace=2                           " more powerful backspacing
 
 set noswapfile                            " swapファイルを作成しない
@@ -75,6 +74,10 @@ set noshowmode                            " 「-- 挿入 --」とかの非表示
 set cmdheight=1                           " メッセージ表示欄の行数
 "set showtabline=2                        " タブラインの表示
 set ruler                                 " カーソルが何行目の何列目に置かれているかを表示する
+
+let g:netrw_banner = 0                    " netrwの上を隠す
+let g:netrw_liststyle = 3                 " netrwをtree表示にする
+let g:netrw_altv = 1                      " 左右分割を右側に開く
 
 
 "========================================

@@ -67,7 +67,3 @@ repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
-# ファイルツリー
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-
