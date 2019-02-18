@@ -7,12 +7,6 @@ noremap <Right> <Nop>
 " ctags
 nnoremap <C-]> g<C-]>
 
-" ESCでターミナルモードから抜ける
-"tnoremap <silent> <ESC> <C-\><C-n>
-
-" 検索にeasymotionを
-map / <Plug>(easymotion-sn)
-
 
 "========================================
 " Leaderの設定
@@ -35,7 +29,7 @@ nmap <leader>t :BTags<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+map  <Leader>/ <Plug>(easymotion-sn)
 
 nmap <Leader><Tab>    <C-w>w
-nmap <Leader><Space>  :noh<return>
 

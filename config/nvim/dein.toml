@@ -59,10 +59,6 @@ repo = 'junegunn/vim-easy-align'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
-# # アイコン表示
-# [[plugins]]
-# repo = 'ryanoasis/vim-devicons'
-
 # Esay motion
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
