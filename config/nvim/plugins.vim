@@ -44,8 +44,8 @@ endif
 syntax on
 set background=dark
 set t_Co=256
-
 autocmd ColorScheme * highlight LineNr ctermfg=245
+
 colorscheme Tomorrow-Night
 
 
@@ -73,8 +73,6 @@ let g:lightline = {
   \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
   \ },
-  \ 'separator': { 'left': '⮀ ', 'right': ' ' },
-  \ 'subseparator': { 'left': '⮁ ', 'right': ' ⮃' }
   \ }
 
 if dein#tap('ale')
