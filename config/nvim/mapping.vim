@@ -4,9 +4,6 @@ noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
 
-" ctags
-nnoremap <C-]> g<C-]>
-
 
 "========================================
 " Leaderの設定
@@ -14,7 +11,6 @@ nnoremap <C-]> g<C-]>
 " Leaderをスペースに変更
 let g:mapleader = "\<Space>"
 
-nmap <leader>a :Ag<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>f :Files<CR>
 nmap <Leader>h <Plug>GitGutterNextHunk
@@ -24,6 +20,7 @@ map  <Leader>k 10k
 nmap <leader>l :Lines<CR>
 nmap <leader>o mzo<ESC>
 nmap <leader>O mzO<ESC>
+nmap <leader>r :Rg<CR>
 nmap <leader>s :GFiles?<CR>
 nmap <leader>t :BTags<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk

@@ -11,6 +11,8 @@ fish, tmux, neovim...
 * [fasd](https://github.com/clvv/fasd)
 * [fzf](https://github.com/junegunn/fzf)
 * [ghq](https://github.com/motemen/ghq)
+* [ripgrep](https://github.com/BurntSushi/ripgrep)
+
 * [ctags](https://github.com/universal-ctags/ctags)
 
 ## Setup
