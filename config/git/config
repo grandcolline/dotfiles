@@ -5,9 +5,9 @@
 	quotepath = false
 	editor = nvim
 
-[include]
-	path = ./local
-	path = ./alias
+[user]
+	name = Taiki Hayashi
+	email = grandcolline@gmail.com
 
 [color]
 	ui = auto
@@ -26,3 +26,7 @@
 
 [ghq]
 	root = /develop/src
+
+[include]
+	path = ./local
+	path = ./alias
