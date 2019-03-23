@@ -23,7 +23,7 @@ set undodir=$XDG_CONFIG_HOME/nvim/cache
 set backupdir=$XDG_CONFIG_HOME/nvim/cache
 set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
 
-set clipboard=unnamed,unnamedplus         " クリップボードとyunk,putを共有
+set clipboard=unnamed,unnamedplus         " クリップボードとyunk,putを共有（unnamedplusはmacならいらないやも）
 nnoremap x "_x
 nnoremap c "_c
 nnoremap C "_C
