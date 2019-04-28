@@ -126,9 +126,9 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "========================================
 " Deoplete
 "========================================
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
+" inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
 
 
 "========================================
