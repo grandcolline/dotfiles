@@ -2,8 +2,3 @@
 # 遅延読み込みするプラグイン
 # -----------------------------------------
 
-# 補完
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# on_event = 'InsertEnter'
-

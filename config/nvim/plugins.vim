@@ -56,7 +56,7 @@ let g:lightline = {
   \ 'colorscheme': 'jellybeans',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'filename', 'readonly', 'ale', 'modified' ] ]
+  \             [ 'fugitive', 'filename', 'readonly', 'cocstatus', 'ale', 'modified' ] ]
   \ },
   \ 'component': {
   \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
@@ -65,6 +65,7 @@ let g:lightline = {
   \ },
   \ 'component_function': {
   \   'ale': 'LLAle',
+  \   'cocstatus': 'coc#status',
   \   'filetype': 'MyFiletype',
   \   'fileformat': 'MyFileformat',
   \ },
@@ -80,7 +81,7 @@ if dein#tap('ale')
     let l:count = ale#statusline#Count(bufnr(''))
     let l:errors = l:count.error + l:count.style_error
     let l:warnings = l:count.warning + l:count.style_warning
-    return l:count.total == 0 ? '' : '⨉ :' . l:errors . ' ⚠ :' . l:warnings
+    return l:count.total == 0 ? '' : 'ALE: ⨉ :' . l:errors . ' ⚠ :' . l:warnings
   endfunction
 else
   function! LLAle()
@@ -124,12 +125,21 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 
 
 "========================================
-" Deoplete
+" Coc
 "========================================
-" let g:deoplete#enable_at_startup = 1
-" inoremap <expr><Tab> pumvisible() ? "\<DOWN>" : "\<Tab>"
-" inoremap <expr><S-Tab> pumvisible() ? "\<UP>" : "\<S-Tab>"
+" keymapはkeymap.vimに。
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
+let g:coc_status_error_sign = "⨉ :"
+let g:coc_status_warning_sign = "⚠ :"
 
 "========================================
 " Anzu
@@ -151,9 +161,4 @@ let g:ale_sign_warning = '⚠'
 "highlight link ALEWarningSign String
 "highlight link ALEErrorSign Title
 
-
-"========================================
-" Easy Align
-"========================================
-vmap <Enter> <Plug>(EasyAlign)
 
