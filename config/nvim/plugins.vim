@@ -130,6 +130,7 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 " keymapはkeymap.vimに。
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
@@ -153,11 +154,11 @@ nmap # <Plug>(anzu-sharp)
 "========================================
 " ALE
 "========================================
-let g:ale_sign_column_always = 1       " 常に左側にスペースを確保
-let g:ale_set_highlights = 0           " ハイライトしない
-let g:ale_lint_on_text_changed = 0     " 保存時のみ実行する
-let g:ale_sign_error = '⨉'
-let g:ale_sign_warning = '⚠'
+" let g:ale_sign_column_always = 1       " 常に左側にスペースを確保
+" let g:ale_set_highlights = 0           " ハイライトしない
+" let g:ale_lint_on_text_changed = 0     " 保存時のみ実行する
+" let g:ale_sign_error = '⨉'
+" let g:ale_sign_warning = '⚠'
 "highlight link ALEWarningSign String
 "highlight link ALEErrorSign Title
 

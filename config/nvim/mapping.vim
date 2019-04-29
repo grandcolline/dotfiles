@@ -12,7 +12,8 @@ noremap <Right> <Nop>
 let g:mapleader = "\<Space>"
 
 nmap <Leader>b :Buffers<CR>
-nmap <Leader>d :call <SID>show_documentation()<CR>
+nmap <Leader>d <Plug>(coc-diagnostic-next)
+nmap <Leader>D <Plug>(coc-diagnostic-prev)
 nmap <Leader>f :Files<CR>
 nmap <Leader>gd <Plug>(coc-definition)
 nmap <Leader>gt <Plug>(coc-type-definition)
