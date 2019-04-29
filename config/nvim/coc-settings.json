@@ -1,9 +1,30 @@
 {
   "languageserver":{
+      // gopls
+      // "golang": {
+      //   "command": "gopls",
+      //   "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      //   "filetypes": ["go"]
+      // },
+      // go-langserver
       "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "filetypes": ["go"]
+        "command": "go-langserver",
+        "filetypes": ["go"],
+        "initializationOptions": {
+          "gocodeCompletionEnabled": true,
+          "diagnosticsEnabled": true,
+          "lintTool": "golint"
+        }
+      },
+      "dockerfile": {
+        "command": "docker-langserver",
+        "filetypes": ["dockerfile"],
+        "args": ["--stdio"]
+      },
+      "efm": {
+        "command": "efm-langserver",
+        "args": [],
+        "filetypes": ["markdown"]
       }
     }
 }

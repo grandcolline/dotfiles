@@ -44,8 +44,8 @@ repo = 'osyo-manga/vim-anzu'
 repo = 'yuttie/comfortable-motion.vim'
 
 # シンタックスチェック
-[[plugins]]
-repo = 'w0rp/ale'
+# [[plugins]]
+# repo = 'w0rp/ale'
 
 # LSP
 [[plugins]]
