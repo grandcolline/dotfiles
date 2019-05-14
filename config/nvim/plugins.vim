@@ -56,7 +56,7 @@ let g:lightline = {
   \ 'colorscheme': 'jellybeans',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'filename', 'readonly', 'cocstatus', 'ale', 'modified' ] ]
+  \             [ 'fugitive', 'filename', 'readonly', 'cocstatus', 'modified' ] ]
   \ },
   \ 'component': {
   \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
@@ -64,7 +64,6 @@ let g:lightline = {
   \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
   \ },
   \ 'component_function': {
-  \   'ale': 'LLAle',
   \   'cocstatus': 'coc#status',
   \   'filetype': 'MyFiletype',
   \   'fileformat': 'MyFileformat',
@@ -75,19 +74,6 @@ let g:lightline = {
   \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
   \ },
   \ }
-
-if dein#tap('ale')
-  function! LLAle()
-    let l:count = ale#statusline#Count(bufnr(''))
-    let l:errors = l:count.error + l:count.style_error
-    let l:warnings = l:count.warning + l:count.style_warning
-    return l:count.total == 0 ? '' : 'ALE: ⨉ :' . l:errors . ' ⚠ :' . l:warnings
-  endfunction
-else
-  function! LLAle()
-    return ''
-  endfunction
-endif
 
 
 "========================================
@@ -149,17 +135,4 @@ nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
-
-
-"========================================
-" ALE
-"========================================
-" let g:ale_sign_column_always = 1       " 常に左側にスペースを確保
-" let g:ale_set_highlights = 0           " ハイライトしない
-" let g:ale_lint_on_text_changed = 0     " 保存時のみ実行する
-" let g:ale_sign_error = '⨉'
-" let g:ale_sign_warning = '⚠'
-"highlight link ALEWarningSign String
-"highlight link ALEErrorSign Title
-
 

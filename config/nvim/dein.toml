@@ -43,10 +43,6 @@ repo = 'osyo-manga/vim-anzu'
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
 
-# シンタックスチェック
-# [[plugins]]
-# repo = 'w0rp/ale'
-
 # LSP
 [[plugins]]
 repo = 'neoclide/coc.nvim'
