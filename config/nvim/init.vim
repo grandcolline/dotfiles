@@ -45,6 +45,7 @@ command! Wq wq                            " Wq => wq
 set ttimeout                              " neoVim文字化け問題
 set ttimeoutlen=50
 
+set pyxversion=3
 
 "========================================
 " View
