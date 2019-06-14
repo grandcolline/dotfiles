@@ -27,6 +27,9 @@ if test -e "$HOME/.kube/configs/*"
 	set -x KUBECONFIG $KUBECONFIG:(ls -d $HOME/.kube/configs/* | tr '\n' ':')
 end
 
+# less
+set -x LESS -SRXF
+
 
 # ----------------------------
 #  Aliases
