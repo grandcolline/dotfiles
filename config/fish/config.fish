@@ -4,31 +4,30 @@
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
 
-# GO
-set -x GOPATH /develop
-set -x PATH /develop/bin $PATH
-set -x GO111MODULE on
-
-# Java
-set -x JAVA_HOME (/usr/libexec/java_home)
-
-# Node
-set -x PATH $HOME/.nodebrew/current/bin $PATH
-set -x PATH $HOME/.npmbrew/current/bin $PATH
-
-# Docker
-set -x DOCKER_BUILDKIT 1
-
-# k8s
-# 共通設定は、~/.kube/configで。
-# 各種クラスターなどの設定は、~/.kube/configs/*で
-set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
-if test -e "$HOME/.kube/configs/*"
-	set -x KUBECONFIG $KUBECONFIG:(ls -d $HOME/.kube/configs/* | tr '\n' ':')
-end
-
 # less
 set -x LESS -SRXF
+
+# go
+if type "go" > /dev/null 2>&1
+	set -x GOPATH /develop
+	set -x PATH /develop/bin $PATH
+	set -x GO111MODULE on
+end
+
+# java
+if type "java" > /dev/null 2>&1
+	set -x JAVA_HOME (/usr/libexec/java_home)
+end
+
+# docker
+if type "docker" > /dev/null 2>&1
+	set -x DOCKER_BUILDKIT 1
+end
+
+# k8s
+if type "kubectl" > /dev/null 2>&1
+	set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
+end
 
 
 # ----------------------------
