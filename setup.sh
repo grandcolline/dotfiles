@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# set
 dir_path=`pwd`
 
 # git
@@ -18,11 +17,6 @@ echo "===== tmux setting ====="
 ln -vsf $dir_path/tmux.conf $HOME/.tmux.conf
 echo ""
 
-# ctag
-echo "===== Ctag setting ====="
-ln -vsf $dir_path/ctags $HOME/.ctags
-echo ""
-
 # nvim
 echo "===== NeoVim setting ====="
 ln -vsfn $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
@@ -33,8 +27,7 @@ echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
 echo ""
 
-# cheat sheets
-echo "===== CheatSheet setting ====="
-ln -vsfn $dir_path/config/cheatsheets $XDG_CONFIG_HOME/cheatsheets
+# vim
+echo "===== mycli setting ====="
+ln -vsfn $dir_path/myclirc $HOME/.myclirc
 echo ""
-

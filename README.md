@@ -12,6 +12,7 @@ fish, tmux, neovim...
 * [fzf](https://github.com/junegunn/fzf)
 * [ghq](https://github.com/motemen/ghq)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
+* [mycli](https://github.com/dbcli/mycli)
 
 ## Setup
 
