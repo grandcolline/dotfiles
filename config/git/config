@@ -8,6 +8,7 @@
 [user]
 	name = Taiki Hayashi
 	email = grandcolline@gmail.com
+	signingkey = 57073FF5C7417B95
 
 [color]
 	ui = auto
@@ -19,10 +20,14 @@
 
 [pull]
 	rebase = true
+	autosetuprebase = always
 
 [push]
 	# default = simple
 	default = upstream
+
+[commit]
+	gpgsign = true
 
 [ghq]
 	root = /develop/src
