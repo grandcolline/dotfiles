@@ -1,6 +1,6 @@
 config/git/local
 config/nvim/dein/
-config/nvim/cache/*
+config/nvim/cache/
 config/fish/fishd.*
 vim/dein/
 .netrwhist
