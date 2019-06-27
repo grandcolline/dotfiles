@@ -28,6 +28,5 @@ set -x XDG_CONFIG_HOME $HOME/.config
 ## LSP
 
 * [golsp](https://github.com/saibing/tools)
-* [go-langserver](https://github.com/sourcegraph/go-langserver)
 * [docker-langserver](https://github.com/rcjsuen/dockerfile-language-server-nodejs)
 * [efm-langserver](https://github.com/mattn/efm-langserver)
