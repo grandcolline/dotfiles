@@ -1,6 +1,6 @@
 # dotfiles
 
-fish, tmux, neovim...
+my config files...
 
 ## Used Things
 
