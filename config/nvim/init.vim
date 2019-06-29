@@ -103,7 +103,9 @@ noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
 
-let g:mapleader = "\<Space>"             " Leaderをスペースに変更
+" Leaderを使ったKeyMapping
+" デフォルトの設定をなるべく上書かないためにLeaderを使う!
+let g:mapleader = "\<Space>"
 
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>d <Plug>(coc-diagnostic-next)
@@ -223,14 +225,12 @@ let g:gitgutter_sign_modified_removed = '∙'
 " GitGutter
 "========================================
 " defaultのmappingはオフに
-" keymapはkeymap.vimに。
 let g:gitgutter_map_keys = 0
 
 
 "========================================
 " EasyMotion
 "========================================
-" keymapはkeymap.vimに。
 let g:EasyMotion_do_mapping = 0       " デフォルトのマッピングをオフ
 let g:EasyMotion_smartcase = 1        " 検索時大文字小文字を区別しない
 let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
@@ -240,7 +240,6 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "========================================
 " Coc
 "========================================
-" keymapはkeymap.vimに。
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <silent> K :call <SID>show_documentation()<CR>
