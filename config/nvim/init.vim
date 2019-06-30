@@ -13,7 +13,7 @@ scriptencoding utf-8                      " vimrcの文字コード
 set fileencoding=utf-8                    " 保存時の文字コード
 set fileencodings=utf-8                   " 読み込み時の文字コードの自動判別. 左側が優先
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
-" set ambiwidth=double                      " □や○が崩れる問題を解決
+" set ambiwidth=double                    " □や○が崩れる問題を解決
 
 set backspace=2                           " more powerful backspacing
 
@@ -84,7 +84,7 @@ let g:netrw_altv = 1                      " 左右分割を右側に開く
 "========================================
 " Search
 "========================================
-" set hlsearch                              " 検索文字列をハイライトする
+" set hlsearch                            " 検索文字列をハイライトする
 set nohlsearch                            " 検索文字列をハイライトしない
 set incsearch                             " インクリメンタルサーチを行う
 set ignorecase                            " 大文字と小文字を区別しない
@@ -117,8 +117,6 @@ nmap <Leader>gi <Plug>(coc-implementation)
 nmap <Leader>gr <Plug>(coc-references)
 nmap <Leader>h <Plug>GitGutterNextHunk
 nmap <Leader>H <Plug>GitGutterPrevHunk
-map  <Leader>j 10j
-map  <Leader>k 10k
 nmap <Leader>l :Lines<CR>
 nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
