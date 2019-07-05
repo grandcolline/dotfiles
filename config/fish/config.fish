@@ -42,7 +42,6 @@ alias x 'exit'
 alias t 'tmux attach; or tmux'
 alias d 'docker'
 alias dc 'docker-compose'
-alias me 'nvim && exit'
 
 # gitのaliasだとdateがとれないのでここで
 alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %Y %T")'

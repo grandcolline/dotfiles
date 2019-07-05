@@ -123,7 +123,7 @@ nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
-nmap <Leader>t :BTags<CR>
+" nmap <Leader>t :BTags<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
