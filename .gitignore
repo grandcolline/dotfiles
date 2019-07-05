@@ -1,7 +1,16 @@
+# Git
 config/git/local
+
+# vim, nvim
 config/nvim/dein/
 config/nvim/cache/
-config/fish/fishd.*
 vim/dein/
 .netrwhist
+
+# fish
+config/fish/fishd.*
+config/fish/completions/docker.fish
+config/fish/completions/docker-compose.fish
+config/fish/completions/kubectl.fish
+
 !.gitkeep
