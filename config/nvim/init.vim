@@ -47,6 +47,7 @@ set ttimeoutlen=50
 
 set pyxversion=3
 
+
 "========================================
 " View
 "========================================
@@ -172,6 +173,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+
 "========================================
 " ColorScheme
 "========================================
@@ -181,6 +183,7 @@ set t_Co=256
 autocmd ColorScheme * highlight LineNr ctermfg=245
 
 colorscheme Tomorrow-Night
+
 
 "========================================
 " Lightline
@@ -261,12 +264,4 @@ endfunction
 
 let g:coc_status_error_sign = "⨉ :"
 let g:coc_status_warning_sign = "⚠ :"
-
-"========================================
-" Anzu
-"========================================
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
 
