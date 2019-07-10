@@ -109,22 +109,19 @@ noremap <Right> <Nop>
 let g:mapleader = "\<Space>"
 
 nmap <Leader>b :Buffers<CR>
-nmap <Leader>d <Plug>(coc-diagnostic-next)
-nmap <Leader>D <Plug>(coc-diagnostic-prev)
+nmap <Leader>d :call <SID>show_documentation()<CR>
+nmap <Leader>e <Plug>(coc-diagnostic-next)
+nmap <Leader>E <Plug>(coc-diagnostic-prev)
 nmap <Leader>f :Files<CR>
-nmap <Leader>gd <Plug>(coc-definition)
-nmap <Leader>gt <Plug>(coc-type-definition)
-nmap <Leader>gi <Plug>(coc-implementation)
-nmap <Leader>gr <Plug>(coc-references)
+nmap <Leader>g <Plug>(coc-definition)
 nmap <Leader>h <Plug>GitGutterNextHunk
 nmap <Leader>H <Plug>GitGutterPrevHunk
 nmap <Leader>l :Lines<CR>
-nmap <Leader>n <Plug>(coc-rename)
+" nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
-" nmap <Leader>t :BTags<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
@@ -243,7 +240,6 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "========================================
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
