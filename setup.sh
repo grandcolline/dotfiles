@@ -28,10 +28,6 @@ echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
 echo ""
 
-echo "===== ctags setting ====="
-ln -vsfn $dir_path/ctags $HOME/.ctags
-echo ""
-
 echo "===== mycli setting ====="
 ln -vsfn $dir_path/myclirc $HOME/.myclirc
 echo ""
