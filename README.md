@@ -29,4 +29,5 @@ set -x XDG_CONFIG_HOME $HOME/.config
 
 * [golsp](https://github.com/saibing/tools)
 * [docker-langserver](https://github.com/rcjsuen/dockerfile-language-server-nodejs)
+* [terraform-lsp](https://github.com/juliosueiras/terraform-lsp)
 * [efm-langserver](https://github.com/mattn/efm-langserver)
