@@ -230,8 +230,7 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "========================================
 " Dirvish
 "========================================
-" - で起動しないようにする
-nmap <Plug>(nomap-dirvish_up) <Plug>(dirvish_up)
+let g:dirvish_relative_paths = 1
 
 
 "========================================
