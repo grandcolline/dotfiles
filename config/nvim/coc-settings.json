@@ -1,23 +1,24 @@
 {
+  "diagnostic.signOffset": 9999999,
   "languageserver":{
-      "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "filetypes": ["go"]
-      },
-      "dockerfile": {
-        "command": "docker-langserver",
-        "filetypes": ["dockerfile"],
-        "args": ["--stdio"]
-      },
-      "terraform": {
-        "command": "terraform-lsp",
-        "filetypes": ["tf"]
-      },
-      "efm": {
-        "command": "efm-langserver",
-        "args": [],
-        "filetypes": ["markdown"]
-      }
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["tf"]
+    },
+    "efm": {
+     "command": "efm-langserver",
+     "args": [],
+     "filetypes": ["markdown"]
     }
+  }
 }
