@@ -52,3 +52,7 @@ repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
+# filer
+[[plugins]]
+repo = 'justinmk/vim-dirvish'
+

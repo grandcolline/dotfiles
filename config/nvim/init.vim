@@ -77,10 +77,6 @@ set cmdheight=1                           " メッセージ表示欄の行数
 "set showtabline=2                        " タブラインの表示
 set ruler                                 " カーソルが何行目の何列目に置かれているかを表示する
 
-let g:netrw_banner = 0                    " netrwの上を隠す
-let g:netrw_liststyle = 3                 " netrwをtree表示にする
-let g:netrw_altv = 1                      " 左右分割を右側に開く
-
 
 "========================================
 " Search
@@ -210,20 +206,16 @@ let g:lightline = {
 
 
 "========================================
-" Fugitive
+" GitGutter
 "========================================
-set updatetime=200                   " 反映されるまでの時間を変更
+" 反映されるまでの時間を変更
+set updatetime=200
+" defaultのmappingはオフに
+let g:gitgutter_map_keys = 0
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_modified_removed = '∙'
-
-
-"========================================
-" GitGutter
-"========================================
-" defaultのmappingはオフに
-let g:gitgutter_map_keys = 0
 
 
 "========================================
@@ -233,6 +225,13 @@ let g:EasyMotion_do_mapping = 0       " デフォルトのマッピングをオ�
 let g:EasyMotion_smartcase = 1        " 検索時大文字小文字を区別しない
 let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "let g:EasyMotion_keys = 'wertasdfgyuiophjklzxcvbnm'
+
+
+"========================================
+" Dirvish
+"========================================
+" - で起動しないようにする
+nmap <Plug>(nomap-dirvish_up) <Plug>(dirvish_up)
 
 
 "========================================
