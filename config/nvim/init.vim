@@ -95,9 +95,9 @@ set inccommand=split                      " 置換のインクリメンタル表
 " Key Mapping
 "========================================
 " 甘えるな、hjklを使え
-noremap <Left> <Nop>
-noremap <Down> <Nop>
-noremap <Up> <Nop>
+noremap <Left>  <Nop>
+noremap <Down>  <Nop>
+noremap <Up>    <Nop>
 noremap <Right> <Nop>
 
 " Leaderを使ったKeyMapping
@@ -110,6 +110,7 @@ nmap <Leader>e <Plug>(coc-diagnostic-next)
 nmap <Leader>E <Plug>(coc-diagnostic-prev)
 nmap <Leader>f :Files<CR>
 nmap <Leader>g <Plug>(coc-definition)
+nmap <Leader>G <Plug>(coc-implementation)
 nmap <Leader>h <Plug>GitGutterNextHunk
 nmap <Leader>H <Plug>GitGutterPrevHunk
 nmap <Leader>l :Lines<CR>
