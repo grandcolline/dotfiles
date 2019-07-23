@@ -24,11 +24,12 @@ set autoread
 " View
 "========================================
 set number
-
 set laststatus=2
 set cmdheight=1
 set ignorecase
 set smartcase
 set wrapscan
 set gdefault
+
+colorscheme delek
 
