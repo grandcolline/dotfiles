@@ -32,8 +32,8 @@ repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 
 # ""や()の補完
-[[plugins]]
-repo = 'Townk/vim-autoclose'
+# [[plugins]]
+# repo = 'Townk/vim-autoclose'
 
 # ヌルヌルページ送り
 [[plugins]]
