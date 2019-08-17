@@ -1,54 +1,16 @@
-
-#
-# ステータス表示
-#
-function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
-	set -g prompt_status_flg 0
-	set_color -b black
-
-	# status
-	if [ $RETVAL -ne 0 ]
-		set -g prompt_status_flg 1
-		set_color red
-		echo -n " ✘"
-	end
-
-	# if superuser (uid == 0)
-	set -l uid (id -u $USER)
-	if [ $uid -eq 0 ]
-		set -g prompt_status_flg 1
-		set_color yellow
-		echo -n " ⚡ "
-	end
-
-	# Jobs
-	if [ (jobs -l | wc -l) -gt 0 ]
-		set -g prompt_status_flg 1
-		set_color cyan
-		echo -n " ⚙"
-	end
-
-	# separator
-	if [ $prompt_status_flg -ne 0 ]
-		echo -n '  '
-		set_color -b 'green'
-		set_color 'black'
-		echo -n '⮀'
-	end
-end
-
-# 
+# -------------------
 # ディレクトリ表示
-# 
+# -------------------
 function prompt_dir -d "Display the current directory"
-	set_color -b 'green'
+	set -g bg_color 'green'
+	set_color -b $bg_color
 	set_color 'white'
 	echo -n " "(prompt_pwd)" "
 end
 
-#
+# -------------------
 # git表示
-#
+# -------------------
 function prompt_git -d "Display the current git state"
 	# git管理下かどうか
 	if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
@@ -58,11 +20,11 @@ function prompt_git -d "Display the current git state"
 		set -l branch (echo $ref | sed  "s-refs/heads/--")
 
 		# 背景色を決める
-		# デフォルトは緑
-		set -l bg_color 'blue'
-		# HEADがあり、indexされていたら黄色
+		# デフォルトは青
+		set -g bg_color 'blue'
+		# HEADがあり、indexされていたら紫
 		if git rev-parse --quiet --verify HEAD >/dev/null 2>&1; and not git diff-index --cached --quiet --exit-code --ignore-submodules=dirty HEAD
-			set bg_color 'purple'
+			set -g bg_color 'purple'
 		end
 		# コンフリクトなど TODO:もっとしっかり感知したい
 		if [ "$branch" = "" ]
@@ -92,9 +54,8 @@ function prompt_git -d "Display the current git state"
 
 		# 表示
 		set_color -b $bg_color
-		set_color 'green'
-		echo -n '⮀ '
 		set_color 'white'
+		echo -n ' '
 		echo -n $branch
 		echo -n $diff_display
 		if [ "$dirty_change" -eq 1 ]
@@ -105,25 +66,37 @@ function prompt_git -d "Display the current git state"
 			set_color 'red'
 			echo -n "●"
 		end
-		echo -n " "
-		set_color -b normal
-		set_color $bg_color
-		echo -n '⮀ '
-	else
-		# 表示
-		echo -n " "
-		set_color -b normal
-		set_color 'green'
-		echo -n '⮀ '
+		if [ "$dirty_change" -eq 1 ]; or [ "$dirty_add" -eq 1 ]
+			echo -n ' '
+		end
+		echo -n ' '
 	end
 end
 
+# -------------------
+# ステータス表示
+# -------------------
+function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
+	# status
+	if [ $RETVAL -ne 0 ]
+		# set -g prompt_status_flg 1
+		set -g bg_color 'red'
+		set_color -b $bg_color
+		set_color black
+		echo -n " ✘ "
+	end
+end
 
+# -------------------
+# プロンプト表示
+# -------------------
 function fish_prompt
 	set -g RETVAL $status
-	prompt_status
 	prompt_dir
 	prompt_git
+	prompt_status
 	set_color -b normal
+	set_color $bg_color
+	echo -n '⮀ '
 	set_color normal
 end
