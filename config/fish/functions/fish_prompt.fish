@@ -35,7 +35,7 @@ function prompt_git -d "Display the current git state"
 		set -l diff_display ""
 		set -l diff_check (command git status -sb | awk 'NR==1' | awk '{for(i=3;i<=NF;i++){printf("%s%s",$i,OFS="")}}')
 		if string match '*commitsyeton*' "$diff_check" > /dev/null
-			set diff_display " [Initial]"
+			set diff_display "[Initial]"
 		else
 			set diff_display (command echo $diff_check | sed "s-ahead-↑ -g" | sed "s-behind-↓ -g" | sed "s-,- -g")
 		end
