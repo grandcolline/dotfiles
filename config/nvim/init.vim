@@ -113,6 +113,7 @@ nmap <Leader>g <Plug>(coc-definition)
 nmap <Leader>G <Plug>(coc-implementation)
 nmap <Leader>h <Plug>GitGutterNextHunk
 nmap <Leader>H <Plug>GitGutterPrevHunk
+map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
 " nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
@@ -226,12 +227,6 @@ let g:EasyMotion_do_mapping = 0       " デフォルトのマッピングをオ�
 let g:EasyMotion_smartcase = 1        " 検索時大文字小文字を区別しない
 let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "let g:EasyMotion_keys = 'wertasdfgyuiophjklzxcvbnm'
-
-
-"========================================
-" Dirvish
-"========================================
-let g:dirvish_relative_paths = 1
 
 
 "========================================

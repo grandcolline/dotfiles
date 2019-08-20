@@ -54,3 +54,7 @@ repo = 'easymotion/vim-easymotion'
 [[plugins]]
 repo = 'justinmk/vim-dirvish'
 
+# URLジャンプ/検索
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
