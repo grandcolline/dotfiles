@@ -24,9 +24,7 @@ repo = 'airblade/vim-gitgutter'
 
 # ファジー検索
 [[plugins]]
-repo = 'junegunn/fzf'
-build = './install --bin'
-merged = '0'
+repo = '/usr/local/opt/fzf'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'

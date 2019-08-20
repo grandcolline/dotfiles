@@ -120,8 +120,8 @@ nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" map  <Leader>w <Plug>(easymotion-bd-w)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
 map  <Leader>/ <Plug>(easymotion-sn)
 
 nmap <Leader><Tab> <C-w>w
