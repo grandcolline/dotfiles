@@ -58,3 +58,6 @@ repo = 'justinmk/vim-dirvish'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 
+# golang
+[[plugins]]
+repo = 'arp242/gopher.vim'
