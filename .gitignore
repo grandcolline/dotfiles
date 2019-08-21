@@ -2,6 +2,7 @@
 config/git/local
 
 # vim, nvim
+.netrwhist
 config/nvim/cache/
 config/nvim/plugged/
 vim/dein/
