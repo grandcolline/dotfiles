@@ -11,6 +11,7 @@
 "   2. :PlugInstall
 "-----------------------------
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
@@ -25,6 +26,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
 Plug 'tyru/open-browser.vim'
 Plug 'arp242/gopher.vim'
+
 call plug#end()
 
 
