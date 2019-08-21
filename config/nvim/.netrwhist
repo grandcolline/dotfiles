@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/develop/src/github.com/team-lab/skillup-php'
+let g:netrw_dirhist_2='/develop/src/github.com/grandcolline/dotfiles'
+let g:netrw_dirhist_3='/develop/src/github.com/grandcolline/dotfiles/config'
+let g:netrw_dirhist_4='/develop/src/github.com/grandcolline/dotfiles/config/nvim'

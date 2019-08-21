@@ -2,10 +2,9 @@
 config/git/local
 
 # vim, nvim
-config/nvim/dein/
 config/nvim/cache/
+config/nvim/plugged/
 vim/dein/
-.netrwhist
 
 # fish
 config/fish/fishd.*

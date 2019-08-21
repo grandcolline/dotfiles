@@ -5,16 +5,37 @@
 "     (_)_/ |_|_| |_| |_|_|  \___|
 "
 
-"========================================
+"-----------------------------
+" Plugins
+"   1. Install vim-plug: curl -fLo ~/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   2. :PlugInstall
+"-----------------------------
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'Townk/vim-autoclose'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-dirvish'
+Plug 'tyru/open-browser.vim'
+Plug 'arp242/gopher.vim'
+call plug#end()
+
+
+"-----------------------------
 " General
-"========================================
+"-----------------------------
 set fenc=utf-8                            " 文字コード
 scriptencoding utf-8                      " vimrcの文字コード
 set fileencoding=utf-8                    " 保存時の文字コード
 set fileencodings=utf-8                   " 読み込み時の文字コードの自動判別. 左側が優先
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
-" set ambiwidth=double                    " □や○が崩れる問題を解決
-
 set backspace=2                           " more powerful backspacing
 
 set noswapfile                            " swapファイルを作成しない
@@ -44,13 +65,21 @@ command! Wq wq                            " Wq => wq
 
 set ttimeout                              " neoVim文字化け問題
 set ttimeoutlen=50
-
 set pyxversion=3
 
+" set hlsearch                            " 検索文字列をハイライトする
+set nohlsearch                            " 検索文字列をハイライトしない
+set incsearch                             " インクリメンタルサーチを行う
+set ignorecase                            " 大文字と小文字を区別しない
+set smartcase                             " 大文字と小文字の混在で検索した場合、大文字と小文字を区別
+set wrapscan                              " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault                              " 置換の時 g オプションをデフォルトで有効にする
+set inccommand=split                      " 置換のインクリメンタル表示（nvimのみ）
 
-"========================================
+
+"-----------------------------
 " View
-"========================================
+"-----------------------------
 set number                                " 行番号表示
 "set relativenumber                       " 相対行の表示
 set cursorline                            " 行のハイライト
@@ -78,22 +107,9 @@ set cmdheight=1                           " メッセージ表示欄の行数
 set ruler                                 " カーソルが何行目の何列目に置かれているかを表示する
 
 
-"========================================
-" Search
-"========================================
-" set hlsearch                            " 検索文字列をハイライトする
-set nohlsearch                            " 検索文字列をハイライトしない
-set incsearch                             " インクリメンタルサーチを行う
-set ignorecase                            " 大文字と小文字を区別しない
-set smartcase                             " 大文字と小文字の混在で検索した場合、大文字と小文字を区別
-set wrapscan                              " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault                              " 置換の時 g オプションをデフォルトで有効にする
-set inccommand=split                      " 置換のインクリメンタル表示（nvimのみ）
-
-
-"========================================
+"-----------------------------
 " Key Mapping
-"========================================
+"-----------------------------
 " 甘えるな、hjklを使え
 noremap <Left>  <Nop>
 noremap <Down>  <Nop>
@@ -129,49 +145,9 @@ nmap <Leader><Tab> <C-w>w
 nmap <Leader><Space> :set hlsearch!<CR>
 
 
-"========================================
-" Dein
-"========================================
-" プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('$XDG_CONFIG_HOME/nvim/dein')
-" dein.vim 本体
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
-
-" 設定開始
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  " プラグインリストを収めた TOML ファイル
-  let g:rc_dir    = expand('$XDG_CONFIG_HOME/nvim')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  " 設定終了
-  call dein#end()
-  call dein#save_state()
-endif
-
-" もし、未インストールものものがあったらインストール
-if dein#check_install()
-  call dein#install()
-endif
-
-
-"========================================
+"-----------------------------
 " ColorScheme
-"========================================
+"-----------------------------
 syntax on
 set background=dark
 set t_Co=256
@@ -180,9 +156,9 @@ autocmd ColorScheme * highlight LineNr ctermfg=245
 colorscheme Tomorrow-Night
 
 
-"========================================
+"-----------------------------
 " Lightline
-"========================================
+"-----------------------------
 let g:lightline = {
   \ 'colorscheme': 'jellybeans',
   \ 'active': {
@@ -207,9 +183,9 @@ let g:lightline = {
   \ }
 
 
-"========================================
+"-----------------------------
 " GitGutter
-"========================================
+"-----------------------------
 " 反映されるまでの時間を変更
 set updatetime=200
 " defaultのmappingはオフに
@@ -220,18 +196,18 @@ let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_modified_removed = '∙'
 
 
-"========================================
+"-----------------------------
 " EasyMotion
-"========================================
+"-----------------------------
 let g:EasyMotion_do_mapping = 0       " デフォルトのマッピングをオフ
 let g:EasyMotion_smartcase = 1        " 検索時大文字小文字を区別しない
 let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 "let g:EasyMotion_keys = 'wertasdfgyuiophjklzxcvbnm'
 
 
-"========================================
+"-----------------------------
 " Coc
-"========================================
+"-----------------------------
 " Highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 function! s:show_documentation()
