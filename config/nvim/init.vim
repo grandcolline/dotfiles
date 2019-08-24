@@ -129,6 +129,7 @@ nmap <Leader>g <Plug>(coc-definition)
 nmap <Leader>G <Plug>(coc-implementation)
 nmap <Leader>h <Plug>GitGutterNextHunk
 nmap <Leader>H <Plug>GitGutterPrevHunk
+map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
 " nmap <Leader>n <Plug>(coc-rename)
