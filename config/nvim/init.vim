@@ -207,6 +207,12 @@ let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
 
 
 "-----------------------------
+" Dirvish
+"-----------------------------
+let g:dirvish_relative_paths = 1      " 相対パスで表示(検索時に絶対パスになるのを防ぐ)
+
+
+"-----------------------------
 " Coc
 "-----------------------------
 " Highlight symbol under cursor on CursorHold
