@@ -140,7 +140,6 @@ nmap <Leader>s :GFiles?<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
 " map  <Leader>w <Plug>(easymotion-bd-w)
 " nmap <Leader>w <Plug>(easymotion-overwin-w)
-map  <Leader>/ <Plug>(easymotion-sn)
 
 nmap <Leader><Tab> <C-w>w
 nmap <Leader><Space> :set hlsearch!<CR>
