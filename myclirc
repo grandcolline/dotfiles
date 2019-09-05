@@ -35,8 +35,7 @@ timing = True
 # psql, plain, simple, grid, fancy_grid, pipe, orgtbl, rst, mediawiki, html,
 # latex, latex_booktabs, textile, moinmoin, jira, vertical, tsv, csv.
 # Recommended: ascii
-# table_format = ascii
-table_format = github
+table_format = ascii
 
 # Syntax coloring style. Possible values (many support the "-dark" suffix):
 # manni, igor, xcode, vim, autumn, vs, rrt, native, perldoc, borland, tango, emacs,
@@ -67,7 +66,8 @@ wider_completion_menu = False
 # \s - Seconds of the current time
 # \t - Product type (Percona, MySQL, MariaDB)
 # \u - Username
-prompt = '\t \u@\h:\d> '
+# prompt = '\t \u@\h:\d> '
+prompt = '\h:\d> '
 prompt_continuation = '-> '
 
 # Skip intro info on startup and outro info on exit
