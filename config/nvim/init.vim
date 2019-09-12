@@ -7,6 +7,7 @@
 
 "-----------------------------
 " Plugins
+"   install: :PlugInstall
 "-----------------------------
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
@@ -138,8 +139,6 @@ nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
-" map  <Leader>w <Plug>(easymotion-bd-w)
-" nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 nmap <Leader><Tab> <C-w>w
 nmap <Leader><Space> :set hlsearch!<CR>
