@@ -83,6 +83,7 @@
 
 	# commit (cm)
 	cm  = commit -v
+	cma = ! git commit -v --amend --date \"$(env LANG=en_US.UTF-8 date -R)\"
 
 	# reset (rs)
 	rs  = reset

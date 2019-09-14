@@ -44,9 +44,6 @@ alias d 'docker'
 alias dc 'docker-compose'
 alias kb 'kubectl'
 
-# gitのaliasだとdateがとれないのでここで
-alias gcma 'git commit -v --amend --date=(env LANG=en_US.UTF-8 date "+%a,%d %b %Y %T")'
-
 
 # ----------------------------
 #  Key Binds
