@@ -56,7 +56,6 @@ bind \cb '__fzf_git_branch -a'
 bind \cl '__fzf_git_log -a'
 bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -f'
-#bind \cd\cd '__fzf_docker_container -a -i'
 bind \co '__fzf_docker_images -i'
 bind \cf '__fzf_file -g'
 
@@ -68,7 +67,7 @@ end
 # ----------------------------
 #  Include
 # ----------------------------
-if test -e $XDG_CONFIG_HOME/fish/config.local.fish
-	source $XDG_CONFIG_HOME/fish/config.local.fish
-end
+# if test -e $XDG_CONFIG_HOME/fish/config.local.fish
+# 	source $XDG_CONFIG_HOME/fish/config.local.fish
+# end
 
