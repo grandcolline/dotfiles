@@ -24,7 +24,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
 Plug 'tyru/open-browser.vim'
-Plug 'arp242/gopher.vim'
+" Plug 'arp242/gopher.vim'
 
 call plug#end()
 
