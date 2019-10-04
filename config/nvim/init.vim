@@ -24,7 +24,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
 Plug 'tyru/open-browser.vim'
-" Plug 'arp242/gopher.vim'
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
 
@@ -138,6 +138,7 @@ nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
+nmap <Leader>t :Vista!!<CR>
 nmap <Leader>v <Plug>GitGutterPreviewHunk
 
 nmap <Leader><Tab> <C-w>w
@@ -158,11 +159,15 @@ colorscheme Tomorrow-Night
 "-----------------------------
 " Lightline
 "-----------------------------
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
 let g:lightline = {
   \ 'colorscheme': 'jellybeans',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'filename', 'readonly', 'cocstatus', 'modified' ] ]
+  \             [ 'fugitive', 'filename', 'readonly', 'cocstatus', 'modified', 'method' ] ]
   \ },
   \ 'component': {
   \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
@@ -173,6 +178,7 @@ let g:lightline = {
   \   'cocstatus': 'coc#status',
   \   'filetype': 'MyFiletype',
   \   'fileformat': 'MyFileformat',
+  \   'method': 'NearestMethodOrFunction',
   \ },
   \ 'component_visible_condition': {
   \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -235,4 +241,13 @@ endfunction
 
 let g:coc_status_error_sign = "E:"
 let g:coc_status_warning_sign = "W:"
+
+
+"-----------------------------
+" Vista
+"-----------------------------
+let g:vista_default_executive = 'coc'
+let g:vista#renderer#enable_icon = 0
+let g:vista_close_on_jump = 1
+let g:vista_sidebar_width = 60
 
