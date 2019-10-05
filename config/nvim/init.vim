@@ -128,8 +128,8 @@ nmap <Leader>E <Plug>(coc-diagnostic-prev)
 nmap <Leader>f :Files<CR>
 nmap <Leader>g <Plug>(coc-definition)
 nmap <Leader>G <Plug>(coc-implementation)
-nmap <Leader>h <Plug>GitGutterNextHunk
-nmap <Leader>H <Plug>GitGutterPrevHunk
+nmap <Leader>h <Plug>(GitGutterNextHunk)
+nmap <Leader>H <Plug>(GitGutterPrevHunk)
 map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
@@ -139,7 +139,7 @@ nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
 nmap <Leader>t :Vista!!<CR>
-nmap <Leader>v <Plug>GitGutterPreviewHunk
+nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 
 nmap <Leader><Tab> <C-w>w
 nmap <Leader><Space> :set hlsearch!<CR>
