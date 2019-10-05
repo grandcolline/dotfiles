@@ -7,6 +7,10 @@ set -x XDG_CONFIG_HOME $HOME/.config
 # less
 set -x LESS -SRXF
 
+# keybase
+# refs: https://github.com/keybase/keybase-issues/issues/2798
+set -x GPG_TTY (tty)
+
 # go
 if type "go" > /dev/null 2>&1
 	set -x GOPATH /develop
@@ -28,8 +32,6 @@ end
 if type "kubectl" > /dev/null 2>&1
 	set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
 end
-
-set -x GPG_TTY (tty)
 
 
 # ----------------------------
@@ -61,12 +63,4 @@ bind \cf '__fzf_file -g'
 function my_pwd_changed --on-variable PWD
 	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
 end
-
-
-# ----------------------------
-#  Include
-# ----------------------------
-# if test -e $XDG_CONFIG_HOME/fish/config.local.fish
-# 	source $XDG_CONFIG_HOME/fish/config.local.fish
-# end
 
