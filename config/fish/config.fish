@@ -29,6 +29,8 @@ if type "kubectl" > /dev/null 2>&1
 	set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
 end
 
+set -x GPG_TTY (tty)
+
 
 # ----------------------------
 #  Aliases
