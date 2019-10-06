@@ -15,6 +15,12 @@ curl https://raw.githubusercontent.com/docker/compose/master/contrib/completion/
 	-o $dir_path/config/fish/completions/docker-compose.fish
 curl https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/master/completions/kubectl.fish \
 	-o $dir_path/config/fish/completions/kubectl.fish
+curl https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gcloud.fish \
+	-o $dir_path/config/fish/completions/gcloud.fish
+curl https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gsutil.fish \
+	-o $dir_path/config/fish/completions/gsutil.fish
+curl https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/functions/gcloud_sdk_argcomplete.fish \
+	-o $dir_path/config/fish/functions/gcloud_sdk_argcomplete.fish
 
 echo "===== tmux setting ====="
 ln -vsf $dir_path/tmux.conf $HOME/.tmux.conf

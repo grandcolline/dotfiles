@@ -12,5 +12,8 @@ config/fish/fishd.*
 config/fish/completions/docker.fish
 config/fish/completions/docker-compose.fish
 config/fish/completions/kubectl.fish
+config/fish/completions/gcloud.fish
+config/fish/completions/gsutil.fish
+config/fish/functions/gcloud_sdk_argcomplete.fish
 
 !.gitkeep
