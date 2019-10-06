@@ -64,3 +64,6 @@ function my_pwd_changed --on-variable PWD
 	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
 end
 
+# Updates PATH for the Google Cloud SDK
+if [ -f '/develop/tool/google-cloud-sdk/path.fish.inc' ]; . '/develop/tool/google-cloud-sdk/path.fish.inc'; end
+
