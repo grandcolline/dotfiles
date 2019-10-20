@@ -13,8 +13,8 @@ set -x GPG_TTY (tty)
 
 # go
 if type "go" > /dev/null 2>&1
-	set -x GOPATH /develop
-	set -x PATH /develop/bin $PATH
+	set -x GOPATH $HOME/develop
+	set -x PATH $HOME/develop/bin $PATH
 	set -x GO111MODULE on
 end
 
@@ -32,6 +32,9 @@ end
 if type "kubectl" > /dev/null 2>&1
 	set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
 end
+
+# brew
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 
 # ----------------------------
@@ -65,5 +68,5 @@ function my_pwd_changed --on-variable PWD
 end
 
 # Updates PATH for the Google Cloud SDK
-if [ -f '/develop/tool/google-cloud-sdk/path.fish.inc' ]; . '/develop/tool/google-cloud-sdk/path.fish.inc'; end
+if [ -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc" ]; . "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"; end
 

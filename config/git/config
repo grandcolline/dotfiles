@@ -30,7 +30,7 @@
 	gpgsign = true
 
 [ghq]
-	root = /develop/src
+	root = ~/develop/src
 
 [alias]
 	# branch (b)
