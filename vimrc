@@ -20,6 +20,11 @@ set backspace=2
 set noswapfile
 set autoread
 
+command! Q q
+command! W w
+command! WQ wq
+command! Wq wq
+
 "========================================
 " View
 "========================================
@@ -32,4 +37,14 @@ set wrapscan
 set gdefault
 
 colorscheme delek
+
+"========================================
+" Key Mapping
+"========================================
+let g:mapleader = "\<Space>"
+
+nmap <Leader>o mzo<ESC>
+nmap <Leader>O mzO<ESC>
+nmap <Leader><Tab> <C-w>w
+nmap <Leader><Space> :set hlsearch!<CR>
 
