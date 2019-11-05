@@ -165,6 +165,10 @@ function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
+function! LightLineFilename()
+  return expand('%')
+endfunction
+
 let g:lightline = {
   \ 'colorscheme': 'jellybeans',
   \ 'active': {
@@ -180,6 +184,7 @@ let g:lightline = {
   \   'cocstatus': 'coc#status',
   \   'filetype': 'MyFiletype',
   \   'fileformat': 'MyFileformat',
+  \   'filename': 'LightLineFilename',
   \   'method': 'NearestMethodOrFunction',
   \ },
   \ 'component_visible_condition': {
