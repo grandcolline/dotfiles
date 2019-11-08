@@ -28,11 +28,6 @@ if type "docker" > /dev/null 2>&1
 	set -x DOCKER_BUILDKIT 1
 end
 
-# k8s
-if type "kubectl" > /dev/null 2>&1
-	set -x KUBECONFIG $HOME/.kube/config:$KUBECONFIG
-end
-
 # brew
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
