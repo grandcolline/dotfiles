@@ -35,15 +35,15 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # ----------------------------
 #  Aliases
 # ----------------------------
-alias vi 'nvim'
-alias g 'git'
-alias o 'open -R'
-alias b 'open -a Vivaldi'
-alias t 'tmux attach; or tmux'
-alias x 'exit'
-alias d 'docker'
-alias dc 'docker-compose'
-alias kb 'kubectl'
+abbr -a vi 'nvim'
+abbr -a g 'git'
+abbr -a o 'open -R'
+abbr -a b 'open -a Vivaldi'
+abbr -a t 'tmux attach; or tmux'
+abbr -a x 'exit'
+abbr -a d 'docker'
+abbr -a dc 'docker-compose'
+abbr -a kb 'kubectl'
 
 
 # ----------------------------
