@@ -31,19 +31,41 @@ end
 # brew
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
+# Google Cloud SDK
+if [ -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc" ]; . "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"; end
+
 
 # ----------------------------
 #  Aliases
 # ----------------------------
-abbr -a v 'nvim'
-abbr -a g 'git'
-abbr -a o 'open -R'
-abbr -a b 'open -a Vivaldi'
-abbr -a t 'tmux attach; or tmux'
-abbr -a x 'exit'
-abbr -a d 'docker'
+abbr -a v  'nvim'
+abbr -a o  'open -R'
+abbr -a b  'open -a Vivaldi'
+abbr -a t  'tmux attach; or tmux'
+abbr -a x  'exit'
+abbr -a d  'docker'
 abbr -a dc 'docker-compose'
 abbr -a kb 'kubectl'
+
+# Git
+abbr -a g    'git'
+abbr -a gb   'git branch -a'
+abbr -a gp   'git pull --rebase --prune --tags'
+abbr -a gf   'git fetch --prune --tags'
+abbr -a gm   'git merge -v'
+abbr -a gcm  'git commit -v'
+abbr -a gcma 'git commit -v --amend --date (env LANG=en_US.UTF-8 date -R)'
+abbr -a gs   'git status -sb'
+abbr -a gco  'git checkout'
+abbr -a gcob 'git checkout -b'
+abbr -a gcp  'git cherry-pick --ff'
+abbr -a gad  'git add -v'
+abbr -a gada 'git add -v -A'
+abbr -a gpo  'git push -u origin'
+abbr -a gpfo 'git push --force-with-lease -u origin'
+abbr -a gd   'git diff'
+abbr -a glp  'git log -p -1 --stat --decorate'
+abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
 
 
 # ----------------------------
@@ -60,7 +82,4 @@ bind \cf '__fzf_file -g'
 function my_pwd_changed --on-variable PWD
 	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
 end
-
-# Updates PATH for the Google Cloud SDK
-if [ -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc" ]; . "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"; end
 
