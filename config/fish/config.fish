@@ -35,7 +35,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 # ----------------------------
 #  Aliases
 # ----------------------------
-abbr -a vi 'nvim'
+abbr -a v 'nvim'
 abbr -a g 'git'
 abbr -a o 'open -R'
 abbr -a b 'open -a Vivaldi'
