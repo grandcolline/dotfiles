@@ -38,7 +38,7 @@ if [ -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc" ]; . "$HOME/develop/
 # ----------------------------
 #  Aliases
 # ----------------------------
-abbr -a v  'nvim'
+abbr -a vi 'nvim'
 abbr -a o  'open -R'
 abbr -a b  'open -a Vivaldi'
 abbr -a t  'tmux attach; or tmux'
