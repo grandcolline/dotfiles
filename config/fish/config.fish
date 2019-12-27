@@ -50,6 +50,7 @@ abbr -a kb 'kubectl'
 # Git
 abbr -a g    'git'
 abbr -a gb   'git branch -a'
+abbr -a gbd  'git branch -d'
 abbr -a gp   'git pull --rebase --prune --tags'
 abbr -a gf   'git fetch --prune --tags'
 abbr -a gm   'git merge -v'

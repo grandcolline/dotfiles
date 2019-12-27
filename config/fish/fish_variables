@@ -9,6 +9,7 @@ SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_gad:git\x20add\x20\x2dv
 SETUVAR _fish_abbr_gada:git\x20add\x20\x2dv\x20\x2dA
 SETUVAR _fish_abbr_gb:git\x20branch\x20\x2da
+SETUVAR _fish_abbr_gbd:git\x20branch\x20\x2dd
 SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dv
 SETUVAR _fish_abbr_gcma:git\x20commit\x20\x2dv\x20\x2d\x2damend\x20\x2d\x2ddate\x20\x28env\x20LANG\x3den_US\x2eUTF\x2d8\x20date\x20\x2dR\x29
 SETUVAR _fish_abbr_gco:git\x20checkout
