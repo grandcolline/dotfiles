@@ -5,6 +5,7 @@ SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR _fish_abbr_b:open\x20\x2da\x20Vivaldi
 SETUVAR _fish_abbr_d:docker
 SETUVAR _fish_abbr_dc:docker\x2dcompose
+SETUVAR _fish_abbr_dr:docker\x20run\x20\x2d\x2drm\x20\x2dit
 SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_gad:git\x20add\x20\x2dv
 SETUVAR _fish_abbr_gada:git\x20add\x20\x2dv\x20\x2dA

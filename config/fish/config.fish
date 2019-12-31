@@ -43,7 +43,6 @@ abbr -a o  'open -R'
 abbr -a b  'open -a Vivaldi'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
-abbr -a d  'docker'
 abbr -a dc 'docker-compose'
 abbr -a kb 'kubectl'
 
@@ -68,6 +67,10 @@ abbr -a gd   'git diff'
 abbr -a gll  'git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"'
 abbr -a glp  'git log -p -1 --stat --decorate'
 abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
+
+# Docker
+abbr -a d  'docker'
+abbr -a dr 'docker run --rm -it'
 
 
 # ----------------------------
