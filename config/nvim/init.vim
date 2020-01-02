@@ -43,6 +43,7 @@ set backspace=2                           " more powerful backspacing
 
 set noswapfile                            " swapファイルを作成しない
 set autoread                              " 編集中ファイルが書き換えられたら、自動リロード
+set undofile
 set undodir=$XDG_CONFIG_HOME/nvim/cache
 set backupdir=$XDG_CONFIG_HOME/nvim/cache
 set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
