@@ -43,8 +43,6 @@ abbr -a o  'open -R'
 abbr -a b  'open -a Vivaldi'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
-abbr -a dc 'docker-compose'
-abbr -a kb 'kubectl'
 
 # Git
 abbr -a g    'git'
@@ -55,6 +53,7 @@ abbr -a gf   'git fetch --prune --tags'
 abbr -a gm   'git merge -v'
 abbr -a gcm  'git commit -v'
 abbr -a gcma 'git commit -v --amend --date (env LANG=en_US.UTF-8 date -R)'
+abbr -a grs  'git reset'
 abbr -a gs   'git status -sb'
 abbr -a gco  'git checkout'
 abbr -a gcob 'git checkout -b'
@@ -71,6 +70,10 @@ abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %
 # Docker
 abbr -a d  'docker'
 abbr -a dr 'docker run --rm -it'
+abbr -a dc 'docker-compose'
+
+# K8s
+abbr -a kb 'kubectl'
 
 
 # ----------------------------
