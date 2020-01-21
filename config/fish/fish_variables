@@ -28,6 +28,7 @@ SETUVAR _fish_abbr_gpfo:git\x20push\x20\x2d\x2dforce\x2dwith\x2dlease\x20\x2du\x
 SETUVAR _fish_abbr_gpo:git\x20push\x20\x2du\x20origin
 SETUVAR _fish_abbr_grs:git\x20reset
 SETUVAR _fish_abbr_gs:git\x20status\x20\x2dsb
+SETUVAR _fish_abbr_hp:http\x2dprompt
 SETUVAR _fish_abbr_kb:kubectl
 SETUVAR _fish_abbr_o:open\x20\x2dR
 SETUVAR _fish_abbr_t:tmux\x20attach\x3b\x20or\x20tmux
