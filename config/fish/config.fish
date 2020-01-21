@@ -38,11 +38,15 @@ if [ -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc" ]; . "$HOME/develop/
 # ----------------------------
 #  Aliases
 # ----------------------------
+alias r fzf_ripgrep
+
 abbr -a vi 'nvim'
 abbr -a o  'open -R'
 abbr -a b  'open -a Vivaldi'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
+abbr -a c  'clear'
+abbr -a hp 'http-prompt'
 
 # Git
 abbr -a g    'git'

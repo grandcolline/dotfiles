@@ -4,8 +4,10 @@ function __fzf_git_log
 		argparse -n __fzf_git_log 'a/all' -- $argv
 		or return 1
 
-		set -l git_cmd "git log --no-merges --date=short --pretty=format:'%h %ad %an: %d %s'"
-		set -l fzf_cmd "fzf --height 40% --reverse --exit-0 --tiebreak=index \
+		# set -l git_cmd "unbuffer git log --no-merges --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'"
+		# set -l git_cmd "git log --no-merges --date=short --pretty=format:'%h %ad %an: %d %s'"
+		set -l git_cmd "git log --no-merges --date=short --pretty='format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s'"
+		set -l fzf_cmd "fzf --ansi --height 40% --reverse --exit-0 --tiebreak=index \
 			--bind 'ctrl-y:execute-silent(echo {} | awk \'{ print $1 }\' | pbcopy)+abort'"
 
 		if set -lq _flag_all
