@@ -29,9 +29,6 @@
 [commit]
 	gpgsign = true
 
-[ghq]
-	root = ~/develop/src
-
 # TODO: fishに移したので必要なさそうなら削除
 #[alias]
 #	# branch (b)
