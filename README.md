@@ -4,17 +4,20 @@ my config files...
 
 ## Used Things
 
-* Git
-* [FishShell](https://github.com/fish-shell/fish-shell)
-* [NeoVim](https://github.com/neovim/neovim)
-* [tmux](https://github.com/tmux/tmux)
-* [fasd](https://github.com/clvv/fasd)
-* [fzf](https://github.com/junegunn/fzf)
-* [ghq](https://github.com/motemen/ghq)
-* [ripgrep](https://github.com/BurntSushi/ripgrep)
-* [expect]
-* [http-prompt](https://github.com/eliangcs/http-prompt)
-* [mycli](https://github.com/dbcli/mycli)
+|Name|What|How to Install|
+|:--:|:---|:------|
+|[brew](https://github.com/Homebrew/brew)|package manager||
+|Git|version-control system|brew|
+|[FishShell](https://github.com/fish-shell/fish-shell)|main command line shell|berw|
+|[NeoVim](https://github.com/neovim/neovim)|main editor|brew|
+|[tmux](https://github.com/tmux/tmux)|terminal multiplexer|brew|
+|[fasd](https://github.com/clvv/fasd)|tool for quick access to files and directories|brew|
+|[fzf](https://github.com/junegunn/fzf)|fuzzy finder for terminal & vim|brew|
+|[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|brew|
+|expect||brew|
+|[http-prompt](https://github.com/eliangcs/http-prompt)|terminal client for http access|brew|
+|[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|brew|
+
 
 ## Setup
 
