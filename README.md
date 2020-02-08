@@ -13,7 +13,6 @@ my config files...
 * [ghq](https://github.com/motemen/ghq)
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
 * [expect]
-
 * [http-prompt](https://github.com/eliangcs/http-prompt)
 * [mycli](https://github.com/dbcli/mycli)
 
