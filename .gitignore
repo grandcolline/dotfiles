@@ -9,6 +9,7 @@ vim/dein/
 
 # fish
 config/fish/fishd.*
+config/fish/fish_variables
 config/fish/completions/docker.fish
 config/fish/completions/docker-compose.fish
 config/fish/completions/kubectl.fish
