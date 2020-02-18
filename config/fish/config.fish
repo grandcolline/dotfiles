@@ -18,6 +18,11 @@ if type "go" > /dev/null 2>&1
 	set -x GO111MODULE on
 end
 
+# Rust
+if test -d "$HOME/.cargo/bin"
+	set -x PATH $HOME/.cargo/bin $PATH
+end
+
 # java
 if type "java" > /dev/null 2>&1
 	set -x JAVA_HOME (/usr/libexec/java_home)
