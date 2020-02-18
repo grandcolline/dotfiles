@@ -39,6 +39,7 @@ set fileencoding=utf-8                    " 保存時の文字コード
 set fileencodings=utf-8                   " 読み込み時の文字コードの自動判別. 左側が優先
 set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
 set backspace=2                           " more powerful backspacing
+set ambiwidth=double
 
 set noswapfile                            " swapファイルを作成しない
 set autoread                              " 編集中ファイルが書き換えられたら、自動リロード
