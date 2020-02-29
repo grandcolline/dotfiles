@@ -37,7 +37,9 @@ end
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Google Cloud SDK
-if [ -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc" ]; . "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"; end
+if test -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
+	. "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
+end
 
 
 # ----------------------------
