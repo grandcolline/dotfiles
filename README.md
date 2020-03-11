@@ -15,7 +15,6 @@ my config files...
 |[fzf](https://github.com/junegunn/fzf)|fuzzy finder for terminal & vim|brew|
 |[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|brew|
 |expect||brew|
-|[http-prompt](https://github.com/eliangcs/http-prompt)|terminal client for http access|brew|
 |[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|brew|
 
 
