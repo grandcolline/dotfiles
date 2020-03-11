@@ -24,8 +24,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim'
-Plug 'leafgarland/typescript-vim' " For typescript syntax
-Plug 'ianks/vim-tsx'              " For typescript syntax
+" Plug 'leafgarland/typescript-vim' " For typescript syntax
+" Plug 'ianks/vim-tsx'              " For typescript syntax
 
 call plug#end()
 
