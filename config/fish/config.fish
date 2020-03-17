@@ -51,7 +51,7 @@ abbr -a b  'open -a Vivaldi'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
-abbr -a rm 'rm -r'
+abbr -a rm 'rm -rf'
 
 # Git
 abbr -a g    'git'
