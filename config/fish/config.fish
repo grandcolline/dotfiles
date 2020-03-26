@@ -83,7 +83,7 @@ abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %
 
 # Docker
 abbr -a d  'docker'
-abbr -a dr 'docker run --rm -it'
+abbr -a dr 'docker run --rm -it -v $PWD:/workspace'
 abbr -a dc 'docker-compose'
 
 # K8s
