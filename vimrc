@@ -25,6 +25,11 @@ command! W w
 command! WQ wq
 command! Wq wq
 
+nnoremap x "_x
+nnoremap X "_dd
+nnoremap c "_c
+nnoremap C "_C
+
 "========================================
 " View
 "========================================
