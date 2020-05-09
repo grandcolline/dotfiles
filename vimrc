@@ -29,6 +29,7 @@ command! Wq wq
 " View
 "========================================
 set number
+set relativenumber
 set laststatus=2
 set cmdheight=1
 set ignorecase
