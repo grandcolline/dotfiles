@@ -8,19 +8,19 @@ echo ""
 
 echo "===== FishShell setting ====="
 ln -vsfn $dir_path/config/fish $XDG_CONFIG_HOME/fish
-echo "install completion"
-curl https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish \
+curl -LsS https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish \
 	-o $dir_path/config/fish/completions/docker.fish
-curl https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish \
+curl -LsS https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish \
 	-o $dir_path/config/fish/completions/docker-compose.fish
-curl https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/master/completions/kubectl.fish \
+curl -LsS https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/master/completions/kubectl.fish \
 	-o $dir_path/config/fish/completions/kubectl.fish
-curl https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gcloud.fish \
+curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gcloud.fish \
 	-o $dir_path/config/fish/completions/gcloud.fish
-curl https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gsutil.fish \
+curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gsutil.fish \
 	-o $dir_path/config/fish/completions/gsutil.fish
-curl https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/functions/gcloud_sdk_argcomplete.fish \
+curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/functions/gcloud_sdk_argcomplete.fish \
 	-o $dir_path/config/fish/functions/gcloud_sdk_argcomplete.fish
+echo ""
 
 echo "===== tmux setting ====="
 ln -vsf $dir_path/tmux.conf $HOME/.tmux.conf
