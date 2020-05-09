@@ -37,3 +37,7 @@ echo ""
 echo "===== mycli setting ====="
 ln -vsfn $dir_path/myclirc $HOME/.myclirc
 echo ""
+
+echo "===== bash setting ====="
+ln -vsfn $dir_path/bashrc $HOME/.bashrc
+echo ""
