@@ -46,7 +46,7 @@ end
 #  Aliases
 # ----------------------------
 abbr -a vi 'nvim'
-abbr -a o  'open -R'
+abbr -a o  'open'
 abbr -a b  'open -a "Google Chrome"'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
