@@ -47,7 +47,7 @@ end
 # ----------------------------
 abbr -a vi 'nvim'
 abbr -a o  'open -R'
-abbr -a b  'open -a Vivaldi'
+abbr -a b  'open -a "Google Chrome"'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'

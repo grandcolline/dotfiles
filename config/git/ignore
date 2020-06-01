@@ -9,8 +9,3 @@
 Session.vim
 tags
 
-# For eclipse:
-.metadata
-.settings/
-bin/
-
