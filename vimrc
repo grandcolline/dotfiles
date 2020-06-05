@@ -34,7 +34,7 @@ nnoremap C "_C
 " View
 "========================================
 set number
-set relativenumber
+" set relativenumber
 set laststatus=2
 set cmdheight=1
 set ignorecase
