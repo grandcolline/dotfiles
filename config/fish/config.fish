@@ -23,9 +23,16 @@ if test -d "$HOME/.cargo/bin"
 	set -x PATH $HOME/.cargo/bin $PATH
 end
 
-# java
-if type "java" > /dev/null 2>&1
-	set -x JAVA_HOME (/usr/libexec/java_home)
+# java (sdkman)
+if test -d "$HOME/.sdkman/bin"
+	function sdk
+		bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
+	end
+	for ITEM in $HOME/.sdkman/candidates/* ;
+		set -gx PATH $PATH $ITEM/current/bin
+	end
+
+	set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
 end
 
 # docker
