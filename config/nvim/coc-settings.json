@@ -18,9 +18,9 @@
       "filetypes": ["tf"]
     },
     "efm": {
-     "command": "efm-langserver",
-     "args": [],
-     "filetypes": ["markdown"]
+      "command": "efm-langserver",
+      "args": [],
+      "filetypes": ["markdown"]
     }
   }
 }
