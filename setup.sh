@@ -34,6 +34,10 @@ echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
 echo ""
 
+echo "===== IdeaVim setting ====="
+ln -vsfn $dir_path/ideavimrc $HOME/.ideavimrc
+echo ""
+
 echo "===== mycli setting ====="
 ln -vsfn $dir_path/myclirc $HOME/.myclirc
 echo ""

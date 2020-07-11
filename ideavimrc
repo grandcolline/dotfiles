@@ -1,0 +1,67 @@
+"            _
+"     __   _(_)_ __ ___  _ __ ___
+"     \ \ / / | '_ ` _ \| '__/ __|
+"      \ V /| | | | | | | | | (__
+"     (_)_/ |_|_| |_| |_|_|  \___|
+"       ---- IntelliJの設定 ----
+
+"-----------------------------
+" General
+"-----------------------------
+set number
+set lazyredraw             " 無駄な描画をしない
+set ttyfast                " 再描画の速度が速くなるらしいけど最近の端末では無意味との噂も..
+set ttimeoutlen=1          " コマンドのタイムラグをなくす
+set visualbell             " 音を鳴らさない
+
+nnoremap x "_x
+nnoremap X "_dd
+nnoremap c "_c
+nnoremap C "_C
+
+command! Q q               " Q => q
+command! W w               " W => w
+command! WQ wq             " WQ => wq
+command! Wq wq             " Wq => wq
+
+" set hlsearch             " 検索文字列をハイライトする
+set nohlsearch             " 検索文字列をハイライトしない
+set incsearch              " インクリメンタルサーチを行う
+set ignorecase             " 大文字と小文字を区別しない
+set smartcase              " 大文字と小文字の混在で検索した場合、大文字と小文字を区別
+set wrapscan               " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault               " 置換の時 g オプションをデフォルトで有効にする
+
+set clipboard=unnamedplus  " クリップボード共有
+
+set easymotion
+
+"-----------------------------
+" Key Mapping
+"-----------------------------
+" 甘えるな、hjklを使え
+noremap <Left>  <Nop>
+noremap <Down>  <Nop>
+noremap <Up>    <Nop>
+noremap <Right> <Nop>
+
+nmap / :<C-u>action Find<CR>
+
+nmap <Space>b :<C-u>action RecentFiles<CR>
+nmap <Space>d :<C-u>action QuickJavaDoc<CR>
+nmap <Space>e :<C-u>action GotoNextError<CR>
+nmap <Space>E :<C-u>action GotoPreviousError<CR>
+nmap <Space>f :<C-u>action GotoFile<CR>
+nmap <Space>g :<C-u>action GotoDeclaration<CR>
+nmap <Space>G :<C-u>action FindUsages<CR>
+nmap <Space>i :<C-u>action GotoImplementation<CR>
+map  <Space>j <Plug>(easymotion-s2)
+nmap <Space>n :<C-u>action RenameElement<CR>
+nmap <Space>o mzo<ESC>
+nmap <Space>O mzO<ESC>
+nmap <Space>r :<C-u>action FindInPath<CR>
+nmap <Space>t :<C-u>action FileStructurePopup<CR>
+
+" nmap <Space><Tab> <C-w>w
+nmap <Space><Space> :set hlsearch!<CR>
+
