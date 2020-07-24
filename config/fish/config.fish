@@ -35,6 +35,11 @@ if test -d "$HOME/.sdkman/bin"
 	set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
 end
 
+# nodebrew
+if test -d "$HOME/.nodebrew/current/bin"
+	set -x PATH $HOME/.nodebrew/current/bin $PATH
+end
+
 # docker
 if type "docker" > /dev/null 2>&1
 	set -x DOCKER_BUILDKIT 1
