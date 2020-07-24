@@ -46,8 +46,9 @@ noremap <Up>    <Nop>
 noremap <Right> <Nop>
 
 nmap / :<C-u>action Find<CR>
+nmap - :<C-u>action ActivateProjectToolWindow<CR>
 
-nmap <Space>b :<C-u>action RecentFiles<CR>
+nmap <Space>b :<C-u>action Switcher<CR>
 nmap <Space>d :<C-u>action QuickJavaDoc<CR>
 nmap <Space>e :<C-u>action GotoNextError<CR>
 nmap <Space>E :<C-u>action GotoPreviousError<CR>
@@ -62,6 +63,6 @@ nmap <Space>O mzO<ESC>
 nmap <Space>r :<C-u>action FindInPath<CR>
 nmap <Space>t :<C-u>action FileStructurePopup<CR>
 
-" nmap <Space><Tab> <C-w>w
-nmap <Space><Space> :set hlsearch!<CR>
+nmap <Space><Return> :<C-u>action RunMenu<CR>
+nmap <Space><Space> :<C-u>action CodeCompletion<CR>
 
