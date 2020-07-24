@@ -132,9 +132,9 @@ nmap <Leader>E <Plug>(coc-diagnostic-prev)
 nmap <Leader>f :Files<CR>
 nmap <Leader>g <Plug>(coc-definition)
 nmap <Leader>G <Plug>(coc-references)
-" nmap <Leader>G <Plug>(coc-implementation)
 nmap <Leader>h <Plug>(GitGutterNextHunk)
 nmap <Leader>H <Plug>(GitGutterPrevHunk)
+nmap <Leader>i <Plug>(coc-implementation)
 map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
