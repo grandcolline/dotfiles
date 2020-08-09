@@ -19,13 +19,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'Townk/vim-autoclose'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neovim/nvim-lsp'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim'
-" Plug 'leafgarland/typescript-vim' " For typescript syntax
-" Plug 'ianks/vim-tsx'              " For typescript syntax
 
 call plug#end()
 
@@ -88,7 +87,7 @@ set inccommand=split                      " 置換のインクリメンタル表
 set number                                " 行番号表示
 " set relativenumber                      " 相対行の表示
 set cursorline                            " 行のハイライト
-"set cursorcolumn                         " 列のハイライト
+" set cursorcolumn                        " 列のハイライト
 set showmatch                             " 対応括弧のハイライト
 set matchtime=3                           " 対応括弧のハイライトを3秒に
 
@@ -108,7 +107,6 @@ set signcolumn=yes                        " 行番号の左側のサイズ固定
 set laststatus=2                          " ステータスラインの表示
 set noshowmode                            " 「-- 挿入 --」とかの非表示
 set cmdheight=1                           " メッセージ表示欄の行数
-"set showtabline=2                        " タブラインの表示
 set ruler                                 " カーソルが何行目の何列目に置かれているかを表示する
 
 
@@ -251,6 +249,14 @@ endfunction
 
 let g:coc_status_error_sign = "E:"
 let g:coc_status_warning_sign = "W:"
+
+"-----------------------------
+" nvim-lsp
+"-----------------------------
+" :lua << END
+"   require'nvim_lsp'.tsserver.setup{}
+"   require'nvim_lsp'.gopls.setup{}
+" END
 
 
 "-----------------------------
