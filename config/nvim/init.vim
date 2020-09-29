@@ -25,6 +25,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim'
+Plug 'diepm/vim-rest-console'
 
 call plug#end()
 
@@ -124,6 +125,7 @@ noremap <Right> <Nop>
 let g:mapleader = "\<Space>"
 
 nmap <Leader>b :Buffers<CR>
+nmap <Leader>c :call VrcQuery()
 nmap <Leader>d :call <SID>show_documentation()<CR>
 nmap <Leader>e <Plug>(coc-diagnostic-next)
 nmap <Leader>E <Plug>(coc-diagnostic-prev)
@@ -267,3 +269,13 @@ let g:vista#renderer#enable_icon = 0
 let g:vista_close_on_jump = 1
 let g:vista_sidebar_width = 60
 
+
+"-----------------------------
+" rest-console
+"-----------------------------
+let g:vrc_set_default_mapping = 0
+let g:vrc_auto_format_uhex = 1
+let g:vrc_curl_opts = {
+	\ '-sS': '',
+	\ '-i': '',
+	\ }
