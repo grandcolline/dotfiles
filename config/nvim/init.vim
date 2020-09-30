@@ -125,7 +125,7 @@ noremap <Right> <Nop>
 let g:mapleader = "\<Space>"
 
 nmap <Leader>b :Buffers<CR>
-nmap <Leader>c :call VrcQuery()
+nmap <Leader>c :call VrcQuery()<CR>
 nmap <Leader>d :call <SID>show_documentation()<CR>
 nmap <Leader>e <Plug>(coc-diagnostic-next)
 nmap <Leader>E <Plug>(coc-diagnostic-prev)
