@@ -137,7 +137,7 @@ nmap <Leader>H <Plug>(GitGutterPrevHunk)
 nmap <Leader>i <Plug>(coc-implementation)
 map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
-nmap <Leader>l :Lines<CR>
+" nmap <Leader>l :Lines<CR>
 " nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
