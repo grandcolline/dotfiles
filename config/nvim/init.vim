@@ -14,7 +14,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Townk/vim-autoclose'
 Plug 'yuttie/comfortable-motion.vim'
@@ -137,7 +137,7 @@ nmap <Leader>H <Plug>(GitGutterPrevHunk)
 nmap <Leader>i <Plug>(coc-implementation)
 map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
-" nmap <Leader>l :Lines<CR>
+nmap <Leader>l :Lines<CR>
 " nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
@@ -259,6 +259,14 @@ let g:coc_status_warning_sign = "W:"
 "   require'nvim_lsp'.tsserver.setup{}
 "   require'nvim_lsp'.gopls.setup{}
 " END
+
+
+"-----------------------------
+" fzf
+"-----------------------------
+let g:fzf_layout = {'up':'~80%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
 
 
 "-----------------------------
