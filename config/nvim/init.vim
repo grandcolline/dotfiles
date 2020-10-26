@@ -265,7 +265,7 @@ let g:coc_status_warning_sign = "W:"
 "-----------------------------
 " fzf
 "-----------------------------
-let g:fzf_layout = {'up':'~80%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+let g:fzf_layout = { 'down': '30%' }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
 
@@ -284,7 +284,5 @@ let g:vista_sidebar_width = 60
 "-----------------------------
 let g:vrc_set_default_mapping = 0
 let g:vrc_auto_format_uhex = 1
-let g:vrc_curl_opts = {
-	\ '-sS': '',
-	\ '-i': '',
-	\ }
+let g:vrc_curl_opts = { '-sS': '', '-i': '' }
+
