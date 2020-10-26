@@ -72,8 +72,8 @@ set ttimeout                              " neoVim文字化け問題
 set ttimeoutlen=50
 set pyxversion=3
 
-set hlsearch                              " 検索文字列をハイライトする
-" set nohlsearch                          " 検索文字列をハイライトしない
+" set hlsearch                            " 検索文字列をハイライトする
+set nohlsearch                            " 検索文字列をハイライトしない
 set incsearch                             " インクリメンタルサーチを行う
 set ignorecase                            " 大文字と小文字を区別しない
 set smartcase                             " 大文字と小文字の混在で検索した場合、大文字と小文字を区別
@@ -148,7 +148,7 @@ nmap <Leader>t :Vista!!<CR>
 nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 
 nmap <Leader><Tab> <C-w>w
-nmap <Leader><Space> :noh<CR>
+nmap <Leader><Space> :set hlsearch!<CR>
 
 
 "-----------------------------
