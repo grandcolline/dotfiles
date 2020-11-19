@@ -64,7 +64,7 @@ abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
 abbr -a rm 'rm -rf'
-abbr -a mm 'make -f .myMakefile'
+alias m 'make -f .myMakefile'
 
 # Git
 abbr -a g    'git'
