@@ -4,8 +4,8 @@ my config files...
 
 ## Used Things
 
-|Name|What|How to Install|
-|:--:|:---|:------|
+| Name | What | How to Install |
+|:----:|:-----|:---------------|
 |[brew](https://github.com/Homebrew/brew)|package manager||
 |Git|version-control system|brew|
 |[FishShell](https://github.com/fish-shell/fish-shell)|main command line shell|berw|

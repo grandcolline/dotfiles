@@ -53,6 +53,9 @@ if test -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
 	. "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
 end
 
+# ログインメッセージを表示しない
+set fish_greeting
+
 
 # ----------------------------
 #  Aliases
