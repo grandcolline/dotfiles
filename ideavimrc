@@ -63,6 +63,7 @@ nmap <Space>O mzO<ESC>
 nmap <Space>r :<C-u>action FindInPath<CR>
 nmap <Space>t :<C-u>action FileStructurePopup<CR>
 
+nmap <Space><Tab> <C-w>w
 nmap <Space><Return> :<C-u>action RunMenu<CR>
 nmap <Space><Space> :<C-u>action HideAllWindows<CR>
 
