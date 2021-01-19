@@ -10,4 +10,4 @@ Session.vim
 tags
 
 # オレオレMakefile
-.myMakefile
+.myMakefile.mk

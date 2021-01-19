@@ -18,3 +18,4 @@ config/fish/completions/gsutil.fish
 config/fish/functions/gcloud_sdk_argcomplete.fish
 
 !.gitkeep
+!.myMakefile.mk
