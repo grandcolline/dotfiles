@@ -12,6 +12,7 @@
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -157,9 +158,15 @@ nmap <Leader><Space> :set hlsearch!<CR>
 syntax on
 set background=dark
 set t_Co=256
-autocmd ColorScheme * highlight LineNr ctermfg=245
 
-colorscheme Tomorrow-Night
+" --- Tomorrow Night ---
+" autocmd ColorScheme * highlight LineNr ctermfg=245
+" colorscheme tomorrow-night
+
+" --- Iceberg ---
+colorscheme iceberg
+hi Visual ctermbg=241   " Visual(選択範囲)の白を濃くする
+hi Comment ctermfg=102  " コメントもちょっと濃く
 
 
 "-----------------------------
