@@ -165,8 +165,10 @@ set t_Co=256
 
 " --- Iceberg ---
 colorscheme iceberg
-hi Visual ctermbg=241   " Visual(選択範囲)の白を濃くする
-hi Comment ctermfg=102  " コメントもちょっと濃く
+hi Visual  ctermbg=241      " Visual(選択範囲)の白を濃くする
+hi Comment ctermfg=102      " コメントちょっと濃く
+hi LineNr  ctermfg=102      " 行番号ちょっと濃く
+hi CursorLineNr ctermfg=180 " 現在行番号ハイライト
 
 
 "-----------------------------
