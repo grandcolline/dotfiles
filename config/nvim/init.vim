@@ -11,7 +11,7 @@
 "-----------------------------
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
-Plug 'chriskempson/vim-tomorrow-theme'
+" Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
@@ -23,7 +23,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neovim/nvim-lsp'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
-Plug 'justinmk/vim-dirvish'
+Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'diepm/vim-rest-console'
@@ -151,6 +151,7 @@ nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 nmap <Leader><Tab> <C-w>w
 nmap <Leader><Space> :set hlsearch!<CR>
 
+nmap - :e %:h<CR>
 
 "-----------------------------
 " ColorScheme
@@ -231,9 +232,9 @@ let g:EasyMotion_keys = '123456789wertasdfgyuiophjklzxcvbnm'
 
 
 "-----------------------------
-" Dirvish
+" Molder
 "-----------------------------
-let g:dirvish_relative_paths = 1      " 相対パスで表示(検索時に絶対パスになるのを防ぐ)
+let g:molder_show_hidden = 1
 
 
 "-----------------------------
