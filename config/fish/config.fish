@@ -60,13 +60,14 @@ set fish_greeting
 # ----------------------------
 #  Aliases
 # ----------------------------
-abbr -a vi 'nvim'
-abbr -a o  'open'
-abbr -a b  'open -a "Google Chrome"'
-abbr -a t  'tmux attach; or tmux'
-abbr -a x  'exit'
-abbr -a c  'clear'
-abbr -a rm 'rm -rf'
+abbr -a vi  'nvim'
+abbr -a o   'open'
+abbr -a b   'open -a "Google Chrome"'
+abbr -a t   'tmux attach; or tmux'
+abbr -a x   'exit'
+abbr -a c   'clear'
+abbr -a rm  'rm -rf'
+abbr -a ghv 'gh repo view --web'
 alias m 'make -f .myMakefile.mk'
 
 # Git
