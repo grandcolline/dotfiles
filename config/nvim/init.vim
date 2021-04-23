@@ -136,11 +136,11 @@ nmap <Leader>G <Plug>(coc-references)
 nmap <Leader>h <Plug>(GitGutterNextHunk)
 nmap <Leader>H <Plug>(GitGutterPrevHunk)
 nmap <Leader>i <Plug>(coc-implementation)
-map  <Leader>j <Plug>(easymotion-sn)
+" map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
 nmap <Leader>m :Marks<CR>
-" nmap <Leader>n <Plug>(coc-rename)
+nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
@@ -148,8 +148,10 @@ nmap <Leader>s :GFiles?<CR>
 nmap <Leader>t :Vista!!<CR>
 nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 
-nmap <Leader><Tab> <C-w>w
+nmap <Leader><Tab>   <C-w>w
+map  <Leader>/       <Plug>(easymotion-sn)
 nmap <Leader><Space> :set hlsearch!<CR>
+nmap <Leader><CR>    :! 
 
 nmap - :e %:h<CR>
 
