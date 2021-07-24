@@ -13,19 +13,19 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'cocopon/iceberg.vim'
-Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Townk/vim-autoclose'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neovim/nvim-lsp'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
-Plug 'liuchengxu/vista.vim'
 Plug 'diepm/vim-rest-console'
 
 call plug#end()
@@ -136,7 +136,6 @@ nmap <Leader>G <Plug>(coc-references)
 nmap <Leader>h <Plug>(GitGutterNextHunk)
 nmap <Leader>H <Plug>(GitGutterPrevHunk)
 nmap <Leader>i <Plug>(coc-implementation)
-" map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
 nmap <Leader>m :Marks<CR>
@@ -175,40 +174,46 @@ hi CursorLineNr ctermfg=180 " 現在行番号ハイライト
 
 
 "-----------------------------
-" Lightline
+" lualine
 "-----------------------------
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-function! LightLineFilename()
-  return expand('%')
-endfunction
-
-let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'filename', 'readonly', 'cocstatus', 'modified', 'method' ] ]
-  \ },
-  \ 'component': {
-  \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-  \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-  \ },
-  \ 'component_function': {
-  \   'cocstatus': 'coc#status',
-  \   'filetype': 'MyFiletype',
-  \   'fileformat': 'MyFileformat',
-  \   'filename': 'LightLineFilename',
-  \   'method': 'NearestMethodOrFunction',
-  \ },
-  \ 'component_visible_condition': {
-  \   'readonly': '(&filetype!="help"&& &readonly)',
-  \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-  \ },
-  \ }
+lua << EOF
+local status, lualine = pcall(require, "lualine")
+if (not status) then return end
+lualine.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'jellybeans',
+    -- section_separators = {'', ''},
+    section_separators = {'', ''},
+    component_separators = {'|', '|'},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'filename', 'coc#status'},
+    -- lualine_c = {
+    --   {
+    --     'diagnostics',
+    --     sources = {"nvim_lsp"},
+    --     symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+    --   }
+    -- },
+	lualine_x = {},
+    lualine_y = {'branch', 'filetype'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {'filename'},
+    lualine_c = {},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {'fugitive'}
+}
+EOF
 
 
 "-----------------------------
@@ -262,16 +267,78 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_status_error_sign = "E:"
-let g:coc_status_warning_sign = "W:"
+let g:coc_status_error_sign = "Err:"
+let g:coc_status_warning_sign = "Warn:"
+
 
 "-----------------------------
-" nvim-lsp
+" nvim-lspconfig
 "-----------------------------
-" :lua << END
-"   require'nvim_lsp'.tsserver.setup{}
-"   require'nvim_lsp'.gopls.setup{}
-" END
+" lua << EOF
+" local nvim_lsp = require('lspconfig')
+"
+" -- エラー文言を表示しない
+" vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+"   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+" )
+"
+" local on_attach = function(client, bufnr)
+"   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+"   -- Mappings
+"   -- refs: https://github.com/neovim/nvim-lspconfig#keybindings-and-completion
+"   local opts = { noremap=true, silent=true }
+"   ---- 定義ジャンプ
+"   buf_set_keymap('n', '<Leader>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+"   ---- 定義表示
+"   buf_set_keymap('n', '<Leader>d', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+"   ---- エラージャンプ
+"   buf_set_keymap('n', '<Leader>e', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+"   buf_set_keymap('n', '<Leader>E', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+"
+"   -- 補完設定
+"   require'completion'.on_attach(client, bufnr)
+" end
+"
+" -- LSPのセットアップ
+" nvim_lsp.gopls.setup{
+"   on_attach = on_attach
+" }
+" nvim_lsp.tsserver.setup {
+"   on_attach = on_attach
+" }
+" nvim_lsp.rls.setup {
+"   on_attach = on_attach,
+"   settings = {
+"     rust = {
+"       unstable_features = true,
+"       build_on_save = false,
+"       all_features = true,
+"     },
+"   },
+" }
+"
+" EOF
+"
+" set completeopt=menuone,noinsert,noselect
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"
+" " Error -> Red
+" highlight LspDiagnosticsSignError        ctermfg=9
+" highlight LspDiagnosticsVirtualTextError ctermfg=9
+" highlight LspDiagnosticsUnderlineError   ctermfg=9
+" " Warning -> Yellow
+" highlight LspDiagnosticsSignWarning        ctermfg=11
+" highlight LspDiagnosticsVirtualTextWarning ctermfg=11
+" highlight LspDiagnosticsUnderlineWarning   ctermfg=11
+" " Info -> Green
+" highlight LspDiagnosticsSignInformation        ctermfg=35
+" highlight LspDiagnosticsVirtualTextInformation ctermfg=35
+" highlight LspDiagnosticsUnderlineInformation   ctermfg=35
+" " Hint -> Purple
+" highlight LspDiagnosticsSignHint        ctermfg=13
+" highlight LspDiagnosticsVirtualTextHint ctermfg=13
+" highlight LspDiagnosticsUnderlineHint   ctermfg=13
 
 
 "-----------------------------
