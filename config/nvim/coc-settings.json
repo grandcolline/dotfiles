@@ -16,11 +16,6 @@
     "terraform": {
       "command": "terraform-lsp",
       "filetypes": ["tf"]
-    },
-    "efm": {
-      "command": "efm-langserver",
-      "args": [],
-      "filetypes": ["markdown"]
     }
   }
 }
