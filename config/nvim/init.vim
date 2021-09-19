@@ -27,6 +27,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
 Plug 'diepm/vim-rest-console'
+" Plug 'LeafCage/foldCC.vim'
 
 call plug#end()
 
@@ -136,6 +137,7 @@ nmap <Leader>G <Plug>(coc-references)
 nmap <Leader>h <Plug>(GitGutterNextHunk)
 nmap <Leader>H <Plug>(GitGutterPrevHunk)
 nmap <Leader>i <Plug>(coc-implementation)
+map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
 nmap <Leader>l :Lines<CR>
 nmap <Leader>m :Marks<CR>
@@ -150,6 +152,7 @@ nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 nmap <Leader><Tab>   <C-w>w
 map  <Leader>/       <Plug>(easymotion-sn)
 nmap <Leader><Space> :set hlsearch!<CR>
+nmap <Leader><BS>   :bd<CR>
 nmap <Leader><CR>    :! 
 
 nmap - :e %:h<CR>
@@ -206,9 +209,9 @@ lualine.setup {
     lualine_a = {},
     lualine_b = {'filename'},
     lualine_c = {},
-    lualine_x = {'location'},
+    lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {'location'}
   },
   tabline = {},
   extensions = {'fugitive'}

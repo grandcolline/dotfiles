@@ -9,5 +9,5 @@
 Session.vim
 tags
 
-# オレオレMakefile
-.myMakefile.mk
+# オレオレファイル群
+.gc

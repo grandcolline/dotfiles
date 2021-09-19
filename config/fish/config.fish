@@ -68,7 +68,8 @@ abbr -a x   'exit'
 abbr -a c   'clear'
 abbr -a rm  'rm -rf'
 abbr -a ghv 'gh repo view --web'
-alias m 'make -f .myMakefile.mk'
+abbr -a ghp 'gh pr view --web || gh pr create'
+alias m 'make -f .gc/Makefile'
 
 # Git
 abbr -a g    'git'
