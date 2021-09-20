@@ -62,7 +62,7 @@ set fish_greeting
 # ----------------------------
 abbr -a vi  'nvim'
 abbr -a o   'open'
-abbr -a b   'open -a "Sidekick"'
+abbr -a b   'open -a "Vivaldi"'
 abbr -a t   'tmux attach; or tmux'
 abbr -a x   'exit'
 abbr -a c   'clear'
