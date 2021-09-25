@@ -107,12 +107,12 @@ set softtabstop=0
 set autoindent
 set breakindent                           " 折り返しを同じインデントで表示
 
-set signcolumn=yes                        " 行番号の左側のサイズ固定
+" set signcolumn=yes                      " 行番号の左側のサイズ固定
 
 set laststatus=2                          " ステータスラインの表示
 set noshowmode                            " 「-- 挿入 --」とかの非表示
 set cmdheight=1                           " メッセージ表示欄の行数
-set ruler                                 " カーソルが何行目の何列目に置かれているかを表示する
+" set ruler                               " カーソルが何行目の何列目に置かれているかを表示する
 
 
 "-----------------------------
@@ -139,16 +139,16 @@ nmap <Leader>G <Plug>(coc-references)
 nmap <Leader>h <Plug>(GitGutterNextHunk)
 nmap <Leader>H <Plug>(GitGutterPrevHunk)
 nmap <Leader>i <Plug>(coc-implementation)
-map  <Leader>j <Plug>(easymotion-sn)
+" map  <Leader>j <Plug>(easymotion-sn)
 map  <Leader>k <Plug>(openbrowser-smart-search)
-nmap <Leader>l :Lines<CR>
-nmap <Leader>m :Marks<CR>
+" nmap <Leader>l :Lines<CR>
+" nmap <Leader>m :Marks<CR>
 nmap <Leader>n <Plug>(coc-rename)
 nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
-nmap <Leader>t :Vista!!<CR>
+" nmap <Leader>t :Vista!!<CR>
 nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 
 nmap <Leader><Tab>   <C-w>w
@@ -164,7 +164,7 @@ nmap - :e %:h<CR>
 "-----------------------------
 syntax on
 set background=dark
-set t_Co=256
+" set t_Co=256
 
 " --- Tomorrow Night ---
 " autocmd ColorScheme * highlight LineNr ctermfg=245
@@ -374,10 +374,10 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build
 "-----------------------------
 " Vista
 "-----------------------------
-let g:vista_default_executive = 'coc'
-let g:vista#renderer#enable_icon = 0
-let g:vista_close_on_jump = 1
-let g:vista_sidebar_width = 60
+" let g:vista_default_executive = 'coc'
+" let g:vista#renderer#enable_icon = 0
+" let g:vista_close_on_jump = 1
+" let g:vista_sidebar_width = 60
 
 
 "-----------------------------
