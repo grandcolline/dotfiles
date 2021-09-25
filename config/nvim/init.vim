@@ -39,131 +39,118 @@ call plug#end()
 " General
 "-----------------------------
 lua <<EOF
+  -- 一般設定
+  vim.opt.fenc           = 'utf-8'          -- 文字コード
+  vim.opt.fileencoding   = 'utf-8'          -- 保存時の文字コード
+  vim.opt.fileencodings  = 'utf-8'          -- 読み込み時の文字コードの自動判別. 左側が優先
+  vim.opt.fileformats    = 'unix,dos,mac'   -- 改行コードの自動判別. 左側が優先
+  vim.opt.ambiwidth      = 'double'
+  vim.opt.swapfile       = false            -- swapファイルを作成しない
+  vim.opt.autoread       = true             -- 編集中ファイルが書き換えられたら、自動リロード
+  vim.opt.undofile       = true
+  vim.opt.clipboard      = 'unnamed'        -- クリップボードとyunk,putを共有
+  vim.opt.history        = 5000             -- 保存するコマンド履歴の数
+  vim.opt.mouse          = 'a'              -- マウス操作をオンにする
+  vim.opt.foldmethod     = 'marker'         -- folding
+  vim.opt.lazyredraw     = true             -- コマンド実行中は再描写しない
+  vim.opt.ttyfast        = true             -- 高速ターミナル接続
+
+  -- 検索関連設定
+  vim.opt.hlsearch       = false     -- 検索文字列をハイライトしない
+  vim.opt.incsearch      = true      -- インクリメンタルサーチを行う
+  vim.opt.ignorecase     = true      -- 大文字と小文字を区別しない
+  vim.opt.smartcase      = true      -- 大文字と小文字の混在で検索した場合、大文字と小文字を区別
+  vim.opt.wrapscan       = true      -- 最後尾まで検索を終えたら次の検索で先頭に移る
+  vim.opt.gdefault       = true      -- 置換の時 g オプションをデフォルトで有効にする
+  vim.opt.inccommand     = 'split'   -- 置換のインクリメンタル表示（nvimのみ）
+
+  -- nvim文字化け問題
+  -- vim.opt.ttimeout    = true
+  -- vim.opt.ttimeoutlen = 50
+  -- vim.opt.pyxversion  = 3
+
+  -- 表示関連設定
+  vim.opt.number         = true      -- 行番号表示
+  vim.opt.cursorline     = true      -- 行のハイライト
+  vim.opt.signcolumn     = 'yes'     -- 行番号の左側のサイズ固定
+  vim.opt.list           = true      -- 不可視文字の表示設定
+  vim.opt.tabstop        = 4         -- タブを表示するときの幅
+  vim.opt.shiftwidth     = 4         -- タブを挿入するときの幅
+  vim.opt.showmode       = false     -- 「-- 挿入 --」とかの非表示
+  vim.opt.breakindent    = true      -- 折り返しを同じインデントで表示
+  -- vim.opt.showmatch   = true      -- 対応括弧のハイライト
+  -- vim.opt.matchtime   = 3         -- 対応括弧のハイライトを3秒に
+  -- vim.opt.ruler       = true      -- カーソルが何行目の何列目に置かれているかを表示する
+  -- vim.opt.expandtab   = false     -- タブをタブとして扱う(スペースに展開しない)
+  -- vim.opt.softtabstop = 0
+  -- vim.opt.autoindent  = true
+  -- vim.opt.laststatus  = 2         -- ステータスラインの表示
+  -- vim.opt.cmdheight   = 1         -- メッセージ表示欄の行数
+
 EOF
 
-set fenc=utf-8                            " 文字コード
+" luaにできなかったもの
 scriptencoding utf-8                      " vimrcの文字コード
-set fileencoding=utf-8                    " 保存時の文字コード
-set fileencodings=utf-8                   " 読み込み時の文字コードの自動判別. 左側が優先
-set fileformats=unix,dos,mac              " 改行コードの自動判別. 左側が優先
-set backspace=2                           " more powerful backspacing
-set ambiwidth=double
-
-set noswapfile                            " swapファイルを作成しない
-set autoread                              " 編集中ファイルが書き換えられたら、自動リロード
-set undofile
 set undodir=$XDG_CONFIG_HOME/nvim/cache
 set backupdir=$XDG_CONFIG_HOME/nvim/cache
 set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
 
-set clipboard=unnamed,unnamedplus         " クリップボードとyunk,putを共有（unnamedplusはmacならいらないやも）
-" nnoremap x "_x
-" nnoremap X "_dd
-" nnoremap c "_c
-" nnoremap C "_C
-
 set wildmenu wildmode=list:longest,full   " コマンドラインモードのファイル名タブ補完
-set history=5000                          " 保存するコマンド履歴の数
-
-set mouse=a                               " マウス操作をオンにする
-
-set foldmethod=marker                     " folding
-set lazyredraw                            " コマンド実行中は再描写しない
-set ttyfast                               " 高速ターミナル接続
 
 command! Q q                              " Q => q
 command! W w                              " W => w
 command! WQ wq                            " WQ => wq
 command! Wq wq                            " Wq => wq
 
-set ttimeout                              " neoVim文字化け問題
-set ttimeoutlen=50
-set pyxversion=3
-
-" set hlsearch                            " 検索文字列をハイライトする
-set nohlsearch                            " 検索文字列をハイライトしない
-set incsearch                             " インクリメンタルサーチを行う
-set ignorecase                            " 大文字と小文字を区別しない
-set smartcase                             " 大文字と小文字の混在で検索した場合、大文字と小文字を区別
-set wrapscan                              " 最後尾まで検索を終えたら次の検索で先頭に移る
-set gdefault                              " 置換の時 g オプションをデフォルトで有効にする
-set inccommand=split                      " 置換のインクリメンタル表示（nvimのみ）
-
-
-"-----------------------------
-" View
-"-----------------------------
-lua <<EOF
-  vim.opt.number      = true    -- 行番号表示
-  vim.opt.cursorline  = true    -- 行のハイライト
-  vim.opt.signcolumn  = 'yes'   -- 行番号の左側のサイズ固定
-  vim.opt.list        = true    -- 不可視文字の表示設定
-  vim.opt.tabstop     = 4       -- タブを表示するときの幅
-  vim.opt.shiftwidth  = 4       -- タブを挿入するときの幅
-  vim.opt.showmode    = false   -- 「-- 挿入 --」とかの非表示
-  vim.opt.breakindent = true    -- 折り返しを同じインデントで表示
-
-  -- ------ いらなそうなので一旦コメントアウト ------
-  -- vim.opt.showmatch   = true    -- 対応括弧のハイライト
-  -- vim.opt.matchtime   = 3       -- 対応括弧のハイライトを3秒に
-  -- vim.opt.ruler       = true    -- カーソルが何行目の何列目に置かれているかを表示する
-  -- vim.opt.expandtab   = false   -- タブをタブとして扱う(スペースに展開しない)
-  -- vim.opt.softtabstop = 0
-  -- vim.opt.autoindent  = true
-  -- vim.opt.laststatus  = 2       -- ステータスラインの表示
-  -- vim.opt.cmdheight   = 1       -- メッセージ表示欄の行数
-  -- -------------------------------------------------
-EOF
-
 
 "-----------------------------
 " Key Mapping
 "-----------------------------
 lua <<EOF
-  local keymap = vim.api.nvim_set_keymap
+  local map = vim.api.nvim_set_keymap
 
   -- 甘えるな、hjklを使え
-  keymap('', '<LEFT>',  '<NOP>', { noremap = true })
-  keymap('', '<Up>',    '<NOP>', { noremap = true })
-  keymap('', '<Right>', '<NOP>', { noremap = true })
-  keymap('', '<Down>',  '<NOP>', { noremap = true })
+  map('', '<LEFT>',  '<NOP>', { noremap = true })
+  map('', '<Up>',    '<NOP>', { noremap = true })
+  map('', '<Right>', '<NOP>', { noremap = true })
+  map('', '<Down>',  '<NOP>', { noremap = true })
 
   -- XとCはコピーなしない
-  keymap('', 'x', '"_x',  { noremap = true })
-  keymap('', 'X', '"_dd', { noremap = true })
-  keymap('', 'c', '"_c',  { noremap = true })
-  keymap('', 'C', '"_C',  { noremap = true })
+  map('', 'x', '"_x',  { noremap = true })
+  map('', 'X', '"_dd', { noremap = true })
+  map('', 'c', '"_c',  { noremap = true })
+  map('', 'C', '"_C',  { noremap = true })
 
   -- 「-」で現在フォルダを開く
-  keymap('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
+  map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 
   -- Leaderを使ったキーマッピング
   vim.g.mapleader = " "
 
-  keymap('n', '<LEADER>b', ':Buffers<CR>', {})
-  keymap('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
-  keymap('n', '<LEADER>d', ':call <SID>show_documentation()<CR>', {})
-  keymap('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
-  keymap('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
-  keymap('n', '<LEADER>f', ':Files<CR>', {})
-  keymap('n', '<LEADER>g', '<Plug>(coc-definition)', {})
-  keymap('n', '<LEADER>G', '<Plug>(coc-references)', {})
-  keymap('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
-  keymap('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
-  keymap('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
-  keymap('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
-  keymap('n', '<LEADER>n', '<Plug>(coc-rename)', {})
-  keymap('n', '<LEADER>o', 'mzo<ESC>', {})
-  keymap('n', '<LEADER>O', 'mzO<ESC>', {})
-  keymap('n', '<LEADER>r', ':Rg<CR>', {})
-  keymap('n', '<LEADER>s', ':GFiles?<CR>', {})
-  keymap('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
+  map('n', '<LEADER>b', ':Buffers<CR>', {})
+  map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
+  map('n', '<LEADER>d', ':call <SID>show_documentation()<CR>', {})
+  map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
+  map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
+  map('n', '<LEADER>f', ':Files<CR>', {})
+  map('n', '<LEADER>g', '<Plug>(coc-definition)', {})
+  map('n', '<LEADER>G', '<Plug>(coc-references)', {})
+  map('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
+  map('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
+  map('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
+  map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
+  map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
+  map('n', '<LEADER>o', 'mzo<ESC>', {})
+  map('n', '<LEADER>O', 'mzO<ESC>', {})
+  map('n', '<LEADER>r', ':Rg<CR>', {})
+  map('n', '<LEADER>s', ':GFiles?<CR>', {})
+  map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
 
-  keymap('n', '<LEADER><Tab>',   '<C-w>w', {})
-  keymap('n', '<LEADER>/',       '<Plug>(easymotion-sn)', {})
-  keymap('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
-  keymap('n', '<LEADER><BS>',    ':bd<CR>', {})
-  keymap('n', '<LEADER><CR>',    ':! ', { noremap = true })
+  map('n', '<LEADER><Tab>',   '<C-w>w', {})
+  map('n', '<LEADER>/',       '<Plug>(easymotion-sn)', {})
+  map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
+  map('n', '<LEADER><BS>',    ':bd<CR>', {})
+  map('n', '<LEADER><CR>',    ':! ', { noremap = true })
 EOF
 
 
@@ -207,7 +194,6 @@ EOF
 " lualine
 "-----------------------------
 lua << EOF
-
 local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 lualine.setup {
