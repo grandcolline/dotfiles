@@ -177,16 +177,16 @@ hi CursorLineNr ctermfg=180 " 現在行番号ハイライト
 " Treesitter
 "-----------------------------
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true, -- syntax highlightを有効に
-    disable = {}   -- 一部の言語では無効に
-  },
-  ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
-  indent = {
-    enable = true  -- tree-sitterによるインデントを有効に
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true, -- syntax highlightを有効に
+      disable = {}   -- 一部の言語では無効に
+    },
+    ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
+    indent = {
+      enable = true  -- tree-sitterによるインデントを有効に
+    }
   }
-}
 EOF
 
 
@@ -194,42 +194,42 @@ EOF
 " lualine
 "-----------------------------
 lua << EOF
-local status, lualine = pcall(require, "lualine")
-if (not status) then return end
-lualine.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'jellybeans',
-    -- section_separators = {'', ''},
-    section_separators = {'', ''},
-    component_separators = {'|', '|'},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'filename', 'coc#status'},
-    -- lualine_c = {
-    --   {
-    --     'diagnostics',
-    --     sources = {"nvim_lsp"},
-    --     symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
-    --   }
-    -- },
-	lualine_x = {},
-    lualine_y = {'branch', 'filetype'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {'filename'},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {'location'}
-  },
-  tabline = {},
-  extensions = {'fugitive'}
-}
+  local status, lualine = pcall(require, "lualine")
+  if (not status) then return end
+  lualine.setup {
+    options = {
+      icons_enabled = true,
+      theme = 'jellybeans',
+      -- section_separators = {'', ''},
+      section_separators = {'', ''},
+      component_separators = {'|', '|'},
+      disabled_filetypes = {}
+    },
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'filename', 'coc#status'},
+      -- lualine_c = {
+      --   {
+      --     'diagnostics',
+      --     sources = {"nvim_lsp"},
+      --     symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+      --   }
+      -- },
+  	lualine_x = {},
+      lualine_y = {'branch', 'filetype'},
+      lualine_z = {'location'}
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {'filename'},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {'location'}
+    },
+    tabline = {},
+    extensions = {'fugitive'}
+  }
 EOF
 
 
