@@ -27,7 +27,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'diepm/vim-rest-console'
 Plug 'nvim-treesitter/nvim-treesitter'
 
-" Plug 'chriskempson/vim-tomorrow-theme'
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'LeafCage/foldCC.vim'
@@ -65,9 +64,9 @@ lua <<EOF
   vim.opt.inccommand     = 'split'   -- 置換のインクリメンタル表示（nvimのみ）
 
   -- nvim文字化け問題
-  -- vim.opt.ttimeout    = true
-  -- vim.opt.ttimeoutlen = 50
-  -- vim.opt.pyxversion  = 3
+  -- vim.opt.ttimeout       = true
+  -- vim.opt.ttimeoutlen    = 50
+  -- vim.opt.pyxversion     = 3
 
   -- 表示関連設定
   vim.opt.number         = true      -- 行番号表示
@@ -97,10 +96,10 @@ set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
 
 set wildmenu wildmode=list:longest,full   " コマンドラインモードのファイル名タブ補完
 
-command! Q q                              " Q => q
-command! W w                              " W => w
-command! WQ wq                            " WQ => wq
-command! Wq wq                            " Wq => wq
+command! Q q        " Q => q
+command! W w        " W => w
+command! WQ wq      " WQ => wq
+command! Wq wq      " Wq => wq
 
 
 "-----------------------------
@@ -157,20 +156,15 @@ EOF
 "-----------------------------
 " ColorScheme
 "-----------------------------
-syntax on
-set background=dark
-" set t_Co=256
+lua <<EOF
+  vim.cmd('syntax on')
+  vim.cmd('colorscheme iceberg')
 
-" --- Tomorrow Night ---
-" autocmd ColorScheme * highlight LineNr ctermfg=245
-" colorscheme tomorrow-night
-
-" --- Iceberg ---
-colorscheme iceberg
-hi Visual  ctermbg=241      " Visual(選択範囲)の白を濃くする
-hi Comment ctermfg=102      " コメントちょっと濃く
-hi LineNr  ctermfg=102      " 行番号ちょっと濃く
-hi CursorLineNr ctermfg=180 " 現在行番号ハイライト
+  vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
+  vim.cmd('hi Comment ctermfg=102')      -- コメントちょっと濃く
+  vim.cmd('hi LineNr  ctermfg=102')      -- 行番号ちょっと濃く
+  vim.cmd('hi CursorLineNr ctermfg=180') -- 現在行番号ハイライト
+EOF
 
 
 "-----------------------------
@@ -236,29 +230,37 @@ EOF
 "-----------------------------
 " GitGutter
 "-----------------------------
-" 反映されるまでの時間を変更
-set updatetime=200
-" defaultのmappingはオフに
-let g:gitgutter_map_keys = 0
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '∙'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_modified_removed = '∙'
+lua << EOF
+  -- 反映されるまでの時間を変更
+  vim.opt.updatetime = 200
+
+  vim.g.gitgutter_map_keys      = 0 -- defaultのmappingはオフ
+  vim.g.gitgutter_sign_added    = '+'
+  vim.g.gitgutter_sign_modified = '∙'
+  vim.g.gitgutter_sign_removed  = '-'
+  vim.g.gitgutter_sign_modified_removed = '∙'
+EOF
 
 
 "-----------------------------
 " EasyMotion
 "-----------------------------
-let g:EasyMotion_do_mapping = 0       " デフォルトのマッピングをオフ
-let g:EasyMotion_smartcase = 1        " 検索時大文字小文字を区別しない
-let g:EasyMotion_enter_jump_first = 1 " Enterで直近選択
-let g:EasyMotion_keys = '123456789wertasdfgyuiophjklzxcvbnm'
+lua << EOF
+  vim.g.EasyMotion_do_mapping       = 0   -- デフォルトのマッピングをオフ
+  vim.g.EasyMotion_smartcase        = 1   -- 検索時大文字小文字を区別しない
+  vim.g.EasyMotion_enter_jump_first = 1   -- Enterで直近選択
+
+  vim.g.EasyMotion_keys = '123456789wertasdfgyuiophjklzxcvbnm'
+EOF
 
 
 "-----------------------------
 " Molder
 "-----------------------------
-let g:molder_show_hidden = 1
+lua << EOF
+  -- 隠しファイルも表示
+  vim.g.molder_show_hidden = 1
+EOF
 
 
 "-----------------------------
@@ -284,8 +286,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_status_error_sign = "E:"
-let g:coc_status_warning_sign = "W:"
+lua << EOF
+  vim.g.coc_status_error_sign = "E:"
+  vim.g.coc_status_warning_sign = "W:"
+EOF
 
 
 "-----------------------------
@@ -361,7 +365,10 @@ let g:coc_status_warning_sign = "W:"
 "-----------------------------
 " fzf
 "-----------------------------
-let g:fzf_layout = { 'down': '30%' }
+lua <<EOF
+  vim.g.fzf_layout = { down = '30%' }
+EOF
+" let g:fzf_layout = { 'down': '30%' }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
 
@@ -369,7 +376,10 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build
 "-----------------------------
 " rest-console
 "-----------------------------
-let g:vrc_set_default_mapping = 0
-let g:vrc_auto_format_uhex = 1
+lua <<EOF
+  vim.g.vrc_set_default_mapping = 0
+  vim.g.vrc_auto_format_uhex    = 1
+  -- vim.g.vrc_curl_opts = { "-sS" = "", "-i" = ""}
+EOF
 let g:vrc_curl_opts = { '-sS': '', '-i': '' }
 
