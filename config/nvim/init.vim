@@ -27,6 +27,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
 Plug 'diepm/vim-rest-console'
+Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'LeafCage/foldCC.vim'
 
 call plug#end()
@@ -174,6 +175,23 @@ hi Visual  ctermbg=241      " Visual(選択範囲)の白を濃くする
 hi Comment ctermfg=102      " コメントちょっと濃く
 hi LineNr  ctermfg=102      " 行番号ちょっと濃く
 hi CursorLineNr ctermfg=180 " 現在行番号ハイライト
+
+
+"-----------------------------
+" Treesitter
+"-----------------------------
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true, -- syntax highlightを有効に
+    disable = {}   -- 一部の言語では無効に
+  },
+  ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
+  indent = {
+    enable = true  -- tree-sitterによるインデントを有効に
+  }
+}
+EOF
 
 
 "-----------------------------
