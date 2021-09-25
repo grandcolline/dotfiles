@@ -7,6 +7,9 @@ set -x XDG_CONFIG_HOME $HOME/.config
 # less
 set -x LESS -SRXF
 
+# default editor
+set -x VISUAL nvim
+
 # keybase
 # refs: https://github.com/keybase/keybase-issues/issues/2798
 set -x GPG_TTY (tty)
@@ -67,7 +70,7 @@ abbr -a t   'tmux attach; or tmux'
 abbr -a x   'exit'
 abbr -a c   'clear'
 abbr -a rm  'rm -rf'
-abbr -a ghv 'gh repo view --web'
+abbr -a ghr 'gh repo view --web'
 abbr -a ghp 'gh pr view --web || gh pr create'
 alias m 'make -f .gc/Makefile'
 
@@ -82,7 +85,8 @@ abbr -a gf   'git fetch --prune --tags'
 abbr -a gm   'git merge -v'
 abbr -a gcm  'git commit -v'
 abbr -a gcma 'git commit -v --amend --date (env LANG=en_US.UTF-8 date -R)'
-abbr -a grs  'git reset'
+abbr -a grs  'git restore'
+abbr -a grss 'git restore --staged'
 abbr -a grb  'git rebase'
 abbr -a grv  'git revert'
 abbr -a gs   'git status -sb'
@@ -107,7 +111,7 @@ abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %
 # Docker
 abbr -a d  'docker'
 abbr -a dr 'docker run --rm -it -v $PWD:/workspace'
-abbr -a dc 'docker-compose'
+abbr -a dc 'docker compose'
 
 # K8s
 abbr -a kb 'kubectl'
@@ -118,7 +122,7 @@ abbr -a kb 'kubectl'
 # ----------------------------
 bind \cr '__fzf_history'
 bind \cb '__fzf_git_branch -a'
-bind \cl '__fzf_git_log -a'
+bind \cl '__fzf_git_log'
 bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -f'
 bind \co '__fzf_docker_images -i'
