@@ -90,15 +90,11 @@ set inccommand=split                      " 置換のインクリメンタル表
 " View
 "-----------------------------
 set number                                " 行番号表示
-" set relativenumber                      " 相対行の表示
 set cursorline                            " 行のハイライト
-" set cursorcolumn                        " 列のハイライト
 set showmatch                             " 対応括弧のハイライト
 set matchtime=3                           " 対応括弧のハイライトを3秒に
 
 set list                                  " 不可視文字の表示設定
-" set list listchars=tab:»_,trail:-
-" au BufRead,BufNew * match JpSpace /　/
 
 set tabstop=4                             " タブを表示するときの幅
 set shiftwidth=4                          " タブを挿入するときの幅
@@ -107,7 +103,7 @@ set softtabstop=0
 set autoindent
 set breakindent                           " 折り返しを同じインデントで表示
 
-" set signcolumn=yes                      " 行番号の左側のサイズ固定
+set signcolumn=yes                        " 行番号の左側のサイズ固定
 
 set laststatus=2                          " ステータスラインの表示
 set noshowmode                            " 「-- 挿入 --」とかの非表示
@@ -148,7 +144,6 @@ nmap <Leader>o mzo<ESC>
 nmap <Leader>O mzO<ESC>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>s :GFiles?<CR>
-" nmap <Leader>t :Vista!!<CR>
 nmap <Leader>v <Plug>(GitGutterPreviewHunk)
 
 nmap <Leader><Tab>   <C-w>w
@@ -369,15 +364,6 @@ let g:coc_status_warning_sign = "W:"
 let g:fzf_layout = { 'down': '30%' }
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
-
-
-"-----------------------------
-" Vista
-"-----------------------------
-" let g:vista_default_executive = 'coc'
-" let g:vista#renderer#enable_icon = 0
-" let g:vista_close_on_jump = 1
-" let g:vista_sidebar_width = 60
 
 
 "-----------------------------
