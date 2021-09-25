@@ -12,7 +12,6 @@
 "-----------------------------
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
-" Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'cocopon/iceberg.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -20,8 +19,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'Townk/vim-autoclose'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'easymotion/vim-easymotion'
@@ -29,6 +26,10 @@ Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
 Plug 'diepm/vim-rest-console'
 Plug 'nvim-treesitter/nvim-treesitter'
+
+" Plug 'chriskempson/vim-tomorrow-theme'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
 " Plug 'LeafCage/foldCC.vim'
 
 call plug#end()
@@ -37,6 +38,9 @@ call plug#end()
 "-----------------------------
 " General
 "-----------------------------
+lua <<EOF
+EOF
+
 set fenc=utf-8                            " 文字コード
 scriptencoding utf-8                      " vimrcの文字コード
 set fileencoding=utf-8                    " 保存時の文字コード
@@ -53,10 +57,10 @@ set backupdir=$XDG_CONFIG_HOME/nvim/cache
 set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
 
 set clipboard=unnamed,unnamedplus         " クリップボードとyunk,putを共有（unnamedplusはmacならいらないやも）
-nnoremap x "_x
-nnoremap X "_dd
-nnoremap c "_c
-nnoremap C "_C
+" nnoremap x "_x
+" nnoremap X "_dd
+" nnoremap c "_c
+" nnoremap C "_C
 
 set wildmenu wildmode=list:longest,full   " コマンドラインモードのファイル名タブ補完
 set history=5000                          " 保存するコマンド履歴の数
@@ -89,70 +93,79 @@ set inccommand=split                      " 置換のインクリメンタル表
 "-----------------------------
 " View
 "-----------------------------
-set number                                " 行番号表示
-set cursorline                            " 行のハイライト
-set showmatch                             " 対応括弧のハイライト
-set matchtime=3                           " 対応括弧のハイライトを3秒に
+lua <<EOF
+  vim.opt.number      = true    -- 行番号表示
+  vim.opt.cursorline  = true    -- 行のハイライト
+  vim.opt.signcolumn  = 'yes'   -- 行番号の左側のサイズ固定
+  vim.opt.list        = true    -- 不可視文字の表示設定
+  vim.opt.tabstop     = 4       -- タブを表示するときの幅
+  vim.opt.shiftwidth  = 4       -- タブを挿入するときの幅
+  vim.opt.showmode    = false   -- 「-- 挿入 --」とかの非表示
+  vim.opt.breakindent = true    -- 折り返しを同じインデントで表示
 
-set list                                  " 不可視文字の表示設定
-
-set tabstop=4                             " タブを表示するときの幅
-set shiftwidth=4                          " タブを挿入するときの幅
-set noexpandtab                           " タブをタブとして扱う(スペースに展開しない)
-set softtabstop=0
-set autoindent
-set breakindent                           " 折り返しを同じインデントで表示
-
-set signcolumn=yes                        " 行番号の左側のサイズ固定
-
-set laststatus=2                          " ステータスラインの表示
-set noshowmode                            " 「-- 挿入 --」とかの非表示
-set cmdheight=1                           " メッセージ表示欄の行数
-" set ruler                               " カーソルが何行目の何列目に置かれているかを表示する
+  -- ------ いらなそうなので一旦コメントアウト ------
+  -- vim.opt.showmatch   = true    -- 対応括弧のハイライト
+  -- vim.opt.matchtime   = 3       -- 対応括弧のハイライトを3秒に
+  -- vim.opt.ruler       = true    -- カーソルが何行目の何列目に置かれているかを表示する
+  -- vim.opt.expandtab   = false   -- タブをタブとして扱う(スペースに展開しない)
+  -- vim.opt.softtabstop = 0
+  -- vim.opt.autoindent  = true
+  -- vim.opt.laststatus  = 2       -- ステータスラインの表示
+  -- vim.opt.cmdheight   = 1       -- メッセージ表示欄の行数
+  -- -------------------------------------------------
+EOF
 
 
 "-----------------------------
 " Key Mapping
 "-----------------------------
-" 甘えるな、hjklを使え
-noremap <Left>  <Nop>
-noremap <Down>  <Nop>
-noremap <Up>    <Nop>
-noremap <Right> <Nop>
+lua <<EOF
+  local keymap = vim.api.nvim_set_keymap
 
-" Leaderを使ったKeyMapping
-" デフォルトの設定をなるべく上書かないためにLeaderを使う!
-let g:mapleader = "\<Space>"
+  -- 甘えるな、hjklを使え
+  keymap('', '<LEFT>',  '<NOP>', { noremap = true })
+  keymap('', '<Up>',    '<NOP>', { noremap = true })
+  keymap('', '<Right>', '<NOP>', { noremap = true })
+  keymap('', '<Down>',  '<NOP>', { noremap = true })
 
-nmap <Leader>b :Buffers<CR>
-nmap <Leader>c :call VrcQuery()<CR>
-nmap <Leader>d :call <SID>show_documentation()<CR>
-nmap <Leader>e <Plug>(coc-diagnostic-next)
-nmap <Leader>E <Plug>(coc-diagnostic-prev)
-nmap <Leader>f :Files<CR>
-nmap <Leader>g <Plug>(coc-definition)
-nmap <Leader>G <Plug>(coc-references)
-nmap <Leader>h <Plug>(GitGutterNextHunk)
-nmap <Leader>H <Plug>(GitGutterPrevHunk)
-nmap <Leader>i <Plug>(coc-implementation)
-" map  <Leader>j <Plug>(easymotion-sn)
-map  <Leader>k <Plug>(openbrowser-smart-search)
-" nmap <Leader>l :Lines<CR>
-" nmap <Leader>m :Marks<CR>
-nmap <Leader>n <Plug>(coc-rename)
-nmap <Leader>o mzo<ESC>
-nmap <Leader>O mzO<ESC>
-nmap <Leader>r :Rg<CR>
-nmap <Leader>s :GFiles?<CR>
-nmap <Leader>v <Plug>(GitGutterPreviewHunk)
+  -- XとCはコピーなしない
+  keymap('', 'x', '"_x',  { noremap = true })
+  keymap('', 'X', '"_dd', { noremap = true })
+  keymap('', 'c', '"_c',  { noremap = true })
+  keymap('', 'C', '"_C',  { noremap = true })
 
-nmap <Leader><Tab>   <C-w>w
-map  <Leader>/       <Plug>(easymotion-sn)
-nmap <Leader><Space> :set hlsearch!<CR>
-nmap <Leader><BS>   :bd<CR>
-nmap <Leader><CR>    :! 
+  -- 「-」で現在フォルダを開く
+  keymap('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 
-nmap - :e %:h<CR>
+  -- Leaderを使ったキーマッピング
+  vim.g.mapleader = " "
+
+  keymap('n', '<LEADER>b', ':Buffers<CR>', {})
+  keymap('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
+  keymap('n', '<LEADER>d', ':call <SID>show_documentation()<CR>', {})
+  keymap('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
+  keymap('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
+  keymap('n', '<LEADER>f', ':Files<CR>', {})
+  keymap('n', '<LEADER>g', '<Plug>(coc-definition)', {})
+  keymap('n', '<LEADER>G', '<Plug>(coc-references)', {})
+  keymap('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
+  keymap('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
+  keymap('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
+  keymap('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
+  keymap('n', '<LEADER>n', '<Plug>(coc-rename)', {})
+  keymap('n', '<LEADER>o', 'mzo<ESC>', {})
+  keymap('n', '<LEADER>O', 'mzO<ESC>', {})
+  keymap('n', '<LEADER>r', ':Rg<CR>', {})
+  keymap('n', '<LEADER>s', ':GFiles?<CR>', {})
+  keymap('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
+
+  keymap('n', '<LEADER><Tab>',   '<C-w>w', {})
+  keymap('n', '<LEADER>/',       '<Plug>(easymotion-sn)', {})
+  keymap('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
+  keymap('n', '<LEADER><BS>',    ':bd<CR>', {})
+  keymap('n', '<LEADER><CR>',    ':! ', { noremap = true })
+EOF
+
 
 "-----------------------------
 " ColorScheme
@@ -194,6 +207,7 @@ EOF
 " lualine
 "-----------------------------
 lua << EOF
+
 local status, lualine = pcall(require, "lualine")
 if (not status) then return end
 lualine.setup {
