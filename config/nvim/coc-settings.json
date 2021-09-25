@@ -1,7 +1,8 @@
 {
-  "diagnostic.signOffset": 9999999,
+  "suggest.noselect":false,
+  // "diagnostic.signOffset": 9999999,
   "tsserver.enableJavascript": true,
-  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+  // "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
   "languageserver":{
     "golang": {
       "command": "gopls",

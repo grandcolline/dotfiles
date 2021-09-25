@@ -8,6 +8,7 @@
 "-----------------------------
 " Plugins
 "   install: :PlugInstall
+"   upgrade: :PlugUpdate
 "-----------------------------
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
@@ -288,8 +289,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_status_error_sign = "Err:"
-let g:coc_status_warning_sign = "Warn:"
+let g:coc_status_error_sign = "E:"
+let g:coc_status_warning_sign = "W:"
 
 
 "-----------------------------
