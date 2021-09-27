@@ -10,6 +10,7 @@
 "   install: :PlugInstall
 "   upgrade: :PlugUpdate
 "-----------------------------
+" FIXME
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'cocopon/iceberg.vim'
@@ -53,6 +54,11 @@ lua <<EOF
   vim.opt.foldmethod     = 'marker'         -- folding
   vim.opt.lazyredraw     = true             -- コマンド実行中は再描写しない
   vim.opt.ttyfast        = true             -- 高速ターミナル接続
+  -- vim.cmd('scriptencoding utf-8')        -- vimrcの文字コード
+
+  -- コマンドラインモードのファイル名補完
+  vim.opt.wildmenu       = true
+  vim.opt.wildmode       = 'list:longest,full'
 
   -- 検索関連設定
   vim.opt.hlsearch       = false     -- 検索文字列をハイライトしない
@@ -86,20 +92,17 @@ lua <<EOF
   -- vim.opt.laststatus  = 2         -- ステータスラインの表示
   -- vim.opt.cmdheight   = 1         -- メッセージ表示欄の行数
 
+  -- コマンドタイポ予防
+  vim.cmd('command! Q q')
+  vim.cmd('command! W w')
+  vim.cmd('command! WQ wq')
+  vim.cmd('command! Wq wq')
 EOF
 
 " luaにできなかったもの
-scriptencoding utf-8                      " vimrcの文字コード
-set undodir=$XDG_CONFIG_HOME/nvim/cache
-set backupdir=$XDG_CONFIG_HOME/nvim/cache
-set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
-
-set wildmenu wildmode=list:longest,full   " コマンドラインモードのファイル名タブ補完
-
-command! Q q        " Q => q
-command! W w        " W => w
-command! WQ wq      " WQ => wq
-command! Wq wq      " Wq => wq
+" set undodir=$XDG_CONFIG_HOME/nvim/cache
+" set backupdir=$XDG_CONFIG_HOME/nvim/cache
+" set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
 
 
 "-----------------------------
@@ -266,6 +269,7 @@ EOF
 "-----------------------------
 " Coc
 "-----------------------------
+" FIXME
 " Highlight symbol under cursor on CursorHold
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 function! s:show_documentation()
@@ -281,12 +285,24 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 lua << EOF
+
+  -- function _G.show_documentation()
+  --   if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+  --     vim.cmd('h ' .. fn.expand(''))
+  --   elseif vim.api.nvim_eval('coc#rpc#ready()') then
+  --     vim.fn.CocActionAsync('doHover')
+  --   else
+  --     vim.cmd('! ' .. vim.o.keywordprg .. ' ' .. vim.fn.expand(''))
+  --   end
+  -- end
+
   vim.g.coc_status_error_sign = "E:"
   vim.g.coc_status_warning_sign = "W:"
 EOF
@@ -367,10 +383,9 @@ EOF
 "-----------------------------
 lua <<EOF
   vim.g.fzf_layout = { down = '30%' }
+  vim.env.FZF_DEFAULT_OPTS    = '--layout=reverse --inline-info'
+  vim.env.FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
 EOF
-" let g:fzf_layout = { 'down': '30%' }
-let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
-let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
 
 
 "-----------------------------
@@ -379,7 +394,6 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build
 lua <<EOF
   vim.g.vrc_set_default_mapping = 0
   vim.g.vrc_auto_format_uhex    = 1
-  -- vim.g.vrc_curl_opts = { "-sS" = "", "-i" = ""}
+  vim.g.vrc_curl_opts = { ['-sS'] = "", ['-i'] = ""}
 EOF
-let g:vrc_curl_opts = { '-sS': '', '-i': '' }
 
