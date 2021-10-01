@@ -123,6 +123,9 @@ lua <<EOF
   map('', 'c', '"_c',  { noremap = true })
   map('', 'C', '"_C',  { noremap = true })
 
+  -- 「f」でeasymotion
+  map('n', 'f', '<Plug>(easymotion-sn)', {})
+
   -- 「-」で現在フォルダを開く
   map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 
@@ -149,7 +152,6 @@ lua <<EOF
   map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
 
   map('n', '<LEADER><Tab>',   '<C-w>w', {})
-  map('n', '<LEADER>/',       '<Plug>(easymotion-sn)', {})
   map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
   map('n', '<LEADER><BS>',    ':bd<CR>', {})
   map('n', '<LEADER><CR>',    ':! ', { noremap = true })
