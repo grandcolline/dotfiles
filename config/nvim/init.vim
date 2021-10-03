@@ -6,34 +6,44 @@
 "
 
 "-----------------------------
-" Plugins
-"   install: :PlugInstall
-"   upgrade: :PlugUpdate
+" Packer.nvim
+"   再新化 :PackerSync
 "-----------------------------
-" FIXME
-call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+lua <<EOF
+  vim.cmd[[packadd packer.nvim]]
 
-Plug 'cocopon/iceberg.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'Townk/vim-autoclose'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'hoob3rt/lualine.nvim'
-Plug 'bronson/vim-trailing-whitespace'
-Plug 'phaazon/hop.nvim'
-Plug 'mattn/vim-molder'
-Plug 'tyru/open-browser.vim'
-Plug 'diepm/vim-rest-console'
-Plug 'nvim-treesitter/nvim-treesitter'
+  require'packer'.startup(function()
+    use 'cocopon/iceberg.vim'
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'cocopon/iceberg.vim'
+    use 'airblade/vim-gitgutter'
+    use 'Townk/vim-autoclose'
+    use 'yuttie/comfortable-motion.vim'
+    use { 'neoclide/coc.nvim', branch = 'release' }
+    use 'hoob3rt/lualine.nvim'
+    use 'bronson/vim-trailing-whitespace'
+    use 'mattn/vim-molder'
+    use 'tyru/open-browser.vim'
+    use 'diepm/vim-rest-console'
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
 
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'LeafCage/foldCC.vim'
+    use {
+      'phaazon/hop.nvim',
+      as = 'hop',
+      config = function()
+        require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      end
+    }
 
-call plug#end()
+    -- use 'neovim/nvim-lspconfig'
+    -- use 'nvim-lua/completion-nvim'
+    -- use 'LeafCage/foldCC.vim'
+
+    use { 'wbthomason/packer.nvim', opt = true }
+  end)
+EOF
 
 
 "-----------------------------
@@ -248,7 +258,9 @@ EOF
 "-----------------------------
 " Hop
 "-----------------------------
-hi HopNextKey ctermfg=198
+lua <<EOF
+  vim.cmd('hi HopNextKey ctermfg=198')
+EOF
 
 
 "-----------------------------
