@@ -22,7 +22,8 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hoob3rt/lualine.nvim'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
 Plug 'diepm/vim-rest-console'
@@ -124,7 +125,8 @@ lua <<EOF
   map('', 'C', '"_C',  { noremap = true })
 
   -- 「f」でeasymotion
-  map('n', 'f', '<Plug>(easymotion-sn)', {})
+  -- map('n', 'f', '<Plug>(easymotion-sn)', {})
+  map('n', 'f', "<cmd>lua require'hop'.hint_patterns()<cr>", {})
 
   -- 「-」で現在フォルダを開く
   map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
@@ -250,13 +252,19 @@ EOF
 "-----------------------------
 " EasyMotion
 "-----------------------------
-lua << EOF
-  vim.g.EasyMotion_do_mapping       = 0   -- デフォルトのマッピングをオフ
-  vim.g.EasyMotion_smartcase        = 1   -- 検索時大文字小文字を区別しない
-  vim.g.EasyMotion_enter_jump_first = 1   -- Enterで直近選択
+" lua << EOF
+"   vim.g.EasyMotion_do_mapping       = 0   -- デフォルトのマッピングをオフ
+"   vim.g.EasyMotion_smartcase        = 1   -- 検索時大文字小文字を区別しない
+"   vim.g.EasyMotion_enter_jump_first = 1   -- Enterで直近選択
+"
+"   vim.g.EasyMotion_keys = '123456789wertasdfgyuiophjklzxcvbnm'
+" EOF
 
-  vim.g.EasyMotion_keys = '123456789wertasdfgyuiophjklzxcvbnm'
-EOF
+
+"-----------------------------
+" Hop
+"-----------------------------
+hi HopNextKey ctermfg=198
 
 
 "-----------------------------
