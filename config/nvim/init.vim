@@ -15,19 +15,19 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'cocopon/iceberg.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'Townk/vim-autoclose'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'hoob3rt/lualine.nvim'
 Plug 'bronson/vim-trailing-whitespace'
-" Plug 'easymotion/vim-easymotion'
 Plug 'phaazon/hop.nvim'
 Plug 'mattn/vim-molder'
 Plug 'tyru/open-browser.vim'
 Plug 'diepm/vim-rest-console'
 Plug 'nvim-treesitter/nvim-treesitter'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Plug 'neovim/nvim-lspconfig'
 " Plug 'nvim-lua/completion-nvim'
@@ -45,7 +45,7 @@ lua <<EOF
   vim.opt.fileencoding   = 'utf-8'          -- 保存時の文字コード
   vim.opt.fileencodings  = 'utf-8'          -- 読み込み時の文字コードの自動判別. 左側が優先
   vim.opt.fileformats    = 'unix,dos,mac'   -- 改行コードの自動判別. 左側が優先
-  vim.opt.ambiwidth      = 'double'
+  -- vim.opt.ambiwidth   = 'double'         -- floating windowで枠線が辺になるのでコメントアウト
   vim.opt.swapfile       = false            -- swapファイルを作成しない
   vim.opt.autoread       = true             -- 編集中ファイルが書き換えられたら、自動リロード
   vim.opt.undofile       = true
@@ -124,35 +124,31 @@ lua <<EOF
   map('', 'c', '"_c',  { noremap = true })
   map('', 'C', '"_C',  { noremap = true })
 
-  -- 「f」でeasymotion
-  -- map('n', 'f', '<Plug>(easymotion-sn)', {})
-  map('n', 'f', "<cmd>lua require'hop'.hint_patterns()<cr>", {})
-
   -- 「-」で現在フォルダを開く
   map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 
   -- Leaderを使ったキーマッピング
   vim.g.mapleader = " "
 
-  map('n', '<LEADER>b', ':Buffers<CR>', {})
+  map('n', '<LEADER>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', {})
   map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
   map('n', '<LEADER>d', ':call <SID>show_documentation()<CR>', {})
   map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
   map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
-  map('n', '<LEADER>f', ':Files<CR>', {})
+  map('n', '<LEADER>f', '<cmd>lua require("telescope.builtin").find_files()<cr>', {})
   map('n', '<LEADER>g', '<Plug>(coc-definition)', {})
   map('n', '<LEADER>G', '<Plug>(coc-references)', {})
   map('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
   map('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
   map('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
+  map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<cr>', {})
   map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
   map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
   map('n', '<LEADER>o', 'mzo<ESC>', {})
   map('n', '<LEADER>O', 'mzO<ESC>', {})
-  map('n', '<LEADER>r', ':Rg<CR>', {})
-  map('n', '<LEADER>s', ':GFiles?<CR>', {})
+  map('n', '<LEADER>r', '<cmd>lua require("telescope.builtin").live_grep()<cr>', {})
+  map('n', '<LEADER>s', '<cmd>lua require("telescope.builtin").git_status()<cr>', {})
   map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
-
   map('n', '<LEADER><Tab>',   '<C-w>w', {})
   map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
   map('n', '<LEADER><BS>',    ':bd<CR>', {})
@@ -247,18 +243,6 @@ lua << EOF
   vim.g.gitgutter_sign_removed  = '-'
   vim.g.gitgutter_sign_modified_removed = '∙'
 EOF
-
-
-"-----------------------------
-" EasyMotion
-"-----------------------------
-" lua << EOF
-"   vim.g.EasyMotion_do_mapping       = 0   -- デフォルトのマッピングをオフ
-"   vim.g.EasyMotion_smartcase        = 1   -- 検索時大文字小文字を区別しない
-"   vim.g.EasyMotion_enter_jump_first = 1   -- Enterで直近選択
-"
-"   vim.g.EasyMotion_keys = '123456789wertasdfgyuiophjklzxcvbnm'
-" EOF
 
 
 "-----------------------------
@@ -389,12 +373,27 @@ EOF
 
 
 "-----------------------------
-" fzf
+" Telescope
 "-----------------------------
 lua <<EOF
-  vim.g.fzf_layout = { down = '30%' }
-  vim.env.FZF_DEFAULT_OPTS    = '--layout=reverse --inline-info'
-  vim.env.FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**'"
+  require('telescope').setup{
+    defaults = {},
+    pickers = {
+      find_files = {
+        theme = "ivy",
+      },
+      buffers = {
+        theme = "ivy",
+      },
+      git_status = {
+        theme = "ivy",
+      },
+      live_grep = {
+        theme = "ivy",
+      }
+    },
+    extensions = {}
+  }
 EOF
 
 
