@@ -26,8 +26,12 @@ lua <<EOF
     use 'tyru/open-browser.vim'
     use 'diepm/vim-rest-console'
 
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+    }
 
     use {
       'phaazon/hop.nvim',
@@ -39,7 +43,6 @@ lua <<EOF
 
     -- use 'neovim/nvim-lspconfig'
     -- use 'nvim-lua/completion-nvim'
-    -- use 'LeafCage/foldCC.vim'
 
     use { 'wbthomason/packer.nvim', opt = true }
   end)
@@ -222,7 +225,7 @@ lua << EOF
       --     symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
       --   }
       -- },
-  	lualine_x = {},
+      lualine_x = {},
       lualine_y = {'branch', 'filetype'},
       lualine_z = {'location'}
     },
