@@ -3,7 +3,8 @@ config/git/local
 
 # vim, nvim
 .netrwhist
-config/nvim/plugin/packer_compiled.lua
+init.vim.old
+packer_compiled.lua
 
 # fish
 config/fish/fishd.*
