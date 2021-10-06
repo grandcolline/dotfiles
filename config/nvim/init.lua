@@ -14,7 +14,6 @@ vim.cmd[[packadd packer.nvim]]
 require'packer'.startup(function()
   use 'cocopon/iceberg.vim'
   use 'nvim-treesitter/nvim-treesitter'
-  use 'cocopon/iceberg.vim'
   use 'airblade/vim-gitgutter'
   use 'Townk/vim-autoclose'
   use 'yuttie/comfortable-motion.vim'
@@ -24,6 +23,7 @@ require'packer'.startup(function()
   use 'mattn/vim-molder'
   use 'tyru/open-browser.vim'
   use 'diepm/vim-rest-console'
+  use 'ggandor/lightspeed.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -34,7 +34,6 @@ require'packer'.startup(function()
 
   use {
     'phaazon/hop.nvim',
-    as = 'hop',
     config = function()
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
@@ -140,7 +139,6 @@ vim.g.mapleader = " "
 
 map('n', '<LEADER>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', {})
 map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
--- map('n', '<LEADER>d', ':call <SID>show_documentation()<CR>', {})
 map('n', '<LEADER>d', '<cmd>lua _G.show_documentation()<cr>', {noremap = false, silent = true})
 map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
 map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
@@ -150,7 +148,6 @@ map('n', '<LEADER>G', '<Plug>(coc-references)', {})
 map('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
 map('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
 map('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
-map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<cr>', {})
 map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
 map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
 map('n', '<LEADER>o', 'mzo<ESC>', {})
@@ -158,6 +155,8 @@ map('n', '<LEADER>O', 'mzO<ESC>', {})
 map('n', '<LEADER>r', '<cmd>lua require("telescope.builtin").live_grep()<cr>', {})
 map('n', '<LEADER>s', '<cmd>lua require("telescope.builtin").git_status()<cr>', {})
 map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
+
+map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true })
 map('n', '<LEADER><Tab>',   '<C-w>w', {})
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
 map('n', '<LEADER><BS>',    ':bd<CR>', {})
@@ -359,22 +358,15 @@ vim.g.coc_status_warning_sign = "W:"
 -- Telescope
 -------------------------------
 require('telescope').setup{
-  defaults = {},
-  pickers = {
-    find_files = {
-      theme = "ivy",
+  defaults = {
+    sorting_strategy = "ascending",
+    layout_config = {
+	  prompt_position ='top',
     },
-    buffers = {
-      theme = "ivy",
-    },
-    git_status = {
-      theme = "ivy",
-    },
-    live_grep = {
-      theme = "ivy",
-    }
+    border = true,
   },
-  extensions = {}
+  pickers = {},
+  extensions = {},
 }
 
 
