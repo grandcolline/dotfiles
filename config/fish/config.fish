@@ -43,6 +43,11 @@ if test -d "$HOME/.nodebrew/current/bin"
 	set -x PATH $HOME/.nodebrew/current/bin $PATH
 end
 
+# deno
+if type "deno" > /dev/null 2>&1
+	set -x PATH $HOME/.deno/bin $PATH
+end
+
 # docker
 if type "docker" > /dev/null 2>&1
 	set -x DOCKER_BUILDKIT 1
