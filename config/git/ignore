@@ -9,5 +9,8 @@
 Session.vim
 tags
 
+# spellcheck
+cSpell.json
+
 # オレオレファイル群
 .gc

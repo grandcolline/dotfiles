@@ -1,9 +1,7 @@
 {
-  "suggest.noselect":false,
-  // "diagnostic.signOffset": 9999999,
+  "suggest.noselect": false,
   "tsserver.enableJavascript": true,
-  // "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
-  "languageserver":{
+  "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
@@ -18,5 +16,11 @@
       "command": "terraform-lsp",
       "filetypes": ["tf"]
     }
-  }
+  },
+  "cSpell.ignoreWords": [
+    "gopls",
+    "langserver",
+    "noselect",
+	"gonic"
+  ]
 }

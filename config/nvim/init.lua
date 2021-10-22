@@ -23,7 +23,7 @@ require'packer'.startup(function()
   use 'mattn/vim-molder'
   use 'tyru/open-browser.vim'
   use 'diepm/vim-rest-console'
-  use 'ggandor/lightspeed.nvim'
+  -- use 'ggandor/lightspeed.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -35,7 +35,7 @@ require'packer'.startup(function()
   use {
     'phaazon/hop.nvim',
     config = function()
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require'hop'.setup {}
     end
   }
 
@@ -156,6 +156,7 @@ map('n', '<LEADER>r', '<cmd>lua require("telescope.builtin").live_grep()<cr>', {
 map('n', '<LEADER>s', '<cmd>lua require("telescope.builtin").git_status()<cr>', {})
 map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
 
+map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_words()<cr>', { noremap = true })
 map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true })
 map('n', '<LEADER><Tab>',   '<C-w>w', {})
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
@@ -365,7 +366,11 @@ require('telescope').setup{
     },
     border = true,
   },
-  pickers = {},
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+    },
+  },
   extensions = {},
 }
 
