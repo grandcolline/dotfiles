@@ -26,10 +26,10 @@ require'packer'.startup(function()
   -- use 'ggandor/lightspeed.nvim'
 
   use {
-    'nvim-telescope/telescope.nvim',
+    'ibhagwan/fzf-lua',
     requires = {
-      'nvim-lua/plenary.nvim'
-    },
+      'vijaymarupudi/nvim-fzf',
+    }
   }
 
   use {
@@ -137,12 +137,12 @@ map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 -- Leaderを使ったキーマッピング
 vim.g.mapleader = " "
 
-map('n', '<LEADER>b', '<cmd>lua require("telescope.builtin").buffers()<cr>', {})
+map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
 map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
 map('n', '<LEADER>d', '<cmd>lua _G.show_documentation()<cr>', {noremap = false, silent = true})
 map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
 map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
-map('n', '<LEADER>f', '<cmd>lua require("telescope.builtin").find_files()<cr>', {})
+map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {})
 map('n', '<LEADER>g', '<Plug>(coc-definition)', {})
 map('n', '<LEADER>G', '<Plug>(coc-references)', {})
 map('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
@@ -152,8 +152,8 @@ map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
 map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
 map('n', '<LEADER>o', 'mzo<ESC>', {})
 map('n', '<LEADER>O', 'mzO<ESC>', {})
-map('n', '<LEADER>r', '<cmd>lua require("telescope.builtin").live_grep()<cr>', {})
-map('n', '<LEADER>s', '<cmd>lua require("telescope.builtin").git_status()<cr>', {})
+map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})
+map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {})
 map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
 
 map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_words()<cr>', { noremap = true })
@@ -353,26 +353,6 @@ vim.g.coc_status_warning_sign = "W:"
 -- highlight LspDiagnosticsSignHint        ctermfg=13
 -- highlight LspDiagnosticsVirtualTextHint ctermfg=13
 -- highlight LspDiagnosticsUnderlineHint   ctermfg=13
-
-
--------------------------------
--- Telescope
--------------------------------
-require('telescope').setup{
-  defaults = {
-    sorting_strategy = "ascending",
-    layout_config = {
-	  prompt_position ='top',
-    },
-    border = true,
-  },
-  pickers = {
-    buffers = {
-      sort_lastused = true,
-    },
-  },
-  extensions = {},
-}
 
 
 -------------------------------
