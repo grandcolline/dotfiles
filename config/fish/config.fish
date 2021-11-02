@@ -14,6 +14,13 @@ set -x VISUAL nvim
 # refs: https://github.com/keybase/keybase-issues/issues/2798
 set -x GPG_TTY (tty)
 
+# zoxide
+if type "go" > /dev/null 2>&1
+	set -x _ZO_DATA_DIR $XDG_CONFIG_HOME/zoxide
+	set -x _ZO_EXCLUDE_DIRS $HOME:$HOME/develop/tool/google-cloud-sdk
+	zoxide init fish --no-aliases | source
+end
+
 # go
 if type "go" > /dev/null 2>&1
 	set -x GOPATH $HOME/develop
@@ -58,7 +65,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Google Cloud SDK
 if test -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
-	. "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
+	source "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
 end
 
 # ログインメッセージを表示しない
@@ -129,11 +136,7 @@ bind \cr '__fzf_history'
 bind \cb '__fzf_git_branch -a'
 bind \cl '__fzf_git_log'
 bind \cs '__fzf_git_status'
-bind \cd '__fzf_directory -f'
+bind \cd '__fzf_directory -z'
 bind \co '__fzf_docker_images -i'
 bind \cf '__fzf_file -g'
-
-function my_pwd_changed --on-variable PWD
-	command fasd --proc (command fasd --sanitize "$PWD") > "/dev/null" 2>&1
-end
 

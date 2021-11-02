@@ -1,6 +1,6 @@
 function __fzf_directory
 
-	argparse -n __fzf_directory 'f/fasd' 'p/preview' -- $argv
+	argparse -n __fzf_directory 'f/fasd' 'z/zoxide' 'p/preview' -- $argv
 	or return 1
 
 	set -l ref ""
@@ -17,6 +17,12 @@ function __fzf_directory
 		set fzf_cmd "$fzf_cmd --tac --prompt='Fasd Dir > '"
 		set ref ( \
 			fasd -d -l\
+			| eval $fzf_cmd
+		)
+	else if set -lq _flag_zoxide
+		set fzf_cmd "$fzf_cmd --prompt='Zoxide Dir > '"
+		set ref ( \
+			zoxide query -l\
 			| eval $fzf_cmd
 		)
 	else

@@ -11,7 +11,7 @@ my config files...
 |[FishShell](https://github.com/fish-shell/fish-shell)|main command line shell|berw|
 |[NeoVim](https://github.com/neovim/neovim)|main editor|brew|
 |[tmux](https://github.com/tmux/tmux)|terminal multiplexer|brew|
-|[fasd](https://github.com/clvv/fasd)|tool for quick access to files and directories|brew|
+|[zoxide](https://github.com/ajeetdsouza/zoxide)|tool for quick access to directories|brew|
 |[fzf](https://github.com/junegunn/fzf)|fuzzy finder for terminal & vim|brew|
 |[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|brew|
 |expect||brew|
@@ -20,7 +20,7 @@ my config files...
 
 ## Setup
 
-```bash
+```fish
 set -x XDG_CONFIG_HOME $HOME/.config
 ./setup.sh
 ```
