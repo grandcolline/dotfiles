@@ -138,5 +138,5 @@ bind \cl '__fzf_git_log'
 bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -z'
 bind \co '__fzf_docker_images -i'
-bind \cf '__fzf_file -g'
+bind \cf '__fzf_file -f'
 

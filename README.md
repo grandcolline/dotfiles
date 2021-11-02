@@ -13,6 +13,7 @@ my config files...
 |[tmux](https://github.com/tmux/tmux)|terminal multiplexer|brew|
 |[zoxide](https://github.com/ajeetdsouza/zoxide)|tool for quick access to directories|brew|
 |[fzf](https://github.com/junegunn/fzf)|fuzzy finder for terminal & vim|brew|
+|[fd](https://github.com/sharkdp/fd)|file search|brew|
 |[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|brew|
 |expect||brew|
 |[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|brew|

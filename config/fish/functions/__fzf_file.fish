@@ -1,6 +1,6 @@
 function __fzf_file
 
-	argparse -n __fzf_file 'g/git' 'p/preview' -- $argv
+	argparse -n __fzf_file 'g/git' 'f/fd' 'p/preview' -- $argv
 	or return 1
 
 	set -l ref ""
@@ -23,6 +23,12 @@ function __fzf_file
 		set ref ( \
 			git ls-files \
 			| eval $fzf_cmd
+		)
+	else if set -lq _flag_fd
+		set fzf_cmd "$fzf_cmd --prompt='Fd > '"
+		set ref ( \
+			fd --type file --color=always \
+			| eval $fzf_cmd --ansi
 		)
 	else
 		set fzf_cmd "$fzf_cmd --prompt='File > '"
