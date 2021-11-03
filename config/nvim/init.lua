@@ -17,28 +17,15 @@ require'packer'.startup(function()
   use 'airblade/vim-gitgutter'
   use 'Townk/vim-autoclose'
   use 'yuttie/comfortable-motion.vim'
-  use { 'neoclide/coc.nvim', branch = 'release' }
   use 'hoob3rt/lualine.nvim'
   use 'bronson/vim-trailing-whitespace'
   use 'mattn/vim-molder'
   use 'tyru/open-browser.vim'
   use 'diepm/vim-rest-console'
-  -- use 'ggandor/lightspeed.nvim'
-
-  use {
-    'ibhagwan/fzf-lua',
-    requires = {
-      'vijaymarupudi/nvim-fzf',
-    }
-  }
-
-  use {
-    'phaazon/hop.nvim',
-    config = function()
-      require'hop'.setup {}
-    end
-  }
-
+  use 'phaazon/hop.nvim'
+  use 'vijaymarupudi/nvim-fzf'
+  use 'ibhagwan/fzf-lua'
+  use { 'neoclide/coc.nvim', branch = 'release' }
   -- use 'neovim/nvim-lspconfig'
   -- use 'nvim-lua/completion-nvim'
 
