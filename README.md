@@ -30,11 +30,3 @@ set -x XDG_CONFIG_HOME $HOME/.config
 
 [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample)
 
-## LSP
-
-* [golsp](https://github.com/saibing/tools)
-* [docker-langserver](https://github.com/rcjsuen/dockerfile-language-server-nodejs)
-* [terraform-lsp](https://github.com/juliosueiras/terraform-lsp)
-* [efm-langserver](https://github.com/mattn/efm-langserver)
-* [coc-tsserver](https://github.com/neoclide/coc-tsserver)
-* [coc-eslint](https://github.com/neoclide/coc-eslint)
