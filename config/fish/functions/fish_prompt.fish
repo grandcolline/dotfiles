@@ -2,7 +2,7 @@
 # ディレクトリ表示
 # -------------------
 function prompt_dir -d "Display the current directory"
-	set -g bg_color 'green'
+	set -g bg_color '#7F833D' # Green
 	set_color -b $bg_color
 	set_color 'white'
 	echo -n " "(prompt_pwd)" "
@@ -21,10 +21,10 @@ function prompt_git -d "Display the current git state"
 
 		# 背景色を決める
 		# デフォルトは青
-		set -g bg_color 'blue'
+		set -g bg_color '#516A88' # Blue
 		# HEADがあり、indexされていたら紫
 		if git rev-parse --quiet --verify HEAD >/dev/null 2>&1; and not git diff-index --cached --quiet --exit-code --ignore-submodules=dirty HEAD
-			set -g bg_color 'purple'
+			set -g bg_color '#714E76' # Magenta
 		end
 		# コンフリクトなど TODO:もっとしっかり感知したい
 		if [ "$branch" = "" ]
@@ -58,6 +58,7 @@ function prompt_git -d "Display the current git state"
 		echo -n ' '
 		echo -n $branch
 		echo -n $diff_display
+		echo -n ' '
 		if [ "$dirty_change" -eq 1 ]
 			set_color 'yellow'
 			echo -n "●"
@@ -69,7 +70,6 @@ function prompt_git -d "Display the current git state"
 		if [ "$dirty_change" -eq 1 ]; or [ "$dirty_add" -eq 1 ]
 			echo -n ' '
 		end
-		echo -n ' '
 	end
 end
 
@@ -80,7 +80,7 @@ function prompt_status -d "the symbols for a non zero exit status, root and back
 	# status
 	if [ $RETVAL -ne 0 ]
 		# set -g prompt_status_flg 1
-		set -g bg_color 'red'
+		set -g bg_color '#D77C79' #Red
 		set_color -b $bg_color
 		set_color black
 		echo -n " ✘ "
@@ -97,6 +97,6 @@ function fish_prompt
 	prompt_status
 	set_color -b normal
 	set_color $bg_color
-	echo -n '⮀ '
+	echo -n ' '
 	set_color normal
 end

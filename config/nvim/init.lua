@@ -95,10 +95,7 @@ vim.opt.number         = true      -- 行番号表示
 vim.opt.cursorline     = true      -- 行のハイライト
 vim.opt.signcolumn     = 'yes'     -- 行番号の左側のサイズ固定
 vim.opt.list           = true      -- 不可視文字の表示設定
-vim.opt.tabstop        = 4         -- タブを表示するときの幅
-vim.opt.shiftwidth     = 4         -- タブを挿入するときの幅
 vim.opt.showmode       = false     -- 「-- 挿入 --」とかの非表示
-vim.opt.breakindent    = true      -- 折り返しを同じインデントで表示
 -- vim.opt.showmatch   = true      -- 対応括弧のハイライト
 -- vim.opt.matchtime   = 3         -- 対応括弧のハイライトを3秒に
 -- vim.opt.ruler       = true      -- カーソルが何行目の何列目に置かれているかを表示する
@@ -107,6 +104,12 @@ vim.opt.breakindent    = true      -- 折り返しを同じインデントで表
 -- vim.opt.autoindent  = true
 -- vim.opt.laststatus  = 2         -- ステータスラインの表示
 -- vim.opt.cmdheight   = 1         -- メッセージ表示欄の行数
+
+-- インデント設定
+vim.opt.tabstop        = 4         -- タブを表示するときの幅
+vim.opt.shiftwidth     = 4         -- タブを挿入するときの幅
+vim.opt.breakindent    = true      -- 折り返しを同じインデントで表示
+vim.opt.expandtab      = true      -- TAB -> Space
 
 -- コマンドタイポ予防
 vim.cmd('command! Q q')
@@ -361,6 +364,18 @@ else
     })
   })
 end
+
+
+-------------------------------
+-- fzf-lua
+-------------------------------
+require'fzf-lua'.setup {
+  winopts = {
+    preview = {
+      layout = 'vertical' -- horizontal|vertical|flex
+    }
+  }
+}
 
 
 -------------------------------

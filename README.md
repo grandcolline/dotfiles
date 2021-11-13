@@ -16,6 +16,7 @@ my config files...
 |[fd](https://github.com/sharkdp/fd)|file search|brew|
 |[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|brew|
 |expect||brew|
+|[gh](https://github.com/cli/cli)|GitHub on the command line|brew|
 |[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|brew|
 
 
@@ -28,5 +29,6 @@ set -x XDG_CONFIG_HOME $HOME/.config
 
 ## Font
 
-[Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample)
+[JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+<!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
 

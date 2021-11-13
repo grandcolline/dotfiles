@@ -30,6 +30,10 @@ echo "===== NeoVim setting ====="
 ln -vsfn $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
 echo ""
 
+echo "===== kitty setting ====="
+ln -vsfn $dir_path/config/kitty $XDG_CONFIG_HOME/kitty
+echo ""
+
 echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
 echo ""
@@ -45,3 +49,4 @@ echo ""
 echo "===== bash setting ====="
 ln -vsfn $dir_path/bashrc $HOME/.bashrc
 echo ""
+

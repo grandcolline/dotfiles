@@ -75,15 +75,13 @@ set fish_greeting
 # ----------------------------
 #  Aliases
 # ----------------------------
-abbr -a vi  'nvim'
-abbr -a o   'open'
-abbr -a b   'open -a "Vivaldi"'
-abbr -a t   'tmux attach; or tmux'
-abbr -a x   'exit'
-abbr -a c   'clear'
-abbr -a rm  'rm -rf'
-abbr -a ghr 'gh repo view --web'
-abbr -a ghp 'gh pr view --web || gh pr create'
+abbr -a vi 'nvim'
+abbr -a o  'open'
+abbr -a b  'open -a "Vivaldi"'
+abbr -a t  'tmux attach; or tmux'
+abbr -a x  'exit'
+abbr -a c  'clear'
+abbr -a rm 'rm -rf'
 alias m 'make -f .gc/Makefile'
 
 # Git
@@ -105,8 +103,8 @@ abbr -a gs   'git status -sb'
 abbr -a gst  'git stash'
 abbr -a gstl 'git stash list'
 abbr -a gstp 'git stash pop --index'
-abbr -a gco  'git checkout'
-abbr -a gcob 'git checkout -b'
+# abbr -a gco  'git checkout'
+# abbr -a gcob 'git checkout -b'
 abbr -a gsw  'git switch'
 abbr -a gswc 'git switch -c'
 abbr -a gcp  'git cherry-pick --ff'
@@ -119,6 +117,11 @@ abbr -a gdc  'git diff --cached'
 abbr -a gll  'git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"'
 abbr -a glp  'git log -p -1 --stat --decorate'
 abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
+
+# GitHub
+abbr -a repo 'gh repo view --web'
+abbr -a pr   'gh pr view --web || gh pr create'
+abbr -a prc  'gh pr checkout'
 
 # Docker
 abbr -a d  'docker'
@@ -139,4 +142,5 @@ bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -z'
 bind \co '__fzf_docker_images -i'
 bind \cf '__fzf_file -f'
+bind \cp '__fzf_pr'
 
