@@ -27,8 +27,12 @@ set -x XDG_CONFIG_HOME $HOME/.config
 ./setup.sh
 ```
 
+## Terminal
+
+[Kitty](https://sw.kovidgoyal.net/kitty/)
+
 ## Font
 
-[JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+[JetBrains Mono NL](https://www.jetbrains.com/lp/mono/)
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
 
