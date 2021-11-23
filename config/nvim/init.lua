@@ -106,8 +106,8 @@ vim.opt.showmode       = false     -- 「-- 挿入 --」とかの非表示
 -- vim.opt.cmdheight   = 1         -- メッセージ表示欄の行数
 
 -- インデント設定
-vim.opt.tabstop        = 4         -- タブを表示するときの幅
-vim.opt.shiftwidth     = 4         -- タブを挿入するときの幅
+vim.opt.tabstop        = 2         -- タブを表示するときの幅
+vim.opt.shiftwidth     = 2         -- タブを挿入するときの幅
 vim.opt.breakindent    = true      -- 折り返しを同じインデントで表示
 vim.opt.expandtab      = true      -- TAB -> Space
 
@@ -208,28 +208,31 @@ lualine.setup {
     component_separators = {'|', '|'},
     disabled_filetypes = {}
   },
+  -- filename / branch / filetype / location
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'filename'},
-    -- lualine_c = {'coc#status'},
-    lualine_c = {
+    -- lualine_b = {'coc#status'},
+    lualine_b = {
       {
         'diagnostics',
         sources = {"nvim_lsp"},
         symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'}
+        -- symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+
       }
     },
+    lualine_c = {},
     lualine_x = {},
-    lualine_y = {'branch', 'filetype'},
-    lualine_z = {'location'}
+    lualine_y = {'filename'},
+    lualine_z = {}
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {'filename'},
+    lualine_b = {},
     lualine_c = {},
     lualine_x = {},
-    lualine_y = {},
-    lualine_z = {'location'}
+    lualine_y = {'filename'},
+    lualine_z = {}
   },
   tabline = {},
   extensions = {'fugitive'}
@@ -329,6 +332,16 @@ else
   -- Golang
   -- Install: go get -u golang.org/x/tools/gopls@latest
   nvim_lsp.gopls.setup{
+    on_attach = on_attach
+  }
+  -- Rust
+  -- Install: brew install rust-analyzer
+  -- nvim_lsp.rust_analyzer.setup{
+  --   on_attach = on_attach
+  -- }
+  -- Rust
+  -- Install: rustup component add rls
+  nvim_lsp.rls.setup{
     on_attach = on_attach
   }
 
