@@ -70,6 +70,8 @@ end
 
 # ログインメッセージを表示しない
 set fish_greeting
+# コマンドの青が見にくいので明るくする
+set fish_color_command "#9BB8DC"
 
 
 # ----------------------------
