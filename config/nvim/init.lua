@@ -96,6 +96,7 @@ vim.opt.cursorline     = true      -- 行のハイライト
 vim.opt.signcolumn     = 'yes'     -- 行番号の左側のサイズ固定
 vim.opt.list           = true      -- 不可視文字の表示設定
 vim.opt.showmode       = false     -- 「-- 挿入 --」とかの非表示
+vim.opt.colorcolumn    = '80'        -- 80文字目にラインを入れる
 -- vim.opt.showmatch   = true      -- 対応括弧のハイライト
 -- vim.opt.matchtime   = 3         -- 対応括弧のハイライトを3秒に
 -- vim.opt.ruler       = true      -- カーソルが何行目の何列目に置かれているかを表示する
@@ -110,6 +111,7 @@ vim.opt.tabstop        = 2         -- タブを表示するときの幅
 vim.opt.shiftwidth     = 2         -- タブを挿入するときの幅
 vim.opt.breakindent    = true      -- 折り返しを同じインデントで表示
 vim.opt.expandtab      = true      -- TAB -> Space
+vim.cmd('au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4')
 
 -- コマンドタイポ予防
 vim.cmd('command! Q q')
