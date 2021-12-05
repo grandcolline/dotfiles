@@ -4,7 +4,7 @@ function __fzf_pr
 		argparse -n __fzf_pr 'a/all' -- $argv
 		or return 1
 
-		set -l git_cmd "gh pr list"
+		set -l git_cmd "unbuffer gh pr list"
 		set -l fzf_cmd "fzf --ansi --height 40% --reverse --exit-0 --tiebreak=index \
 			--bind 'ctrl-y:execute-silent(echo {} | awk \'{ print $1 }\' | pbcopy)+abort'"
 

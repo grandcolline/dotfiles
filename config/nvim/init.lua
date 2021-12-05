@@ -91,7 +91,8 @@ vim.opt.inccommand     = 'split'   -- 置換のインクリメンタル表示（
 -- vim.opt.pyxversion     = 3
 
 -- 表示関連設定
-vim.opt.number         = true      -- 行番号表示
+vim.opt.number         = true     -- 行番号表示
+vim.opt.relativenumber = false     -- 相対行表示
 vim.opt.cursorline     = true      -- 行のハイライト
 vim.opt.signcolumn     = 'yes'     -- 行番号の左側のサイズ固定
 vim.opt.list           = true      -- 不可視文字の表示設定
