@@ -8,7 +8,10 @@ set -x XDG_CONFIG_HOME $HOME/.config
 set -x LESS -SRXF
 
 # default editor
-set -x VISUAL nvim
+set -x VISUAL "nvim"
+
+# default browser
+set -x BROWSER "/Applications/Google Chrome.app"
 
 # keybase
 # refs: https://github.com/keybase/keybase-issues/issues/2798
@@ -79,7 +82,7 @@ set fish_color_command "#9BB8DC"
 # ----------------------------
 abbr -a vi 'nvim'
 abbr -a o  'open'
-abbr -a b  'open -a "Vivaldi"'
+abbr -a b  'open -a $BROWSER'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
