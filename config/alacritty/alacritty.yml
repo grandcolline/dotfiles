@@ -1,0 +1,56 @@
+# -----------------
+# Fonts
+# -----------------
+font:
+  size: 16
+  normal:
+    family: 'JetBrains Mono NL'
+  bold:
+    family: 'JetBrains Mono NL'
+    style: Bold
+  italic:
+    family: 'JetBrains Mono NL'
+    style: Italic
+  bold_italic:
+    family: 'JetBrains Mono NL'
+    style: Bold Italic
+
+# -----------------
+# Color scheme
+# -----------------
+colors:
+  primary:
+    background: '#16171E'
+    foreground: '#D1D2D3'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#E68E8E'
+    green:   '#83AC8E'
+    yellow:  '#F5B78A'
+    blue:    '#9BB8DC'
+    magenta: '#BAACE2'
+    cyan:    '#00C5C7'
+    white:   '#C7C7C7'
+
+  # Bright colors
+  bright:
+    black:   '#676767'
+    red:     '#FF6D67'
+    green:   '#5FF967'
+    yellow:  '#FEFB67'
+    blue:    '#6871FF'
+    magenta: '#FF76FF'
+    cyan:    '#5FFDFF'
+    white:   '#FEFFFF'
+
+window:
+  opacity: 0.90
+
+
+# -----------------
+# Environment
+# -----------------
+env:
+  TERM: alacritty

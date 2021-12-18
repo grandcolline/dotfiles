@@ -34,6 +34,10 @@ echo "===== kitty setting ====="
 ln -vsfn $dir_path/config/kitty $XDG_CONFIG_HOME/kitty
 echo ""
 
+echo "===== alacritty setting ====="
+ln -vsfn $dir_path/config/alacritty $XDG_CONFIG_HOME/alacritty
+echo ""
+
 echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
 echo ""

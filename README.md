@@ -29,7 +29,15 @@ set -x XDG_CONFIG_HOME $HOME/.config
 
 ## Terminal
 
-[Kitty](https://sw.kovidgoyal.net/kitty/)
+[Alacritty](https://github.com/alacritty/alacritty)
+
+※ 現在、リリース版だと日本語のインライン入力ができないため、masterブランチをビルドする。
+
+```bash
+$ git clone git@github.com:alacritty/alacritty.github
+$ cd alacritty
+$ make app
+```
 
 ## Font
 
