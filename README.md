@@ -23,8 +23,7 @@ my config files...
 ## Setup
 
 ```fish
-set -x XDG_CONFIG_HOME $HOME/.config
-./setup.sh
+set -x XDG_CONFIG_HOME $HOME/.config && sh ./setup.sh
 ```
 
 ## Terminal
