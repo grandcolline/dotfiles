@@ -22,28 +22,26 @@ colors:
   primary:
     background: '#16171E'
     foreground: '#D1D2D3'
-
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#E68E8E'
-    green:   '#83AC8E'
-    yellow:  '#F5B78A'
-    blue:    '#9BB8DC'
-    magenta: '#BAACE2'
-    cyan:    '#00C5C7'
-    white:   '#C7C7C7'
-
+    black:   '#242627'
+    red:     '#D77C79'
+    green:   '#7F833D'
+    yellow:  '#D7A24D'
+    blue:    '#516A88'
+    magenta: '#714E76'
+    cyan:    '#4E7D78'
+    white:   '#B7BBB7'
   # Bright colors
   bright:
-    black:   '#676767'
-    red:     '#FF6D67'
-    green:   '#5FF967'
-    yellow:  '#FEFB67'
-    blue:    '#6871FF'
-    magenta: '#FF76FF'
-    cyan:    '#5FFDFF'
-    white:   '#FEFFFF'
+    black:   '#242627'
+    red:     '#D77C79'
+    green:   '#7B7F26'
+    yellow:  '#D7A24D'
+    blue:    '#405F74'
+    magenta: '#714E76'
+    cyan:    '#4E7D78'
+    white:   '#B7BBB7'
 
 window:
   opacity: 0.90
@@ -54,3 +52,12 @@ window:
 # -----------------
 env:
   TERM: alacritty
+
+live_config_reload: true
+
+key_bindings:
+  # refs
+  #  - https://github.com/alacritty/alacritty/issues/1359
+  #  - https://kagari.github.io/note/2020/alacritty_and_tmux/#キーバインドの変更
+  - { key: Q, mods: Control, chars: "\x11" }
+
