@@ -1,6 +1,9 @@
 # ----------------------------
 #  Env
 # ----------------------------
+# workspace
+set -x WORKSPACE $HOME/develop
+
 # XDG Base Directory
 set -x XDG_CONFIG_HOME $HOME/.config
 
@@ -11,7 +14,7 @@ set -x LESS -SRXF
 set -x VISUAL "nvim"
 
 # default browser
-set -x BROWSER "/Applications/Google Chrome.app"
+# set -x BROWSER "$WORKSPACE/bin/browser"
 
 # keybase
 # refs: https://github.com/keybase/keybase-issues/issues/2798
@@ -20,14 +23,14 @@ set -x GPG_TTY (tty)
 # zoxide
 if type "go" > /dev/null 2>&1
 	set -x _ZO_DATA_DIR $XDG_CONFIG_HOME/zoxide
-	set -x _ZO_EXCLUDE_DIRS $HOME:$HOME/develop/tool/google-cloud-sdk
+	set -x _ZO_EXCLUDE_DIRS $HOME:$WORKSPACE/tool/google-cloud-sdk
 	zoxide init fish --no-aliases | source
 end
 
 # go
 if type "go" > /dev/null 2>&1
-	set -x GOPATH $HOME/develop
-	set -x PATH $HOME/develop/bin $PATH
+	set -x GOPATH $WORKSPACE
+	set -x PATH $WORKSPACE/bin $PATH
 	set -x GO111MODULE on
 end
 
@@ -67,8 +70,8 @@ end
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Google Cloud SDK
-if test -f "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
-	source "$HOME/develop/tool/google-cloud-sdk/path.fish.inc"
+if test -f "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
+	source "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
 end
 
 # ログインメッセージを表示しない
@@ -82,7 +85,7 @@ set fish_color_command "#9BB8DC"
 # ----------------------------
 abbr -a vi 'nvim'
 abbr -a o  'open'
-abbr -a b  'open -a $BROWSER'
+abbr -a b  'open -a "/Applications/Google Chrome.app"'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
