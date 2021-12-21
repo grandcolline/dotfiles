@@ -6,18 +6,17 @@ my config files...
 
 | Name | What | How to Install |
 |:----:|:-----|:---------------|
-|[brew](https://github.com/Homebrew/brew)|package manager||
-|Git|version-control system|brew|
-|[FishShell](https://github.com/fish-shell/fish-shell)|main command line shell|berw|
-|[NeoVim](https://github.com/neovim/neovim)|main editor|brew|
-|[tmux](https://github.com/tmux/tmux)|terminal multiplexer|brew|
-|[zoxide](https://github.com/ajeetdsouza/zoxide)|tool for quick access to directories|brew|
-|[fzf](https://github.com/junegunn/fzf)|fuzzy finder for terminal & vim|brew|
-|[fd](https://github.com/sharkdp/fd)|file search|brew|
-|[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|brew|
-|expect||brew|
-|[gh](https://github.com/cli/cli)|GitHub on the command line|brew|
-|[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|brew|
+|[Git](https://github.com/git/git)|version-control system|`nix-env -i git`|
+|[FishShell](https://github.com/fish-shell/fish-shell)|main command line shell|`nix-env -i fish`|
+|[NeoVim](https://github.com/neovim/neovim)|main editor|`nix-env -i neovim`|
+|[tmux](https://github.com/tmux/tmux)|terminal multiplexer|-|
+|[zoxide](https://github.com/ajeetdsouza/zoxide)|tool for quick access to directories|`nix-env -iA nixpkgs.zoxide`|
+|[fzf](https://github.com/junegunn/fzf)|fuzzy finder for terminal & vim|`nix-env -i fzf`|
+|[fd](https://github.com/sharkdp/fd)|file search|`nix-env -i fd`|
+|[ripgrep](https://github.com/BurntSushi/ripgrep)|tool for recursively searches directories|`nix-env -i ripgrep`|
+|expect||`nix-env -i expect`|
+|[gh](https://github.com/cli/cli)|GitHub on the command line|-|
+|[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|`nix-env -i mycli`|
 
 
 ## Setup
