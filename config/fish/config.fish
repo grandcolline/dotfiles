@@ -12,16 +12,14 @@ set -x LESS -SRXF
 
 # default editor
 set -x VISUAL "nvim"
-
-# default browser
-# set -x BROWSER "$WORKSPACE/bin/browser"
+set -x EDITOR "nvim"
 
 # keybase
 # refs: https://github.com/keybase/keybase-issues/issues/2798
 set -x GPG_TTY (tty)
 
 # zoxide
-if type "go" > /dev/null 2>&1
+if type "zoxide" > /dev/null 2>&1
   set -x _ZO_DATA_DIR $XDG_CONFIG_HOME/zoxide
   set -x _ZO_EXCLUDE_DIRS $HOME:$WORKSPACE/tool/google-cloud-sdk
   zoxide init fish --no-aliases | source
