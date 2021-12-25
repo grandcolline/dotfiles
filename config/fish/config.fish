@@ -22,48 +22,48 @@ set -x GPG_TTY (tty)
 
 # zoxide
 if type "go" > /dev/null 2>&1
-	set -x _ZO_DATA_DIR $XDG_CONFIG_HOME/zoxide
-	set -x _ZO_EXCLUDE_DIRS $HOME:$WORKSPACE/tool/google-cloud-sdk
-	zoxide init fish --no-aliases | source
+  set -x _ZO_DATA_DIR $XDG_CONFIG_HOME/zoxide
+  set -x _ZO_EXCLUDE_DIRS $HOME:$WORKSPACE/tool/google-cloud-sdk
+  zoxide init fish --no-aliases | source
 end
 
 # go
 if type "go" > /dev/null 2>&1
-	set -x GOPATH $WORKSPACE
-	set -x PATH $WORKSPACE/bin $PATH
-	set -x GO111MODULE on
+  set -x GOPATH $WORKSPACE
+  set -x PATH $WORKSPACE/bin $PATH
+  set -x GO111MODULE on
 end
 
 # Rust
 if test -d "$HOME/.cargo/bin"
-	set -x PATH $HOME/.cargo/bin $PATH
+  set -x PATH $HOME/.cargo/bin $PATH
 end
 
 # java (sdkman)
 if test -d "$HOME/.sdkman/bin"
-	function sdk
-		bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
-	end
-	for ITEM in $HOME/.sdkman/candidates/* ;
-		set -gx PATH $PATH $ITEM/current/bin
-	end
+  function sdk
+    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
+  end
+  for ITEM in $HOME/.sdkman/candidates/* ;
+    set -gx PATH $PATH $ITEM/current/bin
+  end
 
-	set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
+  set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
 end
 
 # nodebrew
 if test -d "$HOME/.nodebrew/current/bin"
-	set -x PATH $HOME/.nodebrew/current/bin $PATH
+  set -x PATH $HOME/.nodebrew/current/bin $PATH
 end
 
 # deno
 if type "deno" > /dev/null 2>&1
-	set -x PATH $HOME/.deno/bin $PATH
+  set -x PATH $HOME/.deno/bin $PATH
 end
 
 # docker
 if type "docker" > /dev/null 2>&1
-	set -x DOCKER_BUILDKIT 1
+  set -x DOCKER_BUILDKIT 1
 end
 
 # brew
@@ -71,7 +71,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Google Cloud SDK
 if test -f "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
-	source "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
+  source "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
 end
 
 # ログインメッセージを表示しない
