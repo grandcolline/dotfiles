@@ -147,7 +147,6 @@ vim.g.mapleader = " "
 
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
 map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
-map('n', '<LEADER>d', '<cmd>lua _G.show_documentation()<cr>', {noremap = false, silent = true})
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {})
 map('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
 map('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
@@ -271,6 +270,7 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', '<LEADER>d', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<LEADER>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
