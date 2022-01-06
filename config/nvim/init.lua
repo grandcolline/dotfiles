@@ -5,10 +5,6 @@
  (_)_/ |_|_| |_| |_|_|  \___|
 --]]
 
--- lsp settings
--- いつでもcocに戻れるように
-local coc_flg = false
-
 -------------------------------
 -- Packer.nvim
 --   再新化 :PackerSync
@@ -30,7 +26,7 @@ require'packer'.startup(function()
   use 'vijaymarupudi/nvim-fzf'
   use 'ibhagwan/fzf-lua'
 
-  use { 'neoclide/coc.nvim', branch = 'release' }
+  -- use { 'neoclide/coc.nvim', branch = 'release' }
 
   use 'neovim/nvim-lspconfig'
 
@@ -218,7 +214,7 @@ lualine.setup {
     lualine_b = {
       {
         'diagnostics',
-        sources = {"nvim_lsp"},
+        sources = {'nvim_diagnostic'},
         symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'}
         -- symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
 
@@ -269,117 +265,112 @@ vim.g.molder_show_hidden = 1
 
 
 -------------------------------
--- LSP
+-- lsp-config
 -------------------------------
-if coc_flg then
-  -------------------------------
-  -- Coc.nvim
-  -------------------------------
-  -- 参考: https://blog.suzukishouten.co.jp/archives/2360
-  vim.cmd([[inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"]])
-  vim.cmd([[inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<TAB>" : coc#refresh()]])
-
-  function _G.check_back_space()
-    local col = vim.api.nvim_win_get_cursor(0)[2]
-    return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match('%s')) and true
-  end
-
-  function _G.show_documentation()
-    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
-      cmd('h ' .. vim.fn.expand(''))
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-      vim.fn.CocActionAsync('doHover')
-    else
-      cmd('! ' .. vim.o.keywordprg .. ' ' .. vim.fn.expand(''))
-    end
-  end
-
-  vim.g.coc_status_error_sign = "E:"
-  vim.g.coc_status_warning_sign = "W:"
-
-  map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
-  map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
-  map('n', '<LEADER>g', '<Plug>(coc-definition)', {})
-  map('n', '<LEADER>G', '<Plug>(coc-references)', {})
-  map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
-  map('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
-else
-
-  -------------------------------
-  -- lsp-config
-  -------------------------------
-  local nvim_lsp = require('lspconfig')
-  local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', '<LEADER>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {})
-    map('n', '<LEADER>G', '<cmd>lua require("fzf-lua").lsp_references()<CR>', {})
-  end
-
-  -- エラー文言を表示しない
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-  )
-
-  ----------------------
-  -- LSP SERVER SETUP
-  ----------------------
-  -- TypeScript
-  -- Install: npm install -g typescript-language-server
-  nvim_lsp.tsserver.setup {
-    on_attach = on_attach
-  }
-  -- Golang
-  -- Install: go get -u golang.org/x/tools/gopls@latest
-  nvim_lsp.gopls.setup{
-    on_attach = on_attach
-  }
-  -- Rust
-  -- Install: brew install rust-analyzer
-  -- nvim_lsp.rust_analyzer.setup{
-  --   on_attach = on_attach
-  -- }
-  -- Rust
-  -- Install: rustup component add rls
-  nvim_lsp.rls.setup{
-    on_attach = on_attach
-  }
-
-  ----------------------
-  -- nvim-cmp SETUP
-  ----------------------
-  local cmp = require'cmp'
-
-  vim.opt.completeopt = 'menu,menuone,noselect'
-  cmp.setup({
-    -- snippet = {
-    --   expand = function(args)
-    --     vim.fn["vsnip#anonymous"](args.body)
-    --   end,
-    -- },
-    mapping = {
-      ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      -- ['<C-y>'] = cmp.config.disable,
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-	-- setup config source
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' },
-    }, {
-      { name = 'buffer' },
-    })
-  })
+local nvim_lsp = require('lspconfig')
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<LEADER>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {})
+  map('n', '<LEADER>G', '<cmd>lua require("fzf-lua").lsp_references()<CR>', {})
 end
+
+-- エラー文言を表示しない
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+)
+
+----------------------
+-- LSP SERVER SETUP
+----------------------
+-- TypeScript
+-- Install: npm install -g typescript-language-server
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach
+}
+-- Golang
+-- Install: go get -u golang.org/x/tools/gopls@latest
+nvim_lsp.gopls.setup{
+  on_attach = on_attach
+}
+-- Rust
+-- Install: brew install rust-analyzer
+-- nvim_lsp.rust_analyzer.setup{
+--   on_attach = on_attach
+-- }
+-- Rust
+-- Install: rustup component add rls
+nvim_lsp.rls.setup{
+  on_attach = on_attach
+}
+
+----------------------
+-- nvim-cmp SETUP
+----------------------
+local cmp = require'cmp'
+
+vim.opt.completeopt = 'menu,menuone,noselect'
+cmp.setup({
+  -- snippet = {
+  --   expand = function(args)
+  --     vim.fn["vsnip#anonymous"](args.body)
+  --   end,
+  -- },
+  mapping = {
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    -- ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+-- setup config source
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+
+-------------------------------
+-- Coc.nvim
+-------------------------------
+-- 参考: https://blog.suzukishouten.co.jp/archives/2360
+-- vim.cmd([[inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"]])
+-- vim.cmd([[inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<TAB>" : coc#refresh()]])
+--
+-- function _G.check_back_space()
+--   local col = vim.api.nvim_win_get_cursor(0)[2]
+--   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match('%s')) and true
+-- end
+--
+-- function _G.show_documentation()
+--   if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+--     cmd('h ' .. vim.fn.expand(''))
+--   elseif vim.api.nvim_eval('coc#rpc#ready()') then
+--     vim.fn.CocActionAsync('doHover')
+--   else
+--     cmd('! ' .. vim.o.keywordprg .. ' ' .. vim.fn.expand(''))
+--   end
+-- end
+--
+-- vim.g.coc_status_error_sign = "E:"
+-- vim.g.coc_status_warning_sign = "W:"
+--
+-- map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
+-- map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
+-- map('n', '<LEADER>g', '<Plug>(coc-definition)', {})
+-- map('n', '<LEADER>G', '<Plug>(coc-references)', {})
+-- map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
+-- map('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
 
 
 -------------------------------
