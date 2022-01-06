@@ -8,7 +8,7 @@
 [user]
 	name = Taiki Hayashi
 	email = grandcolline@gmail.com
-	signingkey = 57073FF5C7417B95
+	# signingkey = XXXXXXXXXXXXXXXX
 
 [color]
 	ui = auto
@@ -23,11 +23,10 @@
 	autosetuprebase = always
 
 [push]
-	# default = simple
 	default = upstream
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [filter "lfs"]
 	process = git-lfs filter-process
