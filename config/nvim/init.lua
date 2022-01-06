@@ -33,7 +33,6 @@ require'packer'.startup(function()
   use 'hrsh7th/cmp-nvim-lsp' -- builtin LSP client
   use 'hrsh7th/cmp-buffer'   -- buffer words
   use 'hrsh7th/nvim-cmp'
-
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
@@ -282,6 +281,11 @@ end
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
 )
+
+-- error signを優先して表示
+vim.diagnostic.config {
+  severity_sort = true
+}
 
 ----------------------
 -- LSP SERVER SETUP
