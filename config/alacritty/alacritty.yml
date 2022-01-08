@@ -4,17 +4,17 @@
 font:
   size: 16
   normal:
-    family: JetBrains Mono NL
+    family: JetBrainsMonoNL Nerd Font Mono
     style: Thin
   bold:
-    family: JetBrains Mono NL
-    style: SemiBold
+    family: JetBrainsMonoNL Nerd Font Mono
+    style: Regular
   italic:
-    family: JetBrains Mono NL
+    family: JetBrainsMonoNL Nerd Font Mono
     style: ThinItalic
   bold_italic:
-    family: JetBrains Mono NL
-    style: SemiBold Italic
+    family: JetBrainsMonoNL Nerd Font Mono
+    style: Italic
 
 # -----------------
 # Color scheme

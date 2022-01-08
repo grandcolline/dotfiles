@@ -12,16 +12,52 @@
 vim.cmd[[packadd packer.nvim]]
 
 require'packer'.startup(function()
-  use 'cocopon/iceberg.vim'
+  use 'kyazdani42/nvim-web-devicons'
+
   use 'nvim-treesitter/nvim-treesitter'
-  use 'airblade/vim-gitgutter'
+  use 'cocopon/iceberg.vim'
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin"
+  })
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('gitsigns').setup {
+        signs = {
+          add          = {text = '+'},
+          change       = {text = '~'},
+          delete       = {text = '_'},
+          topdelete    = {text = '‾'},
+          changedelete = {text = '~'},
+        },
+        keymaps = {}, -- default mappingはオフ
+        sign_priority = 6,
+      }
+    end
+  }
+
+  use {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
+
   use 'Townk/vim-autoclose'
   use 'yuttie/comfortable-motion.vim'
-  use 'hoob3rt/lualine.nvim'
   use 'bronson/vim-trailing-whitespace'
-  use 'mattn/vim-molder'
+  -- use 'mattn/vim-molder'
+  use 'tamago324/lir.nvim'
   use 'tyru/open-browser.vim'
   use 'diepm/vim-rest-console'
+
+  use 'hoob3rt/lualine.nvim'
+  -- use 'arkav/lualine-lsp-progress'
 
   use 'vijaymarupudi/nvim-fzf'
   use 'ibhagwan/fzf-lua'
@@ -147,14 +183,16 @@ vim.g.mapleader = " "
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
 map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {})
-map('n', '<LEADER>h', '<Plug>(GitGutterNextHunk)', {})
-map('n', '<LEADER>H', '<Plug>(GitGutterPrevHunk)', {})
+map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {})
+map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {})
 map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {})
+map('n', '<LEADER>l', '<cmd>lua require("fzf-lua").lines()<CR>', {})
 map('n', '<LEADER>o', 'mzo<ESC>', {})
 map('n', '<LEADER>O', 'mzO<ESC>', {})
 map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})
 map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {})
-map('n', '<LEADER>v', '<Plug>(GitGutterPreviewHunk)', {})
+map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {})
+map('n', '<LEADER>x', ':TroubleToggle<CR>', {})
 
 map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_words()<cr>', { noremap = true })
 map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true })
@@ -167,14 +205,29 @@ map('n', '<LEADER><CR>',    ':! ', { noremap = true })
 -------------------------------
 -- ColorScheme
 -------------------------------
+local catppuccin = require("catppuccin")
+catppuccin.setup(
+  {
+    integrations = {
+      hop = true
+    }
+  }
+
+)
+
 vim.cmd('syntax on')
-vim.cmd('colorscheme iceberg')
+vim.cmd('colorscheme catppuccin')
+vim.cmd('hi ColorColumn guibg=#332E41')
 
-vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
-vim.cmd('hi Comment ctermfg=102')      -- コメントちょっと濃く
-vim.cmd('hi LineNr  ctermfg=102')      -- 行番号ちょっと濃く
-vim.cmd('hi CursorLineNr ctermfg=180') -- 現在行番号ハイライト
+-- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
+-- vim.cmd('hi Comment ctermfg=102')      -- コメントちょっと濃く
+-- vim.cmd('hi LineNr  ctermfg=102')      -- 行番号ちょっと濃く
+-- vim.cmd('hi CursorLineNr ctermfg=180') -- 現在行番号ハイライト
 
+
+-- highlight LspDiagnosticsSignError        ctermfg=9
+-- highlight LspDiagnosticsVirtualTextError ctermfg=9
+-- highlight LspDiagnosticsUnderlineError   ctermfg=9
 
 -------------------------------
 -- Treesitter
@@ -208,16 +261,15 @@ lualine.setup {
   -- filename / branch / filetype / location
   sections = {
     lualine_a = {'mode'},
-    -- lualine_b = {'coc#status'},
     lualine_b = {
       {
         'diagnostics',
         sources = {'nvim_diagnostic'},
-        symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'}
-        -- symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
-
-      }
+        -- symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'}
+        symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+      },
     },
+    -- lualine_c = {'lsp_progress'},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {'filename'},
@@ -226,7 +278,7 @@ lualine.setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = {'lsp_progress'},
     lualine_x = {},
     lualine_y = {'filename'},
     lualine_z = {}
@@ -240,13 +292,13 @@ lualine.setup {
 -- GitGutter
 -------------------------------
 -- 反映されるまでの時間を変更
-vim.opt.updatetime = 200
-
-vim.g.gitgutter_map_keys      = 0 -- defaultのmappingはオフ
-vim.g.gitgutter_sign_added    = '+'
-vim.g.gitgutter_sign_modified = '∙'
-vim.g.gitgutter_sign_removed  = '-'
-vim.g.gitgutter_sign_modified_removed = '∙'
+-- vim.opt.updatetime = 200
+--
+-- vim.g.gitgutter_map_keys      = 0 -- defaultのmappingはオフ
+-- vim.g.gitgutter_sign_added    = '+'
+-- vim.g.gitgutter_sign_modified = '∙'
+-- vim.g.gitgutter_sign_removed  = '-'
+-- vim.g.gitgutter_sign_modified_removed = '∙'
 
 
 -------------------------------
@@ -270,8 +322,8 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local opts = { noremap=true, silent=true }
   buf_set_keymap('n', '<LEADER>d', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<LEADER>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {})
   map('n', '<LEADER>G', '<cmd>lua require("fzf-lua").lsp_references()<CR>', {})
@@ -287,6 +339,12 @@ vim.diagnostic.config {
   severity_sort = true
 }
 
+-- local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+-- for type, icon in pairs(signs) do
+--   local hl = "LspDiagnosticsSign" .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+-- end
+
 ----------------------
 -- LSP SERVER SETUP
 ----------------------
@@ -300,11 +358,6 @@ nvim_lsp.tsserver.setup {
 nvim_lsp.gopls.setup{
   on_attach = on_attach
 }
--- Rust
--- Install: brew install rust-analyzer
--- nvim_lsp.rust_analyzer.setup{
---   on_attach = on_attach
--- }
 -- Rust
 -- Install: rustup component add rls
 nvim_lsp.rls.setup{
@@ -396,3 +449,46 @@ vim.g.vrc_set_default_mapping = 0
 vim.g.vrc_auto_format_uhex    = 1
 vim.g.vrc_curl_opts = { ['-sS'] = "", ['-i'] = ""}
 
+local actions = require'lir.actions'
+local mark_actions = require 'lir.mark.actions'
+local clipboard_actions = require'lir.clipboard.actions'
+
+-------------------------------
+-- lir.mvim
+-------------------------------
+require'lir'.setup {
+  show_hidden_files = true,
+  devicons_enable = true,
+  mappings = {
+    ['<CR>']  = actions.edit,
+    ['<C-s>'] = actions.split,
+    ['<C-v>'] = actions.vsplit,
+
+    ['-']     = actions.up,
+    ['q']     = actions.quit,
+    ['y']     = actions.yank_path,
+
+    ['K']     = actions.mkdir,
+    ['N']     = actions.newfile,
+    ['R']     = actions.rename,
+    ['.']     = actions.toggle_show_hidden,
+    ['D']     = actions.delete,
+  },
+  float = {
+    winblend = 0,
+    curdir_window = {
+      enable = true,
+      highlight_dirname = true
+    },
+  },
+  hide_cursor = false,
+}
+
+-- custom folder icon
+require'nvim-web-devicons'.set_icon({
+  lir_folder_icon = {
+    icon = "",
+    color = "#7ebae4",
+    name = "LirFolderNode"
+  }
+})
