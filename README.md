@@ -39,7 +39,7 @@ $ make app
 
 ## Font
 
-JetBrainsMonoNL Nerd Font Mono
+[JetBrainsMonoNL Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures)
 <!-- [JetBrains Mono NL](https://www.jetbrains.com/lp/mono/) -->
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
 
