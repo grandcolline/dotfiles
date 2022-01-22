@@ -371,11 +371,11 @@ local cmp = require'cmp'
 
 vim.opt.completeopt = 'menu,menuone,noselect'
 cmp.setup({
-  -- snippet = {
-  --   expand = function(args)
-  --     vim.fn["vsnip#anonymous"](args.body)
-  --   end,
-  -- },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
   mapping = {
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -387,7 +387,7 @@ cmp.setup({
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
--- setup config source
+  -- setup config source
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
