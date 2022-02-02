@@ -15,7 +15,7 @@ require'packer'.startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   use 'nvim-treesitter/nvim-treesitter'
-  use 'cocopon/iceberg.vim'
+  -- use 'cocopon/iceberg.vim'
   use({
     "catppuccin/nvim",
     as = "catppuccin"
@@ -61,8 +61,6 @@ require'packer'.startup(function()
 
   use 'vijaymarupudi/nvim-fzf'
   use 'ibhagwan/fzf-lua'
-
-  -- use { 'neoclide/coc.nvim', branch = 'release' }
 
   use 'neovim/nvim-lspconfig'
 
@@ -235,11 +233,16 @@ vim.cmd('hi ColorColumn guibg=#332E41')
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true, -- syntax highlightを有効に
-    disable = {}   -- 一部の言語では無効に
+    disable = {
+      'javascript' -- mjsでエラーが出るので無効に
+    }
   },
   ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
   indent = {
-    enable = true  -- tree-sitterによるインデントを有効に
+    enable = true, -- tree-sitterによるインデントを有効に
+    disable = {
+      'javascript' -- mjsでエラーが出るので無効に
+    }
   }
 }
 
@@ -289,19 +292,6 @@ lualine.setup {
 
 
 -------------------------------
--- GitGutter
--------------------------------
--- 反映されるまでの時間を変更
--- vim.opt.updatetime = 200
---
--- vim.g.gitgutter_map_keys      = 0 -- defaultのmappingはオフ
--- vim.g.gitgutter_sign_added    = '+'
--- vim.g.gitgutter_sign_modified = '∙'
--- vim.g.gitgutter_sign_removed  = '-'
--- vim.g.gitgutter_sign_modified_removed = '∙'
-
-
--------------------------------
 -- Hop
 -------------------------------
 vim.cmd('hi HopNextKey ctermfg=198')
@@ -311,7 +301,7 @@ vim.cmd('hi HopNextKey ctermfg=198')
 -- Molder
 -------------------------------
 -- 隠しファイルも表示
-vim.g.molder_show_hidden = 1
+-- vim.g.molder_show_hidden = 1
 
 
 -------------------------------
@@ -395,39 +385,6 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
-
-
--------------------------------
--- Coc.nvim
--------------------------------
--- 参考: https://blog.suzukishouten.co.jp/archives/2360
--- vim.cmd([[inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"]])
--- vim.cmd([[inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : v:lua.check_back_space() ? "\<TAB>" : coc#refresh()]])
---
--- function _G.check_back_space()
---   local col = vim.api.nvim_win_get_cursor(0)[2]
---   return (col == 0 or vim.api.nvim_get_current_line():sub(col, col):match('%s')) and true
--- end
---
--- function _G.show_documentation()
---   if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
---     cmd('h ' .. vim.fn.expand(''))
---   elseif vim.api.nvim_eval('coc#rpc#ready()') then
---     vim.fn.CocActionAsync('doHover')
---   else
---     cmd('! ' .. vim.o.keywordprg .. ' ' .. vim.fn.expand(''))
---   end
--- end
---
--- vim.g.coc_status_error_sign = "E:"
--- vim.g.coc_status_warning_sign = "W:"
---
--- map('n', '<LEADER>e', '<Plug>(coc-diagnostic-next)', {})
--- map('n', '<LEADER>E', '<Plug>(coc-diagnostic-prev)', {})
--- map('n', '<LEADER>g', '<Plug>(coc-definition)', {})
--- map('n', '<LEADER>G', '<Plug>(coc-references)', {})
--- map('n', '<LEADER>n', '<Plug>(coc-rename)', {})
--- map('n', '<LEADER>i', '<Plug>(coc-implementation)', {})
 
 
 -------------------------------
