@@ -149,6 +149,9 @@ vim.cmd('command! W w')
 vim.cmd('command! WQ wq')
 vim.cmd('command! Wq wq')
 
+-- Terminalモード
+vim.cmd('autocmd TermOpen * startinsert') -- 常にInsertModeでスタート
+
 -- luaにできなかったもの
 -- set undodir=$XDG_CONFIG_HOME/nvim/cache
 -- set backupdir=$XDG_CONFIG_HOME/nvim/cache
@@ -197,7 +200,9 @@ map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { nor
 map('n', '<LEADER><Tab>',   '<C-w>w', {})
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
 map('n', '<LEADER><BS>',    ':bd<CR>', {})
-map('n', '<LEADER><CR>',    ':! ', { noremap = true })
+map('n', '<LEADER><CR>',    ':bo split | resize 10 | terminal<CR>', { noremap = true })
+
+map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 
 
 -------------------------------
