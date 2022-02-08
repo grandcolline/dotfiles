@@ -153,6 +153,9 @@ vim.cmd('command! Wq wq')
 vim.cmd('autocmd TermOpen * startinsert') -- 常にInsertModeでスタート
 vim.cmd('command! -nargs=* Te bo sp | resize 30 | te <args>')
 
+-- Fold(折りたたみ)
+vim.opt.foldtext = [[getline(v:foldstart)]]
+
 -- luaにできなかったもの
 -- set undodir=$XDG_CONFIG_HOME/nvim/cache
 -- set backupdir=$XDG_CONFIG_HOME/nvim/cache
