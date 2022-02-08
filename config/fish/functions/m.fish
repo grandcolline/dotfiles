@@ -1,7 +1,8 @@
 function m -d "Excute My Script!!"
-  if test -f ".my/script.mjs"
-    .my/script.mjs $argv
-  else
-    echo "no script file!!"
+  if not test -f ".my/script.mjs"
+    echo "can't find script file!"
+    return 1
   end
+
+  .my/script.mjs $argv
 end
