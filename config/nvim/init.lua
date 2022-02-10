@@ -151,7 +151,8 @@ vim.cmd('command! Wq wq')
 
 -- Terminalモード
 vim.cmd('autocmd TermOpen * startinsert') -- 常にInsertModeでスタート
-vim.cmd('command! -nargs=* Te bo sp | resize 30 | te <args>')
+-- vim.cmd('command! -nargs=* Te bo sp | resize 30 | te <args>')
+vim.cmd('command! -nargs=* Te bo sp | te <args>')
 
 -- Fold(折りたたみ)
 vim.opt.foldtext = [[getline(v:foldstart)]]
