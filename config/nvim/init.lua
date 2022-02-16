@@ -15,7 +15,6 @@ require'packer'.startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   use 'nvim-treesitter/nvim-treesitter'
-  -- use 'cocopon/iceberg.vim'
   use({
     "catppuccin/nvim",
     as = "catppuccin"
@@ -244,14 +243,16 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true, -- syntax highlightを有効に
     disable = {
-      'javascript' -- mjsでエラーが出るので無効に
+      -- errorが出るものをoffにする
+      'lua',
+      'javascript',
     }
   },
   ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
   indent = {
     enable = true, -- tree-sitterによるインデントを有効に
     disable = {
-      'javascript' -- mjsでエラーが出るので無効に
+      'javascript',
     }
   }
 }
