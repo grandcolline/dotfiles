@@ -21,32 +21,31 @@ font:
 # -----------------
 colors:
   primary:
-    background: '#16171E'
-    foreground: '#D1D2D3'
+    background: "#16171E"
+    foreground: "#D1D2D3"
   # Normal colors
   normal:
-    black:   '#242627'
-    red:     '#D77C79'
-    green:   '#7F833D'
-    yellow:  '#D7A24D'
-    blue:    '#516A88'
-    magenta: '#714E76'
-    cyan:    '#4E7D78'
-    white:   '#B7BBB7'
+    black: "#242627"
+    red: "#D77C79"
+    green: "#7F833D"
+    yellow: "#D7A24D"
+    blue: "#516A88"
+    magenta: "#714E76"
+    cyan: "#4E7D78"
+    white: "#B7BBB7"
   # Bright colors
   bright:
-    black:   '#242627'
-    red:     '#D77C79'
-    green:   '#7B7F26'
-    yellow:  '#D7A24D'
-    blue:    '#405F74'
-    magenta: '#714E76'
-    cyan:    '#4E7D78'
-    white:   '#B7BBB7'
+    black: "#242627"
+    red: "#D77C79"
+    green: "#7B7F26"
+    yellow: "#D7A24D"
+    blue: "#405F74"
+    magenta: "#714E76"
+    cyan: "#4E7D78"
+    white: "#B7BBB7"
 
 window:
   opacity: 0.90
-
 
 # -----------------
 # Environment
@@ -61,4 +60,3 @@ key_bindings:
   #  - https://github.com/alacritty/alacritty/issues/1359
   #  - https://kagari.github.io/note/2020/alacritty_and_tmux/#キーバインドの変更
   - { key: Q, mods: Control, chars: "\x11" }
-

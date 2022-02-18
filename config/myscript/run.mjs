@@ -20,5 +20,4 @@ export const run = (cmds, arg) => {
   } else {
     cmds[arg[0]].function(arg.slice(1));
   }
-}
-
+};

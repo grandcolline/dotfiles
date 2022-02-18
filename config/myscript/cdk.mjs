@@ -24,4 +24,3 @@ export const cleanup = () => {
   $`find test -name "*.d.ts" -print -delete`;
   $`find test -name "*.js" -print -delete`;
 };
-
