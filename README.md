@@ -17,6 +17,7 @@ my config files...
 |expect||`nix-env -i expect`|
 |[gh](https://github.com/cli/cli)|GitHub on the command line|-|
 |[mycli](https://github.com/dbcli/mycli)|terminal client for MySQL|`nix-env -i mycli`|
+|[zx](https://github.com/google/zx)|script|`npm i -g zx`|
 
 
 ## Setup
