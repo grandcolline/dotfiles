@@ -38,6 +38,10 @@ echo "===== alacritty setting ====="
 ln -vsfn $dir_path/config/alacritty $XDG_CONFIG_HOME/alacritty
 echo ""
 
+echo "===== myscript setting ====="
+ln -vsfn $dir_path/config/myscript $XDG_CONFIG_HOME/myscript
+echo ""
+
 echo "===== Vim setting ====="
 ln -vsfn $dir_path/vimrc $HOME/.vimrc
 echo ""
