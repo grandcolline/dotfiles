@@ -1,21 +1,21 @@
 #!/usr/bin/env zx
 
 export const fmt_des = "prettier write";
-export const fmt = (filename) => {
+export const fmt = async (filename) => {
   const file = filename || ".";
-  $`unbuffer npx prettier --write ${file}`;
+  await $`unbuffer npx prettier --write ${file}`;
 };
 
 export const test_des = "jest";
-export const test = (option, filename) => {
+export const test = async (option, filename) => {
   const opt = option || "";
   const file = filename ?? "";
-  $`unbuffer npx jest ${opt} ${file}`;
+  await $`unbuffer npx jest ${opt} ${file}`;
 };
 
 // FIXME
 export const cleanup_des = "";
-export const cleanup = () => {
+export const cleanup = async () => {
   $`find . -name ".DS_Store" -print -delete`;
   $`find bin -name "*.d.ts" -print -delete`;
   $`find bin -name "*.js" -print -delete`;
