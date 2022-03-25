@@ -19,6 +19,7 @@ require'packer'.startup(function()
     "catppuccin/nvim",
     as = "catppuccin"
   })
+  use "rebelot/kanagawa.nvim"
 
   use {
     'lewis6991/gitsigns.nvim',
@@ -143,15 +144,15 @@ vim.opt.expandtab      = true      -- TAB -> Space
 vim.cmd('au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4')
 
 -- コマンドタイポ予防
-vim.cmd('command! Q q')
-vim.cmd('command! W w')
-vim.cmd('command! WQ wq')
-vim.cmd('command! Wq wq')
+vim.cmd('command! Q q') -- vim.api.nvim_add_user_command('Q', 'q', {})
+vim.cmd('command! W w') -- vim.api.nvim_add_user_command('W', 'w', {})
+vim.cmd('command! WQ wq') -- vim.api.nvim_add_user_command('WQ', 'wq', {})
+vim.cmd('command! Wq wq') -- vim.api.nvim_add_user_command('Wq', 'wq', {})
 
 -- Terminalモード
 vim.cmd('autocmd TermOpen * startinsert') -- 常にInsertModeでスタート
--- vim.cmd('command! -nargs=* Te bo sp | resize 30 | te <args>')
 vim.cmd('command! -nargs=* Te bo sp | te <args>')
+-- vim.api.nvim_add_user_command('Te', 'bo sp | te <args>', { nargs = * })
 
 -- Fold(折りたたみ)
 vim.opt.foldtext = [[getline(v:foldstart)]]
@@ -223,8 +224,9 @@ catppuccin.setup(
 )
 
 vim.cmd('syntax on')
-vim.cmd('colorscheme catppuccin')
-vim.cmd('hi ColorColumn guibg=#332E41')
+vim.cmd("colorscheme kanagawa")
+-- vim.cmd('colorscheme catppuccin')
+-- vim.cmd('hi ColorColumn guibg=#332E41')
 
 -- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
 -- vim.cmd('hi Comment ctermfg=102')      -- コメントちょっと濃く
@@ -305,7 +307,7 @@ lualine.setup {
 -------------------------------
 -- Hop
 -------------------------------
-vim.cmd('hi HopNextKey ctermfg=198')
+-- vim.cmd('hi HopNextKey ctermfg=198')
 
 
 -------------------------------

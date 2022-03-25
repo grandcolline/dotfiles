@@ -1,5 +1,7 @@
 #!/usr/bin/env zx
 
+// export const fzfCmd = $`fzf --ansi --height 40% --reverse --exit-0 --tiebreak=index`;
+
 /**
  * .my/script.mjs main handler
  *

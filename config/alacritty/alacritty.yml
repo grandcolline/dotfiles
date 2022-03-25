@@ -23,7 +23,7 @@ colors:
   primary:
     background: "#16171E"
     foreground: "#D1D2D3"
-  # Normal colors
+  # Normal Colors
   normal:
     black: "#242627"
     red: "#D77C79"
@@ -33,9 +33,9 @@ colors:
     magenta: "#714E76"
     cyan: "#4E7D78"
     white: "#B7BBB7"
-  # Bright colors
+  # Bright Colors
   bright:
-    black: "#242627"
+    black: "#4c4c4c"
     red: "#D77C79"
     green: "#7B7F26"
     yellow: "#D7A24D"
@@ -51,7 +51,8 @@ window:
 # Environment
 # -----------------
 env:
-  TERM: alacritty
+  # TERM: alacritty
+  TERM: xterm-256color
 
 live_config_reload: true
 
