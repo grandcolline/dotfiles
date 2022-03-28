@@ -148,4 +148,3 @@ bind \cd '__fzf_directory -z'
 bind \co '__fzf_docker_images -i'
 bind \cf '__fzf_file -f'
 bind \cp '__fzf_pr'
-
