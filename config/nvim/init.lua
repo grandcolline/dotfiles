@@ -357,13 +357,18 @@ nvim_lsp.tsserver.setup {
   on_attach = on_attach
 }
 -- Golang
--- Install: go get -u golang.org/x/tools/gopls@latest
+-- Install: go install golang.org/x/tools/gopls@latest
 nvim_lsp.gopls.setup{
   on_attach = on_attach
 }
 -- Rust
 -- Install: rustup component add rls
 nvim_lsp.rls.setup{
+  on_attach = on_attach
+}
+-- Terraform
+-- Install: terraform-ls
+nvim_lsp.terraformls.setup{
   on_attach = on_attach
 }
 

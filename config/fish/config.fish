@@ -50,9 +50,9 @@ if test -d "$HOME/.sdkman/bin"
 end
 
 # nodebrew
-# if test -d "$HOME/.nodebrew/current/bin"
-set -x PATH $HOME/.nodebrew/current/bin $PATH
-# end
+if test -d "$HOME/.nodebrew/current/bin"
+  set -x PATH $HOME/.nodebrew/current/bin $PATH
+end
 
 # deno
 if type "deno" > /dev/null 2>&1
