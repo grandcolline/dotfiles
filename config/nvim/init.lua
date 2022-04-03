@@ -367,7 +367,7 @@ nvim_lsp.rls.setup{
   on_attach = on_attach
 }
 -- Terraform
--- Install: terraform-ls
+-- Install: brew install hashicorp/tap/terraform-ls
 nvim_lsp.terraformls.setup{
   on_attach = on_attach
 }
