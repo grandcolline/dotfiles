@@ -69,7 +69,8 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Google Cloud SDK
 if test -f "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
-  source "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
+  # The next line updates PATH for the Google Cloud SDK.
+  . "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
 end
 
 # ログインメッセージを表示しない

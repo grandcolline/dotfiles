@@ -1,35 +1,35 @@
 [core]
-	safecrlf = true
-	autocrlf = input
-	precomposeunicode = true
-	quotepath = false
-	editor = nvim
+  safecrlf = true
+  autocrlf = input
+  precomposeunicode = true
+  quotepath = false
+  editor = nvim
 
 [user]
-	name = Taiki Hayashi
-	email = grandcolline@gmail.com
-	# signingkey = XXXXXXXXXXXXXXXX
+  name = Taiki Hayashi
+  email = grandcolline@gmail.com
+  # signingkey = XXXXXXXXXXXXXXXX
 
 [color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	grep = auto
-	interactive = auto
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  grep = auto
+  interactive = auto
 
 [pull]
-	rebase = true
-	autosetuprebase = always
+  rebase = true
+  autosetuprebase = always
 
 [push]
-	default = upstream
+  default = upstream
 
 [commit]
-	gpgsign = false
+  gpgsign = false
 
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
