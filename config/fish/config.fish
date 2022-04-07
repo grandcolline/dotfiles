@@ -65,7 +65,9 @@ if type "docker" > /dev/null 2>&1
 end
 
 # brew
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+if test -f "/opt/homebrew/bin/brew"
+  eval (/opt/homebrew/bin/brew shellenv)
+end
 
 # Google Cloud SDK
 if test -f "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
