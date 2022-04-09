@@ -49,11 +49,6 @@ if test -d "$HOME/.sdkman/bin"
   set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
 end
 
-# nodebrew
-if test -d "$HOME/.nodebrew/current/bin"
-  set -x PATH $HOME/.nodebrew/current/bin $PATH
-end
-
 # deno
 if type "deno" > /dev/null 2>&1
   set -x PATH $HOME/.deno/bin $PATH
@@ -63,6 +58,12 @@ end
 if type "docker" > /dev/null 2>&1
   set -x DOCKER_BUILDKIT 1
 end
+
+# anyenv
+if type "anyenv" > /dev/null 2>&1
+  status --is-interactive; and source (anyenv init -|psub)
+end
+
 
 # brew
 if test -f "/opt/homebrew/bin/brew"
@@ -151,3 +152,4 @@ bind \cd '__fzf_directory -z'
 bind \co '__fzf_docker_images -i'
 bind \cf '__fzf_file -f'
 bind \cp '__fzf_pr'
+
