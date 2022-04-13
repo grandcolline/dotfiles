@@ -279,24 +279,24 @@ lualine.setup {
     lualine_a = {'mode'},
     lualine_b = {
       {
-        'diagnostics',
+        -- 'diagnostics',
         sources = {'nvim_diagnostic'},
-        -- symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'}
         symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
       },
     },
     -- lualine_c = {'lsp_progress'},
-    lualine_c = {},
+    lualine_c = {'filename', 'diff', 'diagnostics'},
     lualine_x = {},
-    lualine_y = {'filename'},
+    lualine_y = {},
     lualine_z = {}
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'lsp_progress'},
+    lualine_c = {},
+    -- lualine_c = {'lsp_progress'},
     lualine_x = {},
-    lualine_y = {'filename'},
+    lualine_y = {},
     lualine_z = {}
   },
   tabline = {},
