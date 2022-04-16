@@ -5,6 +5,11 @@
   quotepath = false
   editor = nvim
 
+[user]
+  name = Taiki Hayashi
+  email = grandcolline@gmail.com
+  # signingkey = XXXXXXXXXXXXXXXX
+
 [color]
   ui = auto
   diff = auto
