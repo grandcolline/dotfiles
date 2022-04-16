@@ -59,11 +59,10 @@ if type "docker" > /dev/null 2>&1
   set -x DOCKER_BUILDKIT 1
 end
 
-# anyenv
-if type "anyenv" > /dev/null 2>&1
-  status --is-interactive; and source (anyenv init -|psub)
+# nodebrew
+if test -d "$HOME/.nodebrew"
+  set -x PATH $HOME/.nodebrew/current/bin $PATH
 end
-
 
 # brew
 if test -f "/opt/homebrew/bin/brew"
