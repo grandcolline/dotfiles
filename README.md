@@ -4,20 +4,20 @@ my config files...
 
 ## Used Things
 
-|                         Name                          | What                                      | How to Install               |
-| :---------------------------------------------------: | :---------------------------------------- | :--------------------------- |
-|           [Git](https://github.com/git/git)           | version-control system                    | `nix-env -i git`             |
-| [FishShell](https://github.com/fish-shell/fish-shell) | main command line shell                   | `nix-env -i fish`            |
-|      [NeoVim](https://github.com/neovim/neovim)       | main editor                               | `nix-env -i neovim`          |
-|         [tmux](https://github.com/tmux/tmux)          | terminal multiplexer                      | -                            |
-|    [zoxide](https://github.com/ajeetdsouza/zoxide)    | tool for quick access to directories      | `nix-env -iA nixpkgs.zoxide` |
-|        [fzf](https://github.com/junegunn/fzf)         | fuzzy finder for terminal & vim           | `nix-env -i fzf`             |
-|          [fd](https://github.com/sharkdp/fd)          | file search                               | `nix-env -i fd`              |
-|   [ripgrep](https://github.com/BurntSushi/ripgrep)    | tool for recursively searches directories | `nix-env -i ripgrep`         |
-|                        expect                         |                                           | `nix-env -i expect`          |
-|           [gh](https://github.com/cli/cli)            | GitHub on the command line                | -                            |
-|        [mycli](https://github.com/dbcli/mycli)        | terminal client for MySQL                 | `nix-env -i mycli`           |
-|          [zx](https://github.com/google/zx)           | script                                    | `npm i -g zx`                |
+|                         Name                          | What                                      | How to Install         |
+| :---------------------------------------------------: | :---------------------------------------- | ---------------------- |
+|           [Git](https://github.com/git/git)           | version-control system                    | `brew install git`     |
+| [FishShell](https://github.com/fish-shell/fish-shell) | main command line shell                   | `brew install fish`    |
+|      [NeoVim](https://github.com/neovim/neovim)       | main editor                               | `brew install neovim`  |
+|         [tmux](https://github.com/tmux/tmux)          | terminal multiplexer                      | `brew install tmux`    |
+|    [zoxide](https://github.com/ajeetdsouza/zoxide)    | tool for quick access to directories      | `brew install zoxide`  |
+|        [fzf](https://github.com/junegunn/fzf)         | fuzzy finder for terminal & vim           | `brew install fzf`     |
+|          [fd](https://github.com/sharkdp/fd)          | file search                               | `brew install fd`      |
+|   [ripgrep](https://github.com/BurntSushi/ripgrep)    | tool for recursively searches directories | `brew install ropgrep` |
+|                        expect                         |                                           | `brew install expext`  |
+|           [gh](https://github.com/cli/cli)            | GitHub on the command line                | `brew install gh`      |
+|        [mycli](https://github.com/dbcli/mycli)        | terminal client for MySQL                 | `brew install mycli`   |
+|          [zx](https://github.com/google/zx)           | script                                    | `npm install -g zx`    |
 
 ## Setup
 
