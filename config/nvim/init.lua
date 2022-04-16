@@ -220,7 +220,6 @@ catppuccin.setup(
       hop = true
     }
   }
-
 )
 
 vim.cmd('syntax on')
@@ -250,7 +249,8 @@ require'nvim-treesitter.configs'.setup {
       'javascript',
     }
   },
-  ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
+  -- ensure_installed='maintained' will be removed April 30, 2022. Specify parsers explicitly or use 'all'.
+  -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
   indent = {
     enable = true, -- tree-sitterによるインデントを有効に
     disable = {
@@ -348,6 +348,42 @@ vim.diagnostic.config {
 --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 -- end
 
+
+----------------------
+-- nvim-cmp SETUP
+----------------------
+local cmp = require'cmp'
+
+vim.opt.completeopt = 'menu,menuone,noselect'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  mapping = {
+    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    -- ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  -- setup config source
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+
 ----------------------
 -- LSP SERVER SETUP
 ----------------------
@@ -371,38 +407,6 @@ nvim_lsp.rls.setup{
 nvim_lsp.terraformls.setup{
   on_attach = on_attach
 }
-
-----------------------
--- nvim-cmp SETUP
-----------------------
-local cmp = require'cmp'
-
-vim.opt.completeopt = 'menu,menuone,noselect'
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    -- ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  },
-  -- setup config source
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  }, {
-    { name = 'buffer' },
-  })
-})
 
 
 -------------------------------
@@ -428,8 +432,9 @@ local actions = require'lir.actions'
 local mark_actions = require 'lir.mark.actions'
 local clipboard_actions = require'lir.clipboard.actions'
 
+
 -------------------------------
--- lir.mvim
+-- lir.nvim
 -------------------------------
 require'lir'.setup {
   show_hidden_files = true,
