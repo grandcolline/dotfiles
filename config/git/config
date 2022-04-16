@@ -34,5 +34,6 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
 
+# 最後に .config/git/local で override
 [include]
   path = local
