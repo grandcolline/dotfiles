@@ -15,7 +15,7 @@
  *   run(cmds, argv._.slice(1));
  */
 export const run = (cmds, arg) => {
-  if (arg[0] == "comp") {
+  if (!arg[0] || arg[0] == "comp") {
     for (var key in cmds) {
       console.log(key + "\t" + cmds[key].description);
     }

@@ -1,5 +1,14 @@
 function __complete_m
-  if not test -f ".my/script.mjs"
+
+  if not type "zx" > /dev/null 2>&1
+    return 1
+  end
+
+  if test -f ".my/script.mjs"
+    set cmd ".my/script.mjs"
+  else if test -f ".my/script.md"
+    set cmd ".my/script.md"
+  else
     return 1
   end
 
@@ -8,7 +17,7 @@ function __complete_m
 
   switch $cword
     case 1
-      .my/script.mjs "comp"
+      zx $cmd "comp"
     case '*'
       __fish_complete_path
   end
