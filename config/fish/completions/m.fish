@@ -5,23 +5,14 @@ function __complete_m
   end
 
   if test -f ".my/script.mjs"
-    set cmd ".my/script.mjs"
+    zx .my/script.mjs
   else if test -f ".my/script.md"
-    set cmd ".my/script.md"
+    zx .my/script.md
   else
     return 1
   end
-
-  set -l words (commandline -pco)
-  set -l cword (count $words)
-
-  switch $cword
-    case 1
-      zx $cmd "comp"
-    case '*'
-      __fish_complete_path
-  end
 end
 
-complete -c m -xa '(__complete_m)'
+complete -c m -n '__fish_use_subcommand' -xa '(__complete_m)'
+complete -c m -n "__fish_seen_subcommand_from" -s o -r # FIXME: subcommnd_fromでいいのかわからない
 
