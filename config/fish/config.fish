@@ -128,7 +128,7 @@ abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %
 
 # GitHub
 abbr -a repo 'gh repo view --web'
-abbr -a pr   'gh pr view --web || gh pr create'
+abbr -a pr   'gh pr view --web || gh pr create --web'
 abbr -a prc  'gh pr checkout'
 
 # Docker
