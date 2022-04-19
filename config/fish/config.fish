@@ -86,7 +86,7 @@ set fish_greeting
 # ----------------------------
 abbr -a vi 'nvim'
 abbr -a o  'open'
-abbr -a b  'open -a "/Applications/Google Chrome.app"'
+abbr -a b  'open -a "/Applications/Brave Browser.app"'
 abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
