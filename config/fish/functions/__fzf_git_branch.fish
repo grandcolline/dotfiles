@@ -4,7 +4,7 @@ function __fzf_git_branch
     argparse -n __fzf_git_branch 'a/all' -- $argv
     or return 1
 
-    set -l git_cmd "git branch"
+    set -l git_cmd "unbuffer git branch"
     set -l fzf_cmd "fzf --ansi --height 40% --reverse --exit-0 --tiebreak=index \
       --bind 'ctrl-y:execute-silent(echo {} | tr -d \' \' | tr -d \'*\' | pbcopy)+abort'"
 
@@ -19,6 +19,7 @@ function __fzf_git_branch
       eval $git_cmd \
       | sed -e "s;remotes/;;g" \
       | sed -e "/origin\/HEAD/d" \
+      | sed -e "s/\r//g" \
       | eval $fzf_cmd \
       | tr -d ' ' \
       | tr -d '*' \
