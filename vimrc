@@ -16,6 +16,7 @@ set ambiwidth=double
 
 set nocompatible
 set backspace=2
+set tabstop=2
 
 set noswapfile
 set autoread
@@ -43,6 +44,7 @@ set wrapscan
 set gdefault
 
 colorscheme delek
+syntax enable
 
 "========================================
 " Key Mapping

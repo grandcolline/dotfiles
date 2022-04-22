@@ -2,7 +2,7 @@
 # Fonts
 # -----------------
 font:
-  size: 16
+  size: 15
   normal:
     family: JetBrainsMonoNL Nerd Font Mono
     style: Thin
