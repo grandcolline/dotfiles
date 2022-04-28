@@ -38,7 +38,11 @@ echo "===== alacritty setting ====="
 ln -vsfn $dir_path/config/alacritty $XDG_CONFIG_HOME/alacritty
 echo ""
 
-echo "===== myscript setting ====="
+echo "===== brewfile setting ====="
+ln -vsfn $dir_path/config/brewfile $XDG_CONFIG_HOME/brewfile
+echo ""
+
+echo "===== iscript setting ====="
 ln -vsfn $dir_path/config/iscript $XDG_CONFIG_HOME/iscript
 echo ""
 

@@ -1,6 +1,9 @@
 # Git
 config/git/local
 
+# brewfile
+config/brewfile/Brewfile.lock.json
+
 # vim, nvim
 .netrwhist
 init.vim.old
@@ -17,4 +20,3 @@ config/fish/completions/gsutil.fish
 config/fish/functions/gcloud_sdk_argcomplete.fish
 
 !.gitkeep
-!.myMakefile.mk
