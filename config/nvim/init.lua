@@ -13,19 +13,13 @@ vim.cmd[[packadd packer.nvim]]
 
 require'packer'.startup(function()
   use 'kyazdani42/nvim-web-devicons'
+  use 'nvim-lua/plenary.nvim' -- used by rest.nvim / gitsigns.nvim
 
   use 'nvim-treesitter/nvim-treesitter'
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  })
   use "rebelot/kanagawa.nvim"
 
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
     config = function()
       require('gitsigns').setup {
         signs = {
@@ -54,7 +48,8 @@ require'packer'.startup(function()
   -- use 'mattn/vim-molder'
   use 'tamago324/lir.nvim'
   use 'tyru/open-browser.vim'
-  use 'diepm/vim-rest-console'
+  -- use 'diepm/vim-rest-console'
+  use 'NTBBloodbath/rest.nvim'
 
   use 'hoob3rt/lualine.nvim'
   -- use 'arkav/lualine-lsp-progress'
@@ -187,7 +182,7 @@ map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 vim.g.mapleader = " "
 
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
-map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
+map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {})
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {})
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {})
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {})
@@ -213,25 +208,13 @@ map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 -------------------------------
 -- ColorScheme
 -------------------------------
-local catppuccin = require("catppuccin")
-catppuccin.setup(
-  {
-    integrations = {
-      hop = true
-    }
-  }
-)
-
 vim.cmd('syntax on')
-vim.cmd("colorscheme kanagawa")
--- vim.cmd('colorscheme catppuccin')
--- vim.cmd('hi ColorColumn guibg=#332E41')
+vim.cmd('colorscheme kanagawa')
 
 -- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
 -- vim.cmd('hi Comment ctermfg=102')      -- コメントちょっと濃く
 -- vim.cmd('hi LineNr  ctermfg=102')      -- 行番号ちょっと濃く
 -- vim.cmd('hi CursorLineNr ctermfg=180') -- 現在行番号ハイライト
-
 
 -- highlight LspDiagnosticsSignError        ctermfg=9
 -- highlight LspDiagnosticsVirtualTextError ctermfg=9
@@ -308,13 +291,6 @@ lualine.setup {
 -- Hop
 -------------------------------
 -- vim.cmd('hi HopNextKey ctermfg=198')
-
-
--------------------------------
--- Molder
--------------------------------
--- 隠しファイルも表示
--- vim.g.molder_show_hidden = 1
 
 
 -------------------------------
@@ -421,21 +397,22 @@ require'fzf-lua'.setup {
 }
 
 
--------------------------------
--- rest-console
--------------------------------
-vim.g.vrc_set_default_mapping = 0
-vim.g.vrc_auto_format_uhex    = 1
-vim.g.vrc_curl_opts = { ['-sS'] = "", ['-i'] = ""}
 
-local actions = require'lir.actions'
-local mark_actions = require 'lir.mark.actions'
-local clipboard_actions = require'lir.clipboard.actions'
+-------------------------------
+-- rest.nvim
+-------------------------------
+require("rest-nvim").setup({
+  result_split_in_place = true,
+  env_file = 'vars.http'
+})
 
 
 -------------------------------
 -- lir.nvim
 -------------------------------
+local actions = require'lir.actions'
+local mark_actions = require 'lir.mark.actions'
+local clipboard_actions = require'lir.clipboard.actions'
 require'lir'.setup {
   show_hidden_files = true,
   devicons_enable = true,
