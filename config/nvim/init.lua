@@ -209,6 +209,11 @@ map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 -- ColorScheme
 -------------------------------
 vim.cmd('syntax on')
+
+local my_colors = {
+  bg = 'none', -- 背景色をなくす
+}
+require'kanagawa'.setup({ colors = my_colors })
 vim.cmd('colorscheme kanagawa')
 
 -- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
@@ -219,6 +224,7 @@ vim.cmd('colorscheme kanagawa')
 -- highlight LspDiagnosticsSignError        ctermfg=9
 -- highlight LspDiagnosticsVirtualTextError ctermfg=9
 -- highlight LspDiagnosticsUnderlineError   ctermfg=9
+
 
 -------------------------------
 -- Treesitter
