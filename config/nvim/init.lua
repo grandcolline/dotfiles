@@ -48,7 +48,9 @@ require'packer'.startup(function()
   -- use 'mattn/vim-molder'
   use 'tamago324/lir.nvim'
   use 'tyru/open-browser.vim'
-  -- use 'diepm/vim-rest-console'
+
+  -- curl
+  use 'diepm/vim-rest-console'
   use 'NTBBloodbath/rest.nvim'
 
   use 'hoob3rt/lualine.nvim'
@@ -182,7 +184,8 @@ map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
 vim.g.mapleader = " "
 
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
-map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {})
+map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
+map('n', '<LEADER>C', '<cmd>lua require("rest-nvim").run()<CR>', {})
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {})
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {})
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {})
@@ -411,6 +414,17 @@ require("rest-nvim").setup({
   result_split_in_place = true,
   env_file = 'vars.http'
 })
+
+-------------------------------
+-- rest-console
+-------------------------------
+vim.g.vrc_set_default_mapping = 0
+vim.g.vrc_auto_format_uhex    = 1
+vim.g.vrc_curl_opts = { ['-sS'] = "", ['-i'] = ""}
+
+local actions = require'lir.actions'
+local mark_actions = require 'lir.mark.actions'
+local clipboard_actions = require'lir.clipboard.actions'
 
 
 -------------------------------

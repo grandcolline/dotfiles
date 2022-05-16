@@ -38,8 +38,8 @@ echo "===== alacritty setting ====="
 ln -vsfn $dir_path/config/alacritty $XDG_CONFIG_HOME/alacritty
 echo ""
 
-echo "===== brewfile setting ====="
-ln -vsfn $dir_path/config/brewfile $XDG_CONFIG_HOME/brewfile
+echo "===== wezterm setting ====="
+ln -vsfn $dir_path/config/wezterm $XDG_CONFIG_HOME/wezterm
 echo ""
 
 echo "===== iscript setting ====="

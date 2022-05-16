@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm';
 return {
   font = wezterm.font("JetBrainsMonoNL Nerd Font Mono"),
-  font_size = 16.0,
+  font_size = 15.0,
   -- color_scheme = "Ayu Mirage",
   colors = {
     background = "#16171E",
@@ -27,7 +27,7 @@ return {
       "#B7BBB7", -- white
     },
   },
-  window_background_opacity = 0.9,
+  window_background_opacity = 0.95,
   -- フォントサイズ変更時にウィンドウサイズも変更されないようにする
   adjust_window_size_when_changing_font_size = false,
 }
