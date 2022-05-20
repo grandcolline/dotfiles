@@ -44,9 +44,8 @@ $ make app
 <!-- [JetBrains Mono NL](https://www.jetbrains.com/lp/mono/) -->
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
 
-## SSH先にとりま設定入れようぜスクリプト
+## script for remote server
 
 ```bash
 curl -sL -o ${HOME}/.vimrc https://raw.githubusercontent.com/grandcolline/dotfiles/main/vimrc
-
 ```
