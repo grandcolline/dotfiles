@@ -70,15 +70,13 @@ if test -f "/opt/homebrew/bin/brew"
 end
 
 # Google Cloud SDK
-if test -f "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
-  # The next line updates PATH for the Google Cloud SDK.
+if test -d "$WORKSPACE/tool/google-cloud-sdk"
+  set -x PATH $WORKSPACE/tool/google-cloud-sdk/bin $PATH
   . "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
 end
 
 # ログインメッセージを表示しない
 set fish_greeting
-# コマンドの青が見にくいので明るくする
-# set fish_color_command "#9BB8DC"
 
 
 # ----------------------------
@@ -91,6 +89,13 @@ abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
 abbr -a rm 'rm -rf'
+
+# exa
+if type "exa" > /dev/null 2>&1
+  abbr -a ll   'exa -l --git'
+  abbr -a la   'exa -al --git'
+  abbr -a tree 'exa --tree'
+end
 
 # Git
 abbr -a g    'git'
@@ -127,17 +132,28 @@ abbr -a glp  'git log -p -1 --stat --decorate'
 abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
 
 # GitHub
-abbr -a repo 'gh repo view --web'
-abbr -a pr   'gh pr view --web || gh pr create --web'
-abbr -a prc  'gh pr checkout'
+if type "gh" > /dev/null 2>&1
+  abbr -a repo 'gh repo view --web'
+  abbr -a pr   'gh pr view --web || gh pr create --web'
+  abbr -a prc  'gh pr checkout'
+end
 
 # Docker
-abbr -a d  'docker'
-abbr -a dr 'docker run --rm -it -v $PWD:/workspace'
-abbr -a dc 'docker compose'
+if type "docker" > /dev/null 2>&1
+  abbr -a d  'docker'
+  abbr -a dr 'docker run --rm -it -v $PWD:/workspace'
+  abbr -a dc 'docker compose'
+end
 
 # K8s
-abbr -a kb 'kubectl'
+if type "kubectl" > /dev/null 2>&1
+  abbr -a kb 'kubectl'
+end
+
+# gcloud
+if type "kubectl" > /dev/null 2>&1
+  abbr -a gcal 'gcloud auth login'
+end
 
 
 # ----------------------------
