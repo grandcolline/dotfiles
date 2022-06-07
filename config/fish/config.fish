@@ -130,6 +130,7 @@ abbr -a gdc  'git diff --cached'
 abbr -a gll  'git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"'
 abbr -a glp  'git log -p -1 --stat --decorate'
 abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
+abbr -a gt   'cd $(git rev-parse --show-toplevel)'
 
 # GitHub
 if type "gh" > /dev/null 2>&1
@@ -160,7 +161,7 @@ end
 #  Key Binds
 # ----------------------------
 bind \cr '__fzf_history'
-bind \cb '__fzf_git_branch -a'
+bind \cb '__fzf_git_branch'
 bind \cl '__fzf_git_log'
 bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -z'
