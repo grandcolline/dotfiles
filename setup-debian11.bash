@@ -34,3 +34,6 @@ ln -vsfn $HOME/develop/tool/nvim-linux64/bin/nvim $HOME/develop/tool/nvim
 # dotfile
 git clone https://github.com/grandcolline/dotfiles.git $HOME/develop/src/github.com/grandcolline/dotfiles
 XDG_CONFIG_HOME=$HOME/.config $HOME/develop/src/github.com/grandcolline/dotfiles/setup.sh
+
+# 
+sudo apt-get install -y golang
