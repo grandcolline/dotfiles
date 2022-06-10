@@ -30,6 +30,8 @@ mkdir -p $HOME/.config
 curl -L https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.tar.gz >$HOME/develop/tool/nvim-linux64.tar.gz
 tar xzvf $HOME/develop/tool/nvim-linux64.tar.gz
 ln -vsfn $HOME/develop/tool/nvim-linux64/bin/nvim $HOME/develop/tool/nvim
+# Packer.nvim
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # dotfile
 git clone https://github.com/grandcolline/dotfiles.git $HOME/develop/src/github.com/grandcolline/dotfiles
