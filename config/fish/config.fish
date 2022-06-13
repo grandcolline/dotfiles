@@ -19,6 +19,7 @@ set -x EDITOR "nvim"
 set -x GPG_TTY (tty)
 
 # zoxide
+# @see zoxide --help
 if type "zoxide" > /dev/null 2>&1
   set -x _ZO_DATA_DIR $XDG_CONFIG_HOME/zoxide
   set -x _ZO_EXCLUDE_DIRS $HOME:$WORKSPACE/tool/google-cloud-sdk
