@@ -83,13 +83,29 @@ set fish_greeting
 # ----------------------------
 #  Aliases
 # ----------------------------
-abbr -a vi 'nvim'
 abbr -a o  'open'
-abbr -a b  'open -a "/Applications/Brave Browser.app"'
-abbr -a t  'tmux attach; or tmux'
 abbr -a x  'exit'
 abbr -a c  'clear'
 abbr -a rm 'rm -rf'
+
+# nvim
+if type "nvim" > /dev/null 2>&1
+  abbr -a vi 'nvim'
+end
+
+# tmux
+if type "tmux" > /dev/null 2>&1
+  abbr -a t  'tmux attach; or tmux'
+end
+
+# Browser
+if test -d "/Applications/Brave Browser.app"
+  abbr -a b  'open -a "/Applications/Brave Browser.app"'
+else if test -d "/Applications/Google Chrome.app"
+  abbr -a b  'open -a "/Applications/Google Chrome.app"'
+else if test -d "/Applications/Safari.app"
+  abbr -a b  'open -a "/Applications/Safari.app"'
+end
 
 # exa
 if type "exa" > /dev/null 2>&1
@@ -99,39 +115,41 @@ if type "exa" > /dev/null 2>&1
 end
 
 # Git
-abbr -a g    'git'
-abbr -a gb   'git branch -a'
-abbr -a gbv  'git branch -a -vv'
-abbr -a gbd  'git branch -d'
-abbr -a gbD  'git branch -D'
-abbr -a gp   'git pull --rebase --prune --tags'
-abbr -a gf   'git fetch --prune --tags'
-abbr -a gm   'git merge -v'
-abbr -a gcm  'git commit -v'
-abbr -a gcma 'git commit -v --amend --date (env LANG=en_US.UTF-8 date -R)'
-abbr -a grs  'git restore'
-abbr -a grss 'git restore --staged'
-abbr -a grb  'git rebase'
-abbr -a grv  'git revert'
-abbr -a gs   'git status -sb'
-abbr -a gst  'git stash'
-abbr -a gstl 'git stash list'
-abbr -a gstp 'git stash pop --index'
-# abbr -a gco  'git checkout'
-# abbr -a gcob 'git checkout -b'
-abbr -a gsw  'git switch'
-abbr -a gswc 'git switch -c'
-abbr -a gcp  'git cherry-pick --ff'
-abbr -a gad  'git add -v'
-abbr -a gada 'git add -v -A'
-abbr -a gpo  'git push -u origin'
-abbr -a gpfo 'git push --force-with-lease -u origin'
-abbr -a gd   'git diff'
-abbr -a gdc  'git diff --cached'
-abbr -a gll  'git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"'
-abbr -a glp  'git log -p -1 --stat --decorate'
-abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
-abbr -a gt   'cd $(git rev-parse --show-toplevel)'
+if type "git" > /dev/null 2>&1
+  abbr -a g    'git'
+  abbr -a gb   'git branch -a'
+  abbr -a gbv  'git branch -a -vv'
+  abbr -a gbd  'git branch -d'
+  abbr -a gbD  'git branch -D'
+  abbr -a gp   'git pull --rebase --prune --tags'
+  abbr -a gf   'git fetch --prune --tags'
+  abbr -a gm   'git merge -v'
+  abbr -a gcm  'git commit -v'
+  abbr -a gcma 'git commit -v --amend --date (env LANG=en_US.UTF-8 date -R)'
+  abbr -a grs  'git restore'
+  abbr -a grss 'git restore --staged'
+  abbr -a grb  'git rebase'
+  abbr -a grv  'git revert'
+  abbr -a gs   'git status -sb'
+  abbr -a gst  'git stash'
+  abbr -a gstl 'git stash list'
+  abbr -a gstp 'git stash pop --index'
+  # abbr -a gco  'git checkout'
+  # abbr -a gcob 'git checkout -b'
+  abbr -a gsw  'git switch'
+  abbr -a gswc 'git switch -c'
+  abbr -a gcp  'git cherry-pick --ff'
+  abbr -a gad  'git add -v'
+  abbr -a gada 'git add -v -A'
+  abbr -a gpo  'git push -u origin'
+  abbr -a gpfo 'git push --force-with-lease -u origin'
+  abbr -a gd   'git diff'
+  abbr -a gdc  'git diff --cached'
+  abbr -a gll  'git log --no-merges --date=short --pretty="format:%C(yellow)%h %C(reset)%ad %C(blue)%an:%C(auto)%d %C(reset)%s"'
+  abbr -a glp  'git log -p -1 --stat --decorate'
+  abbr -a glg  'git log --graph --date=short --format="%C(yellow)%h %C(reset)%ad %C(blue)%an %C(auto)%d%n %w(80)%s%n"'
+  abbr -a gt   'cd $(git rev-parse --show-toplevel)'
+end
 
 # GitHub
 if type "gh" > /dev/null 2>&1
@@ -153,7 +171,7 @@ if type "kubectl" > /dev/null 2>&1
 end
 
 # gcloud
-if type "kubectl" > /dev/null 2>&1
+if type "gcloud" > /dev/null 2>&1
   abbr -a gcal 'gcloud auth login'
 end
 
