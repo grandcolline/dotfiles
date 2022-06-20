@@ -121,6 +121,7 @@ if type "git" > /dev/null 2>&1
   abbr -a gbv  'git branch -a -vv'
   abbr -a gbd  'git branch -d'
   abbr -a gbD  'git branch -D'
+  abbr -a gbm  'git branch -m'
   abbr -a gp   'git pull --rebase --prune --tags'
   abbr -a gf   'git fetch --prune --tags'
   abbr -a gm   'git merge -v'
