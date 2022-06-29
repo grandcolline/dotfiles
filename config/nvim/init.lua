@@ -159,7 +159,10 @@ vim.opt.foldtext = [[getline(v:foldstart)]]
 -- set backupdir=$XDG_CONFIG_HOME/nvim/cache
 -- set viminfo+=n$XDG_CONFIG_HOME/nvim/cache/nviminfo
 
-
+-- 🚀
+if vim.fn.has('nvim-0.8') == 1 then
+  vim.opt.cmdheight = 0
+end
 -------------------------------
 -- Key Mapping
 -------------------------------
