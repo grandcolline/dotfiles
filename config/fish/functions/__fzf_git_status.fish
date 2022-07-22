@@ -8,11 +8,9 @@ function __fzf_git_status -d "search git status"
       | awk -F ' ' '{print $NF}' \
       | tr '\n' ' '
     )
-    if [ "$ref" = "" ]
-      commandline -f repaint
-    else
-      commandline -i $ref
-    end
+
+    commandline -f repaint
+    commandline -i $ref
   else
     echo "no git directory!"
     commandline -f repaint

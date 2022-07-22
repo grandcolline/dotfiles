@@ -18,11 +18,8 @@ function __fzf_docker_container
   end
 
   set -l ref ( eval $docker_cmd | awk 'NR>1 {printf "%-15s %-40s %s\n", $1, $2, $NF}' |  eval $fzf_cmd | awk '{ print $1 }' )
-  if [ "$ref" = "" ]
-    commandline -f repaint
-  else
-    commandline -i $ref
-  end
 
+  commandline -f repaint
+  commandline -i $ref
 end
 

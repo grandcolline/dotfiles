@@ -10,11 +10,9 @@ function __fzf_pr
 
     set fzf_cmd "$fzf_cmd --prompt='PR > '"
     set -l ref ( eval $git_cmd | eval $fzf_cmd | awk '{ print $1 }' )
-    if [ "$ref" = "" ]
-      commandline -f repaint
-    else
-      commandline -i $ref
-    end
+
+    commandline -f repaint
+    commandline -i $ref
 
   else
     echo "no git directory!"

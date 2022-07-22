@@ -35,11 +35,7 @@ function __fzf_directory
     )
   end
 
-  if [ "$ref" = "" ]
-    commandline -f repaint
-  else
-    commandline -i $ref
-
-  end
+  commandline -f repaint
+  commandline -i $ref
 end
 

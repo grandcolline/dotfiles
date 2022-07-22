@@ -18,11 +18,9 @@ function __fzf_git_log
     end
 
     set -l ref ( eval $git_cmd | eval $fzf_cmd | awk '{ print $1 }' )
-    if [ "$ref" = "" ]
-      commandline -f repaint
-    else
-      commandline -i $ref
-    end
+
+    commandline -f repaint
+    commandline -i $ref
 
   else
     echo "no git directory!"

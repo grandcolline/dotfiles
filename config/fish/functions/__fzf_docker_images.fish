@@ -18,11 +18,8 @@ function __fzf_docker_images
   end
 
   set -l ref ( eval $docker_cmd | awk 'NR>1 {printf "%-40s %-15s %s\n", $1, $2, $3}' | eval $fzf_cmd | awk '{ print $3 }' )
-  if [ "$ref" = "" ]
-    commandline -f repaint
-  else
-    commandline -i $ref
-  end
 
+  commandline -f repaint
+  commandline -i $ref
 end
 
