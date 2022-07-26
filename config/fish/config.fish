@@ -111,7 +111,7 @@ end
 if type "exa" > /dev/null 2>&1
   abbr -a ll   'exa -l --git'
   abbr -a la   'exa -al --git'
-  abbr -a tree 'exa --tree'
+  abbr -a tree 'exa --tree --git-ignore'
 end
 
 # Git
@@ -181,7 +181,7 @@ end
 #  Key Binds
 # ----------------------------
 bind \cr '__fzf_history'
-bind \cb '__fzf_git_branch'
+bind \cb '__fzf_git_branch -a'
 bind \cl '__fzf_git_log'
 bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -z'
