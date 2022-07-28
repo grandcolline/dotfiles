@@ -44,7 +44,7 @@ $ make app
 <!-- [JetBrains Mono NL](https://www.jetbrains.com/lp/mono/) -->
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
 
-## script for remote server
+## 🖥️ Script for remote servesetting
 
 ```bash
 curl -sL -o ${HOME}/.vimrc https://raw.githubusercontent.com/grandcolline/dotfiles/main/vimrc
