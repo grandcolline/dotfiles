@@ -1,6 +1,6 @@
 # Git
 config/git/local
-config/fish/conf.d/local.fish
+config/fish/conf.d/*.local.fish
 
 # brewfile
 config/brewfile/Brewfile.lock.json
