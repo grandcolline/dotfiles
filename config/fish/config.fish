@@ -76,6 +76,11 @@ if test -d "$WORKSPACE/tool/google-cloud-sdk"
   . "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
 end
 
+# Rancher Desktop
+if test -d "$HOME/.rb/bin"
+  set -x PATH "$HOME/.rb/bin" $PATH
+end
+
 # ログインメッセージを表示しない
 set fish_greeting
 

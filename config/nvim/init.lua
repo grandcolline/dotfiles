@@ -12,7 +12,20 @@
 vim.cmd[[packadd packer.nvim]]
 
 require'packer'.startup(function()
-  use 'kyazdani42/nvim-web-devicons'
+
+  use {
+    'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('nvim-web-devicons').set_icon({
+        lir_folder_icon = {
+          icon = "",
+          color = "#7ebae4",
+          name = "LirFolderNode"
+        }
+      })
+    end
+  }
+
   use 'nvim-lua/plenary.nvim' -- used by rest.nvim / gitsigns.nvim
 
   use 'nvim-treesitter/nvim-treesitter'
@@ -51,13 +64,32 @@ require'packer'.startup(function()
 
   -- curl
   use 'diepm/vim-rest-console'
-  use 'NTBBloodbath/rest.nvim'
+  use {
+    'NTBBloodbath/rest.nvim',
+    config = function()
+      require("rest-nvim").setup({
+        result_split_in_place = true,
+        env_file = 'vars.http'
+      })
+    end
+  }
 
   use 'hoob3rt/lualine.nvim'
   -- use 'arkav/lualine-lsp-progress'
 
   use 'vijaymarupudi/nvim-fzf'
-  use 'ibhagwan/fzf-lua'
+  use {
+    'ibhagwan/fzf-lua',
+    config = function()
+      require'fzf-lua'.setup {
+        winopts = {
+          preview = {
+            layout = 'vertical' -- horizontal|vertical|flex
+          }
+        }
+      }
+    end
+  }
 
   use 'neovim/nvim-lspconfig'
 
@@ -206,7 +238,8 @@ map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { nor
 map('n', '<LEADER><Tab>',   '<C-w>w', {})
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
 map('n', '<LEADER><BS>',    ':bd!<CR>', {})
-map('n', '<LEADER><CR>',    ':Te ', { noremap = true })
+-- map('n', '<LEADER><CR>',    ':Te ', { noremap = true })
+map('n', '<LEADER><CR>',    ':! ', { noremap = true })
 
 map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 
@@ -300,12 +333,6 @@ lualine.setup {
 
 
 -------------------------------
--- Hop
--------------------------------
--- vim.cmd('hi HopNextKey ctermfg=198')
-
-
--------------------------------
 -- lsp-config
 -------------------------------
 local nvim_lsp = require('lspconfig')
@@ -386,8 +413,8 @@ nvim_lsp.gopls.setup{
   on_attach = on_attach
 }
 -- Rust
--- Install: rustup component add rls
-nvim_lsp.rls.setup{
+-- Install: brew install rust-analyzer
+nvim_lsp.rust_analyzer.setup{
   on_attach = on_attach
 }
 -- Terraform
@@ -396,27 +423,6 @@ nvim_lsp.terraformls.setup{
   on_attach = on_attach
 }
 
-
--------------------------------
--- fzf-lua
--------------------------------
-require'fzf-lua'.setup {
-  winopts = {
-    preview = {
-      layout = 'vertical' -- horizontal|vertical|flex
-    }
-  }
-}
-
-
-
--------------------------------
--- rest.nvim
--------------------------------
-require("rest-nvim").setup({
-  result_split_in_place = true,
-  env_file = 'vars.http'
-})
 
 -------------------------------
 -- rest-console
@@ -463,12 +469,3 @@ require'lir'.setup {
   },
   hide_cursor = false,
 }
-
--- custom folder icon
-require'nvim-web-devicons'.set_icon({
-  lir_folder_icon = {
-    icon = "",
-    color = "#7ebae4",
-    name = "LirFolderNode"
-  }
-})
