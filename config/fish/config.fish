@@ -77,8 +77,8 @@ if test -d "$WORKSPACE/tool/google-cloud-sdk"
 end
 
 # Rancher Desktop
-if test -d "$HOME/.rb/bin"
-  set -x PATH "$HOME/.rb/bin" $PATH
+if test -d "$HOME/.rd/bin"
+  set -x PATH "$HOME/.rd/bin" $PATH
 end
 
 # ログインメッセージを表示しない
