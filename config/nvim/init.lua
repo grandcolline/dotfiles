@@ -275,6 +275,7 @@ require'nvim-treesitter.configs'.setup {
       -- errorが出るものをoffにする
       'lua',
       'javascript',
+      'html',
     }
   },
   -- ensure_installed='maintained' will be removed April 30, 2022. Specify parsers explicitly or use 'all'.
