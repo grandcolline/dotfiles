@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -Eeu -o pipefail
 
 dir_path=`pwd`
 
@@ -30,9 +31,9 @@ echo "===== NeoVim setting ====="
 ln -vsfn $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
 echo ""
 
-echo "===== kitty setting ====="
-ln -vsfn $dir_path/config/kitty $XDG_CONFIG_HOME/kitty
-echo ""
+# echo "===== kitty setting ====="
+# ln -vsfn $dir_path/config/kitty $XDG_CONFIG_HOME/kitty
+# echo ""
 
 echo "===== alacritty setting ====="
 ln -vsfn $dir_path/config/alacritty $XDG_CONFIG_HOME/alacritty
