@@ -56,5 +56,5 @@ nmap <Leader>O mzO<ESC>
 nmap <Leader><Tab> <C-w>w
 nmap <Leader><Space> :set hlsearch!<CR>
 
-nmap - :e %:h<CR>
+nmap <Leader>- :e %:h<CR>
 

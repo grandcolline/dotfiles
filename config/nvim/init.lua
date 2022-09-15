@@ -206,16 +206,15 @@ map('', '<Up>',    '<NOP>', { noremap = true })
 map('', '<Right>', '<NOP>', { noremap = true })
 map('', '<Down>',  '<NOP>', { noremap = true })
 
--- XとCはコピーなしない
+-- XとCはコピーしない
 map('', 'x', '"_x',  { noremap = true })
 map('', 'X', '"_dd', { noremap = true })
 map('', 'c', '"_c',  { noremap = true })
 map('', 'C', '"_C',  { noremap = true })
 
--- 「-」で現在フォルダを開く
-map('n', '-', ':e %:h<CR>', { noremap = true, silent = true })
-
--- Leaderを使ったキーマッピング
+-- Leader を使ったキーマッピング
+-- なるべくデフォルトのキーマッピングを無くさないように
+-- 独自のマッピングは極力 Leader を使うようにする。
 vim.g.mapleader = " "
 
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
@@ -237,7 +236,8 @@ map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_words()<cr>', { norema
 map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true })
 map('n', '<LEADER><Tab>',   '<C-w>w', {})
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
-map('n', '<LEADER><BS>',    ':bd!<CR>', {})
+map('n', '<LEADER>-', ':e %:h<CR>', { noremap = true, silent = true }) -- 現在フォルダを開く
+map('n', '<LEADER><BS>',    ':bd!<CR>', {}) -- buffer 削除
 -- map('n', '<LEADER><CR>',    ':Te ', { noremap = true })
 map('n', '<LEADER><CR>',    ':! ', { noremap = true })
 
