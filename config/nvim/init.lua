@@ -57,8 +57,7 @@ require'packer'.startup(function()
 
   use 'Townk/vim-autoclose'
   use 'yuttie/comfortable-motion.vim'
-  use 'bronson/vim-trailing-whitespace'
-  -- use 'mattn/vim-molder'
+  use 'ntpeters/vim-better-whitespace'
   use 'tamago324/lir.nvim'
   use 'tyru/open-browser.vim'
 
