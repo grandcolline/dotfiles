@@ -17,7 +17,6 @@ my config files...
 | expect                                           |                                           |
 | [gh](https://github.com/cli/cli)                 | GitHub on the command line                |
 | [mycli](https://github.com/dbcli/mycli)          | terminal client for MySQL                 |
-| [zx](https://github.com/google/zx)               | script                                    |
 
 ## Setup
 
