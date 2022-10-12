@@ -18,7 +18,7 @@ echo ""
 
 RecInfo "setup FishShell setting"
 RecExec ln -vsfn $dir_path/config/fish $XDG_CONFIG_HOME/fish
-RecExec curl -LsS https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish \
+RecExec curl -LsS https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish \
           -o $dir_path/config/fish/completions/docker.fish
 RecExec curl -LsS https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish \
           -o $dir_path/config/fish/completions/docker-compose.fish
