@@ -22,7 +22,8 @@ RecExec echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings
 echo ""
 
 RecInfo "2. Install Docker Engine"
-RecExec "sudo apt-get update"
-RecExec "sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin"
+RecExec sudo apt-get update
+RecExec sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+echo ""
 
 RecInfo "🍻 DONE!"
