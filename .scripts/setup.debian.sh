@@ -14,12 +14,14 @@ RecInfo "apt update"
 RecExec sudo apt -y update
 echo ""
 
-# RecInfo "install neovim"
-# RecExec apt install -y neovim
-# echo ""
-
 RecInfo "install git"
 RecExec sudo apt install -y git
+echo ""
+
+RecInfo "install neovim"
+RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.deb -o nvim-linux64.deb
+RecExec sudo apt install ./nvim-linux64.deb
+RecExec rm ./nvim-linux64.deb
 echo ""
 
 RecInfo "install fish"
