@@ -1,14 +1,4 @@
 # -------------------
-# GoogleCloud
-# -------------------
-function prompt_gcloud -d "Display the current Google Cloud Profile"
-  set -g bg_color 'yellow'
-  set_color -b $bg_color
-  set_color 'black'
-  echo -n " $(command cat ~/.config/gcloud/active_config) "
-end
-
-# -------------------
 # ディレクトリ表示
 # -------------------
 function prompt_dir -d "Display the current directory"

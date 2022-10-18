@@ -31,7 +31,7 @@ RecExec sudo apt install -y fish
 echo ""
 
 RecInfo "install zoxide"
-RecExec curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+RecExec sudo apt install -y zoxide
 echo ""
 
 RecInfo "install fzf"
@@ -44,6 +44,10 @@ echo ""
 
 RecInfo "install fd"
 RecExec sudo apt install -y fd-find
+echo ""
+
+RecInfo "install expect"
+RecExec sudo apt install -y expect
 echo ""
 
 RecInfo "mkdir WORKSPACE"
