@@ -181,6 +181,11 @@ if type "gcloud" > /dev/null 2>&1
   abbr -a gcal 'gcloud auth login'
 end
 
+# ripgrep
+if type "rg" > /dev/null 2>&1
+  abbr -a rg 'rg -uu' # 不可視ファイルを無視しない
+end
+
 
 # ----------------------------
 #  Key Binds
