@@ -26,4 +26,8 @@ RecExec sudo apt-get update
 RecExec sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 echo ""
 
+RecInfo "3. Add Docker Group"
+RecInfo "TODO......"
+echo ""
+
 RecInfo "🍻 DONE!"
