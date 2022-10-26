@@ -76,6 +76,14 @@ require'packer'.startup(function()
   use 'hoob3rt/lualine.nvim'
   -- use 'arkav/lualine-lsp-progress'
 
+  -- for test
+  use {
+    "klen/nvim-test",
+    config = function()
+      require('nvim-test').setup()
+    end
+  }
+
   use 'vijaymarupudi/nvim-fzf'
   use {
     'ibhagwan/fzf-lua',
