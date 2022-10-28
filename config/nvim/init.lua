@@ -275,14 +275,17 @@ vim.cmd('colorscheme kanagawa')
 -------------------------------
 -- Treesitter
 -------------------------------
+-- NOTE: tree-sitterが荒ぶったら
+--   1. brew update && brew upgrade tree-sitter neovim
+--   2. :TSUpdate
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true, -- syntax highlightを有効に
     disable = {
       -- errorが出るものをoffにする
-      'lua',
-      'javascript',
-      'html',
+      -- 'lua',
+      -- 'javascript',
+      -- 'html',
     }
   },
   -- ensure_installed='maintained' will be removed April 30, 2022. Specify parsers explicitly or use 'all'.
