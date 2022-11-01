@@ -68,7 +68,7 @@ require'packer'.startup(function()
     config = function()
       require("rest-nvim").setup({
         result_split_in_place = true,
-        env_file = 'vars.http'
+        -- env_file = '.env'
       })
     end
   }
@@ -225,8 +225,8 @@ map('', 'C', '"_C',  { noremap = true })
 vim.g.mapleader = " "
 
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {})
-map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
-map('n', '<LEADER>C', '<cmd>lua require("rest-nvim").run()<CR>', {})
+-- map('n', '<LEADER>c', ':call VrcQuery()<CR>', {})
+map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {})
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {})
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {})
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {})
@@ -236,6 +236,8 @@ map('n', '<LEADER>o', 'mzo<ESC>', {})
 map('n', '<LEADER>O', 'mzO<ESC>', {})
 map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})
 map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {})
+map('n', '<LEADER>t', ':TestNearest<CR>', {})
+map('n', '<LEADER>T', ':TestLast<CR>', {})
 map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {})
 map('n', '<LEADER>x', ':TroubleToggle<CR>', {})
 
@@ -350,7 +352,7 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', '<LEADER>d', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- buf_set_keymap('n', '<LEADER>d', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<LEADER>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
