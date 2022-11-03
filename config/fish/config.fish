@@ -81,6 +81,13 @@ if test -d "$HOME/.rd/bin"
   set -x PATH "$HOME/.rd/bin" $PATH
 end
 
+# rbenv
+if test -d "$HOME/.rbenv/shims"
+  set -x PATH $HOME/.rbenv/shims $PATH
+  status --is-interactive; and rbenv init - fish | source
+end
+
+
 # ログインメッセージを表示しない
 set fish_greeting
 
