@@ -241,8 +241,8 @@ map('n', '<LEADER>T', ':TestLast<CR>', {})
 map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {})
 map('n', '<LEADER>x', ':TroubleToggle<CR>', {})
 
-map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_words()<cr>', { noremap = true })
-map('n', '<LEADER>/',       '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true })
+-- map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_words()<cr>', { noremap = true })
+map('n', '<LEADER>j',       '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true })
 map('n', '<LEADER><Tab>',   '<C-w>w', {})
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
 map('n', '<LEADER>-', ':e %:h<CR>', { noremap = true, silent = true }) -- 現在フォルダを開く
