@@ -13,6 +13,9 @@ vim.cmd[[packadd packer.nvim]]
 
 require'packer'.startup(function()
 
+  use 'wbthomason/packer.nvim'
+  use 'nvim-lua/plenary.nvim' -- used by rest.nvim / gitsigns.nvim
+
   use {
     'kyazdani42/nvim-web-devicons',
     config = function()
@@ -25,8 +28,6 @@ require'packer'.startup(function()
       })
     end
   }
-
-  use 'nvim-lua/plenary.nvim' -- used by rest.nvim / gitsigns.nvim
 
   use 'nvim-treesitter/nvim-treesitter'
   use "rebelot/kanagawa.nvim"
@@ -114,8 +115,6 @@ require'packer'.startup(function()
       require'hop'.setup { keys = 'jkletovxqpdygfbzhcisuran' }
     end
   }
-
-  use { 'wbthomason/packer.nvim', opt = true }
 end)
 
 
@@ -287,7 +286,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true, -- syntax highlightを有効に
     disable = {
       -- errorが出るものをoffにする
-      -- 'lua',
+      'lua',
       -- 'javascript',
       -- 'html',
     }
