@@ -35,7 +35,7 @@ return {
     cursor_bg     = '#B7BBB7',
     cursor_border = '#B7BBB7'
   },
-  -- window_background_opacity = 0.95,
+  window_background_opacity = 0.95,
   hide_tab_bar_if_only_one_tab = true,
 
   -- フォントサイズ変更時にウィンドウサイズも変更されないようにする
