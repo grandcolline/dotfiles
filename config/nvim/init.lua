@@ -62,7 +62,7 @@ require'packer'.startup(function()
   use 'tyru/open-browser.vim'
 
   -- curl
-  use 'diepm/vim-rest-console'
+  -- use 'diepm/vim-rest-console'
   use {
     'NTBBloodbath/rest.nvim',
     config = function()
@@ -84,6 +84,7 @@ require'packer'.startup(function()
     end
   }
 
+  -- for fazzy search
   use 'vijaymarupudi/nvim-fzf'
   use {
     'ibhagwan/fzf-lua',
@@ -98,14 +99,15 @@ require'packer'.startup(function()
     end
   }
 
+  -- for LSP
   use 'neovim/nvim-lspconfig'
-
   use 'hrsh7th/cmp-nvim-lsp' -- builtin LSP client
   use 'hrsh7th/cmp-buffer'   -- buffer words
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
+  -- for jump
   use {
     'phaazon/hop.nvim',
     config = function()
