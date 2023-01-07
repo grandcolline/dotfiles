@@ -34,6 +34,7 @@ require('lazy').setup({
 
   -- for git
   'lewis6991/gitsigns.nvim',
+  'tamago324/lir-git-status.nvim',
 
   -- Filer
   'tamago324/lir.nvim',
@@ -56,7 +57,8 @@ require('lazy').setup({
   'klen/nvim-test', -- テスト実行
   'Townk/vim-autoclose', -- ()
   'yuttie/comfortable-motion.vim', -- ぬるぬるスクロール
-  'johnfrankmorgan/whitespace.nvim' -- 行末空白のハイライト
+  -- 'johnfrankmorgan/whitespace.nvim' -- 行末空白のハイライト
+  'ntpeters/vim-better-whitespace'
 })
 
 
@@ -134,9 +136,9 @@ vim.opt.foldtext = [[getline(v:foldstart)]]
 -- コマンドの通常時の高さをオフにする
 vim.opt.cmdheight = 0
 
--- 🚀 {{{
+-- 🚀
 -- if vim.fn.has('nvim-0.8') == 1 then
--- end -- }}}
+-- end
 
 
 -------------------------------
@@ -173,7 +175,7 @@ map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) ---------------------------
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
 map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {}) -------- i: [LSP/FZF] 実装検索 (inplement)
 map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true }) -- j: EasyMotion (jump)
-map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索
+map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
 map('n', '<LEADER>n', '<cmd>lua vim.lsp.buf.rename()<CR>', {}) ---------------------------- n: [LSP] リネーム (name)
 map('n', '<LEADER>o', 'mzo<ESC>', {}) ----------------------------------------------------- o: 下に空行追加 (o)
 map('n', '<LEADER>O', 'mzO<ESC>', {}) ----------------------------------------------------- O: 上に空行追加 (o)
@@ -182,22 +184,21 @@ map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {}) ------
 map('n', '<LEADER>t', ':TestNearest<CR>', {}) --------------------------------------------- t: 現在行のテスト実行 (test)
 map('n', '<LEADER>T', ':TestLast<CR>', {}) ------------------------------------------------ T: 最後に行ったテスト実行 (test)
 map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {}) ----------------------------------- v: git 差分表示 (view)
-map('n', '<LEADER>x', ':TroubleToggle<CR>', {})
+map('n', '<LEADER>x', ':TroubleToggle<CR>', {}) ------------------------------------------- x: LSP の警告一覧表示 (ばつ)
 
-map('n', '<LEADER><Tab>',   '<C-w>w', {})
-map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {})
-map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) --- 現在フォルダを開く
-map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ------------------------------------ buffer 削除 (delete)
-map('n', '<LEADER><CR>',    ':! ', { noremap = true })
+map('n', '<LEADER><Tab>',   '<C-w>w', {}) ------------------------------------------------- tab: Window 切り替え
+map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) ------------------------------------- Space: 検索のハイライト
+map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) -------------- -: 現在フォルダを開く
+map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ----------------------------------------------- Delete: buffer 削除 (delete)
+map('n', '<LEADER><CR>',    ':! ', { noremap = true }) ------------------------------------ Enter: コマンド入力
 
-map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true }) -- terminal mode も esc で抜ける
 
 -- いずれ入れたいLSPの設定
 -- map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>', {})
 -- map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', {})
 -- map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
 -- map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {})
--- map('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
 
 
 -------------------------------
@@ -222,7 +223,7 @@ vim.cmd('colorscheme kanagawa')
 
 
 -------------------------------
--- Treesitter
+-- TreeSitter
 -------------------------------
 -- NOTE: tree-sitterが荒ぶったら
 --  1. brew upgrade tree-sitter
@@ -267,7 +268,7 @@ lualine.setup {
       symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
     }},
     lualine_c = {'filename', 'diff'},
-    lualine_x = {}, lualine_y = {}, lualine_z = {},
+    lualine_x = {}, lualine_y = {}, lualine_z = {}, -- 空にする
   },
   inactive_sections = {
     lualine_a = {}, lualine_b = {}, lualine_c = {},
@@ -279,7 +280,7 @@ lualine.setup {
 
 
 -------------------------------
--- lsp
+-- lsp-config
 -------------------------------
 -- エラー文言を表示しない
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -305,9 +306,9 @@ augroup END
 ]]
 
 
-----------------------
+-------------------------------
 -- LSP SERVER
-----------------------
+-------------------------------
 -- TypeScript
 -- Install: npm install -g typescript-language-server
 require('lspconfig').tsserver.setup {
@@ -330,9 +331,9 @@ require('lspconfig').terraformls.setup{
 }
 
 
-----------------------
+-------------------------------
 -- nvim-cmp
-----------------------
+-------------------------------
 local cmp = require("cmp")
 cmp.setup({
   snippet = {
@@ -342,7 +343,7 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
-    -- { name = "buffer" },
+    { name = "buffer" },
     -- { name = "path" },
   },
   mapping = cmp.mapping.preset.insert({
@@ -417,18 +418,17 @@ require'lir'.setup {
   devicons_enable = true,
   mappings = {
     ['<CR>']  = actions.edit,
-    ['<C-s>'] = actions.split,
-    ['<C-v>'] = actions.vsplit,
 
-    ['-']     = actions.up,
-    ['q']     = actions.quit,
-    ['y']     = actions.yank_path,
-
-    ['K']     = actions.mkdir,
-    ['N']     = actions.newfile,
-    ['R']     = actions.rename,
-    ['.']     = actions.toggle_show_hidden,
-    ['D']     = actions.delete,
+    ['-'] = actions.up,
+    ['S'] = actions.split,
+    ['V'] = actions.vsplit,
+    ['Q'] = actions.quit,
+    ['Y'] = actions.yank_path,
+    ['M'] = actions.mkdir,
+    ['E'] = actions.newfile,
+    ['N'] = actions.rename,
+    ['D'] = actions.delete,
+    -- ['.'] = actions.toggle_show_hidden,
   },
   float = {
     winblend = 0,
@@ -440,17 +440,12 @@ require'lir'.setup {
   hide_cursor = false,
 }
 
-
--------------------------------
--- whitespace
--------------------------------
-require('whitespace-nvim').setup({
-  highlight = 'DiffDelete',
-  -- ignored_filetypes = {},
+require'lir.git_status'.setup({
+  show_ignored = false
 })
-
 
 -------------------------------
 -- Hop
 -------------------------------
 require'hop'.setup { keys = 'jkl' }
+
