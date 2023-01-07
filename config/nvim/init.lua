@@ -5,70 +5,11 @@
  (_)_/ |_|_| |_| |_|_|  \___|
 --]]
 
--- Packer.nvim の設定 そのうち削除 {{{
--------------------------------
--- Packer.nvim
---   再新化 :PackerSync
--------------------------------
--- vim.cmd[[packadd packer.nvim]]
--- 
--- require'packer'.startup(function()
---   use 'wbthomason/packer.nvim'
---   use 'nvim-lua/plenary.nvim' -- used by rest.nvim / gitsigns.nvim
--- 
---   -- 表示関連
---   use 'kyazdani42/nvim-web-devicons'
---   use 'nvim-treesitter/nvim-treesitter'
---   use 'rebelot/kanagawa.nvim'
--- 
---   -- status line
---   use 'hoob3rt/lualine.nvim'
--- 
---   use 'lewis6991/gitsigns.nvim'
---   use 'folke/trouble.nvim'
--- 
---   use 'Townk/vim-autoclose'
---   use 'yuttie/comfortable-motion.vim'
---   use 'ntpeters/vim-better-whitespace'
---   use 'tamago324/lir.nvim'
---   use 'tyru/open-browser.vim'
--- 
---   -- curl
---   use 'NTBBloodbath/rest.nvim'
--- 
---   -- for test
---   use 'klen/nvim-test'
--- 
---   -- for fazzy search
---   use 'vijaymarupudi/nvim-fzf'
---   use 'ibhagwan/fzf-lua'
--- 
---   -- for LSP
---   -- use 'neovim/nvim-lspconfig'
---   -- use 'hrsh7th/cmp-nvim-lsp' -- builtin LSP client
---   -- use 'hrsh7th/cmp-buffer'   -- buffer words
---   -- use 'hrsh7th/nvim-cmp'
---   -- use 'hrsh7th/cmp-vsnip'
---   -- use 'hrsh7th/vim-vsnip'
---   use 'neovim/nvim-lspconfig'
---   -- use 'williamboman/mason.nvim'
---   -- use 'williamboman/mason-lspconfig.nvim'
---   use "hrsh7th/nvim-cmp"
---   use "hrsh7th/cmp-nvim-lsp"
---   use "hrsh7th/vim-vsnip"
---   use 'hrsh7th/cmp-buffer' -- for buffer words
--- 
---   -- for jump (Like EasyMotion)
---   use 'phaazon/hop.nvim'
--- end)
--- }}}
-
 -------------------------------
 -- lazy.nvim (Plugin 管理)
 -------------------------------
 -- :Lazy で管理画面
 -- "$HOME/.local/share/nvim/lazy" に実態が入る
--------------------------------
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -362,35 +303,6 @@ augroup lsp_document_highlight
   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
 augroup END
 ]]
--- 旧設定 {{{
--- local nvim_lsp = require('lspconfig')
--- local on_attach = function(client, bufnr)
---   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
---   local opts = { noremap=true, silent=true }
---   -- buf_set_keymap('n', '<LEADER>d', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
---   buf_set_keymap('n', '<LEADER>e', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
---   buf_set_keymap('n', '<LEADER>E', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
---   buf_set_keymap('n', '<LEADER>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
---   map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {})
---   map('n', '<LEADER>G', '<cmd>lua require("fzf-lua").lsp_references()<CR>', {})
--- end
--- 
--- -- エラー文言を表示しない
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
--- )
--- 
--- -- error signを優先して表示
--- vim.diagnostic.config {
---   severity_sort = true
--- }
--- 
--- -- local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
--- -- for type, icon in pairs(signs) do
--- --   local hl = "LspDiagnosticsSign" .. type
--- --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
--- -- end
--- }}}
 
 
 ----------------------
@@ -445,56 +357,6 @@ cmp.setup({
     ghost_text = true,
   },
 })
--- 旧設定 {{{
--- local cmp = require'cmp'
--- 
--- vim.opt.completeopt = 'menu,menuone,noselect'
--- cmp.setup({
---   snippet = {
---     expand = function(args)
---       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
---     end,
---   },
---   mapping = {
---     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
---     ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
---     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
---     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
---     ['<C-c>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
---     -- ['<C-y>'] = cmp.config.disable,
---     ['<C-e>'] = cmp.mapping({
---       i = cmp.mapping.abort(),
---       c = cmp.mapping.close(),
---     }),
---     ['<CR>'] = cmp.mapping.confirm({ select = true }),
---   },
---   -- setup config source
---   sources = cmp.config.sources({
---     { name = 'nvim_lsp' },
---     { name = 'vsnip' },
---   }, {
---     { name = 'buffer' },
---   })
--- })
-
-
--- 1. LSP Sever management
--- require('mason').setup()
--- require('mason-lspconfig').setup_handlers({ function(server)
---   local opt = {
---     -- -- Function executed when the LSP server startup
---     -- on_attach = function(client, bufnr)
---     --   local opts = { noremap=true, silent=true }
---     --   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
---     --   vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
---     -- end,
---     capabilities = require('cmp_nvim_lsp').default_capabilities(
---       vim.lsp.protocol.make_client_capabilities()
---     )
---   }
---   require('lspconfig')[server].setup(opt)
--- end })
--- }}}
 
 
 -------------------------------
