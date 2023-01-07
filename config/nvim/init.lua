@@ -50,6 +50,7 @@ require('lazy').setup({
   'hrsh7th/vim-vsnip',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
+  'glepnir/lspsaga.nvim', -- LSP の UI をよくする
   'folke/trouble.nvim', -- LSP でエラーを一覧表示
 
   'phaazon/hop.nvim', -- EasyMotion jump
@@ -158,25 +159,28 @@ map('', 'X', '"_dd', { noremap = true })
 map('', 'c', '"_c',  { noremap = true })
 map('', 'C', '"_C',  { noremap = true })
 
+-- terminal mode も esc で抜ける
+map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
 -- Leader を使ったキーマッピング
 -- なるべくデフォルトのキーマッピングを無くさないように、
 -- 独自のマッピングは極力 Leader を使うようにする。
 vim.g.mapleader = " "
 
-map('n', '<LEADER>a', '<cmd>lua require("fzf-lua").lsp_code_actions()<CR>', {}) ----------- a: [LSP/FZF] コードアクション (action)
+map('n', '<LEADER>a', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
 map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
-map('n', '<LEADER>e', '<cmd>lua vim.diagnostic.goto_next()<CR>', {}) ---------------------- e: [LSP] 次の警告にジャンプ (error)
-map('n', '<LEADER>E', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {}) ---------------------- E: [LSP] 前の警告にジャンプ (error)
+map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
+map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
 map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) ------------------------ g: [LSP] 定義ジャンプ (go)
-map('n', '<LEADER>G', '<cmd>lua require("fzf-lua").lsp_references()<CR>', {}) ------------- G: [LSP/FZF] 参照元検索 (go)
+map('n', '<LEADER>G', '<cmd>Lspsaga lsp_finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
-map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {}) -------- i: [LSP/FZF] 実装検索 (inplement)
 map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
 map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
-map('n', '<LEADER>n', '<cmd>lua vim.lsp.buf.rename()<CR>', {}) ---------------------------- n: [LSP] リネーム (name)
+map('n', '<LEADER>K', '<cmd>Lspsaga hover_doc<CR>', { silent = true }) -------------------- K: [LSP] ドキュメント表示
+map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ----------------------- n: [LSP] リネーム (name)
 map('n', '<LEADER>o', 'mzo<ESC>', {}) ----------------------------------------------------- o: 下に空行追加 (o)
 map('n', '<LEADER>O', 'mzO<ESC>', {}) ----------------------------------------------------- O: 上に空行追加 (o)
 map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})  ----------------- r: [FZF] ripgrep 検索 (rg)
@@ -192,24 +196,13 @@ map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) ---
 map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ----------------------------------------------- Delete: buffer 削除 (delete)
 map('n', '<LEADER><CR>',    ':! ', { noremap = true }) ------------------------------------ Enter: コマンド入力
 
-map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true }) -- terminal mode も esc で抜ける
-
--- いずれ入れたいLSPの設定
--- map('n', '<LEADER>K', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
--- map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', {})
--- map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
--- map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {})
-
 
 -------------------------------
 -- ColorScheme
 -------------------------------
 vim.cmd('syntax on')
 
-local my_colors = {
-  bg = 'none', -- 背景色をなくす
-}
-require("kanagawa").setup({ colors = my_colors })
+require("kanagawa").setup({ colors = { bg = 'none' } }) -- 背景色をなくす
 vim.cmd('colorscheme kanagawa')
 
 -- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
@@ -268,11 +261,12 @@ lualine.setup {
   -- filename / branch / filetype / location
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {{
-      'diagnostics',
-      sources = {'nvim_diagnostic'},
-      symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
-    }},
+    lualine_b = {'diagnostics'},
+    -- lualine_b = {
+    --   'diagnostics',
+    --   sources = {'nvim_diagnostic'},
+    --   symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
+    -- }},
     lualine_c = {'filename', 'diff'},
     lualine_x = {}, lualine_y = {}, lualine_z = {}, -- 空にする
   },
@@ -384,30 +378,11 @@ require("gitsigns").setup {
 
 
 -------------------------------
--- fzf-lua
--------------------------------
-require("fzf-lua").setup {
-  winopts = {
-    preview = { layout = 'vertical' } -- horizontal|vertical|flex
-  }
-}
-
-
--------------------------------
--- rest-nvim
--------------------------------
-require("rest-nvim").setup {
-  result_split_in_place = true,
-  -- env_file = '.env'
-}
-
-
--------------------------------
 -- lir.nvim (ファイラー)
 -------------------------------
-local actions = require'lir.actions'
-local mark_actions = require 'lir.mark.actions'
-local clipboard_actions = require'lir.clipboard.actions'
+local actions = require("lir.actions")
+-- local mark_actions = require("lir.mark.actions")
+-- local clipboard_actions = require("lir.clipboard.actions")
 require("lir").setup {
   show_hidden_files = true,
   devicons_enable = true,
@@ -435,11 +410,13 @@ require("lir").setup {
   hide_cursor = false,
 }
 
-require("lir.git_status").setup { show_ignored = false }
 
 -------------------------------
--- Hop
+-- Other Plugin
 -------------------------------
-require("hop").setup { keys = 'jkflg' }
 require("nvim-autopairs").setup {}
+require("lir.git_status").setup { show_ignored = false }
+require("hop").setup { keys = 'jkflg' }
+require("rest-nvim").setup { result_split_in_place = true }
+require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
 
