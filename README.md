@@ -21,30 +21,15 @@ my config files...
 ## Setup
 
 ```fish
-set -x XDG_CONFIG_HOME $HOME/.config && sh ./setup.sh
+set -x XDG_CONFIG_HOME $HOME/.config && sh ./.scripts/setup.dotfile.sh
 ```
 
 ## Terminal
 
-[Alacritty](https://github.com/alacritty/alacritty)
-
-※ 現在、リリース版だと日本語のインライン入力ができないため、master ブランチをビルドする。
-
-```bash
-$ git clone git@github.com:alacritty/alacritty.github
-$ cd alacritty
-$ make app
-```
+[wezterm](https://wezfurlong.org/wezterm/)
 
 ## Font
 
 [JetBrainsMonoNL Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures)
 
-<!-- [JetBrains Mono NL](https://www.jetbrains.com/lp/mono/) -->
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
-
-## 🖥️ Script for remote servesetting
-
-```bash
-curl -sL -o ${HOME}/.vimrc https://raw.githubusercontent.com/grandcolline/dotfiles/main/vimrc
-```

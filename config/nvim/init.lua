@@ -34,10 +34,10 @@ require('lazy').setup({
 
   -- for git
   'lewis6991/gitsigns.nvim',
-  'tamago324/lir-git-status.nvim',
 
   -- Filer
   'tamago324/lir.nvim',
+  'tamago324/lir-git-status.nvim',
 
   -- for Fazzy Search
   'vijaymarupudi/nvim-fzf',
@@ -49,73 +49,74 @@ require('lazy').setup({
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/vim-vsnip',
   'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
   'folke/trouble.nvim', -- LSP でエラーを一覧表示
 
   'phaazon/hop.nvim', -- EasyMotion jump
   'tyru/open-browser.vim', -- ブラウザで開く
   'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
   'klen/nvim-test', -- テスト実行
-  'Townk/vim-autoclose', -- ()
+  -- 'Townk/vim-autoclose', -- ()
+  'windwp/nvim-autopairs',
   'yuttie/comfortable-motion.vim', -- ぬるぬるスクロール
   'ntpeters/vim-better-whitespace' -- 行末空白のハイライト
 })
-
 
 -------------------------------
 -- General
 -------------------------------
 -- 一般設定
-vim.opt.fenc           = 'utf-8'          -- 文字コード
-vim.opt.fileencoding   = 'utf-8'          -- 保存時の文字コード
-vim.opt.fileencodings  = 'utf-8'          -- 読み込み時の文字コードの自動判別. 左側が優先
-vim.opt.fileformats    = 'unix,dos,mac'   -- 改行コードの自動判別. 左側が優先
--- vim.opt.ambiwidth   = 'double'         -- floating windowで枠線が辺になるのでコメントアウト
-vim.opt.swapfile       = false            -- swapファイルを作成しない
-vim.opt.autoread       = true             -- 編集中ファイルが書き換えられたら、自動リロード
+vim.opt.fenc           = 'utf-8'         -- 文字コード
+vim.opt.fileencoding   = 'utf-8'         -- 保存時の文字コード
+vim.opt.fileencodings  = 'utf-8'         -- 読み込み時の文字コードの自動判別. 左側が優先
+vim.opt.fileformats    = 'unix,dos,mac'  -- 改行コードの自動判別. 左側が優先
+-- vim.opt.ambiwidth   = 'double'        -- floating windowで枠線が辺になるのでコメントアウト
+vim.opt.swapfile       = false           -- swapファイルを作成しない
+vim.opt.autoread       = true            -- 編集中ファイルが書き換えられたら、自動リロード
 vim.opt.undofile       = true
-vim.opt.clipboard      = 'unnamed'        -- クリップボードとyunk,putを共有
-vim.opt.history        = 5000             -- 保存するコマンド履歴の数
-vim.opt.mouse          = 'a'              -- マウス操作をオンにする
-vim.opt.foldmethod     = 'marker'         -- folding
-vim.opt.lazyredraw     = true             -- コマンド実行中は再描写しない
-vim.opt.ttyfast        = true             -- 高速ターミナル接続
--- vim.cmd('scriptencoding utf-8')        -- vimrcの文字コード
+vim.opt.clipboard      = 'unnamed'       -- クリップボードとyunk,putを共有
+vim.opt.history        = 5000            -- 保存するコマンド履歴の数
+vim.opt.mouse          = 'a'             -- マウス操作をオンにする
+vim.opt.foldmethod     = 'marker'        -- folding
+vim.opt.lazyredraw     = true            -- コマンド実行中は再描写しない
+vim.opt.ttyfast        = true            -- 高速ターミナル接続
+-- vim.cmd('scriptencoding utf-8')       -- vimrcの文字コード
 
 -- コマンドラインモードのファイル名補完
 vim.opt.wildmenu       = true
 vim.opt.wildmode       = 'list:longest,full'
 
 -- 検索関連設定
-vim.opt.hlsearch       = false     -- 検索文字列をハイライトしない
-vim.opt.incsearch      = true      -- インクリメンタルサーチを行う
-vim.opt.ignorecase     = true      -- 大文字と小文字を区別しない
-vim.opt.smartcase      = true      -- 大文字と小文字の混在で検索した場合、大文字と小文字を区別
-vim.opt.wrapscan       = true      -- 最後尾まで検索を終えたら次の検索で先頭に移る
-vim.opt.gdefault       = true      -- 置換の時 g オプションをデフォルトで有効にする
-vim.opt.inccommand     = 'split'   -- 置換のインクリメンタル表示（nvimのみ）
+vim.opt.hlsearch       = false    -- 検索文字列をハイライトしない
+vim.opt.incsearch      = true     -- インクリメンタルサーチを行う
+vim.opt.ignorecase     = true     -- 大文字と小文字を区別しない
+vim.opt.smartcase      = true     -- 大文字と小文字の混在で検索した場合、大文字と小文字を区別
+vim.opt.wrapscan       = true     -- 最後尾まで検索を終えたら次の検索で先頭に移る
+vim.opt.gdefault       = true     -- 置換の時 g オプションをデフォルトで有効にする
+vim.opt.inccommand     = 'split'  -- 置換のインクリメンタル表示（nvimのみ）
 
 -- 表示関連設定
 vim.opt.number         = true     -- 行番号表示
-vim.opt.relativenumber = false     -- 相対行表示
-vim.opt.cursorline     = true      -- 行のハイライト
-vim.opt.signcolumn     = 'yes'     -- 行番号の左側のサイズ固定
-vim.opt.list           = true      -- 不可視文字の表示設定
-vim.opt.showmode       = false     -- 「-- 挿入 --」とかの非表示
-vim.opt.colorcolumn    = '80'      -- 80文字目にラインを入れる
--- vim.opt.showmatch   = true      -- 対応括弧のハイライト
--- vim.opt.matchtime   = 3         -- 対応括弧のハイライトを3秒に
--- vim.opt.ruler       = true      -- カーソルが何行目の何列目に置かれているかを表示する
--- vim.opt.expandtab   = false     -- タブをタブとして扱う(スペースに展開しない)
+vim.opt.relativenumber = false    -- 相対行表示
+vim.opt.cursorline     = true     -- 行のハイライト
+vim.opt.signcolumn     = 'yes'    -- 行番号の左側のサイズ固定
+vim.opt.list           = true     -- 不可視文字の表示設定
+vim.opt.showmode       = false    -- 「-- 挿入 --」とかの非表示
+vim.opt.colorcolumn    = '80'     -- 80文字目にラインを入れる
+-- vim.opt.showmatch   = true     -- 対応括弧のハイライト
+-- vim.opt.matchtime   = 3        -- 対応括弧のハイライトを3秒に
+-- vim.opt.ruler       = true     -- カーソルが何行目の何列目に置かれているかを表示する
+-- vim.opt.expandtab   = false    -- タブをタブとして扱う(スペースに展開しない)
 -- vim.opt.softtabstop = 0
 -- vim.opt.autoindent  = true
--- vim.opt.laststatus  = 2         -- ステータスラインの表示
--- vim.opt.cmdheight   = 1         -- メッセージ表示欄の行数
+-- vim.opt.laststatus  = 2        -- ステータスラインの表示
+-- vim.opt.cmdheight   = 1        -- メッセージ表示欄の行数
 
 -- インデント設定
-vim.opt.tabstop        = 2         -- タブを表示するときの幅
-vim.opt.shiftwidth     = 2         -- タブを挿入するときの幅
-vim.opt.breakindent    = true      -- 折り返しを同じインデントで表示
-vim.opt.expandtab      = true      -- TAB -> Space
+vim.opt.tabstop        = 2        -- タブを表示するときの幅
+vim.opt.shiftwidth     = 2        -- タブを挿入するときの幅
+vim.opt.breakindent    = true     -- 折り返しを同じインデントで表示
+vim.opt.expandtab      = true     -- TAB -> Space
 vim.cmd('au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4')
 
 -- コマンドタイポ予防
@@ -162,7 +163,7 @@ map('', 'C', '"_C',  { noremap = true })
 -- 独自のマッピングは極力 Leader を使うようにする。
 vim.g.mapleader = " "
 
-map('n', '<LEADER>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', {}) ----------------------- a: [LSP] コードアクション (action)
+map('n', '<LEADER>a', '<cmd>lua require("fzf-lua").lsp_code_actions()<CR>', {}) ----------- a: [LSP/FZF] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
 map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
 map('n', '<LEADER>e', '<cmd>lua vim.diagnostic.goto_next()<CR>', {}) ---------------------- e: [LSP] 次の警告にジャンプ (error)
@@ -194,7 +195,7 @@ map('n', '<LEADER><CR>',    ':! ', { noremap = true }) -------------------------
 map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true }) -- terminal mode も esc で抜ける
 
 -- いずれ入れたいLSPの設定
--- map('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>', {})
+-- map('n', '<LEADER>K', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
 -- map('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', {})
 -- map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
 -- map('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', {})
@@ -208,7 +209,7 @@ vim.cmd('syntax on')
 local my_colors = {
   bg = 'none', -- 背景色をなくす
 }
-require'kanagawa'.setup({ colors = my_colors })
+require("kanagawa").setup({ colors = my_colors })
 vim.cmd('colorscheme kanagawa')
 
 -- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
@@ -227,7 +228,7 @@ vim.cmd('colorscheme kanagawa')
 -- NOTE: tree-sitterが荒ぶったら
 --  1. brew upgrade tree-sitter
 --  2. :TSUpdate
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup {
   highlight = {
     enable = true, -- syntax highlightを有効に
     disable = {
@@ -275,11 +276,11 @@ lualine.setup {
     lualine_c = {'filename', 'diff'},
     lualine_x = {}, lualine_y = {}, lualine_z = {}, -- 空にする
   },
-  inactive_sections = {
-    lualine_a = {}, lualine_b = {}, lualine_c = {},
-    lualine_x = {}, lualine_y = {}, lualine_z = {},
-  },
-  tabline = {},
+  -- inactive_sections = {
+  --   lualine_a = {}, lualine_b = {}, lualine_c = {},
+  --   lualine_x = {}, lualine_y = {}, lualine_z = {},
+  -- },
+  -- tabline = {},
   extensions = {'fugitive'}
 }
 
@@ -298,17 +299,18 @@ vim.diagnostic.config {
 }
 
 -- LspReference をハイライトする
-vim.cmd [[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
-]]
+-- terraorm などでエラーが出るので一旦コメントアウト
+-- vim.cmd [[
+-- set updatetime=500
+-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guibg=#104040
+-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guibg=#104040
+-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guibg=#104040
+-- augroup lsp_document_highlight
+--   autocmd!
+--   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+--   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+-- augroup END
+-- ]]
 
 
 -------------------------------
@@ -349,7 +351,7 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp" },
     { name = "buffer" },
-    -- { name = "path" },
+    { name = "path" },
   },
   mapping = cmp.mapping.preset.insert({
     -- 一旦コメントアウト
@@ -366,21 +368,9 @@ cmp.setup({
 
 
 -------------------------------
--- rest-console
--------------------------------
-vim.g.vrc_set_default_mapping = 0
-vim.g.vrc_auto_format_uhex    = 1
-vim.g.vrc_curl_opts = { ['-sS'] = "", ['-i'] = ""}
-
-local actions = require'lir.actions'
-local mark_actions = require 'lir.mark.actions'
-local clipboard_actions = require'lir.clipboard.actions'
-
-
--------------------------------
 -- gitsigns
 -------------------------------
-require('gitsigns').setup {
+require("gitsigns").setup {
   signs = {
     add          = {text = '+'},
     change       = {text = '~'},
@@ -396,7 +386,7 @@ require('gitsigns').setup {
 -------------------------------
 -- fzf-lua
 -------------------------------
-require'fzf-lua'.setup {
+require("fzf-lua").setup {
   winopts = {
     preview = { layout = 'vertical' } -- horizontal|vertical|flex
   }
@@ -406,10 +396,10 @@ require'fzf-lua'.setup {
 -------------------------------
 -- rest-nvim
 -------------------------------
-require("rest-nvim").setup({
+require("rest-nvim").setup {
   result_split_in_place = true,
   -- env_file = '.env'
-})
+}
 
 
 -------------------------------
@@ -418,7 +408,7 @@ require("rest-nvim").setup({
 local actions = require'lir.actions'
 local mark_actions = require 'lir.mark.actions'
 local clipboard_actions = require'lir.clipboard.actions'
-require'lir'.setup {
+require("lir").setup {
   show_hidden_files = true,
   devicons_enable = true,
   mappings = {
@@ -445,12 +435,11 @@ require'lir'.setup {
   hide_cursor = false,
 }
 
-require'lir.git_status'.setup({
-  show_ignored = false
-})
+require("lir.git_status").setup { show_ignored = false }
 
 -------------------------------
 -- Hop
 -------------------------------
-require'hop'.setup { keys = 'jkflg' }
+require("hop").setup { keys = 'jkflg' }
+require("nvim-autopairs").setup {}
 
