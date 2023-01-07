@@ -173,7 +173,7 @@ map('n', '<LEADER>G', '<cmd>lua require("fzf-lua").lsp_references()<CR>', {}) --
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
 map('n', '<LEADER>i', '<cmd>lua require("fzf-lua").lsp_implementations()<CR>', {}) -------- i: [LSP/FZF] 実装検索 (inplement)
-map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<cr>', { noremap = true }) -- j: EasyMotion (jump)
+map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
 map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
 map('n', '<LEADER>n', '<cmd>lua vim.lsp.buf.rename()<CR>', {}) ---------------------------- n: [LSP] リネーム (name)
 map('n', '<LEADER>o', 'mzo<ESC>', {}) ----------------------------------------------------- o: 下に空行追加 (o)
@@ -232,16 +232,22 @@ require'nvim-treesitter.configs'.setup {
     enable = true, -- syntax highlightを有効に
     disable = {
       -- errorが出るものをoffにする
-      'lua',
-    }
+    },
   },
   -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
+  ensure_installed = {
+    -- :TSInstallInfo で確認できる
+    'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql',
+    'hcl', 'help', 'html', 'json', 'lua', 'make', 'markdown',
+    'markdown_inline', 'proto', 'rust', 'sql', 'terraform', 'toml',
+    'tsx', 'typescript', 'vim', 'yaml',
+  },
   indent = {
     enable = true, -- tree-sitterによるインデントを有効に
     disable = {
       'javascript',
-    }
-  }
+    },
+  },
 }
 
 
@@ -433,7 +439,7 @@ require'lir'.setup {
     winblend = 0,
     curdir_window = {
       enable = true,
-      highlight_dirname = true
+      highlight_dirname = true,
     },
   },
   hide_cursor = false,
