@@ -57,8 +57,7 @@ require('lazy').setup({
   'klen/nvim-test', -- テスト実行
   'Townk/vim-autoclose', -- ()
   'yuttie/comfortable-motion.vim', -- ぬるぬるスクロール
-  -- 'johnfrankmorgan/whitespace.nvim' -- 行末空白のハイライト
-  'ntpeters/vim-better-whitespace'
+  'ntpeters/vim-better-whitespace' -- 行末空白のハイライト
 })
 
 
@@ -447,5 +446,5 @@ require'lir.git_status'.setup({
 -------------------------------
 -- Hop
 -------------------------------
-require'hop'.setup { keys = 'jkl' }
+require'hop'.setup { keys = 'jkflg' }
 
