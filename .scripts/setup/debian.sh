@@ -10,46 +10,27 @@ RecError() { test " ${REC_SEVERITY:-0}" -gt 400 2>/dev/null || echo "$*" | awk "
 RecExec()  { RecDebug "$ $(_recCmd "$@")" && "$@"; }
 # }}}
 
-RecInfo "apt update"
+function Install () {
+  RecInfo "install ${1}"
+  RecExec sudo apt install -y ${1}
+  echo ""
+}
+
 RecExec sudo apt -y update
-echo ""
 
-RecInfo "install gcc" # for use neovim plugin
-RecExec sudo apt install -y gcc
-echo ""
-
-RecInfo "install git"
-RecExec sudo apt install -y git
-echo ""
+Install gcc # for use neovim plguin
+Install git
+Install fish
+Install zoxide
+Install fzf
+Install ripgrep
+Install fd-find
+Install expect
 
 RecInfo "install neovim"
 RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.deb -o nvim-linux64.deb
 RecExec sudo apt install ./nvim-linux64.deb
 RecExec rm ./nvim-linux64.deb
-echo ""
-
-RecInfo "install fish"
-RecExec sudo apt install -y fish
-echo ""
-
-RecInfo "install zoxide"
-RecExec sudo apt install -y zoxide
-echo ""
-
-RecInfo "install fzf"
-RecExec sudo apt install -y fzf
-echo ""
-
-RecInfo "install ripgrep"
-RecExec sudo apt install -y ripgrep
-echo ""
-
-RecInfo "install fd"
-RecExec sudo apt install -y fd-find
-echo ""
-
-RecInfo "install expect"
-RecExec sudo apt install -y expect
 echo ""
 
 RecInfo "mkdir WORKSPACE"
