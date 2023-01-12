@@ -21,7 +21,7 @@ my config files...
 ## Setup
 
 ```fish
-set -x XDG_CONFIG_HOME $HOME/.config && sh ./.scripts/setup.dotfile.sh
+set -x XDG_CONFIG_HOME $HOME/.config && bash ./.scripts/setup.dotfile.sh
 ```
 
 ## Terminal
