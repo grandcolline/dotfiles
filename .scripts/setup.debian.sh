@@ -22,8 +22,6 @@ RecInfo "install neovim"
 RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.deb -o nvim-linux64.deb
 RecExec sudo apt install ./nvim-linux64.deb
 RecExec rm ./nvim-linux64.deb
-RecInfo "install packer.nvim"
-RecExec git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 echo ""
 
 RecInfo "install fish"

@@ -10,14 +10,25 @@ RecError() { test " ${REC_SEVERITY:-0}" -gt 400 2>/dev/null || echo "$*" | awk "
 RecExec()  { RecDebug "$ $(_recCmd "$@")" && "$@"; }
 # }}}
 
+# CreateLink $1 $2 is create symbolic link $2 -> $1
+function CreateLink () {
+  if [ -L "${2}" ]; then
+    RecExec unlink ${2}
+  else
+    RecExec mv "${2}" "${2}_bk"
+    RecInfo "created buckup: ${2}_bk"
+  fi
+  RecExec ln -vsfn ${1} ${2}
+}
+
 dir_path=`pwd`
 
 RecInfo "setup git setting"
-RecExec  ln -vsfn $dir_path/config/git $XDG_CONFIG_HOME/git
+CreateLink $dir_path/config/git $XDG_CONFIG_HOME/git
 echo ""
 
 RecInfo "setup FishShell setting"
-RecExec ln -vsfn $dir_path/config/fish $XDG_CONFIG_HOME/fish
+CreateLink $dir_path/config/fish $XDG_CONFIG_HOME/fish
 RecExec curl -LsS https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish \
           -o $dir_path/config/fish/completions/docker.fish
 RecExec curl -LsS https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish \
@@ -33,31 +44,31 @@ RecExec curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fis
 echo ""
 
 RecInfo "setup tmux setting"
-RecExec ln -vsf $dir_path/tmux.conf $HOME/.tmux.conf
+CreateLink $dir_path/tmux.conf $HOME/.tmux.conf
 echo ""
 
 RecInfo "setup neovim setting"
-RecExec ln -vsfn $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
+CreateLink $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
 echo ""
 
 RecInfo "setup weztermw setting"
-RecExec ln -vsfn $dir_path/config/wezterm $XDG_CONFIG_HOME/wezterm
+CreateLink $dir_path/config/wezterm $XDG_CONFIG_HOME/wezterm
 echo ""
 
 RecInfo "setup vim setting"
-RecExec ln -vsfn $dir_path/vimrc $HOME/.vimrc
+CreateLink $dir_path/vimrc $HOME/.vimrc
 echo ""
 
 RecInfo "setup idea setting"
-RecExec ln -vsfn $dir_path/ideavimrc $HOME/.ideavimrc
+CreateLink $dir_path/ideavimrc $HOME/.ideavimrc
 echo ""
 
 RecInfo "setup mycli setting"
-RecExec ln -vsfn $dir_path/myclirc $HOME/.myclirc
+CreateLink $dir_path/myclirc $HOME/.myclirc
 echo ""
 
 RecInfo "setup bash setting"
-RecExec ln -vsfn $dir_path/bashrc $HOME/.bashrc
+CreateLink $dir_path/bashrc $HOME/.bashrc
 echo ""
 
 RecInfo "🍻 DONE!"
