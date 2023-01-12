@@ -3,9 +3,9 @@
 # -------------------
 function prompt_pc -d "Display the current directory"
   if [ "$PC_NAME" != "" ]
-    set -g bg_color 'yellow'
+    set -g bg_color 'magenta'
     set_color -b $bg_color
-    set_color 'black'
+    set_color 'white'
     echo -n " $PC_NAME "
   end
 end
