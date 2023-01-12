@@ -221,28 +221,30 @@ vim.cmd('colorscheme kanagawa')
 -- NOTE: tree-sitterが荒ぶったら
 --  1. brew upgrade tree-sitter
 --  2. :TSUpdate
-require("nvim-treesitter.configs").setup {
-  highlight = {
-    enable = true, -- syntax highlightを有効に
-    disable = {
-      -- errorが出るものをoffにする
+if vim.fn.exepath('tree-sitter') ~= '' then
+  require("nvim-treesitter.configs").setup {
+    highlight = {
+      enable = true, -- syntax highlightを有効に
+      disable = {
+        -- errorが出るものをoffにする
+      },
     },
-  },
-  -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
-  ensure_installed = {
-    -- :TSInstallInfo で確認できる
-    'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql',
-    'hcl', 'help', 'html', 'json', 'lua', 'make', 'markdown',
-    'markdown_inline', 'proto', 'rust', 'sql', 'terraform', 'toml',
-    'tsx', 'typescript', 'vim', 'yaml',
-  },
-  indent = {
-    enable = true, -- tree-sitterによるインデントを有効に
-    disable = {
-      'javascript',
+    -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
+    ensure_installed = {
+      -- :TSInstallInfo で確認できる
+      'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql',
+      'hcl', 'help', 'html', 'json', 'lua', 'make', 'markdown',
+      'markdown_inline', 'proto', 'rust', 'sql', 'terraform', 'toml',
+      'tsx', 'typescript', 'vim', 'yaml',
     },
-  },
-}
+    indent = {
+      enable = true, -- tree-sitterによるインデントを有効に
+      disable = {
+        'javascript',
+      },
+    },
+  }
+end
 
 
 -------------------------------
@@ -312,24 +314,32 @@ vim.diagnostic.config {
 -------------------------------
 -- TypeScript
 -- Install: npm install -g typescript-language-server
-require('lspconfig').tsserver.setup {
-  on_attach = on_attach
-}
+if vim.fn.exepath('typescript-language-server') ~= '' then
+  require('lspconfig').tsserver.setup {
+    on_attach = on_attach
+  }
+end
 -- Golang
 -- Install: go install golang.org/x/tools/gopls@latest
-require('lspconfig').gopls.setup{
-  on_attach = on_attach
-}
+if vim.fn.exepath('gopls') ~= '' then
+  require('lspconfig').gopls.setup{
+    on_attach = on_attach
+  }
+end
 -- Rust
 -- Install: brew install rust-analyzer
-require('lspconfig').rust_analyzer.setup{
-  on_attach = on_attach
-}
+if vim.fn.exepath('rust-analyzer') ~= '' then
+  require('lspconfig').rust_analyzer.setup{
+    on_attach = on_attach
+  }
+end
 -- Terraform
 -- Install: brew install hashicorp/tap/terraform-ls
-require('lspconfig').terraformls.setup{
-  on_attach = on_attach
-}
+if vim.fn.exepath('terraform-ls') ~= '' then
+  require('lspconfig').terraformls.setup{
+    on_attach = on_attach
+  }
+end
 
 
 -------------------------------
