@@ -1,4 +1,16 @@
 # -------------------
+# PC 名
+# -------------------
+function prompt_pc -d "Display the current directory"
+  if [ "$PC_NAME" != "" ]
+    set -g bg_color 'yellow'
+    set_color -b $bg_color
+    set_color 'black'
+    echo -n " $PC_NAME "
+  end
+end
+
+# -------------------
 # ディレクトリ表示
 # -------------------
 function prompt_dir -d "Display the current directory"
@@ -9,7 +21,7 @@ function prompt_dir -d "Display the current directory"
 end
 
 # -------------------
-# git表示
+# git 表示
 # -------------------
 function prompt_git -d "Display the current git state"
   # git管理下かどうか
@@ -92,7 +104,7 @@ end
 # -------------------
 function fish_prompt
   set -g RETVAL $status
-  # prompt_gcloud
+  prompt_pc
   prompt_dir
   prompt_git
   prompt_status
