@@ -18,7 +18,9 @@ RecExec sudo apt-get update
 RecExec sudo apt-get install -y ca-certificates curl gnupg lsb-release
 RecExec sudo mkdir -p /etc/apt/keyrings
 RecExec curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gnupg
-RecExec echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+RecExec echo \
+ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 echo ""
 
 RecInfo "2. Install Docker Engine"
@@ -27,7 +29,7 @@ RecExec sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-com
 echo ""
 
 RecInfo "3. Add Docker Group"
-RecInfo "TODO......"
+RecExec sudo gpasswd -a $USER docker
 echo ""
 
 RecInfo "🍻 DONE!"

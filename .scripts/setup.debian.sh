@@ -14,6 +14,10 @@ RecInfo "apt update"
 RecExec sudo apt -y update
 echo ""
 
+RecInfo "install gcc" # for use neovim plugin
+RecExec sudo apt install -y gcc
+echo ""
+
 RecInfo "install git"
 RecExec sudo apt install -y git
 echo ""
