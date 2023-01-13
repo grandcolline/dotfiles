@@ -53,9 +53,13 @@ require('lazy').setup({
   'glepnir/lspsaga.nvim', -- LSP の UI をよくする
   'folke/trouble.nvim', -- LSP でエラーを一覧表示
 
+  -- for curl
+  'hudclark/grpc-nvim',
+  'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
+
+
   'phaazon/hop.nvim', -- EasyMotion jump
   'tyru/open-browser.vim', -- ブラウザで開く
-  'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
   'klen/nvim-test', -- テスト実行
   -- 'Townk/vim-autoclose', -- ()
   'windwp/nvim-autopairs',
@@ -395,7 +399,7 @@ local actions = require("lir.actions")
 -- local clipboard_actions = require("lir.clipboard.actions")
 require("lir").setup {
   show_hidden_files = true,
-  devicons_enable = true,
+  devicons = { enable = true },
   mappings = {
     ['<CR>']  = actions.edit,
 

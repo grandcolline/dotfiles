@@ -26,6 +26,7 @@ Install fzf
 Install ripgrep
 Install fd-find
 Install expect
+# Install jq
 
 RecInfo "install neovim"
 RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.deb -o nvim-linux64.deb
