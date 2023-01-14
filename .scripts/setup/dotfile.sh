@@ -12,11 +12,13 @@ RecExec()  { RecDebug "$ $(_recCmd "$@")" && "$@"; }
 
 # CreateLink $1 $2 is create symbolic link $2 -> $1
 function CreateLink () {
-  if [ -L "${2}" ]; then
-    RecExec unlink ${2}
-  else
-    RecExec mv "${2}" "${2}_bk"
-    RecInfo "created buckup: ${2}_bk"
+  if [ -e "${2}" ]; then
+    if [ -L "${2}" ]; then
+      RecExec unlink ${2}
+    else
+      RecExec mv "${2}" "${2}_bk"
+      RecInfo "created buckup: ${2}_bk"
+    fi
   fi
   RecExec ln -vsfn ${1} ${2}
 }
