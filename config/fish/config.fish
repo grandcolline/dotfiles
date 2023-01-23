@@ -39,16 +39,16 @@ if test -d "$HOME/.cargo/bin"
 end
 
 # java (sdkman)
-if test -d "$HOME/.sdkman/bin"
-  function sdk
-    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
-  end
-  for ITEM in $HOME/.sdkman/candidates/* ;
-    set -gx PATH $PATH $ITEM/current/bin
-  end
-
-  set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
-end
+#if test -d "$HOME/.sdkman/bin"
+#  function sdk
+#    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
+#  end
+#  for ITEM in $HOME/.sdkman/candidates/* ;
+#    set -gx PATH $PATH $ITEM/current/bin
+#  end
+#
+#  set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
+#end
 
 # deno
 if type "deno" > /dev/null 2>&1
@@ -110,7 +110,7 @@ if type "tmux" > /dev/null 2>&1
   abbr -a t  'tmux attach; or tmux'
 end
 
-# Browser
+# Browser Brave > Chrome > Ssfari
 if test -d "/Applications/Brave Browser.app"
   abbr -a b  'open -a "/Applications/Brave Browser.app"'
 else if test -d "/Applications/Google Chrome.app"

@@ -18,6 +18,7 @@ function Install () {
 
 RecExec sudo apt -y update
 
+Install software-properties-common # add-apt-repository を使えるように
 Install gcc # for use neovim plguin
 Install git
 Install fish
