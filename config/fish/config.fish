@@ -18,6 +18,26 @@ set -x EDITOR "nvim"
 # refs: https://github.com/keybase/keybase-issues/issues/2798
 set -x GPG_TTY (tty)
 
+# add PATH
+fish_add_path $WORKSPACE/bin
+fish_add_path $HOME/.cargo/bin            # Rust
+fish_add_path $HOME/.deno/bin             # deno
+fish_add_path $HOME/.nodebrew/current/bin # nodebrew
+fish_add_path $HOME/.rd/bin               # Rancher Desktop
+fish_add_path /opt/homebrew/bin           # homebrew (for mac)
+
+# go
+if type "go" > /dev/null 2>&1
+  set -x GOPATH $WORKSPACE
+end
+
+# Google Cloud SDK
+if test -d "$WORKSPACE/tool/google-cloud-sdk"
+  # set -x PATH $WORKSPACE/tool/google-cloud-sdk/bin $PATH
+  fish_add_path $WORKSPACE/tool/google-cloud-sdk/bin
+  . "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
+end
+
 # zoxide
 # @see zoxide --help
 if type "zoxide" > /dev/null 2>&1
@@ -26,66 +46,11 @@ if type "zoxide" > /dev/null 2>&1
   zoxide init fish --no-aliases | source
 end
 
-# go
-if type "go" > /dev/null 2>&1
-  set -x GOPATH $WORKSPACE
-  set -x PATH $WORKSPACE/bin $PATH
-  set -x GO111MODULE on
-end
-
-# Rust
-if test -d "$HOME/.cargo/bin"
-  set -x PATH $HOME/.cargo/bin $PATH
-end
-
-# java (sdkman)
-#if test -d "$HOME/.sdkman/bin"
-#  function sdk
-#    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk $argv"
-#  end
-#  for ITEM in $HOME/.sdkman/candidates/* ;
-#    set -gx PATH $PATH $ITEM/current/bin
-#  end
-#
-#  set -x JAVA_HOME "$HOME/.sdkman/candidates/java/current"
-#end
-
-# deno
-if type "deno" > /dev/null 2>&1
-  set -x PATH $HOME/.deno/bin $PATH
-end
-
-# docker
-if type "docker" > /dev/null 2>&1
-  set -x DOCKER_BUILDKIT 1
-end
-
-# nodebrew
-if test -d "$HOME/.nodebrew"
-  set -x PATH $HOME/.nodebrew/current/bin $PATH
-end
-
-# brew
-if test -f "/opt/homebrew/bin/brew"
-  eval (/opt/homebrew/bin/brew shellenv)
-end
-
-# Google Cloud SDK
-if test -d "$WORKSPACE/tool/google-cloud-sdk"
-  set -x PATH $WORKSPACE/tool/google-cloud-sdk/bin $PATH
-  . "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
-end
-
-# Rancher Desktop
-if test -d "$HOME/.rd/bin"
-  set -x PATH "$HOME/.rd/bin" $PATH
-end
-
 # rbenv
-if test -d "$HOME/.rbenv/shims"
-  set -x PATH $HOME/.rbenv/shims $PATH
-  status --is-interactive; and rbenv init - fish | source
-end
+# if test -d "$HOME/.rbenv/shims"
+#   fish_add_path $HOME/.rbenv/shims
+#   status --is-interactive; and rbenv init - fish | source
+# end
 
 
 # ログインメッセージを表示しない
@@ -110,7 +75,7 @@ if type "tmux" > /dev/null 2>&1
   abbr -a t  'tmux attach; or tmux'
 end
 
-# Browser Brave > Chrome > Ssfari
+# Browser Brave > Chrome > Safari (for mac)
 if test -d "/Applications/Brave Browser.app"
   abbr -a b  'open -a "/Applications/Brave Browser.app"'
 else if test -d "/Applications/Google Chrome.app"
@@ -147,7 +112,7 @@ if type "git" > /dev/null 2>&1
   abbr -a gst  'git stash'
   abbr -a gstl 'git stash list'
   abbr -a gstp 'git stash pop --index'
-  # abbr -a gco  'git checkout'
+  abbr -a gco  'git checkout'
   # abbr -a gcob 'git checkout -b'
   abbr -a gsw  'git switch'
   abbr -a gswc 'git switch -c'
