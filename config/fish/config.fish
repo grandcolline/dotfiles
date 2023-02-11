@@ -138,8 +138,13 @@ end
 # Docker
 if type "docker" > /dev/null 2>&1
   abbr -a d  'docker'
-  abbr -a dr 'docker run --rm -it -v $PWD:/workspace'
+  abbr -a dr 'docker run --rm -it -v $PWD:/app'
   abbr -a dc 'docker compose'
+end
+if type "nerdctl" > /dev/null 2>&1
+  abbr -a nd  'nerdctl'
+  abbr -a ndr 'nerdctl run --rm -it -v $PWD:/app'
+  abbr -a ndc 'nerdctl compose'
 end
 
 # K8s
