@@ -195,6 +195,7 @@ map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {}) ------------------------
 map('n', '<LEADER>x', ':TroubleToggle<CR>', {}) ------------------------------------------- x: LSP の警告一覧表示 (ばつ)
 
 map('n', '<LEADER><Tab>',   '<C-w>w', {}) ------------------------------------------------- tab: Window 切り替え
+map('n', '<LEADER><S-Tab>', '<C-w>W', {}) ------------------------------------------------- tab: Window 切り替え
 map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) ------------------------------------- Space: 検索のハイライト
 map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) -------------- -: 現在フォルダを開く
 map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ----------------------------------------------- Delete: buffer 削除 (delete)
