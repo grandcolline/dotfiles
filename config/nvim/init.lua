@@ -207,7 +207,8 @@ map('n', '<LEADER><CR>',    ':! ', { noremap = true }) -------------------------
 -------------------------------
 vim.cmd('syntax on')
 
-require("kanagawa").setup({ colors = { bg = 'none' } }) -- 背景色をなくす
+-- require("kanagawa").setup({ colors = { bg = 'none' } }) -- 背景色をなくす
+require("kanagawa").setup({})
 vim.cmd('colorscheme kanagawa')
 
 -- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
