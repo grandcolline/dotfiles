@@ -51,16 +51,16 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'glepnir/lspsaga.nvim', -- LSP の UI をよくする
-  'folke/trouble.nvim', -- LSP でエラーを一覧表示
+  'folke/trouble.nvim',   -- LSP でエラーを一覧表示
 
   -- for curl
   'hudclark/grpc-nvim',
   'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
 
-  'phaazon/hop.nvim', -- EasyMotion jump
+  'phaazon/hop.nvim',      -- EasyMotion jump
   'tyru/open-browser.vim', -- ブラウザで開く
-  'klen/nvim-test', -- テスト実行
+  'klen/nvim-test',        -- テスト実行
   -- 'Townk/vim-autoclose', -- ()
   'windwp/nvim-autopairs',
   'yuttie/comfortable-motion.vim', -- ぬるぬるスクロール
@@ -375,6 +375,21 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
+})
+
+
+-------------------------------
+-- Lspsaga
+-- https://github.com/glepnir/lspsaga.nvim
+-------------------------------
+require("lspsaga").setup({
+  finder = {
+    keys = {
+      expand_or_jump = '<CR>', -- jump を Enter に変更
+    },
+  },
+  symbol_in_winbar = { enable = false }, -- 場所の表示をオフ
+  beacon = { enable = false }, -- 移動時のハイライトをオフ
 })
 
 
