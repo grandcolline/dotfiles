@@ -291,15 +291,16 @@ lualine.setup {
 -------------------------------
 -- lsp-config
 -------------------------------
--- エラー文言を表示しない
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
-
 -- error signを優先して表示
 vim.diagnostic.config {
   severity_sort = true
 }
+
+-- エラー文言を表示しない
+--vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+--)
+
 
 -- LspReference をハイライトする
 -- terraorm などでエラーが出るので一旦コメントアウト
@@ -388,6 +389,7 @@ require("lspsaga").setup({
       expand_or_jump = '<CR>', -- jump を Enter に変更
     },
   },
+  -- 使う機能以外はオフにしておく
   symbol_in_winbar = { enable = false }, -- 場所の表示をオフ
   beacon = { enable = false }, -- 移動時のハイライトをオフ
 })
