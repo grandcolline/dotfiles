@@ -8,7 +8,7 @@
   "grpc-nvim": { "branch": "main", "commit": "cd235398a9922ae412f59ebeabb0b13957be0d39" },
   "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "kanagawa.nvim": { "branch": "master", "commit": "3c87bfacd5f51033bbeeb04f837c88f94861f6af" },
-  "lazy.nvim": { "branch": "main", "commit": "57cce98dfdb2f2dd05a0567d89811e6d0505e13b" },
+  "lazy.nvim": { "branch": "main", "commit": "eddee830ede0f95ced9802ca9abd3f8f662e5cc5" },
   "lir-git-status.nvim": { "branch": "main", "commit": "6e15a3ade508522ecc027f059a814ca75a364db7" },
   "lir.nvim": { "branch": "master", "commit": "1aa871f20637eccc4e1e26b0fbcf9aafc9b6caf7" },
   "lspsaga.nvim": { "branch": "main", "commit": "1fbb3e4721354d0d0a20a28bb77b3f83fe68538b" },

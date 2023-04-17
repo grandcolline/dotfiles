@@ -239,10 +239,9 @@ if vim.fn.exepath('tree-sitter') ~= '' then
     -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
     ensure_installed = {
       -- :TSInstallInfo で確認できる
-      'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql',
-      'hcl', 'help', 'html', 'json', 'lua', 'make', 'markdown',
-      'markdown_inline', 'proto', 'rust', 'sql', 'terraform', 'toml',
-      'tsx', 'typescript', 'vim', 'yaml',
+      'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl',
+      'html', 'json', 'lua', 'make', 'markdown', 'markdown_inline', 'proto',
+      'rust', 'sql', 'terraform', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
     },
     indent = {
       enable = true, -- tree-sitterによるインデントを有効に
