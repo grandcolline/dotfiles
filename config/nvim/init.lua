@@ -320,7 +320,7 @@ vim.diagnostic.config {
 -- LSP SERVER
 -------------------------------
 -- TypeScript
--- Install: npm install -g typescript-language-server
+-- Install: brew install typescript-language-server
 if vim.fn.exepath('typescript-language-server') ~= '' then
   require('lspconfig').tsserver.setup {
     on_attach = on_attach
@@ -344,6 +344,13 @@ end
 -- Install: brew install hashicorp/tap/terraform-ls
 if vim.fn.exepath('terraform-ls') ~= '' then
   require('lspconfig').terraformls.setup{
+    on_attach = on_attach
+  }
+end
+-- Python
+-- Install: brew install pyright
+if vim.fn.exepath('pyright') ~= '' then
+  require('lspconfig').pyright.setup{
     on_attach = on_attach
   }
 end
@@ -452,4 +459,5 @@ require("lir.git_status").setup { show_ignored = false }
 require("hop").setup { keys = 'jkflg' }
 require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
+require("nvim-test").setup {}
 
