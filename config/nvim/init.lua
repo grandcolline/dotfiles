@@ -58,7 +58,8 @@ require('lazy').setup({
   'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
 
-  'phaazon/hop.nvim',      -- EasyMotion jump
+  -- 'phaazon/hop.nvim',      -- EasyMotion jump
+  'folke/flash.nvim',      -- EasyMotion jump
   'tyru/open-browser.vim', -- ブラウザで開く
   'klen/nvim-test',        -- テスト実行
   -- 'Townk/vim-autoclose', -- ()
@@ -181,7 +182,7 @@ map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------
 map('n', '<LEADER>G', '<cmd>Lspsaga lsp_finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
-map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
+-- map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
 map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
 map('n', '<LEADER>K', '<cmd>Lspsaga hover_doc<CR>', { silent = true }) -------------------- K: [LSP] ドキュメント表示
 map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ----------------------- n: [LSP] リネーム (name)
@@ -412,7 +413,7 @@ require("gitsigns").setup {
     topdelete    = {text = '‾'},
     changedelete = {text = '~'},
   },
-  keymaps = {}, -- default mappingはオフ
+  -- keymaps = {}, -- default mappingはオフ
   sign_priority = 6,
 }
 
@@ -456,7 +457,7 @@ require("lir").setup {
 -------------------------------
 require("nvim-autopairs").setup {}
 require("lir.git_status").setup { show_ignored = false }
-require("hop").setup { keys = 'jkflg' }
+require("flash").setup {}
 require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
 require("nvim-test").setup {}
