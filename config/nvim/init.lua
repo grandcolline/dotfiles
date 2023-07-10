@@ -57,12 +57,15 @@ require('lazy').setup({
   'hudclark/grpc-nvim',
   'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
+  -- copilot
+  "github/copilot.vim",
 
-  -- 'phaazon/hop.nvim',      -- EasyMotion jump
-  'folke/flash.nvim',      -- EasyMotion jump
-  'tyru/open-browser.vim', -- ブラウザで開く
-  'klen/nvim-test',        -- テスト実行
-  -- 'Townk/vim-autoclose', -- ()
+  -- 'phaazon/hop.nvim',          -- EasyMotion jump
+  'folke/flash.nvim',             -- EasyMotion jump
+  'tyru/open-browser.vim',        -- ブラウザで開く
+  'tyru/open-browser-github.vim', -- Github を開く
+  'klen/nvim-test',               -- テスト実行
+  -- 'Townk/vim-autoclose',       -- ()
   'windwp/nvim-autopairs',
   'yuttie/comfortable-motion.vim', -- ぬるぬるスクロール
   'ntpeters/vim-better-whitespace' -- 行末空白のハイライト
