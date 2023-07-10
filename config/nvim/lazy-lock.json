@@ -12,7 +12,7 @@
   "lazy.nvim": { "branch": "main", "commit": "da8b00581a52f5f87ad2aba9f52171fda7491f18" },
   "lir-git-status.nvim": { "branch": "main", "commit": "4d574f6a9e6d7ce3fe6cccb87a601fb72fb0404d" },
   "lir.nvim": { "branch": "master", "commit": "959ac31dae906fb71181c2e75ace62ffb1fff8c8" },
-  "lspsaga.nvim": { "branch": "main", "commit": "44f2beafd826083d07da5fc07f19a4eca1a19f73" },
+  "lspsaga.nvim": { "branch": "main", "commit": "470661e8da89544ae13a4802106b650825f7d1b5" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "nvim-autopairs": { "branch": "master", "commit": "e8f7dd7a72de3e7b6626c050a802000e69d53ff0" },
   "nvim-cmp": { "branch": "main", "commit": "c4e491a87eeacf0408902c32f031d802c7eafce8" },
