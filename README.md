@@ -50,6 +50,19 @@ set -x XDG_CONFIG_HOME $HOME/.config && bash ./scripts/setup/dotfile.sh
 echo "set -x PC_NAME 'リモートPC'" > $HOME/.config/fish/conf.d/remote.local.fish
 ```
 
+### 4. Create GitHub keys
+
+```bash
+ssh-keygen -t ed25519
+nvim ~/.ssh/config
+# Host github github.com
+#   HostName github.com
+#   IdentityFile ~/.ssh/id_ed25519
+#   User git
+```
+
+and register pub key in [here](https://github.com/settings/keys).
+
 ### 4. Install Docker (if you need docker)
 
 ```bash
