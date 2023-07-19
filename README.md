@@ -1,3 +1,5 @@
+<samp>
+
 # dotfiles
 
 my config files...
@@ -24,6 +26,38 @@ my config files...
 set -x XDG_CONFIG_HOME $HOME/.config && bash ./scripts/setup/dotfile.sh
 ```
 
+<details>
+<summary>Linux Server</summary>
+
+1. Setup bashrc
+
+```bash
+curl -o $HOME/.bashrc https://raw.githubusercontent.com/grandcolline/dotfiles/main/bashrc && source $HOME/.bashrc
+```
+
+2. Install development tool
+
+```bash
+curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/linux.sh | bash
+```
+
+3. Setup dotfiles
+
+```bash
+fish
+cd ~/develop/src/github.com/grandcolline/dotfiles
+set -x XDG_CONFIG_HOME $HOME/.config && bash ./scripts/setup/dotfile.sh
+echo "set -x PC_NAME 'リモートPC'" > $HOME/.config/fish/conf.d/remote.local.fish
+```
+
+4. Install Docker (if you need docker)
+
+```bash
+curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/linux.docker.sh | bash
+```
+
+</details>
+
 ## Terminal
 
 [wezterm](https://wezfurlong.org/wezterm/)
@@ -33,3 +67,5 @@ set -x XDG_CONFIG_HOME $HOME/.config && bash ./scripts/setup/dotfile.sh
 [JetBrainsMonoNL Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/JetBrainsMono/NoLigatures)
 
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
+
+</samp>
