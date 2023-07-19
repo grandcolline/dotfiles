@@ -1,19 +1,19 @@
 # script
 
-## How to setup bashrc
+## For Linux SErver
 
+Setup bashrc
 ```bash
 curl -o $HOME/.bashrc https://raw.githubusercontent.com/grandcolline/dotfiles/main/bashrc && source $HOME/.bashrc
 ```
 
-## How to setup GCE Instance (Debian GNU/Linux 11)
-
+Install development tool
 ```bash
-curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/debian.sh | bash
+curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/linux.sh | bash
 ```
 
-when use docker
+Install Docker (if you need docker)
 
 ```bash
-curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/debian/docker.sh | bash
+curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/linux.docker.sh | bash
 ```

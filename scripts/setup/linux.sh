@@ -37,9 +37,11 @@ RecExec sudo apt install -y fish
 echo ""
 
 RecInfo "install neovim"
-RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.deb -o nvim-linux64.deb
-RecExec sudo apt install ./nvim-linux64.deb
-RecExec rm ./nvim-linux64.deb
+# refs: https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
+RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -o nvim.appimage
+RecExec chmod u+x nvim.appimage
+RecExec sudo bash ./nvim.appimage
+RecExec rm ./nvim.appimage
 echo ""
 
 RecInfo "mkdir WORKSPACE"
