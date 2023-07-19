@@ -16,6 +16,20 @@ function Install () {
   echo ""
 }
 
+# -------------------------------
+# Create Directory
+# -------------------------------
+RecInfo "mkdir WORKSPACE"
+RecExec mkdir -p ~/develop/src/github.com/grandcolline
+RecExec mkdir -p ~/develop/bin
+RecExec mkdir -p ~/develop/pkg
+RecExec mkdir -p ~/develop/tool
+echo ""
+
+
+# -------------------------------
+# Install Tools
+# -------------------------------
 RecExec sudo apt -y update
 
 Install software-properties-common # add-apt-repository を使えるように
@@ -37,20 +51,14 @@ RecExec sudo apt install -y fish
 echo ""
 
 RecInfo "install neovim"
-# refs: https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
-RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -o nvim.appimage
-RecExec chmod u+x nvim.appimage
-RecExec sudo bash ./nvim.appimage
-RecExec rm ./nvim.appimage
+RecExec curl -LsS https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -o ~/develop/bin/nvim
+RecExec chmod u+x ~/develop/bin/nvim
 echo ""
 
-RecInfo "mkdir WORKSPACE"
-RecExec mkdir -p ~/develop/src/github.com/grandcolline
-RecExec mkdir -p ~/develop/bin
-RecExec mkdir -p ~/develop/pkg
-RecExec mkdir -p ~/develop/tool
-echo ""
 
+# -------------------------------
+# Clone Source
+# -------------------------------
 RecInfo "clone dotfiles"
 RecExec [ -d ~/develop/src/github.com/grandcolline/dotfiles ] || git clone https://github.com/grandcolline/dotfiles.git ~/develop/src/github.com/grandcolline/dotfiles
 echo ""

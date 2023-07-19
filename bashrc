@@ -9,6 +9,7 @@ else
 fi
 
 XDG_CONFIG_HOME=$HOME/.config
+PATH="$PATH":"$HOME"/develop/bin
 
 alias ls='ls -FG'
 alias ll='ls -lFG'
