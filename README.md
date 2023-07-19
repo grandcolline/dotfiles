@@ -59,6 +59,8 @@ nvim ~/.ssh/config
 #   HostName github.com
 #   IdentityFile ~/.ssh/id_ed25519
 #   User git
+
+chmod 644 ~/.ssh/config
 ```
 
 and register pub key in [here](https://github.com/settings/keys).
