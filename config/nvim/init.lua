@@ -50,7 +50,7 @@ require('lazy').setup({
   'hrsh7th/vim-vsnip',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
-  'glepnir/lspsaga.nvim', -- LSP の UI をよくする
+  'nvimdev/lspsaga.nvim', -- LSP の UI をよくする
   'folke/trouble.nvim',   -- LSP でエラーを一覧表示
 
   -- for curl
@@ -182,7 +182,7 @@ map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }
 map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
 map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) ------------------------ g: [LSP] 定義ジャンプ (go)
-map('n', '<LEADER>G', '<cmd>Lspsaga lsp_finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
+map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
 -- map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
@@ -396,7 +396,7 @@ cmp.setup({
 require("lspsaga").setup({
   finder = {
     keys = {
-      expand_or_jump = '<CR>', -- jump を Enter に変更
+      toggle_or_open = '<CR>',
     },
   },
   -- 使う機能以外はオフにしておく
