@@ -1,5 +1,7 @@
 local wezterm = require 'wezterm';
 return {
+  default_prog = { '/opt/homebrew/bin/fish', '-l' },
+  set_environment_variables = { SHELL = "/opt/homebrew/bin/fish" },
   font = wezterm.font(
     'JetBrainsMonoNL Nerd Font Mono',
     {

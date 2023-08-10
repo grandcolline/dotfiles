@@ -63,12 +63,12 @@ require('lazy').setup({
   -- 'phaazon/hop.nvim',          -- EasyMotion jump
   'folke/flash.nvim',             -- EasyMotion jump
   'tyru/open-browser.vim',        -- ブラウザで開く
-  'tyru/open-browser-github.vim', -- Github を開く
+  'tyru/open-browser-github.vim', -- Github を開く `:OpenGithubFile`
   'klen/nvim-test',               -- テスト実行
   -- 'Townk/vim-autoclose',       -- ()
   'windwp/nvim-autopairs',
-  'yuttie/comfortable-motion.vim', -- ぬるぬるスクロール
-  'ntpeters/vim-better-whitespace' -- 行末空白のハイライト
+  'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
+  'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
 })
 
 -------------------------------
@@ -182,7 +182,7 @@ map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }
 map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
 map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) ------------------------ g: [LSP] 定義ジャンプ (go)
-map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
+map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ----------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
 -- map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
