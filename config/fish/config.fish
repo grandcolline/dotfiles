@@ -84,11 +84,11 @@ else if test -d "/Applications/Safari.app"
   abbr -a b  'open -a "/Applications/Safari.app"'
 end
 
-# exa
-if type "exa" > /dev/null 2>&1
-  abbr -a ll   'exa -l --git'
-  abbr -a la   'exa -al --git'
-  abbr -a tree 'exa --tree --git-ignore'
+# eza
+if type "eza" > /dev/null 2>&1
+  abbr -a ll   'eza -l --git'
+  abbr -a la   'eza -al --git'
+  abbr -a tree 'eza --tree --git-ignore'
 end
 
 # Git
