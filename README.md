@@ -84,3 +84,4 @@ curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/
 <!-- [Ricty Diminished with icons](https://github.com/iij/fontmerger/tree/master/sample) -->
 
 </samp>
+
