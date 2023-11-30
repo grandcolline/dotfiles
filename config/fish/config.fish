@@ -46,6 +46,14 @@ if type "zoxide" > /dev/null 2>&1
   zoxide init fish --no-aliases | source
 end
 
+# pnpm
+if type "pnpm" > /dev/null 2>&1
+  set -gx PNPM_HOME "$HOME/Library/pnpm"
+  if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+  end
+end
+
 # rbenv
 # if test -d "$HOME/.rbenv/shims"
 #   fish_add_path $HOME/.rbenv/shims
@@ -162,6 +170,11 @@ if type "rg" > /dev/null 2>&1
   abbr -a rg 'rg -uu' # 不可視ファイルを無視しない
 end
 
+# devcontainer
+if type "devcontainer" > /dev/null 2>&1
+  abbr -a dup 'devcontainer up --workspace-folder .'
+  abbr -a dec 'devcontainer exec --workspace-folder .'
+end
 
 # ----------------------------
 #  Key Binds

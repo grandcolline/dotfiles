@@ -31,18 +31,28 @@ echo ""
 
 RecInfo "setup FishShell setting"
 CreateLink $dir_path/config/fish $XDG_CONFIG_HOME/fish
-RecExec curl -LsS https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish \
-          -o $dir_path/config/fish/completions/docker.fish
-RecExec curl -LsS https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish \
-          -o $dir_path/config/fish/completions/docker-compose.fish
-RecExec curl -LsS https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/master/completions/kubectl.fish \
-          -o $dir_path/config/fish/completions/kubectl.fish
-RecExec curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gcloud.fish \
-          -o $dir_path/config/fish/completions/gcloud.fish
-RecExec curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gsutil.fish \
-          -o $dir_path/config/fish/completions/gsutil.fish
-RecExec curl -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/functions/gcloud_sdk_argcomplete.fish \
-          -o $dir_path/config/fish/functions/gcloud_sdk_argcomplete.fish
+# install completions
+RecExec curl -LsS \
+  https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish \
+  -o $dir_path/config/fish/completions/docker.fish
+RecExec curl -LsS \
+  https://raw.githubusercontent.com/docker/compose/master/contrib/completion/fish/docker-compose.fish \
+  -o $dir_path/config/fish/completions/docker-compose.fish
+RecExec curl -LsS \
+  https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/master/completions/kubectl.fish \
+  -o $dir_path/config/fish/completions/kubectl.fish
+RecExec curl -LsS \
+  https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gcloud.fish \
+  -o $dir_path/config/fish/completions/gcloud.fish
+RecExec curl -LsS \
+  https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/completions/gsutil.fish \
+  -o $dir_path/config/fish/completions/gsutil.fish
+RecExec curl -LsS \
+  https://raw.githubusercontent.com/g-plane/pnpm-shell-completion/main/pnpm-shell-completion.fish \
+  -o $dir_path/config/fish/completions/pnpm.fish
+RecExec curl \
+  -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/functions/gcloud_sdk_argcomplete.fish \
+  -o $dir_path/config/fish/functions/gcloud_sdk_argcomplete.fish
 echo ""
 
 RecInfo "setup tmux setting"
