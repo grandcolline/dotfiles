@@ -60,6 +60,16 @@ end
 #   status --is-interactive; and rbenv init - fish | source
 # end
 
+# sdkman
+# NOTE: java version を変える時は...
+#  $ bash
+#  $ source "$HOME/.sdkman/bin/sdkman-init.sh"
+#  $ sdk list java
+#  $ sdk install java xxxxx
+if test -d "$HOME/.sdkman"
+  set -x JAVA_HOME $HOME/.sdkman/candidates/java/current/
+  fish_add_path $JAVA_HOME/bin
+end
 
 # ログインメッセージを表示しない
 set fish_greeting
@@ -70,7 +80,6 @@ set fish_greeting
 # ----------------------------
 abbr -a o  'open'
 abbr -a x  'exit'
-abbr -a c  'clear'
 abbr -a rm 'rm -rf'
 
 # nvim

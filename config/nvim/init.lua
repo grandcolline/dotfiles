@@ -54,14 +54,14 @@ require('lazy').setup({
   'folke/trouble.nvim',   -- LSP でエラーを一覧表示
 
   -- for curl
-  'hudclark/grpc-nvim',
+  'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
   'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
   -- copilot
   "github/copilot.vim",
 
   -- 'phaazon/hop.nvim',          -- EasyMotion jump
-  'folke/flash.nvim',             -- EasyMotion jump
+  -- 'folke/flash.nvim',          -- EasyMotion jump
   'tyru/open-browser.vim',        -- ブラウザで開く
   'tyru/open-browser-github.vim', -- Github を開く `:OpenGithubFile`
   'klen/nvim-test',               -- テスト実行
@@ -460,7 +460,7 @@ require("lir").setup {
 -------------------------------
 require("nvim-autopairs").setup {}
 require("lir.git_status").setup { show_ignored = false }
-require("flash").setup {}
+-- require("flash").setup {}
 require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
 require("nvim-test").setup {}
