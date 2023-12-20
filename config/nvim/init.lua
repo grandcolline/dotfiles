@@ -469,11 +469,12 @@ require("lir").setup {
 
 -------------------------------
 -- nvim-lint
+-- https://github.com/mfussenegger/nvim-lint
 -------------------------------
 require('lint').linters_by_ft = {
+  -- ファイル名調べる: :lua print(vim.bo.filetype)
   markdown = {'vale'},
   go = {'golangcilint'},
-  golang = {'golangcilint'},
 }
 
 -- 保存時に実行
