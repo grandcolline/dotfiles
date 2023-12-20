@@ -30,7 +30,8 @@ require('lazy').setup({
   'nvim-treesitter/nvim-treesitter',
   'kyazdani42/nvim-web-devicons', -- icon
   'rebelot/kanagawa.nvim', -- color scheme
-  'hoob3rt/lualine.nvim', -- status line
+  'hoob3rt/lualine.nvim',  -- status line
+  'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
 
   -- for git
   'lewis6991/gitsigns.nvim',
@@ -51,7 +52,7 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'nvimdev/lspsaga.nvim', -- LSP の UI をよくする
-  'folke/trouble.nvim',   -- LSP でエラーを一覧表示
+  'folke/trouble.nvim',   -- LSP でエラーを一覧表示(x)
 
   -- for curl
   'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
@@ -60,16 +61,20 @@ require('lazy').setup({
   -- copilot
   "github/copilot.vim",
 
-  -- 'phaazon/hop.nvim',          -- EasyMotion jump
-  -- 'folke/flash.nvim',          -- EasyMotion jump
+  -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
   'tyru/open-browser-github.vim', -- Github を開く `:OpenGithubFile`
+
+  -- for test
   'klen/nvim-test',               -- テスト実行
-  -- 'Townk/vim-autoclose',       -- ()
-  'windwp/nvim-autopairs',
+
+  -- 'Townk/vim-autoclose',         -- ()
+  'windwp/nvim-autopairs',          -- ()
   'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
-  'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
+
+  'mfussenegger/nvim-lint',
 })
+
 
 -------------------------------
 -- General
@@ -266,19 +271,22 @@ lualine.setup {
   options = {
     icons_enabled = true,
     theme = 'jellybeans',
-    section_separators = {'', ''}, -- {'', ''}
+    section_separators = {'', ''},
     component_separators = {'|', '|'},
     disabled_filetypes = {},
   },
   -- filename / branch / filetype / location
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'diagnostics'},
-    -- lualine_b = {
-    --   'diagnostics',
-    --   sources = {'nvim_diagnostic'},
-    --   symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
-    -- }},
+    -- lualine_b = {'diagnostics'},
+    lualine_b = {
+      {
+        'diagnostics',
+        sources = { 'nvim_diagnostic'},
+        -- symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
+        symbols = {error = 'E:', warn = 'W:', info = 'I:', hint = 'H:'},
+      }
+    },
     lualine_c = {'filename', 'diff'},
     lualine_x = {}, lualine_y = {}, lualine_z = {}, -- 空にする
   },
@@ -358,6 +366,9 @@ if vim.fn.exepath('pyright') ~= '' then
     on_attach = on_attach
   }
 end
+-- SQL
+-- Install: go install github.com/sqls-server/sqls@latest
+-- TODO
 
 
 -------------------------------
@@ -402,6 +413,7 @@ require("lspsaga").setup({
   -- 使う機能以外はオフにしておく
   symbol_in_winbar = { enable = false }, -- 場所の表示をオフ
   beacon = { enable = false }, -- 移動時のハイライトをオフ
+  ui = { code_action = '' },  -- コードアクションの電球マーク表示をオフ
 })
 
 
@@ -453,6 +465,23 @@ require("lir").setup {
   },
   hide_cursor = false,
 }
+
+
+-------------------------------
+-- nvim-lint
+-------------------------------
+require('lint').linters_by_ft = {
+  markdown = {'vale'},
+  go = {'golangcilint'},
+  golang = {'golangcilint'},
+}
+
+-- 保存時に実行
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
 
 
 -------------------------------
