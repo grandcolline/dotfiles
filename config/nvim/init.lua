@@ -154,6 +154,12 @@ vim.opt.cmdheight = 0
 -- if vim.fn.has('nvim-0.8') == 1 then
 -- end
 
+-- 拡張子設定
+-- .rest ファイルは http ファイルとして扱う
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.rest",
+    command = "set filetype=http"
+})
 
 -------------------------------
 -- Key Mapping
@@ -248,7 +254,7 @@ if vim.fn.exepath('tree-sitter') ~= '' then
     -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
     ensure_installed = {
       -- :TSInstallInfo で確認できる
-      'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl',
+      'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl', 'http',
       'html', 'json', 'lua', 'make', 'markdown', 'markdown_inline', 'proto',
       'rust', 'sql', 'terraform', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
     },
