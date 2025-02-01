@@ -14,7 +14,7 @@ end
 # ディレクトリ表示
 # -------------------
 function prompt_dir -d "Display the current directory"
-  set -g bg_color 'green'
+  set -g bg_color '#7F833D' # green
   set_color -b $bg_color
   set_color 'white'
   echo -n " "(prompt_pwd)" "
@@ -33,7 +33,7 @@ function prompt_git -d "Display the current git state"
 
     # 背景色を決める
     # デフォルトは青
-    set -g bg_color 'blue'
+    set -g bg_color '#516A88' # blue
     # HEADがあり、indexされていたら紫
     if git rev-parse --quiet --verify HEAD >/dev/null 2>&1; and not git diff-index --cached --quiet --exit-code --ignore-submodules=dirty HEAD
       set -g bg_color 'magenta'

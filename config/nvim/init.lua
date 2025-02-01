@@ -56,10 +56,14 @@ require('lazy').setup({
 
   -- for curl
   'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
-  'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
+  -- 'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
   -- copilot
   "github/copilot.vim",
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "main",
+  },
 
   -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
@@ -188,7 +192,10 @@ vim.g.mapleader = " "
 
 map('n', '<LEADER>a', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
-map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
+-- map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
+map('n', '<LEADER>c', ':CopilotChatToggle<CR>', {})
+map('v', '<LEADER>c', ':CopilotChat<CR>', {})
+map('n', '<leader>C', ':lua ShowCopilotChatActionPrompt()<CR>', { noremap = true, silent = true })
 map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
 map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
@@ -267,6 +274,34 @@ if vim.fn.exepath('tree-sitter') ~= '' then
   }
 end
 
+-------------------------------
+-- CopilotChat
+-------------------------------
+require("CopilotChat").setup {
+  window = {
+    layout = "vertical",
+    width = 0.4,
+    position = "right",
+  },
+  -- window = {
+  --   layout = 'float',
+  --   relative = 'cursor',
+  --   width = 0.8,
+  --   height = 0.4,
+  --   row = 1
+  -- },
+  prompts = {
+    ReviewJP = {
+      prompt = '日本語で説明してください',
+      system_prompt = 'You are very good at explaining stuff',
+      description = 'My custom prompt description',
+    }
+  }
+}
+function ShowCopilotChatActionPrompt()
+  local actions = require("CopilotChat.actions")
+  require("CopilotChat.integrations.fzflua").pick(actions.prompt_actions())
+end
 
 -------------------------------
 -- lualine (ステータスライン)
@@ -340,10 +375,11 @@ vim.diagnostic.config {
 -- TypeScript
 -- Install: brew install typescript-language-server
 if vim.fn.exepath('typescript-language-server') ~= '' then
-  require('lspconfig').tsserver.setup {
+  require('lspconfig').ts_ls.setup {
     on_attach = on_attach
   }
 end
+
 -- Golang
 -- Install: go install golang.org/x/tools/gopls@latest
 if vim.fn.exepath('gopls') ~= '' then
@@ -351,13 +387,15 @@ if vim.fn.exepath('gopls') ~= '' then
     on_attach = on_attach
   }
 end
--- Rust
--- Install: brew install rust-analyzer
-if vim.fn.exepath('rust-analyzer') ~= '' then
-  require('lspconfig').rust_analyzer.setup{
-    on_attach = on_attach
-  }
-end
+
+-- -- Rust
+-- -- Install: brew install rust-analyzer
+-- if vim.fn.exepath('rust-analyzer') ~= '' then
+--   require('lspconfig').rust_analyzer.setup{
+--     on_attach = on_attach
+--   }
+-- end
+
 -- Terraform
 -- Install: brew install hashicorp/tap/terraform-ls
 if vim.fn.exepath('terraform-ls') ~= '' then
@@ -365,13 +403,15 @@ if vim.fn.exepath('terraform-ls') ~= '' then
     on_attach = on_attach
   }
 end
+
 -- Python
 -- Install: brew install pyright
-if vim.fn.exepath('pyright') ~= '' then
-  require('lspconfig').pyright.setup{
-    on_attach = on_attach
-  }
-end
+-- if vim.fn.exepath('pyright') ~= '' then
+--   require('lspconfig').pyright.setup{
+--     on_attach = on_attach
+--   }
+-- end
+
 -- SQL
 -- Install: go install github.com/sqls-server/sqls@latest
 -- TODO
@@ -479,7 +519,7 @@ require("lir").setup {
 -------------------------------
 require('lint').linters_by_ft = {
   -- ファイル名調べる: :lua print(vim.bo.filetype)
-  markdown = {'vale'},
+  -- markdown = {'vale'}, -- エラー出るから一旦コメントアウト
   go = {'golangcilint'},
 }
 
@@ -497,7 +537,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 require("nvim-autopairs").setup {}
 require("lir.git_status").setup { show_ignored = false }
 -- require("flash").setup {}
-require("rest-nvim").setup { result_split_in_place = true }
+-- require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
 require("nvim-test").setup {}
 
