@@ -52,10 +52,10 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'nvimdev/lspsaga.nvim', -- LSP の UI をよくする
-  'folke/trouble.nvim',   -- LSP でエラーを一覧表示(x)
+  -- 'folke/trouble.nvim',   -- LSP でエラーを一覧表示(x)
 
   -- for curl
-  'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
+  -- 'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
   -- 'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
   -- copilot
