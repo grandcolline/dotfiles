@@ -59,11 +59,52 @@ require('lazy').setup({
   -- 'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
 
   -- copilot
-  "github/copilot.vim",
+  "zbirenbaum/copilot.lua",
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
   },
+
+  -- {
+  --   "jetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   lazy = false,
+  --   version = false,
+  --   opts = {
+  --     provider = "copilot",
+  --     auto_suggestions_provider = "copilot",
+
+  --     -- 動作設定
+  --     behaviour = {
+  --       auto_suggestions = false,
+  --       auto_set_highlight_group = true,
+  --       auto_set_keymaps = true,
+  --       auto_apply_diff_after_generation = false,
+  --       support_paste_from_clipboard = false,
+  --       minimize_diff = true,
+  --     },
+
+  --     -- ウィンドウ設定
+  --     windows = {
+  --       position = "right",  -- サイドバーの位置
+  --       wrap = true,        -- テキストの折り返し
+  --       width = 30,         -- サイドバーの幅
+  --       -- その他の詳細設定は省略
+  --     },
+  --   },
+  --   -- 依存関係の設定
+  --   dependencies = {
+  --     -- 必須の依存関係
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     -- オプションの依存関係
+  --     "hrsh7th/nvim-cmp",
+  --     "nvim-tree/nvim-web-devicons",
+  --     "zbirenbaum/copilot.lua",
+  --     -- その他の拡張機能
+  --   }
+  -- },
 
   -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
@@ -275,6 +316,21 @@ if vim.fn.exepath('tree-sitter') ~= '' then
 end
 
 -------------------------------
+-- Copilot
+-------------------------------
+require("copilot").setup {
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    keymap = {
+      accept = "<Tab>",
+    },
+  },
+  panel = { enabled = false },
+--   copilot_node_command = 'node'
+}
+
+-------------------------------
 -- CopilotChat
 -------------------------------
 require("CopilotChat").setup {
@@ -291,12 +347,25 @@ require("CopilotChat").setup {
   --   row = 1
   -- },
   prompts = {
-    ReviewJP = {
-      prompt = '日本語で説明してください',
-      system_prompt = 'You are very good at explaining stuff',
-      description = 'My custom prompt description',
-    }
-  }
+    Explain = {
+      prompt = '> /COPILOT_EXPLAIN\n\nWrite an explanation for the selected code as paragraphs of text. 日本語で説明してください.',
+    },
+    Review = {
+      prompt = '> /COPILOT_REVIEW\n\nReview the selected code. 日本語で説明してください.',
+    },
+    Fix = {
+      prompt = '> /COPILOT_GENERATE\n\nThere is a problem in this code. Rewrite the code to show it with the bug fixed. 日本語で説明してください.',
+    },
+    Optimize = {
+      prompt = '> /COPILOT_GENERATE\n\nOptimize the selected code to improve performance and readability. 日本語で説明してください.',
+    },
+    Docs = {
+      prompt = '> /COPILOT_GENERATE\n\nPlease add documentation comments to the selected code. コメントは日本語で書いてください.',
+    },
+    Tests = {
+      prompt = '> /COPILOT_GENERATE\n\nPlease generate tests for my code. コメントは日本語で書いてください.',
+    },
+  },
 }
 function ShowCopilotChatActionPrompt()
   local actions = require("CopilotChat.actions")
