@@ -93,11 +93,12 @@ require('lazy').setup({
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
+      "nvim-treesitter/nvim-treesitter",
       -- オプションの依存関係
+      "ibhagwan/fzf-lua", -- file_selector プロバイダーで fzf を使う
       "hrsh7th/nvim-cmp",
       "nvim-tree/nvim-web-devicons",
       "zbirenbaum/copilot.lua",
-      -- その他の拡張機能
     }
   },
 
