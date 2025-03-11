@@ -61,50 +61,45 @@ require('lazy').setup({
   -- copilot
   "zbirenbaum/copilot.lua",
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false,
+    opts = {
+      provider = "copilot",
+      auto_suggestions_provider = "copilot",
+
+      -- 動作設定
+      behaviour = {
+        auto_suggestions = false,
+        auto_set_highlight_group = true,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = true,
+        support_paste_from_clipboard = false,
+        minimize_diff = true,
+      },
+
+      -- ウィンドウ設定
+      windows = {
+        position = "right",  -- サイドバーの位置
+        wrap = true,         -- テキストの折り返し
+        width = 40,          -- サイドバーの幅
+        -- その他の詳細設定は省略
+      },
+    },
+    -- 依存関係の設定
+    dependencies = {
+      -- 必須の依存関係
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      -- オプションの依存関係
+      "hrsh7th/nvim-cmp",
+      "nvim-tree/nvim-web-devicons",
+      "zbirenbaum/copilot.lua",
+      -- その他の拡張機能
+    }
   },
-
-  -- {
-  --   "jetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   lazy = false,
-  --   version = false,
-  --   opts = {
-  --     provider = "copilot",
-  --     auto_suggestions_provider = "copilot",
-
-  --     -- 動作設定
-  --     behaviour = {
-  --       auto_suggestions = false,
-  --       auto_set_highlight_group = true,
-  --       auto_set_keymaps = true,
-  --       auto_apply_diff_after_generation = false,
-  --       support_paste_from_clipboard = false,
-  --       minimize_diff = true,
-  --     },
-
-  --     -- ウィンドウ設定
-  --     windows = {
-  --       position = "right",  -- サイドバーの位置
-  --       wrap = true,        -- テキストの折り返し
-  --       width = 30,         -- サイドバーの幅
-  --       -- その他の詳細設定は省略
-  --     },
-  --   },
-  --   -- 依存関係の設定
-  --   dependencies = {
-  --     -- 必須の依存関係
-  --     "stevearc/dressing.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     -- オプションの依存関係
-  --     "hrsh7th/nvim-cmp",
-  --     "nvim-tree/nvim-web-devicons",
-  --     "zbirenbaum/copilot.lua",
-  --     -- その他の拡張機能
-  --   }
-  -- },
 
   -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
@@ -234,9 +229,6 @@ vim.g.mapleader = " "
 map('n', '<LEADER>a', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
 -- map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
-map('n', '<LEADER>c', ':CopilotChatToggle<CR>', {})
-map('v', '<LEADER>c', ':CopilotChat<CR>', {})
-map('n', '<leader>C', ':lua ShowCopilotChatActionPrompt()<CR>', { noremap = true, silent = true })
 map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
 map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
@@ -244,7 +236,6 @@ map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------
 map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ----------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
--- map('n', '<LEADER>j', '<cmd>lua require("hop").hint_patterns()<CR>', { noremap = true }) -- j: EasyMotion (jump)
 map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
 map('n', '<LEADER>K', '<cmd>Lspsaga hover_doc<CR>', { silent = true }) -------------------- K: [LSP] ドキュメント表示
 map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ----------------------- n: [LSP] リネーム (name)
@@ -259,7 +250,8 @@ map('n', '<LEADER>x', ':TroubleToggle<CR>', {}) --------------------------------
 
 map('n', '<LEADER><Tab>',   '<C-w>w', {}) ------------------------------------------------- tab: Window 切り替え
 map('n', '<LEADER><S-Tab>', '<C-w>W', {}) ------------------------------------------------- tab: Window 切り替え
-map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) ------------------------------------- Space: 検索のハイライト
+map('n', '<LEADER><Space>', ':AvanteToggle<CR>', {}) -------------------------------------- Space: [Avante] Chat を開く
+map('n', '<LEADER>/',       ':set hlsearch!<CR>', {}) ------------------------------------- /: 検索のハイライト
 map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) -------------- -: 現在フォルダを開く
 map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ----------------------------------------------- Delete: buffer 削除 (delete)
 map('n', '<LEADER><CR>',    ':! ', { noremap = true }) ------------------------------------ Enter: コマンド入力
@@ -329,48 +321,6 @@ require("copilot").setup {
   panel = { enabled = false },
 --   copilot_node_command = 'node'
 }
-
--------------------------------
--- CopilotChat
--------------------------------
-require("CopilotChat").setup {
-  window = {
-    layout = "vertical",
-    width = 0.4,
-    position = "right",
-  },
-  -- window = {
-  --   layout = 'float',
-  --   relative = 'cursor',
-  --   width = 0.8,
-  --   height = 0.4,
-  --   row = 1
-  -- },
-  prompts = {
-    Explain = {
-      prompt = '> /COPILOT_EXPLAIN\n\nWrite an explanation for the selected code as paragraphs of text. 日本語で説明してください.',
-    },
-    Review = {
-      prompt = '> /COPILOT_REVIEW\n\nReview the selected code. 日本語で説明してください.',
-    },
-    Fix = {
-      prompt = '> /COPILOT_GENERATE\n\nThere is a problem in this code. Rewrite the code to show it with the bug fixed. 日本語で説明してください.',
-    },
-    Optimize = {
-      prompt = '> /COPILOT_GENERATE\n\nOptimize the selected code to improve performance and readability. 日本語で説明してください.',
-    },
-    Docs = {
-      prompt = '> /COPILOT_GENERATE\n\nPlease add documentation comments to the selected code. コメントは日本語で書いてください.',
-    },
-    Tests = {
-      prompt = '> /COPILOT_GENERATE\n\nPlease generate tests for my code. コメントは日本語で書いてください.',
-    },
-  },
-}
-function ShowCopilotChatActionPrompt()
-  local actions = require("CopilotChat.actions")
-  require("CopilotChat.integrations.fzflua").pick(actions.prompt_actions())
-end
 
 -------------------------------
 -- lualine (ステータスライン)
