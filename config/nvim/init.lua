@@ -24,7 +24,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
-  'nvim-lua/plenary.nvim', -- used by rest.nvim / gitsigns.nvim
+  'nvim-lua/plenary.nvim', -- used by rest.nvim / gitsigns.nvim / avante.lua
 
   -- 表示関連
   'nvim-treesitter/nvim-treesitter',
@@ -32,6 +32,7 @@ require('lazy').setup({
   'rebelot/kanagawa.nvim', -- color scheme
   'hoob3rt/lualine.nvim',  -- status line
   'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
+  'MeanderingProgrammer/render-markdown.nvim', -- markdown preview
 
   -- for git
   'lewis6991/gitsigns.nvim',
@@ -62,32 +63,10 @@ require('lazy').setup({
   "zbirenbaum/copilot.lua",
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    opts = {
-      provider = "copilot",
-      auto_suggestions_provider = "copilot",
+    -- event = "VeryLazy",
+    -- lazy = false,
+    -- version = false,
 
-      -- 動作設定
-      behaviour = {
-        auto_suggestions = false,
-        auto_set_highlight_group = true,
-        auto_set_keymaps = true,
-        auto_apply_diff_after_generation = true,
-        support_paste_from_clipboard = false,
-        minimize_diff = true,
-      },
-
-      -- ウィンドウ設定
-      windows = {
-        position = "right",  -- サイドバーの位置
-        wrap = true,         -- テキストの折り返し
-        width = 40,          -- サイドバーの幅
-        -- その他の詳細設定は省略
-      },
-    },
-    -- 依存関係の設定
     dependencies = {
       -- 必須の依存関係
       "stevearc/dressing.nvim",
@@ -109,7 +88,6 @@ require('lazy').setup({
   -- for test
   'klen/nvim-test',               -- テスト実行
 
-  -- 'Townk/vim-autoclose',         -- ()
   'windwp/nvim-autopairs',          -- ()
   'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
 
@@ -322,6 +300,41 @@ require("copilot").setup {
   panel = { enabled = false },
 --   copilot_node_command = 'node'
 }
+
+-------------------------------
+--- Avante
+-------------------------------
+-- refs: https://eiji.page/blog/neovim-avante-nvim-intro
+require("avante").setup ({
+  provider = "copilot",
+  auto_suggestions_provider = "copilot",
+
+  -- 動作設定
+  behaviour = {
+    auto_suggestions = false,
+    auto_set_highlight_group = true,
+    auto_set_keymaps = true,
+    auto_apply_diff_after_generation = true,
+    support_paste_from_clipboard = false,
+    minimize_diff = true,
+  },
+
+  hints = { enabled = false }, -- Visual モードでのヒントを非表示
+
+  -- ウィンドウ設定
+  windows = {
+    position = "right",  -- サイドバーの位置
+    wrap = true,         -- テキストの折り返し
+    width = 35,          -- サイドバーの幅
+    -- その他の詳細設定は省略
+  },
+
+  -- mappings = {
+  --   ask = "<space>aa",
+  --   edit = "<space>ae",
+  -- },
+
+})
 
 -------------------------------
 -- lualine (ステータスライン)
@@ -560,4 +573,4 @@ require("lir.git_status").setup { show_ignored = false }
 -- require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
 require("nvim-test").setup {}
-
+require('render-markdown').setup({ file_types = { "Avante" } })

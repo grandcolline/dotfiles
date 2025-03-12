@@ -26,6 +26,7 @@
   "open-browser-github.vim": { "branch": "master", "commit": "ac7c034e300f36d591ef234dcd5eb5cd5c07c74f" },
   "open-browser.vim": { "branch": "master", "commit": "7d4c1d8198e889d513a030b5a83faa07606bac27" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "render-markdown.nvim": { "branch": "main", "commit": "1a73fa4195316faec9e028911a122df9dfd7f9dd" },
   "vim-better-whitespace": { "branch": "master", "commit": "86a0579b330b133b8181b8e088943e81c26a809e" },
   "vim-vsnip": { "branch": "master", "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9" }
 }
