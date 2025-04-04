@@ -75,7 +75,7 @@ curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/
 
 ## Terminal
 
-[wezterm](https://wezfurlong.org/wezterm/)
+[Ghostty](https://ghostty.org/) / [wezterm](https://wezfurlong.org/wezterm/)
 
 ## Font
 
