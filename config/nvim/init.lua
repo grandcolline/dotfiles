@@ -86,12 +86,12 @@ require('lazy').setup({
   'tyru/open-browser-github.vim', -- Github を開く `:OpenGithubFile`
 
   -- for test
-  'klen/nvim-test',               -- テスト実行
+  'klen/nvim-test', -- テスト実行
 
   'windwp/nvim-autopairs',          -- ()
   'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
 
-  'mfussenegger/nvim-lint',
+  -- 'mfussenegger/nvim-lint',
 })
 
 
@@ -150,7 +150,7 @@ vim.opt.tabstop        = 2        -- タブを表示するときの幅
 vim.opt.shiftwidth     = 2        -- タブを挿入するときの幅
 vim.opt.breakindent    = true     -- 折り返しを同じインデントで表示
 vim.opt.expandtab      = true     -- TAB -> Space
-vim.cmd('au BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4')
+vim.cmd('au BufNewFile,BufRead *.go set noexpandtab tabstop=2 shiftwidth=2')
 
 -- コマンドタイポ予防
 vim.api.nvim_create_user_command('Q',  'q',  {})
@@ -205,7 +205,7 @@ map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 -- 独自のマッピングは極力 Leader を使うようにする。
 vim.g.mapleader = " "
 
-map('n', '<LEADER>a', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
+map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
 -- map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
 map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
@@ -229,7 +229,7 @@ map('n', '<LEADER>x', ':TroubleToggle<CR>', {}) --------------------------------
 
 map('n', '<LEADER><Tab>',   '<C-w>w', {}) ------------------------------------------------- tab: Window 切り替え
 map('n', '<LEADER><S-Tab>', '<C-w>W', {}) ------------------------------------------------- tab: Window 切り替え
-map('n', '<LEADER><Space>', ':AvanteToggle<CR>', {}) -------------------------------------- Space: [Avante] Chat を開く
+map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) ------------------------------------- Space: 検索のハイライト
 map('n', '<LEADER>/',       ':set hlsearch!<CR>', {}) ------------------------------------- /: 検索のハイライト
 map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) -------------- -: 現在フォルダを開く
 map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ----------------------------------------------- Delete: buffer 削除 (delete)
@@ -295,6 +295,7 @@ require("copilot").setup {
     auto_trigger = true,
     keymap = {
       accept = "<Tab>",
+      -- accept = "<C-l>",
     },
   },
   panel = { enabled = false },
@@ -329,10 +330,10 @@ require("avante").setup ({
     -- その他の詳細設定は省略
   },
 
-  -- mappings = {
-  --   ask = "<space>aa",
-  --   edit = "<space>ae",
-  -- },
+  mappings = {
+    ask = "<space>aa",
+    edit = "<space>ae",
+  },
 
 })
 
@@ -414,9 +415,16 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
 end
 
 -- Golang
+-- Install: brew install golangci-lint
 -- Install: go install golang.org/x/tools/gopls@latest
 if vim.fn.exepath('gopls') ~= '' then
   require('lspconfig').gopls.setup{
+    on_attach = on_attach
+  }
+end
+-- Install: go install github.com/nametake/golangci-lint-langserver@latest
+if vim.fn.exepath('golangci-lint-langserver') ~= '' then
+  require('lspconfig').golangci_lint_ls.setup{
     on_attach = on_attach
   }
 end
@@ -441,6 +449,22 @@ end
 -- Install: brew install pyright
 -- if vim.fn.exepath('pyright') ~= '' then
 --   require('lspconfig').pyright.setup{
+--     on_attach = on_attach
+--   }
+-- end
+
+-- Biome
+-- Install: npm i -g @biomejs/biome
+if vim.fn.exepath('biome') ~= '' then
+  require('lspconfig').biome.setup{
+    on_attach = on_attach
+  }
+end
+
+-- Typos
+-- Install: brew install typos-cli
+-- if vim.fn.exepath('typos') ~= '' then
+--   require('lspconfig').typos.setup{
 --     on_attach = on_attach
 --   }
 -- end
@@ -550,18 +574,19 @@ require("lir").setup {
 -- nvim-lint
 -- https://github.com/mfussenegger/nvim-lint
 -------------------------------
-require('lint').linters_by_ft = {
-  -- ファイル名調べる: :lua print(vim.bo.filetype)
-  -- markdown = {'vale'}, -- エラー出るから一旦コメントアウト
-  go = {'golangcilint'},
-}
-
--- 保存時に実行
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
+-- require('lint').linters_by_ft = {
+--   -- ファイル名調べる: :lua print(vim.bo.filetype)
+--   -- markdown = {'vale'}, -- エラー出るから一旦コメントアウト
+--   go = {'golangcilint'}, -- Install: brew install golangci-lint
+--   -- $ brew install typos-cli
+-- }
+-- 
+-- -- 保存時に実行
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   callback = function()
+--     require("lint").try_lint()
+--   end,
+-- })
 
 
 -------------------------------
