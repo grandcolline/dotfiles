@@ -1,0 +1,5 @@
+initial-command = /opt/homebrew/bin/fish
+
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig

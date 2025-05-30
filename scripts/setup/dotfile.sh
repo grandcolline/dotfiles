@@ -63,21 +63,17 @@ RecInfo "setup neovim setting"
 CreateLink $dir_path/config/nvim $XDG_CONFIG_HOME/nvim
 echo ""
 
-RecInfo "setup weztermw setting"
-CreateLink $dir_path/config/wezterm $XDG_CONFIG_HOME/wezterm
+RecInfo "setup ghostty setting"
+CreateLink $dir_path/config/ghostty $XDG_CONFIG_HOME/ghostty
 echo ""
 
 RecInfo "setup vim setting"
 CreateLink $dir_path/vimrc $HOME/.vimrc
 echo ""
 
-RecInfo "setup idea setting"
-CreateLink $dir_path/ideavimrc $HOME/.ideavimrc
-echo ""
-
-RecInfo "setup mycli setting"
-CreateLink $dir_path/myclirc $HOME/.myclirc
-echo ""
+#RecInfo "setup mycli setting"
+#CreateLink $dir_path/myclirc $HOME/.myclirc
+#echo ""
 
 RecInfo "setup bash setting"
 CreateLink $dir_path/bashrc $HOME/.bashrc
