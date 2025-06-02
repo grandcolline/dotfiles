@@ -20,6 +20,10 @@ my config files...
 | [gh](https://github.com/cli/cli)                 | GitHub on the command line                |
 | [mycli](https://github.com/dbcli/mycli)          | terminal client for MySQL                 |
 
+```
+/opt/homebrew/bin/brew install git fish neovim tmux zoxide fzf fd ripgrep expect gh
+```
+
 ## Setup
 
 ```fish
