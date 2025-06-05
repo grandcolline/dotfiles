@@ -415,13 +415,13 @@ if vim.fn.exepath('typescript-language-server') ~= '' then
 end
 
 -- Golang
--- Install: brew install golangci-lint
 -- Install: go install golang.org/x/tools/gopls@latest
 if vim.fn.exepath('gopls') ~= '' then
   require('lspconfig').gopls.setup{
     on_attach = on_attach
   }
 end
+-- Install: brew install golangci-lint
 -- Install: go install github.com/nametake/golangci-lint-langserver@latest
 if vim.fn.exepath('golangci-lint-langserver') ~= '' then
   require('lspconfig').golangci_lint_ls.setup{

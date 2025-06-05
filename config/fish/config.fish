@@ -33,7 +33,6 @@ end
 
 # Google Cloud SDK
 if test -d "$WORKSPACE/tool/google-cloud-sdk"
-  # set -x PATH $WORKSPACE/tool/google-cloud-sdk/bin $PATH
   fish_add_path $WORKSPACE/tool/google-cloud-sdk/bin
   . "$WORKSPACE/tool/google-cloud-sdk/path.fish.inc"
 end
@@ -47,12 +46,12 @@ if type "zoxide" > /dev/null 2>&1
 end
 
 # pnpm
-if type "pnpm" > /dev/null 2>&1
-  set -gx PNPM_HOME "$HOME/Library/pnpm"
-  if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-  end
-end
+#if type "pnpm" > /dev/null 2>&1
+#  set -gx PNPM_HOME "$HOME/Library/pnpm"
+#  if not string match -q -- $PNPM_HOME $PATH
+#    set -gx PATH "$PNPM_HOME" $PATH
+#  end
+#end
 
 # rbenv
 # if test -d "$HOME/.rbenv/shims"
@@ -66,10 +65,10 @@ end
 #  $ source "$HOME/.sdkman/bin/sdkman-init.sh"
 #  $ sdk list java
 #  $ sdk install java xxxxx
-if test -d "$HOME/.sdkman"
-  set -x JAVA_HOME $HOME/.sdkman/candidates/java/current/
-  fish_add_path $JAVA_HOME/bin
-end
+#if test -d "$HOME/.sdkman"
+#  set -x JAVA_HOME $HOME/.sdkman/candidates/java/current/
+#  fish_add_path $JAVA_HOME/bin
+#end
 
 # ログインメッセージを表示しない
 set fish_greeting
@@ -93,13 +92,13 @@ if type "tmux" > /dev/null 2>&1
 end
 
 # Browser Brave > Chrome > Safari (for mac)
-if test -d "/Applications/Brave Browser.app"
-  abbr -a b  'open -a "/Applications/Brave Browser.app"'
-else if test -d "/Applications/Google Chrome.app"
-  abbr -a b  'open -a "/Applications/Google Chrome.app"'
-else if test -d "/Applications/Safari.app"
-  abbr -a b  'open -a "/Applications/Safari.app"'
-end
+#if test -d "/Applications/Brave Browser.app"
+#  abbr -a b  'open -a "/Applications/Brave Browser.app"'
+#else if test -d "/Applications/Google Chrome.app"
+#  abbr -a b  'open -a "/Applications/Google Chrome.app"'
+#else if test -d "/Applications/Safari.app"
+#  abbr -a b  'open -a "/Applications/Safari.app"'
+#end
 
 # eza
 if type "eza" > /dev/null 2>&1
@@ -158,11 +157,11 @@ if type "docker" > /dev/null 2>&1
   abbr -a dr 'docker run --rm -it -v $PWD:/app'
   abbr -a dc 'docker compose'
 end
-if type "nerdctl" > /dev/null 2>&1
-  abbr -a nd  'nerdctl'
-  abbr -a ndr 'nerdctl run --rm -it -v $PWD:/app'
-  abbr -a ndc 'nerdctl compose'
-end
+#if type "nerdctl" > /dev/null 2>&1
+#  abbr -a nd  'nerdctl'
+#  abbr -a ndr 'nerdctl run --rm -it -v $PWD:/app'
+#  abbr -a ndc 'nerdctl compose'
+#end
 
 # K8s
 if type "kubectl" > /dev/null 2>&1
@@ -171,6 +170,7 @@ end
 
 # gcloud
 if type "gcloud" > /dev/null 2>&1
+  abbr -a gc   'gcloud'
   abbr -a gcal 'gcloud auth login'
 end
 
@@ -180,10 +180,10 @@ if type "rg" > /dev/null 2>&1
 end
 
 # devcontainer
-if type "devcontainer" > /dev/null 2>&1
-  abbr -a dup 'devcontainer up --workspace-folder .'
-  abbr -a dec 'devcontainer exec --workspace-folder .'
-end
+#if type "devcontainer" > /dev/null 2>&1
+#  abbr -a dup 'devcontainer up --workspace-folder .'
+#  abbr -a dec 'devcontainer exec --workspace-folder .'
+#end
 
 # ----------------------------
 #  Key Binds
