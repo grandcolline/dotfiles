@@ -169,16 +169,22 @@ vim.opt.foldtext = [[getline(v:foldstart)]]
 -- コマンドの通常時の高さをオフにする
 vim.opt.cmdheight = 0
 
--- 🚀
--- if vim.fn.has('nvim-0.8') == 1 then
--- end
-
 -- 拡張子設定
 -- .rest ファイルは http ファイルとして扱う
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     pattern = "*.rest",
     command = "set filetype=http"
 })
+
+-- 外部からファイルを変更されたら反映する
+vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained", "BufEnter" }, {
+  pattern = "*",
+  command = "checktime",
+})
+
+-- 🚀
+-- if vim.fn.has('nvim-0.8') == 1 then
+-- end
 
 -------------------------------
 -- Key Mapping
@@ -207,7 +213,8 @@ vim.g.mapleader = " "
 
 map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
--- map('n', '<LEADER>c', '<cmd>lua require("rest-nvim").run()<CR>', {}) ---------------------- c: .html で curl 実行 (curl)
+-- map('n', '<LEADER>c', '<cmd>RestNvim<CR>', {}) ------------------------------------------c: .html で curl 実行 (curl)
+map('n', '<LEADER>c', ':let @+ =  fnamemodify(expand("%"), ":.") . ":" . line(".")', {}) ---c: 現在のファイル名と行番号をクリップボードにコピー (copy)
 map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
 map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
@@ -305,6 +312,7 @@ require("copilot").setup {
 -------------------------------
 --- Avante
 -------------------------------
+-- 初回のみ :AvanteBuild でビルドが必要
 -- refs: https://eiji.page/blog/neovim-avante-nvim-intro
 require("avante").setup ({
   provider = "copilot",
