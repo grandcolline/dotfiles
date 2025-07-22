@@ -53,6 +53,9 @@ RecExec curl -LsS \
 RecExec curl \
   -LsS https://raw.githubusercontent.com/aliz-ai/google-cloud-sdk-fish-completion/master/functions/gcloud_sdk_argcomplete.fish \
   -o $dir_path/config/fish/functions/gcloud_sdk_argcomplete.fish
+RecExec curl \
+  -LsS https://raw.githubusercontent.com/oven-sh/bun/main/completions/bun.fish \
+  -o $dir_path/config/fish/completions/bun.fish
 echo ""
 
 RecInfo "setup tmux setting"

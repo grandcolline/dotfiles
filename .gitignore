@@ -19,6 +19,7 @@ config/fish/completions/kubectl.fish
 config/fish/completions/gcloud.fish
 config/fish/completions/gsutil.fish
 config/fish/completions/pnpm.fish
+config/fish/completions/bun.fish
 config/fish/functions/gcloud_sdk_argcomplete.fish
 
 !.gitkeep
