@@ -113,6 +113,7 @@ if type "git" > /dev/null 2>&1
   abbr -a gb   'git branch -a'
   abbr -a gbv  'git branch -a -vv'
   abbr -a gbd  'git branch -D'
+  abbr -a gbda 'git branch -vv | grep ": gone]" | awk "{print $1}" | xargs git branch -D' # remote にないブランチを削除
   abbr -a gbm  'git branch -m'
   abbr -a gp   'git pull --rebase --prune --tags'
   abbr -a gf   'git fetch --prune --tags'
