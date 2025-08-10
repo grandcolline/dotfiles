@@ -214,7 +214,7 @@ vim.g.mapleader = " "
 map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
 -- map('n', '<LEADER>c', '<cmd>RestNvim<CR>', {}) ------------------------------------------c: .html で curl 実行 (curl)
-map('n', '<LEADER>c', ':let @+ =  fnamemodify(expand("%"), ":.") . ":" . line(".")', {}) ---c: 現在のファイル名と行番号をクリップボードにコピー (copy)
+map('n', '<LEADER>c', ':let @+ =  fnamemodify(expand("%"), ":.") . ":L" . line(".")', {}) --c: 現在のファイル名と行番号をクリップボードにコピー (copy)
 map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
 map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
