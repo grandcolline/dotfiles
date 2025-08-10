@@ -61,25 +61,6 @@ require('lazy').setup({
 
   -- copilot
   "zbirenbaum/copilot.lua",
-  {
-    "yetone/avante.nvim",
-    -- event = "VeryLazy",
-    -- lazy = false,
-    -- version = false,
-
-    dependencies = {
-      -- 必須の依存関係
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      -- オプションの依存関係
-      "ibhagwan/fzf-lua", -- file_selector プロバイダーで fzf を使う
-      "hrsh7th/nvim-cmp",
-      "nvim-tree/nvim-web-devicons",
-      "zbirenbaum/copilot.lua",
-    }
-  },
 
   -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
@@ -308,42 +289,6 @@ require("copilot").setup {
   panel = { enabled = false },
 --   copilot_node_command = 'node'
 }
-
--------------------------------
---- Avante
--------------------------------
--- 初回のみ :AvanteBuild でビルドが必要
--- refs: https://eiji.page/blog/neovim-avante-nvim-intro
-require("avante").setup ({
-  provider = "copilot",
-  auto_suggestions_provider = "copilot",
-
-  -- 動作設定
-  behaviour = {
-    auto_suggestions = false,
-    auto_set_highlight_group = true,
-    auto_set_keymaps = true,
-    auto_apply_diff_after_generation = true,
-    support_paste_from_clipboard = false,
-    minimize_diff = true,
-  },
-
-  hints = { enabled = false }, -- Visual モードでのヒントを非表示
-
-  -- ウィンドウ設定
-  windows = {
-    position = "right",  -- サイドバーの位置
-    wrap = true,         -- テキストの折り返し
-    width = 35,          -- サイドバーの幅
-    -- その他の詳細設定は省略
-  },
-
-  mappings = {
-    ask = "<space>aa",
-    edit = "<space>ae",
-  },
-
-})
 
 -------------------------------
 -- lualine (ステータスライン)
