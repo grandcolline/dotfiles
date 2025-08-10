@@ -32,7 +32,7 @@ require('lazy').setup({
   'rebelot/kanagawa.nvim', -- color scheme
   'hoob3rt/lualine.nvim',  -- status line
   'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
-  'MeanderingProgrammer/render-markdown.nvim', -- markdown preview
+  -- 'MeanderingProgrammer/render-markdown.nvim', -- markdown preview
 
   -- for git
   'lewis6991/gitsigns.nvim',
@@ -250,29 +250,27 @@ vim.cmd('colorscheme kanagawa')
 -- NOTE: tree-sitterが荒ぶったら
 --  1. brew upgrade tree-sitter
 --  2. :TSUpdate
-if vim.fn.exepath('tree-sitter') ~= '' then
-  require("nvim-treesitter.configs").setup {
-    highlight = {
-      enable = true, -- syntax highlightを有効に
-      disable = {
-        -- errorが出るものをoffにする
-      },
+require("nvim-treesitter.configs").setup {
+  highlight = {
+    enable = true, -- syntax highlightを有効に
+    disable = {
+      -- errorが出るものをoffにする
     },
-    -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
-    ensure_installed = {
-      -- :TSInstallInfo で確認できる
-      'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl', 'http',
-      'html', 'json', 'lua', 'make', 'markdown', 'markdown_inline', 'proto',
-      'rust', 'sql', 'terraform', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
+  },
+  -- ensure_installed = 'maintained', -- :TSInstall maintainedと同じ
+  ensure_installed = {
+    -- :TSInstallInfo で確認できる
+    'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl', 'http',
+    'html', 'json', 'lua', 'make', 'markdown', 'markdown_inline', 'proto',
+    'rust', 'sql', 'terraform', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
+  },
+  indent = {
+    enable = true, -- tree-sitterによるインデントを有効に
+    disable = {
+      'javascript',
     },
-    indent = {
-      enable = true, -- tree-sitterによるインデントを有効に
-      disable = {
-        'javascript',
-      },
-    },
-  }
-end
+  },
+}
 
 -------------------------------
 -- Copilot
@@ -547,8 +545,6 @@ require("lir").setup {
 -------------------------------
 require("nvim-autopairs").setup {}
 require("lir.git_status").setup { show_ignored = false }
--- require("flash").setup {}
 -- require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
-require("nvim-test").setup {}
-require('render-markdown').setup({ file_types = { "Avante" } })
+-- require("nvim-test").setup {}
