@@ -172,7 +172,7 @@ end
 # gcloud
 if type "gcloud" > /dev/null 2>&1
   abbr -a gc   'gcloud'
-  abbr -a gcal 'gcloud auth login'
+  abbr -a gcal 'gcloud auth login --update-adc'
 end
 
 # ripgrep
