@@ -361,24 +361,18 @@ vim.diagnostic.config {
 -- TypeScript
 -- Install: brew install typescript-language-server
 if vim.fn.exepath('typescript-language-server') ~= '' then
-  require('lspconfig').ts_ls.setup {
-    on_attach = on_attach
-  }
+  vim.lsp.enable('ts_ls')
 end
 
 -- Golang
 -- Install: go install golang.org/x/tools/gopls@latest
 if vim.fn.exepath('gopls') ~= '' then
-  require('lspconfig').gopls.setup{
-    on_attach = on_attach
-  }
+  vim.lsp.enable('gopls')
 end
 -- Install: brew install golangci-lint
 -- Install: go install github.com/nametake/golangci-lint-langserver@latest
 if vim.fn.exepath('golangci-lint-langserver') ~= '' then
-  require('lspconfig').golangci_lint_ls.setup{
-    on_attach = on_attach
-  }
+  vim.lsp.enable('golangci_lint_ls')
 end
 
 -- -- Rust
@@ -392,9 +386,7 @@ end
 -- Terraform
 -- Install: brew install hashicorp/tap/terraform-ls
 if vim.fn.exepath('terraform-ls') ~= '' then
-  require('lspconfig').terraformls.setup{
-    on_attach = on_attach
-  }
+  vim.lsp.enable('terraformls')
 end
 
 -- Python
@@ -408,9 +400,7 @@ end
 -- Biome
 -- Install: npm i -g @biomejs/biome
 if vim.fn.exepath('biome') ~= '' then
-  require('lspconfig').biome.setup{
-    on_attach = on_attach
-  }
+  vim.lsp.enable('biome')
 end
 
 -- Typos
