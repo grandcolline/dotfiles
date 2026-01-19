@@ -21,15 +21,16 @@ set -x GPG_TTY (tty)
 # add PATH
 fish_add_path $WORKSPACE/bin
 fish_add_path $HOME/.cargo/bin            # Rust
-fish_add_path $HOME/.deno/bin             # deno
+fish_add_path $HOME/go/bin                # Golang
+#fish_add_path $HOME/.deno/bin             # deno
 fish_add_path $HOME/.nodebrew/current/bin # nodebrew
-fish_add_path $HOME/.rd/bin               # Rancher Desktop
+#fish_add_path $HOME/.rd/bin               # Rancher Desktop
 fish_add_path /opt/homebrew/bin           # homebrew (for mac)
 
 # go
-if type "go" > /dev/null 2>&1
-  set -x GOPATH $WORKSPACE
-end
+#if type "go" > /dev/null 2>&1
+#  set -x GOPATH $WORKSPACE
+#end
 
 # Google Cloud SDK
 if test -d "$WORKSPACE/tool/google-cloud-sdk"
@@ -44,14 +45,6 @@ if type "zoxide" > /dev/null 2>&1
   set -x _ZO_EXCLUDE_DIRS $HOME:$WORKSPACE/tool/google-cloud-sdk
   zoxide init fish --no-aliases | source
 end
-
-# pnpm
-#if type "pnpm" > /dev/null 2>&1
-#  set -gx PNPM_HOME "$HOME/Library/pnpm"
-#  if not string match -q -- $PNPM_HOME $PATH
-#    set -gx PATH "$PNPM_HOME" $PATH
-#  end
-#end
 
 # rbenv
 # if test -d "$HOME/.rbenv/shims"
@@ -84,6 +77,7 @@ abbr -a rm 'rm -rf'
 # nvim
 if type "nvim" > /dev/null 2>&1
   abbr -a vi 'nvim'
+  abbr -a vp 'nvim $(git rev-parse --show-toplevel 2>/dev/null || echo ".")/plan.md'
 end
 
 # tmux
