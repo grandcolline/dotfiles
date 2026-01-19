@@ -22,9 +22,7 @@ set -x GPG_TTY (tty)
 fish_add_path $WORKSPACE/bin
 fish_add_path $HOME/.cargo/bin            # Rust
 fish_add_path $HOME/go/bin                # Golang
-#fish_add_path $HOME/.deno/bin             # deno
 fish_add_path $HOME/.nodebrew/current/bin # nodebrew
-#fish_add_path $HOME/.rd/bin               # Rancher Desktop
 fish_add_path /opt/homebrew/bin           # homebrew (for mac)
 
 # go
