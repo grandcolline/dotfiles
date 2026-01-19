@@ -150,6 +150,8 @@ if type "gh" > /dev/null 2>&1
   abbr -a repo 'gh repo view --web'
   abbr -a pr   'gh pr view --web || gh pr create --web'
   abbr -a prc  'gh pr checkout'
+  # 現在いるレポジトリのリモートの github actions のキャッシュを全削除
+  abbr -a gh-delete-cache 'gh cache list --json id --jq .[].id | xargs -I@ -t gh cache delete @'
 end
 
 # Docker
