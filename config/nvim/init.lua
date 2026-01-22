@@ -32,7 +32,6 @@ require('lazy').setup({
   'rebelot/kanagawa.nvim', -- color scheme
   'hoob3rt/lualine.nvim',  -- status line
   'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
-  -- 'MeanderingProgrammer/render-markdown.nvim', -- markdown preview
 
   -- for git
   'lewis6991/gitsigns.nvim',
@@ -64,10 +63,9 @@ require('lazy').setup({
 
   -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
-  'tyru/open-browser-github.vim', -- Github を開く `:OpenGithubFile`
 
   -- for test
-  'klen/nvim-test', -- テスト実行
+  -- 'klen/nvim-test', -- テスト実行
 
   'windwp/nvim-autopairs',          -- ()
   'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
@@ -117,14 +115,6 @@ vim.opt.signcolumn     = 'yes'    -- 行番号の左側のサイズ固定
 vim.opt.list           = true     -- 不可視文字の表示設定
 vim.opt.showmode       = false    -- 「-- 挿入 --」とかの非表示
 vim.opt.colorcolumn    = '80'     -- 80文字目にラインを入れる
--- vim.opt.showmatch   = true     -- 対応括弧のハイライト
--- vim.opt.matchtime   = 3        -- 対応括弧のハイライトを3秒に
--- vim.opt.ruler       = true     -- カーソルが何行目の何列目に置かれているかを表示する
--- vim.opt.expandtab   = false    -- タブをタブとして扱う(スペースに展開しない)
--- vim.opt.softtabstop = 0
--- vim.opt.autoindent  = true
--- vim.opt.laststatus  = 2        -- ステータスラインの表示
--- vim.opt.cmdheight   = 1        -- メッセージ表示欄の行数
 
 -- インデント設定
 vim.opt.tabstop        = 2        -- タブを表示するときの幅
@@ -157,15 +147,12 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     command = "set filetype=http"
 })
 
--- 外部からファイルを変更されたら反映する
-vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained", "BufEnter" }, {
-  pattern = "*",
-  command = "checktime",
-})
-
 -- 🚀
 -- if vim.fn.has('nvim-0.8') == 1 then
 -- end
+
+-- 自作関数 の読み込み
+require('functions')
 
 -------------------------------
 -- Key Mapping
@@ -192,37 +179,35 @@ map('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 -- 独自のマッピングは極力 Leader を使うようにする。
 vim.g.mapleader = " "
 
-map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) ------------------ a: [LSP] コードアクション (action)
-map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) -------------------- b: [FZF] buffer 検索 (buffer)
--- map('n', '<LEADER>c', '<cmd>RestNvim<CR>', {}) ------------------------------------------c: .html で curl 実行 (curl)
-map('n', '<LEADER>c', ':let @+ = fnamemodify(expand("%"), ":.") . ":" . line(".")<CR>', {}) --c: 現在のファイル名と行番号をクリップボードにコピー (copy)
-map('v', '<LEADER>c', ':<C-u>let @+ = fnamemodify(expand("%"), ":.") . ":" . line("\'<") . "-" . line("\'>") <CR>', {}) --c: [Visual] 選択範囲のファイル名と行番号をクリップボードにコピー (copy)
-map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) --------- e: [LSP] 次の警告にジャンプ (error)
-map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) --------- E: [LSP] 前の警告にジャンプ (error)
-map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ---------------------- f: [FZF] file 検索 (file)
-map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) ------------------------ g: [LSP] 定義ジャンプ (go)
-map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ----------------------- G: [LSP] LSP Finder (go)
-map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
-map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
-map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
-map('n', '<LEADER>K', '<cmd>Lspsaga hover_doc<CR>', { silent = true }) -------------------- K: [LSP] ドキュメント表示
-map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ----------------------- n: [LSP] リネーム (name)
-map('n', '<LEADER>o', 'mzo<ESC>', {}) ----------------------------------------------------- o: 下に空行追加 (o)
-map('n', '<LEADER>O', 'mzO<ESC>', {}) ----------------------------------------------------- O: 上に空行追加 (o)
-map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})  ----------------- r: [FZF] ripgrep 検索 (rg)
-map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {}) ----------------- s: [FZF] git status 検索 (status)
-map('n', '<LEADER>t', ':TestNearest<CR>', {}) --------------------------------------------- t: 現在行のテスト実行 (test)
-map('n', '<LEADER>T', ':TestLast<CR>', {}) ------------------------------------------------ T: 最後に行ったテスト実行 (test)
-map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {}) ----------------------------------- v: git 差分表示 (view)
-map('n', '<LEADER>x', ':TroubleToggle<CR>', {}) ------------------------------------------- x: LSP の警告一覧表示 (ばつ)
+map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) -------------- a: [LSP] コードアクション (action)
+map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) ---------------- b: [FZF] buffer 検索 (buffer)
+-- map('n', '<LEADER>c', '<cmd>RestNvim<CR>', {}) --------------------------------------c: .html で curl 実行 (curl)
+map('', '<LEADER>c', '<cmd>lua my.copy_file_path_with_line()<CR>', {}) ----- ---------- c: ファイル名と行番号をコピー (copy)
+map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) ----- e: [LSP] 次の警告にジャンプ (error)
+map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) ----- E: [LSP] 前の警告にジャンプ (error)
+map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ------------------ f: [FZF] file 検索 (file)
+map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------------- g: [LSP] 定義ジャンプ (go)
+map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
+map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) ---------------------------------- h: 次の hunk へジャンプ (hunk)
+map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) ---------------------------------- H: 前の hunk へジャンプ (hunk)
+map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ------------------------- k: ブラウザで検索 (kensaku)
+map('n', '<LEADER>K', '<cmd>Lspsaga hover_doc<CR>', { silent = true }) ---------------- K: [LSP] ドキュメント表示
+map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ------------------- n: [LSP] リネーム (name)
+map('n', '<LEADER>o', 'mzo<ESC>', {}) ------------------------------------------------- o: 下に空行追加 (o)
+map('n', '<LEADER>O', 'mzO<ESC>', {}) ------------------------------------------------- O: 上に空行追加 (o)
+map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})  ------------- r: [FZF] ripgrep 検索 (rg)
+map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {}) ------------- s: [FZF] git status 検索 (status)
+map('n', '<LEADER>t', ':TestNearest<CR>', {}) ----------------------------------------- t: 現在行のテスト実行 (test)
+map('n', '<LEADER>T', ':TestLast<CR>', {}) -------------------------------------------- T: 最後に行ったテスト実行 (test)
+map('n', '<LEADER>v', ':Gitsigns preview_hunk<CR>', {}) ------------------------------- v: git 差分表示 (view)
+map('n', '<LEADER>x', ':TroubleToggle<CR>', {}) --------------------------------------- x: LSP の警告一覧表示 (ばつ)
 
-map('n', '<LEADER><Tab>',   '<C-w>w', {}) ------------------------------------------------- tab: Window 切り替え
-map('n', '<LEADER><S-Tab>', '<C-w>W', {}) ------------------------------------------------- tab: Window 切り替え
-map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) ------------------------------------- Space: 検索のハイライト
-map('n', '<LEADER>/',       ':set hlsearch!<CR>', {}) ------------------------------------- /: 検索のハイライト
-map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) -------------- -: 現在フォルダを開く
-map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ----------------------------------------------- Delete: buffer 削除 (delete)
-map('n', '<LEADER><CR>',    ':! ', { noremap = true }) ------------------------------------ Enter: コマンド入力
+map('n', '<LEADER><Tab>',   '<C-w>w', {}) --------------------------------------------- tab: Window 切り替え
+map('n', '<LEADER><S-Tab>', '<C-w>W', {}) --------------------------------------------- tab: Window 切り替え
+map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) --------------------------------- Space: 検索のハイライト
+map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) ---------- -: 現在フォルダを開く
+map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ------------------------------------------- Delete: buffer 削除 (delete)
+map('n', '<LEADER><CR>',    ':! ', { noremap = true }) -------------------------------- Enter: コマンド入力
 
 
 -------------------------------
@@ -234,15 +219,6 @@ require("kanagawa").setup({
   transparent = true, -- 背景色を設定しない
 })
 vim.cmd('colorscheme kanagawa')
-
--- vim.cmd('hi Visual  ctermbg=241')      -- Visual(選択範囲)の白を濃くする
--- vim.cmd('hi Comment ctermfg=102')      -- コメントちょっと濃く
--- vim.cmd('hi LineNr  ctermfg=102')      -- 行番号ちょっと濃く
--- vim.cmd('hi CursorLineNr ctermfg=180') -- 現在行番号ハイライト
-
--- highlight LspDiagnosticsSignError        ctermfg=9
--- highlight LspDiagnosticsVirtualTextError ctermfg=9
--- highlight LspDiagnosticsUnderlineError   ctermfg=9
 
 
 -------------------------------
@@ -403,18 +379,6 @@ if vim.fn.exepath('biome') ~= '' then
   vim.lsp.enable('biome')
 end
 
--- Typos
--- Install: brew install typos-cli
--- if vim.fn.exepath('typos') ~= '' then
---   require('lspconfig').typos.setup{
---     on_attach = on_attach
---   }
--- end
-
--- SQL
--- Install: go install github.com/sqls-server/sqls@latest
--- TODO
-
 
 -------------------------------
 -- nvim-cmp
@@ -500,6 +464,19 @@ require("lir").setup {
     -- ['N'] = actions.rename,
     -- ['D'] = actions.delete,
     -- ['.'] = actions.toggle_show_hidden,
+
+    -- 相対パスをコピー
+    ['y'] = function()
+      local ctx = require'lir'.get_context()
+      -- ctx.dir (現在のディレクトリ) と ctx:current_value() (ファイル名) を結合
+      local full_path = ctx.dir .. ctx:current_value()
+
+      -- fnamemodify でカレントディレクトリからの相対パスに変換
+      -- ':. ' は Neovim が起動している場所 (cwd) からのパスを作ります
+      local relative_path = vim.fn.fnamemodify(full_path, ':.')
+
+      vim.fn.setreg('+', relative_path)
+    end,
   },
   float = {
     winblend = 0,
@@ -522,7 +499,7 @@ require("lir").setup {
 --   go = {'golangcilint'}, -- Install: brew install golangci-lint
 --   -- $ brew install typos-cli
 -- }
--- 
+
 -- -- 保存時に実行
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 --   callback = function()
