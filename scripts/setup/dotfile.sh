@@ -74,10 +74,6 @@ RecInfo "setup vim setting"
 CreateLink $dir_path/vimrc $HOME/.vimrc
 echo ""
 
-#RecInfo "setup mycli setting"
-#CreateLink $dir_path/myclirc $HOME/.myclirc
-#echo ""
-
 RecInfo "setup bash setting"
 CreateLink $dir_path/bashrc $HOME/.bashrc
 echo ""

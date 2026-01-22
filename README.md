@@ -18,7 +18,6 @@ my config files...
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | tool for recursively searches directories |
 | expect                                           |                                           |
 | [gh](https://github.com/cli/cli)                 | GitHub on the command line                |
-| [mycli](https://github.com/dbcli/mycli)          | terminal client for MySQL                 |
 
 ```
 /opt/homebrew/bin/brew install git fish neovim tmux zoxide fzf fd ripgrep expect gh
@@ -79,7 +78,7 @@ curl https://raw.githubusercontent.com/grandcolline/dotfiles/main/scripts/setup/
 
 ## Terminal
 
-[Ghostty](https://ghostty.org/) / [wezterm](https://wezfurlong.org/wezterm/)
+[Ghostty](https://ghostty.org/)
 
 ## Font
 
