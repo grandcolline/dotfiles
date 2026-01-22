@@ -24,6 +24,7 @@ fish_add_path $HOME/.cargo/bin            # Rust
 fish_add_path $HOME/go/bin                # Golang
 fish_add_path $HOME/.nodebrew/current/bin # nodebrew
 fish_add_path /opt/homebrew/bin           # homebrew (for mac)
+fish_add_path $HOME/.moon/bin             # moonbit
 
 # go
 #if type "go" > /dev/null 2>&1
@@ -44,23 +45,6 @@ if type "zoxide" > /dev/null 2>&1
   zoxide init fish --no-aliases | source
 end
 
-# rbenv
-# if test -d "$HOME/.rbenv/shims"
-#   fish_add_path $HOME/.rbenv/shims
-#   status --is-interactive; and rbenv init - fish | source
-# end
-
-# sdkman
-# NOTE: java version を変える時は...
-#  $ bash
-#  $ source "$HOME/.sdkman/bin/sdkman-init.sh"
-#  $ sdk list java
-#  $ sdk install java xxxxx
-#if test -d "$HOME/.sdkman"
-#  set -x JAVA_HOME $HOME/.sdkman/candidates/java/current/
-#  fish_add_path $JAVA_HOME/bin
-#end
-
 # ログインメッセージを表示しない
 set fish_greeting
 
@@ -75,22 +59,12 @@ abbr -a rm 'rm -rf'
 # nvim
 if type "nvim" > /dev/null 2>&1
   abbr -a vi 'nvim'
-  abbr -a vp 'nvim $(git rev-parse --show-toplevel 2>/dev/null || echo ".")/plan.md'
 end
 
 # tmux
 if type "tmux" > /dev/null 2>&1
   abbr -a t  'tmux attach; or tmux'
 end
-
-# Browser Brave > Chrome > Safari (for mac)
-#if test -d "/Applications/Brave Browser.app"
-#  abbr -a b  'open -a "/Applications/Brave Browser.app"'
-#else if test -d "/Applications/Google Chrome.app"
-#  abbr -a b  'open -a "/Applications/Google Chrome.app"'
-#else if test -d "/Applications/Safari.app"
-#  abbr -a b  'open -a "/Applications/Safari.app"'
-#end
 
 # eza
 if type "eza" > /dev/null 2>&1
@@ -141,7 +115,6 @@ end
 if type "gh" > /dev/null 2>&1
   abbr -a repo 'gh repo view --web'
   abbr -a pr   'gh pr view --web || gh pr create --web'
-  abbr -a prc  'gh pr checkout'
   # 現在いるレポジトリのリモートの github actions のキャッシュを全削除
   abbr -a gh-delete-cache 'gh cache list --json id --jq .[].id | xargs -I@ -t gh cache delete @'
 end
@@ -152,11 +125,6 @@ if type "docker" > /dev/null 2>&1
   abbr -a dr 'docker run --rm -it -v $PWD:/app'
   abbr -a dc 'docker compose'
 end
-#if type "nerdctl" > /dev/null 2>&1
-#  abbr -a nd  'nerdctl'
-#  abbr -a ndr 'nerdctl run --rm -it -v $PWD:/app'
-#  abbr -a ndc 'nerdctl compose'
-#end
 
 # K8s
 if type "kubectl" > /dev/null 2>&1
@@ -174,11 +142,6 @@ if type "rg" > /dev/null 2>&1
   abbr -a rg 'rg -uu' # 不可視ファイルを無視しない
 end
 
-# devcontainer
-#if type "devcontainer" > /dev/null 2>&1
-#  abbr -a dup 'devcontainer up --workspace-folder .'
-#  abbr -a dec 'devcontainer exec --workspace-folder .'
-#end
 
 # ----------------------------
 #  Key Binds
@@ -188,7 +151,6 @@ bind \cb '__fzf_git_branch -a'
 bind \cl '__fzf_git_log'
 bind \cs '__fzf_git_status'
 bind \cd '__fzf_directory -z'
-bind \co '__fzf_docker_images -i'
 bind \cf '__fzf_file -f'
-bind \cp '__fzf_pr'
+bind \cw '__fzf_workspace -p'
 

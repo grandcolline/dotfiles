@@ -43,7 +43,7 @@ set smartcase
 set wrapscan
 set gdefault
 
-colorscheme delek
+colorscheme default
 syntax enable
 
 "========================================
