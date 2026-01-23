@@ -45,14 +45,17 @@ require('lazy').setup({
   'ibhagwan/fzf-lua',
 
   -- for LSP
-  'neovim/nvim-lspconfig',
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/vim-vsnip',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
+  -- 'neovim/nvim-lspconfig', -- LSP の config 設定読み込み
   'nvimdev/lspsaga.nvim', -- LSP の UI をよくする
-  -- 'folke/trouble.nvim',   -- LSP でエラーを一覧表示(x)
+
+  -- 補完
+  { 'saghen/blink.cmp', version = '1.*' },
+
+  -- 'hrsh7th/nvim-cmp',
+  -- 'hrsh7th/cmp-nvim-lsp',
+  -- 'hrsh7th/vim-vsnip',
+  -- 'hrsh7th/cmp-buffer',
+  -- 'hrsh7th/cmp-path',
 
   -- for curl
   -- 'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
@@ -67,12 +70,24 @@ require('lazy').setup({
   -- for test
   -- 'klen/nvim-test', -- テスト実行
 
-  'windwp/nvim-autopairs',          -- ()
+  -- 'windwp/nvim-autopairs',          -- ()
   'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
 
   -- 'mfussenegger/nvim-lint',
 })
 
+require('blink.cmp').setup({
+  keymap = {
+    preset = 'none',
+    ['<Up>']   = { 'select_prev', 'fallback' },
+    ['<Down>'] = { 'select_next', 'fallback' },
+    ['<CR>']   = { 'select_and_accept', 'fallback' },
+  },
+  completion = {
+    trigger = { show_on_insert = true },
+    documentation = { auto_show = true, auto_show_delay_ms = 500 },
+  },
+})
 
 -------------------------------
 -- General
@@ -183,8 +198,10 @@ map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) -------
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) ---------------- b: [FZF] buffer 検索 (buffer)
 -- map('n', '<LEADER>c', '<cmd>RestNvim<CR>', {}) --------------------------------------c: .html で curl 実行 (curl)
 map('', '<LEADER>c', '<cmd>lua my.copy_file_path_with_line()<CR>', {}) ----- ---------- c: ファイル名と行番号をコピー (copy)
-map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) ----- e: [LSP] 次の警告にジャンプ (error)
-map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) ----- E: [LSP] 前の警告にジャンプ (error)
+-- map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) ----- e: [LSP] 次の警告にジャンプ (error)
+map('n', '<LEADER>e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true }) ----- e: [LSP] 次の警告にジャンプ (error)
+-- map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) ----- E: [LSP] 前の警告にジャンプ (error)
+map('n', '<LEADER>E', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true }) ----- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ------------------ f: [FZF] file 検索 (file)
 map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------------- g: [LSP] 定義ジャンプ (go)
 map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
@@ -334,21 +351,88 @@ vim.diagnostic.config {
 -------------------------------
 -- LSP SERVER
 -------------------------------
+---------------
 -- TypeScript
+---------------
 -- Install: brew install typescript-language-server
 if vim.fn.exepath('typescript-language-server') ~= '' then
   vim.lsp.enable('ts_ls')
+
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
+  vim.lsp.config.ts_ls= {
+    cmd = { 'typescript-language-server', '--stdio' },
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
+    },
+    root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' },
+  }
 end
 
+-- Install: npm i -g @biomejs/biome
+if vim.fn.exepath('biome') ~= '' then
+  vim.lsp.enable('biome')
+
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/biome.lua
+  vim.lsp.config.biome = {
+    cmd = { 'biome' },
+    filetypes = {
+      'astro',
+      'css',
+      'graphql',
+      'html',
+      'javascript',
+      'javascriptreact',
+      'json',
+      'jsonc',
+      'svelte',
+      'typescript',
+      'typescript.tsx',
+      'typescriptreact',
+    },
+  }
+end
+
+---------------
 -- Golang
+---------------
 -- Install: go install golang.org/x/tools/gopls@latest
 if vim.fn.exepath('gopls') ~= '' then
   vim.lsp.enable('gopls')
+
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/gopls.lua
+  vim.lsp.config.gopls = {
+    cmd = { 'gopls' },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+    root_markers = { 'go.mod', 'go.work' },
+  }
 end
+
 -- Install: brew install golangci-lint
 -- Install: go install github.com/nametake/golangci-lint-langserver@latest
 if vim.fn.exepath('golangci-lint-langserver') ~= '' then
   vim.lsp.enable('golangci_lint_ls')
+
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/golangci_lint_ls.lua
+  vim.lsp.config.golangci_lint_ls = {
+    cmd = { 'golangci-lint-langserver' },
+    filetypes = { 'go', 'gomod' },
+    init_options = {
+      command = { 'golangci-lint', 'run', '--output.json.path=stdout', '--show-stats=false' },
+    },
+    root_markers = {
+      '.golangci.yml',
+      '.golangci.yaml',
+      '.golangci.toml',
+      '.golangci.json',
+      'go.work',
+      'go.mod',
+    },
+  }
 end
 
 -- -- Rust
@@ -361,9 +445,9 @@ end
 
 -- Terraform
 -- Install: brew install hashicorp/tap/terraform-ls
-if vim.fn.exepath('terraform-ls') ~= '' then
-  vim.lsp.enable('terraformls')
-end
+-- if vim.fn.exepath('terraform-ls') ~= '' then
+--   vim.lsp.enable('terraformls')
+-- end
 
 -- Python
 -- Install: brew install pyright
@@ -373,40 +457,34 @@ end
 --   }
 -- end
 
--- Biome
--- Install: npm i -g @biomejs/biome
-if vim.fn.exepath('biome') ~= '' then
-  vim.lsp.enable('biome')
-end
-
 
 -------------------------------
 -- nvim-cmp
 -------------------------------
-local cmp = require("cmp")
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- for `vsnip` users.
-    end,
-  },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-  },
-  mapping = cmp.mapping.preset.insert({
-    -- 一旦コメントアウト
-    -- ['<C-p>'] = cmp.mapping.select_prev_item(),
-    -- ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- ['<C-l>'] = cmp.mapping.complete(),
-    -- ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm { select = true },
-  }),
-  experimental = {
-    ghost_text = true,
-  },
-})
+-- local cmp = require("cmp")
+-- cmp.setup({
+--   snippet = {
+--     expand = function(args)
+--       vim.fn["vsnip#anonymous"](args.body) -- for `vsnip` users.
+--     end,
+--   },
+--   sources = {
+--     { name = "nvim_lsp" },
+--     { name = "buffer" },
+--     { name = "path" },
+--   },
+--   mapping = cmp.mapping.preset.insert({
+--     -- 一旦コメントアウト
+--     -- ['<C-p>'] = cmp.mapping.select_prev_item(),
+--     -- ['<C-n>'] = cmp.mapping.select_next_item(),
+--     -- ['<C-l>'] = cmp.mapping.complete(),
+--     -- ['<C-e>'] = cmp.mapping.abort(),
+--     ['<CR>'] = cmp.mapping.confirm { select = true },
+--   }),
+--   experimental = {
+--     ghost_text = true,
+--   },
+-- })
 
 
 -------------------------------
@@ -511,7 +589,7 @@ require("lir").setup {
 -------------------------------
 -- Other Plugin
 -------------------------------
-require("nvim-autopairs").setup {}
+-- require("nvim-autopairs").setup {}
 require("lir.git_status").setup { show_ignored = false }
 -- require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
