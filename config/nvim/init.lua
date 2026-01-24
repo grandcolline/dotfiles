@@ -166,8 +166,6 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 -- if vim.fn.has('nvim-0.8') == 1 then
 -- end
 
--- 自作関数 の読み込み
-require('functions')
 
 -------------------------------
 -- Key Mapping
@@ -197,11 +195,9 @@ vim.g.mapleader = " "
 map('n', '<LEADER>A', '<cmd>Lspsaga code_action<CR>', { silent = true }) -------------- a: [LSP] コードアクション (action)
 map('n', '<LEADER>b', '<cmd>lua require("fzf-lua").buffers()<CR>', {}) ---------------- b: [FZF] buffer 検索 (buffer)
 -- map('n', '<LEADER>c', '<cmd>RestNvim<CR>', {}) --------------------------------------c: .html で curl 実行 (curl)
-map('', '<LEADER>c', '<cmd>lua my.copy_file_path_with_line()<CR>', {}) ----- ---------- c: ファイル名と行番号をコピー (copy)
--- map('n', '<LEADER>e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true }) ----- e: [LSP] 次の警告にジャンプ (error)
-map('n', '<LEADER>e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true }) ----- e: [LSP] 次の警告にジャンプ (error)
--- map('n', '<LEADER>E', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true }) ----- E: [LSP] 前の警告にジャンプ (error)
-map('n', '<LEADER>E', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true }) ----- E: [LSP] 前の警告にジャンプ (error)
+map('', '<LEADER>c', '<cmd>lua copy_file_path_with_line()<CR>', {}) ------------------- c: ファイル名と行番号をコピー (copy)
+map('n', '<LEADER>e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true }) --- e: [LSP] 次の警告にジャンプ (error)
+map('n', '<LEADER>E', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true }) --- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ------------------ f: [FZF] file 検索 (file)
 map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------------- g: [LSP] 定義ジャンプ (go)
 map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
@@ -594,3 +590,36 @@ require("lir.git_status").setup { show_ignored = false }
 -- require("rest-nvim").setup { result_split_in_place = true }
 require("fzf-lua").setup { winopts = { preview = { layout = 'vertical' } } }
 -- require("nvim-test").setup {}
+
+
+-------------------------------
+-- 独自関数
+-------------------------------
+-- 現在のファイル名と行番号をコピー
+-- Normal モード: "path/file_name.txt:17" の形式
+-- Visual モード (複数行): "path/file_name.txt:17-20" の形式
+-- Visual モード (1行): "path/file_name.txt:17" の形式
+function copy_file_path_with_line()
+  local path = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+  local mode = vim.fn.visualmode()
+
+  local result
+  if mode ~= '' then
+    -- Visual モードで選択されていた場合
+    local start_line = vim.fn.line("'<")
+    local end_line = vim.fn.line("'>")
+    if start_line == end_line then
+      -- 1行だけ選択された場合
+      result = path .. ":" .. start_line
+    else
+      -- 複数行選択された場合
+      result = path .. ":" .. start_line .. "-" .. end_line
+    end
+  else
+    -- Normal モードの場合
+    local line = vim.fn.line(".")
+    result = path .. ":" .. line
+  end
+
+  vim.fn.setreg('+', result)
+end

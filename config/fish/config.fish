@@ -55,6 +55,7 @@ set fish_greeting
 abbr -a o  'open'
 abbr -a x  'exit'
 abbr -a rm 'rm -rf'
+abbr -a pc 'echo "# " > (git rev-parse --show-toplevel 2>/dev/null)/plan.md'
 
 # nvim
 if type "nvim" > /dev/null 2>&1
