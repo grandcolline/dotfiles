@@ -5,16 +5,21 @@ function p -d "Open plan.md in EDITOR"
     return 1
   end
 
-  set -l plan_file $git_root/plan.md
-
-  if not test -e $plan_file
-    set -l ws (get_current_workspace)
-    if test $status -ne 0
-      set ws 0
-    end
-    set -l workspace_plan $WORKSPACE/$ws/plan.md
-    ln -s $workspace_plan $plan_file
+  set -l ws (get_current_workspace)
+  if test $status -ne 0
+    echo "Not in a workspace"
+    return 1
   end
 
-  $EDITOR $plan_file
+  if test "$argv[1]" = "new"
+    # $WORKSPACE/target -> git_root というシンボリックリンクを上書きして貼る
+    if test -n "$WORKSPACE"
+      ln -snf "$git_root" "$WORKSPACE/$ws/target"
+    end
+
+    # plan.md を "# " で作成
+    echo "# " > "$git_root/plan.md"
+  end
+
+  $EDITOR $git_root/plan.md
 end

@@ -20,6 +20,7 @@ set -x GPG_TTY (tty)
 
 # add PATH
 fish_add_path $WORKSPACE/bin
+fish_add_path $HOME/.local/bin            # user local bin
 fish_add_path $HOME/.cargo/bin            # Rust
 fish_add_path $HOME/go/bin                # Golang
 fish_add_path $HOME/.nodebrew/current/bin # nodebrew

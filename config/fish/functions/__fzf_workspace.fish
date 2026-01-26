@@ -8,15 +8,15 @@ function __fzf_workspace
     --bind 'ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
   if set -lq _flag_preview
-    set fzf_cmd "$fzf_cmd --preview 'head -100 {}plan.md' --height 40%"
+    set fzf_cmd "$fzf_cmd --preview 'head -100 {}/target/plan.md' --height 40%"
   else
     set fzf_cmd "$fzf_cmd --height 40%"
   end
 
   set fzf_cmd "$fzf_cmd --prompt='Workspace > '"
-  set ref (ls -d $WORKSPACE/*/ | eval $fzf_cmd)
+  set ref (realpath (ls -d $WORKSPACE/*/ | eval $fzf_cmd)target 2>/dev/null)
 
   commandline -f repaint
-  commandline -i $ref
+  commandline -i "$ref"
 end
 
