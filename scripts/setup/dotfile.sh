@@ -79,7 +79,6 @@ CreateLink $dir_path/bashrc $HOME/.bashrc
 echo ""
 
 RecInfo "setup claude setting"
-CreateLink $dir_path/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
 CreateLink $dir_path/claude/skills $HOME/.claude/skills
 
 RecInfo "🍻 DONE!"
