@@ -80,5 +80,6 @@ echo ""
 
 RecInfo "setup claude setting"
 CreateLink $dir_path/claude/skills $HOME/.claude/skills
+CreateLink $dir_path/claude/statusline.sh $HOME/.claude/statusline.sh
 
 RecInfo "🍻 DONE!"
