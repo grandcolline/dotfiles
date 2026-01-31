@@ -143,6 +143,14 @@ if type "rg" > /dev/null 2>&1
   abbr -a rg 'rg -uu' # 不可視ファイルを無視しない
 end
 
+# claude
+if type "claude" > /dev/null 2>&1
+  abbr -a cl  'claude'
+  abbr -a clc 'claude /checkout'
+  abbr -a clp 'claude --permission-mode plan --model opusplan /planning'
+  abbr -a pn  'p new'
+end
+
 
 # ----------------------------
 #  Theme (Syntax Highlighting)
