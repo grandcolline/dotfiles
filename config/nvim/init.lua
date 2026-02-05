@@ -199,6 +199,7 @@ map('', '<LEADER>c', '<cmd>lua copy_file_path_with_line()<CR>', {}) ------------
 map('n', '<LEADER>e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { silent = true }) --- e: [LSP] 次の警告にジャンプ (error)
 map('n', '<LEADER>E', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { silent = true }) --- E: [LSP] 前の警告にジャンプ (error)
 map('n', '<LEADER>f', '<cmd>lua require("fzf-lua").files()<CR>', {}) ------------------ f: [FZF] file 検索 (file)
+map('i', '<C-f>',     '<cmd>lua insert_filepath_with_fzf()<CR>', {}) ------------------ Ctrl+f: [FZF] ファイルパス挿入 (file)
 map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------------- g: [LSP] 定義ジャンプ (go)
 map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) ---------------------------------- h: 次の hunk へジャンプ (hunk)
@@ -209,6 +210,7 @@ map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ------------
 map('n', '<LEADER>o', 'mzo<ESC>', {}) ------------------------------------------------- o: 下に空行追加 (o)
 map('n', '<LEADER>O', 'mzO<ESC>', {}) ------------------------------------------------- O: 上に空行追加 (o)
 map('n', '<LEADER>r', '<cmd>lua require("fzf-lua").live_grep()<CR>', {})  ------------- r: [FZF] ripgrep 検索 (rg)
+map('i', '<C-r>',     '<cmd>lua insert_grep_result_with_fzf()<CR>', {}) --------------- Ctrl+r: [FZF] grep 結果挿入 (rg)
 map('n', '<LEADER>s', '<cmd>lua require("fzf-lua").git_status()<CR>', {}) ------------- s: [FZF] git status 検索 (status)
 map('n', '<LEADER>t', ':TestNearest<CR>', {}) ----------------------------------------- t: 現在行のテスト実行 (test)
 map('n', '<LEADER>T', ':TestLast<CR>', {}) -------------------------------------------- T: 最後に行ったテスト実行 (test)
@@ -221,6 +223,37 @@ map('n', '<LEADER><Space>', ':set hlsearch!<CR>', {}) --------------------------
 map('n', '<LEADER>-',       ':e %:h<CR>', { noremap = true, silent = true }) ---------- -: 現在フォルダを開く
 map('n', '<LEADER><BS>',    ':bd!<CR>', {}) ------------------------------------------- Delete: buffer 削除 (delete)
 map('n', '<LEADER><CR>',    ':! ', { noremap = true }) -------------------------------- Enter: コマンド入力
+
+-- fzf-lua でファイル検索して、選択したファイルパスをカーソル位置に挿入
+function insert_filepath_with_fzf()
+  require('fzf-lua').files({
+    actions = {
+      ['default'] = function(selected)
+        if selected and #selected > 0 then
+          local path = require('fzf-lua.path')
+          local filepath = path.entry_to_file(selected[1]).path
+          vim.api.nvim_put({filepath}, 'c', true, true)
+        end
+      end
+    }
+  })
+end
+
+-- fzf-lua で ripgrep 検索して、選択した結果のファイル名:行数:ポジションをカーソル位置に挿入
+function insert_grep_result_with_fzf()
+  require('fzf-lua').live_grep({
+    actions = {
+      ['default'] = function(selected)
+        if selected and #selected > 0 then
+          local path = require('fzf-lua.path')
+          local entry = path.entry_to_file(selected[1])
+          local result = entry.path .. ':' .. entry.line .. ':' .. entry.col
+          vim.api.nvim_put({result}, 'c', true, true)
+        end
+      end
+    }
+  })
+end
 
 
 -------------------------------
