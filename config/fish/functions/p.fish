@@ -11,6 +11,10 @@ function p -d "Open plan.md in EDITOR"
     return 1
   end
 
+  if not test -f "$git_root/plan.md"
+    echo "# " > "$git_root/plan.md"
+  end
+
   if test "$argv[1]" = "new"
     # $WORKSPACE/target -> git_root というシンボリックリンクを上書きして貼る
     if test -n "$WORKSPACE"
@@ -19,7 +23,9 @@ function p -d "Open plan.md in EDITOR"
 
     # plan.md を "# " で作成
     echo "# " > "$git_root/plan.md"
-  end
 
-  $EDITOR $git_root/plan.md
+  else
+    # plan.md を開く
+    $EDITOR $git_root/plan.md
+  end
 end
