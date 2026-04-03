@@ -7,12 +7,11 @@ model=$(echo "$input" | jq -r '.model.display_name // "Claude"')
 input_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // "0"')
 output_tokens=$(echo "$input" | jq -r '.context_window.total_output_tokens // "0"')
 used=$(echo "$input" | jq -r '.context_window.used_percentage // "0"')
-#duration_ms=$(echo "$input" | jq -r '.cost.total_api_duration_ms // "0"')
+session_id=$(echo "$input" | jq -r '.session_id // ""')
 
-# レイテンシを秒に変換（小数点1桁）
-#latency=$(echo "scale=1; $duration_ms / 1000" | bc)
+# セッションIDを短縮表示（先頭8文字）
+short_session="${session_id:0:8}"
 
 # ステータスライン表示
-# echo "${model} | ${input_tokens}/${output_tokens} tokens | Context: ${used}% used | ${latency}s"
-echo "${model} | ${input_tokens}/${output_tokens} tokens | Context: ${used}% used"
+echo "${model} | ${input_tokens}/${output_tokens} tokens | Ctx: ${used}% used | ${short_session}"
 
