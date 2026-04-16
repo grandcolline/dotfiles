@@ -22,7 +22,7 @@ function p -d "Open plan.md in EDITOR"
     end
 
     # plan.md を "# " で作成
-    echo "# " > "$git_root/plan.md"
+    # echo "# " > "$git_root/plan.md"
 
   else
     # plan.md を開く

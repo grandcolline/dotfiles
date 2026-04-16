@@ -148,8 +148,10 @@ if type "claude" > /dev/null 2>&1
   abbr -a cl  'claude'
   abbr -a clc 'claude /checkout'
   abbr -a clp 'claude --permission-mode plan --model opusplan /planning'
-  abbr -a clf 'claude --model opusplan --continue --fork-session'
+  abbr -a clf 'claude --resume --fork-session'
+  abbr -a clr 'claude --model opus --resume --fork-session /plan-review'
   abbr -a pn  'p new'
+  abbr -a prename 'for f in .claude/plans/*.md; set base (path basename $f); string match -qr "^\d" $base; and continue; set ts (env TZ=Asia/Tokyo stat -f "%Sm" -t "%Y%m%dT%H%M" $f); mv $f .claude/plans/(string join "" $ts JST- $base); end'
 end
 
 
