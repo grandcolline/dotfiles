@@ -23,7 +23,7 @@
   autosetuprebase = always
 
 [push]
-  default = upstream
+  default = simple
   autoSetupRemote = true
 
 [commit]
