@@ -50,9 +50,7 @@ vim.pack.add({
   -- 補完
   { src = gh('saghen/blink.cmp'), version = vim.version.range('1.*') },
 
-  -- open browser
-  gh('tyru/open-browser.vim'),        -- ブラウザで開く
-
+  -- 移動
   gh('yuttie/comfortable-motion.vim'),  -- ぬるぬるスクロール
 })
 
@@ -170,7 +168,8 @@ map('n', '<LEADER>g', '<cmd>lua vim.lsp.buf.definition()<CR>', {}) -------------
 map('n', '<LEADER>G', '<cmd>Lspsaga finder<CR>', { silent = true }) ----------------------- G: [LSP] LSP Finder (go)
 map('n', '<LEADER>h', ':Gitsigns next_hunk<CR>', {}) -------------------------------------- h: 次の hunk へジャンプ (hunk)
 map('n', '<LEADER>H', ':Gitsigns prev_hunk<CR>', {}) -------------------------------------- H: 前の hunk へジャンプ (hunk)
-map('',  '<LEADER>k', '<Plug>(openbrowser-smart-search)', {}) ----------------------------- k: ブラウザで検索 (kensaku)
+map('n', '<LEADER>k', '<cmd>lua open_browser_smart_search(false)<CR>', {}) ---------------- k: ブラウザで開く/検索 (kensaku)
+map('x', '<LEADER>k', ':<C-u>lua open_browser_smart_search(true)<CR>', { silent = true }) --- k: 選択範囲をブラウザで開く/検索 (kensaku)
 map('n', '<LEADER>K', '<cmd>Lspsaga hover_doc<CR>', { silent = true }) -------------------- K: [LSP] ドキュメント表示
 map('n', '<LEADER>n', '<cmd>Lspsaga rename<CR>', { silent = true }) ----------------------- n: [LSP] リネーム (name)
 map('n', '<LEADER>o', 'mzo<ESC>', {}) ----------------------------------------------------- o: 下に空行追加 (o)
@@ -508,4 +507,26 @@ function copy_file_path_with_line(visual)
   end
 
   vim.fn.setreg('+', result)
+end
+
+-- URL ならブラウザで開き、それ以外なら Google で検索する
+-- Normal モード: カーソル下の文字列
+-- Visual モード: 選択範囲の文字列
+function open_browser_smart_search(visual)
+  local text
+  if visual then
+    text = table.concat(vim.fn.getregion(vim.fn.getpos("'<"), vim.fn.getpos("'>"), { type = vim.fn.visualmode() }), ' ')
+  else
+    -- URL は記号を含むので、まず空白区切りの WORD で判定する
+    local word = vim.fn.expand('<cWORD>')
+    text = word:match('https?://[%w%-%._~:/%?#%[%]@!%$&\'%*%+,;=%%]+') or vim.fn.expand('<cword>')
+  end
+  text = vim.trim(text)
+  if text == '' then return end
+
+  if text:match('^https?://') then
+    vim.ui.open(text)
+  else
+    vim.ui.open('https://www.google.com/search?q=' .. vim.uri_encode(text))
+  end
 end
