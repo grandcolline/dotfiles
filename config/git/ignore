@@ -12,9 +12,5 @@ tags
 # spellcheck
 cSpell.json
 
-# my files
-.my
-plan.md
-
-
+# Claude
 **/.claude/settings.local.json
