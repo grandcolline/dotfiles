@@ -74,18 +74,9 @@ require('lazy').setup({
   -- 補完
   { 'saghen/blink.cmp', version = '1.*' },
 
-  -- 'hrsh7th/nvim-cmp',
-  -- 'hrsh7th/cmp-nvim-lsp',
-  -- 'hrsh7th/vim-vsnip',
-  -- 'hrsh7th/cmp-buffer',
-  -- 'hrsh7th/cmp-path',
-
   -- for curl
   -- 'hudclark/grpc-nvim',     -- .grcp ファイルのやつ
   -- 'NTBBloodbath/rest.nvim', -- .rest ファイルのやつ
-
-  -- copilot
-  "zbirenbaum/copilot.lua",
 
   -- open browser
   'tyru/open-browser.vim',        -- ブラウザで開く
@@ -314,22 +305,6 @@ vim.cmd('colorscheme kanagawa')
 --     },
 --   },
 -- }
-
--------------------------------
--- Copilot
--------------------------------
-require("copilot").setup {
-  suggestion = {
-    enabled = true,
-    auto_trigger = true,
-    keymap = {
-      accept = "<Tab>",
-      -- accept = "<C-l>",
-    },
-  },
-  panel = { enabled = false },
---   copilot_node_command = 'node'
-}
 
 -------------------------------
 -- lualine (ステータスライン)

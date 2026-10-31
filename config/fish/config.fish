@@ -32,6 +32,11 @@ fish_add_path $HOME/.moon/bin             # moonbit
 #  set -x GOPATH $WORKSPACE
 #end
 
+# Docker
+if test -d "$HOME/.docker/bin"
+  fish_add_path $HOME/.docker/bin
+end
+
 # Google Cloud SDK
 if test -d "$WORKSPACE/tool/google-cloud-sdk"
   fish_add_path $WORKSPACE/tool/google-cloud-sdk/bin
