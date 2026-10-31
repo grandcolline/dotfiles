@@ -1,0 +1,62 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "comfortable-motion.vim": {
+      "rev": "e20aeafb07c6184727b29f7674530150f7ab2036",
+      "src": "https://github.com/yuttie/comfortable-motion.vim"
+    },
+    "fzf-lua": {
+      "rev": "5b88d6f0af7fcb41d4a8bb340bf70d7e3824ee9d",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gitsigns.nvim": {
+      "rev": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "kanagawa.nvim": {
+      "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
+    "lir-git-status.nvim": {
+      "rev": "deb2079a7953e3af93a20d2111be19010dbece93",
+      "src": "https://github.com/tamago324/lir-git-status.nvim"
+    },
+    "lir.nvim": {
+      "rev": "f1291b88d3649743165cfb5d0d44a7722d4021ea",
+      "src": "https://github.com/tamago324/lir.nvim"
+    },
+    "lspsaga.nvim": {
+      "rev": "cf6fc9473bba1d332eda9887855ea29ed9b37701",
+      "src": "https://github.com/nvimdev/lspsaga.nvim"
+    },
+    "lualine.nvim": {
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "nvim-web-devicons": {
+      "rev": "ec309a0eaff6ea967e58c275996155ab5c16938d",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "open-browser.vim": {
+      "rev": "7d4c1d8198e889d513a030b5a83faa07606bac27",
+      "src": "https://github.com/tyru/open-browser.vim"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "vim-better-whitespace": {
+      "rev": "de99b55a6fe8c96a69f9376f16b1d5d627a56e81",
+      "src": "https://github.com/ntpeters/vim-better-whitespace"
+    }
+  }
+}

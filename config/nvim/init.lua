@@ -6,93 +6,62 @@
 --]]
 
 -------------------------------
--- lazy.nvim (Plugin 管理)
+-- vim.pack (Plugin 管理)
 -------------------------------
--- :Lazy で管理画面
--- "$HOME/.local/share/nvim/lazy" に実態が入る
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.uv.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
-end
+-- :lua vim.pack.update() で更新
+-- "$HOME/.local/share/nvim/site/pack/core/opt" に実態が入る
+vim.g.mapleader = " " -- プラグイン読み込みより前に設定する
 
-vim.g.mapleader = " " -- lazy.nvim の setup より前に設定する
-
-vim.opt.rtp:prepend(lazypath)
-require('lazy').setup({
-  -- 表示関連
-  {
-    'nvim-treesitter/nvim-treesitter',
-    branch = "main",
-    build = ':TSUpdate',
-    init = function()
-      vim.treesitter.language.register("bash", "zsh")
-    end,
-    config = function()
-      require("nvim-treesitter").install({
-        -- :TSInstallInfo で確認できる
-        'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl', 'http',
-        'html', 'json', 'lua', 'make', 'markdown', 'markdown_inline', 'proto',
-        'rust', 'sql', 'terraform', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
-      })
-
-      -- Highlighting
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "*",
-        callback = function(args)
-          pcall(vim.treesitter.start, args.buf)
-        end,
-      })
-    end,
-  },
-  'nvim-tree/nvim-web-devicons', -- icon
-  'rebelot/kanagawa.nvim', -- color scheme
-  'nvim-lualine/lualine.nvim', -- status line
-  'ntpeters/vim-better-whitespace', -- 行末空白のハイライト
-
-  -- for git
-  'lewis6991/gitsigns.nvim',
-
-  -- Filer
-  { 'tamago324/lir.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-  'tamago324/lir-git-status.nvim',
-
-  -- for Fazzy Search
-  'ibhagwan/fzf-lua',
-
-  -- for LSP
-  -- 'neovim/nvim-lspconfig', -- LSP の config 設定読み込み
-  'nvimdev/lspsaga.nvim', -- LSP の UI をよくする
-
-  -- 補完
-  { 'saghen/blink.cmp', version = '1.*' },
-
-  -- open browser
-  'tyru/open-browser.vim',        -- ブラウザで開く
-
-  -- for test
-  -- 'klen/nvim-test', -- テスト実行
-
-  'yuttie/comfortable-motion.vim',  -- ぬるぬるスクロール
+-- nvim-treesitter のインストール・更新時に :TSUpdate を実行
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'nvim-treesitter' and (kind == 'install' or kind == 'update') then
+      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+      vim.cmd('TSUpdate')
+    end
+  end,
 })
 
-require('blink.cmp').setup({
-  keymap = {
-    preset = 'none',
-    ['<Up>']   = { 'select_prev', 'fallback' },
-    ['<Down>'] = { 'select_next', 'fallback' },
-    ['<CR>']   = { 'select_and_accept', 'fallback' },
-  },
-  completion = {
-    trigger = { show_on_insert = true },
-    documentation = { auto_show = true, auto_show_delay_ms = 500 },
-  },
+local gh = function(repo) return 'https://github.com/' .. repo end
+vim.pack.add({
+  gh('nvim-lua/plenary.nvim'), -- used by lir.nvim
+
+  -- 表示関連
+  { src = gh('nvim-treesitter/nvim-treesitter'), version = 'main' },
+  gh('nvim-tree/nvim-web-devicons'), -- icon
+  gh('rebelot/kanagawa.nvim'), -- color scheme
+  gh('nvim-lualine/lualine.nvim'), -- status line
+  gh('ntpeters/vim-better-whitespace'), -- 行末空白のハイライト
+
+  -- for git
+  gh('lewis6991/gitsigns.nvim'),
+
+  -- Filer
+  gh('tamago324/lir.nvim'),
+  gh('tamago324/lir-git-status.nvim'),
+
+  -- for Fazzy Search
+  gh('ibhagwan/fzf-lua'),
+
+  -- for LSP
+  gh('nvimdev/lspsaga.nvim'), -- LSP の UI をよくする
+
+  -- 補完
+  { src = gh('saghen/blink.cmp'), version = vim.version.range('1.*') },
+
+  -- open browser
+  gh('tyru/open-browser.vim'),        -- ブラウザで開く
+
+  gh('yuttie/comfortable-motion.vim'),  -- ぬるぬるスクロール
+})
+
+-- Highlighting
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
 })
 
 -------------------------------
@@ -158,6 +127,8 @@ vim.opt.foldtext = [[getline(v:foldstart)]]
 vim.opt.cmdheight = 0
 
 -- 拡張子設定
+-- .tf は標準だと TinyFugue (tf) と判定されるので terraform にする
+vim.filetype.add({ extension = { tf = 'terraform' } })
 -- .rest ファイルは http ファイルとして扱う
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     pattern = "*.rest",
@@ -260,13 +231,6 @@ vim.cmd('colorscheme kanagawa')
 
 
 -------------------------------
--- TreeSitter
--------------------------------
--- NOTE: tree-sitterが荒ぶったら
---  1. brew upgrade tree-sitter
---  2. :TSUpdate
-
--------------------------------
 -- lualine (ステータスライン)
 -------------------------------
 local status, lualine = pcall(require, "lualine")
@@ -300,6 +264,38 @@ if status then lualine.setup {
   -- tabline = {},
   -- extensions = {'fugitive'}
 } end
+
+
+-------------------------------
+-- nvim-treesitter
+-------------------------------
+-- NOTE: tree-sitterが荒ぶったら
+--  1. brew upgrade tree-sitter
+--  2. :TSUpdate
+vim.treesitter.language.register("bash", "zsh")
+require("nvim-treesitter").install({
+  -- :TSInstallInfo で確認できる
+  'bash', 'diff', 'dockerfile', 'fish', 'go', 'gomod', 'graphql', 'hcl', 'http',
+  'html', 'json', 'lua', 'make', 'markdown', 'markdown_inline', 'proto',
+  'rust', 'sql', 'terraform', 'toml', 'tsx', 'typescript', 'vim', 'yaml',
+})
+
+
+-------------------------------
+-- blink.cmp
+-------------------------------
+require('blink.cmp').setup({
+  keymap = {
+    preset = 'none',
+    ['<Up>']   = { 'select_prev', 'fallback' },
+    ['<Down>'] = { 'select_next', 'fallback' },
+    ['<CR>']   = { 'select_and_accept', 'fallback' },
+  },
+  completion = {
+    trigger = { show_on_insert = true },
+    documentation = { auto_show = true, auto_show_delay_ms = 500 },
+  },
+})
 
 
 -------------------------------
