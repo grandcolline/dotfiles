@@ -221,8 +221,6 @@ end
 -------------------------------
 -- ColorScheme
 -------------------------------
-vim.cmd('syntax on')
-
 require("kanagawa").setup({
   transparent = true, -- 背景色を設定しない
 })
@@ -312,20 +310,25 @@ vim.diagnostic.config {
 ---------------
 -- TypeScript
 ---------------
--- Install: brew install typescript-language-server
-if vim.fn.exepath('typescript-language-server') ~= '' then
-  vim.lsp.enable('ts_ls')
+-- Install: brew install typescript (v7 以降は tsc 自体が LSP サーバー)
+if vim.fn.exepath('tsc') ~= '' then
+  vim.lsp.enable('tsgo')
 
-  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ts_ls.lua
-  vim.lsp.config.ts_ls= {
-    cmd = { 'typescript-language-server', '--stdio' },
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/tsgo.lua
+  vim.lsp.config.tsgo = {
+    cmd = { 'tsc', '--lsp', '--stdio' },
     filetypes = {
       'javascript',
       'javascriptreact',
       'typescript',
       'typescriptreact',
     },
-    root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' },
+    -- 上から優先して探す (同じ {} 内は同順位)
+    root_markers = {
+      { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' },
+      { 'tsconfig.json', 'jsconfig.json', 'package.json' },
+      '.git',
+    },
   }
 end
 
